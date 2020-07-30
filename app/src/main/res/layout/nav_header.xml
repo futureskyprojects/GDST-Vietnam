@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gradient_default">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/navUserAvatar"
+        android:layout_width="87.5dp"
+        android:layout_height="87.5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33.25dp"
+        android:src="@drawable/image_user_no_avatar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navUserAvatar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18.25dp"
+        android:layout_marginBottom="30dp"
+        android:lines="1"
+        android:padding="1.5dp"
+        android:paddingHorizontal="20dp"
+        android:text="Kristin Watson"
+        android:textColor="#FFF"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/navCloseBtn"
+        android:layout_width="13.29dp"
+        android:layout_height="13.29dp"
+        android:layout_margin="16.86dp"
+        android:src="@drawable/ic_close" />
+</RelativeLayout>
