@@ -1,12 +1,12 @@
 package vn.vistark.qrinfoscanner.ui.sign_in
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
-import com.google.zxing.integration.android.IntentIntegrator
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.result_processing.ResultProcessingActivity
@@ -25,6 +25,16 @@ class SignInActivity : AppCompatActivity() {
 
         tvSignUp.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
+
+        initQuickScanIcon()
+    }
+
+    private fun initQuickScanIcon() {
+        Glide.with(this).asGif().load(R.raw.qr_code_animation).into(asiIvQuickScanIcon)
+        asiIvQuickScanIcon.setOnClickListener {
+            val intent = Intent(this, QrScanActivity::class.java)
             startActivity(intent)
         }
     }
