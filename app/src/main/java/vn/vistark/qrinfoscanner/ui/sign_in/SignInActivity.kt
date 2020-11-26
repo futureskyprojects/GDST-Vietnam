@@ -2,42 +2,46 @@ package vn.vistark.qrinfoscanner.ui.sign_in
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.result_processing.ResultProcessingActivity
 import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
+import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.scaleBounce
+import vn.vistark.qrinfoscanner.utils.FloatQuickScan
 
 class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
+        FloatQuickScan.initialize(asiIvQuickScanIcon, cfqsLnQuickScanBtn)
+
         btnSignIn.setOnClickListener {
-            val intent = Intent(this, ResultProcessingActivity::class.java)
-            startActivity(intent)
-            finish()
+            it.scaleBounce {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         tvSignUp.setOnClickListener {
-            val intent = Intent(this, SignUpActivity::class.java)
-            startActivity(intent)
+            it.scaleBounce {
+                val intent = Intent(this, SignUpActivity::class.java)
+                startActivity(intent)
+            }
         }
 
-        initQuickScanIcon()
     }
 
-    private fun initQuickScanIcon() {
-        Glide.with(this).asGif().load(R.raw.qr_code_animation).into(asiIvQuickScanIcon)
-        asiIvQuickScanIcon.setOnClickListener {
-            val intent = Intent(this, QrScanActivity::class.java)
-            startActivity(intent)
-        }
-    }
 
     override fun onBackPressed() {
         SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE).apply {

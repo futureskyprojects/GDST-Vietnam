@@ -59,8 +59,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="24dp"
-                    android:autofillHints="Email"
-                    android:hint="Email"
+                    android:autofillHints="Mã số thuế"
+                    android:hint="Mã số thuế"
                     android:inputType="textEmailAddress|textAutoComplete"
                     android:lines="1"
                     android:maxLength="255" />
@@ -78,7 +78,7 @@
                         style="@style/EditText.Default"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Password"
+                        android:hint="Mật khẩu"
                         android:inputType="textPassword"
                         android:lines="1"
                         android:maxLength="255" />
@@ -133,5 +133,5 @@
         </RelativeLayout>
     </LinearLayout>
 
-    <include layout="@layout/component_float_qr_scan_btn"/>
+    <include layout="@layout/component_float_qr_scan_btn" />
 </RelativeLayout>

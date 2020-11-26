@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <vn.vistark.qrinfoscanner.components.WhiteHeaderLogoComponent
+            android:id="@+id/blob_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_header_image"
+            android:paddingTop="20dp">
+
+            <ImageView
+                android:layout_width="260dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingEnd="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:src="@drawable/gdst_banner" />
+        </vn.vistark.qrinfoscanner.components.WhiteHeaderLogoComponent>
+
+        <include layout="@layout/home_panel" />
+
+        <include layout="@layout/home_menu_options" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/watermark" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <include layout="@layout/component_float_qr_scan_btn" />
+</RelativeLayout>

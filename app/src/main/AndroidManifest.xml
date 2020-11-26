@@ -36,7 +36,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".ui.result_processing.ResultProcessingActivity"></activity>
+        <activity android:name=".ui.home.HomeActivity"></activity>
+        <activity android:name=".ui.result_processing.ResultProcessingActivity" />
         <activity android:name=".ui.change_password.ChangePasswordActivity" />
         <activity android:name=".ui.account_info.AccountInfoActivity" />
         <activity

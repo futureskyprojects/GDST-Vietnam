@@ -19,14 +19,14 @@
             android:layout_width="260dp"
             android:layout_height="100dp"
             android:layout_centerInParent="true"
-            android:paddingLeft="0dp"
-            android:paddingRight="20dp"
-            android:paddingBottom="20dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
-            android:src="@drawable/gdst_banner"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
             android:paddingEnd="20dp"
-            android:paddingStart="0dp" />
+            android:paddingRight="20dp"
+            android:paddingBottom="20dp"
+            android:src="@drawable/gdst_banner" />
     </vn.vistark.qrinfoscanner.components.WhiteHeaderLogoComponent>
 
     <RelativeLayout
@@ -34,12 +34,14 @@
         android:layout_height="match_parent"
         android:layout_marginTop="24dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@id/ytkxlau8657"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/dfeerqw2341"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
@@ -49,95 +51,124 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <EditText
-                style="@style/EditText.Default"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="24dp"
-                android:autofillHints="Họ và tên"
-                android:hint="Họ và tên"
-                android:inputType="textPersonName|textAutoComplete|textAutoCorrect|textCapWords"
-                android:lines="1"
-                android:maxLength="40" />
+                android:layout_height="match_parent"
+                android:layout_above="@id/asuBtnSignUp"
+                android:layout_below="@id/dfeerqw2341">
 
-            <EditText
-                style="@style/EditText.Default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="12dp"
-                android:autofillHints="Số điện thoại"
-                android:hint="Số điện thoại"
-                android:inputType="phone|textAutoComplete"
-                android:lines="1"
-                android:maxLength="15" />
-
-            <EditText
-                style="@style/EditText.Default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="12dp"
-                android:autofillHints="Email"
-                android:hint="Email"
-                android:inputType="textEmailAddress|textAutoComplete"
-                android:lines="1"
-                android:maxLength="255" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="12dp"
-                android:background="@android:color/transparent"
-                app:hintEnabled="false"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/EditText.Default"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:lines="1"
-                    android:maxLength="255" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="12dp"
-                android:background="@android:color/transparent"
-                app:hintEnabled="false"
-                app:passwordToggleEnabled="true">
+                    <EditText
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="24dp"
+                        android:autofillHints="Tên doanh nghiệp"
+                        android:hint="Tên doanh nghiệp"
+                        android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
+                        android:lines="1"
+                        android:maxLength="40" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    style="@style/EditText.Default"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nhập lại password"
-                    android:inputType="textPassword"
-                    android:lines="1"
-                    android:maxLength="255" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="12dp"
+                        android:autofillHints="Mã số thuế"
+                        android:hint="Mã số thuế"
+                        android:inputType="number|textAutoComplete"
+                        android:lines="1"
+                        android:maxLength="15" />
+
+                    <EditText
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="12dp"
+                        android:autofillHints="Địa chỉ"
+                        android:hint="Địa chỉ"
+                        android:inputType="text|textAutoComplete"
+                        android:lines="1"
+                        android:maxLength="255" />
+
+                    <EditText
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="12dp"
+                        android:autofillHints="Website"
+                        android:hint="Website"
+                        android:inputType="text|textAutoComplete"
+                        android:lines="1"
+                        android:maxLength="255" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@android:color/transparent"
+                        app:hintEnabled="false"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/EditText.Default"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Mật khẩu"
+                            android:inputType="textPassword"
+                            android:lines="1"
+                            android:maxLength="255" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@android:color/transparent"
+                        app:hintEnabled="false"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/EditText.Default"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nhập lại mật khẩu"
+                            android:inputType="textPassword"
+                            android:lines="1"
+                            android:maxLength="255" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+            </ScrollView>
 
             <Button
+                android:id="@+id/asuBtnSignUp"
                 style="@style/Button.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Đăng ký" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/ytkxlau8657"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:orientation="horizontal">
 

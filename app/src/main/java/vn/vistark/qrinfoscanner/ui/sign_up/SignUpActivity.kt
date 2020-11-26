@@ -5,6 +5,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.scaleBounce
 
 class SignUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +16,11 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun initEvents() {
+        asuBtnSignUp.setOnClickListener {
+            it.scaleBounce { }
+        }
         tvSignInBtn.setOnClickListener {
-            onBackPressed()
+            it.scaleBounce { onBackPressed() }
         }
     }
 }
