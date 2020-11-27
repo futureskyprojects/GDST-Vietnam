@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_account_info.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.utils.DimensionUtils
+import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 
 class AccountInfoActivity : AppCompatActivity() {
     lateinit var listener: ViewTreeObserver.OnGlobalLayoutListener
@@ -16,28 +16,33 @@ class AccountInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_info)
-        initCustomToolbar()
+//        initCustomToolbar()
         initEvents()
     }
 
-    private fun initCustomToolbar() {
-        listener = ViewTreeObserver.OnGlobalLayoutListener {
-            val marginLayoutParams = rlCustomToolbar.layoutParams as LinearLayout.LayoutParams
-            marginLayoutParams.setMargins(
-                0,
-                DimensionUtils.statusBarHeight(this@AccountInfoActivity),
-                0,
-                0
-            )
-            rlCustomToolbar.layoutParams = marginLayoutParams
-            rlCustomToolbar.viewTreeObserver.removeOnGlobalLayoutListener(listener)
-        }
-        rlCustomToolbar.viewTreeObserver.addOnGlobalLayoutListener(listener)
-    }
+//    private fun initCustomToolbar() {
+//        listener = ViewTreeObserver.OnGlobalLayoutListener {
+//            val marginLayoutParams = rlCustomToolbar.layoutParams as LinearLayout.LayoutParams
+//            marginLayoutParams.setMargins(
+//                0,
+//                DimensionUtils.statusBarHeight(this@AccountInfoActivity),
+//                0,
+//                0
+//            )
+//            rlCustomToolbar.layoutParams = marginLayoutParams
+//            rlCustomToolbar.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+//        }
+//        rlCustomToolbar.viewTreeObserver.addOnGlobalLayoutListener(listener)
+//    }
 
     private fun initEvents() {
-        lnBackButton.setOnClickListener {
+        aaiBtnSave.clickAnimate {}
+        aaiCivAvatar.clickAnimate { }
+        aaiBtnCancel.clickAnimate {
             onBackPressed()
         }
+//        lnBackButton.setOnClickListener {
+//            onBackPressed()
+//        }
     }
 }

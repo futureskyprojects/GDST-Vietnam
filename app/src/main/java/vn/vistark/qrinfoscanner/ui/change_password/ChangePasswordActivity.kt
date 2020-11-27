@@ -16,28 +16,28 @@ class ChangePasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_change_password)
 
-        initCustomToolbar()
+//        initCustomToolbar()
         initEvents()
     }
 
-    private fun initCustomToolbar() {
-        listener = ViewTreeObserver.OnGlobalLayoutListener {
-            val marginLayoutParams = rlCustomToolbar.layoutParams as LinearLayout.LayoutParams
-            marginLayoutParams.setMargins(
-                0,
-                DimensionUtils.statusBarHeight(this),
-                0,
-                0
-            )
-            rlCustomToolbar.layoutParams = marginLayoutParams
-            rlCustomToolbar.viewTreeObserver.removeOnGlobalLayoutListener(listener)
-        }
-        rlCustomToolbar.viewTreeObserver.addOnGlobalLayoutListener(listener)
-    }
+//    private fun initCustomToolbar() {
+//        listener = ViewTreeObserver.OnGlobalLayoutListener {
+//            val marginLayoutParams = rlCustomToolbar.layoutParams as LinearLayout.LayoutParams
+//            marginLayoutParams.setMargins(
+//                0,
+//                DimensionUtils.statusBarHeight(this),
+//                0,
+//                0
+//            )
+//            rlCustomToolbar.layoutParams = marginLayoutParams
+//            rlCustomToolbar.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+//        }
+//        rlCustomToolbar.viewTreeObserver.addOnGlobalLayoutListener(listener)
+//    }
 
     private fun initEvents() {
-        lnBackButton.setOnClickListener {
-            onBackPressed()
-        }
+//        lnBackButton.setOnClickListener {
+//            onBackPressed()
+//        }
     }
 }

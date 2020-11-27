@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeActivity">
+    tools:context=".ui.shipment.ShipmentsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,23 +14,30 @@
 
         <include layout="@layout/component_header_wide_bar" />
 
-        <include layout="@layout/home_panel" />
-
-        <include layout="@layout/home_menu_options" />
-
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="60dp"
+            android:layout_marginTop="-30dp">
 
-            <ImageView
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/watermark" />
-        </RelativeLayout>
-    </LinearLayout>
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:text="Lịch sử lô hàng"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <include layout="@layout/component_float_qr_scan_btn" />
+            <include layout="@layout/component_float_add_btn" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/asRvShipments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:overScrollMode="never" />
+    </LinearLayout>
 </RelativeLayout>

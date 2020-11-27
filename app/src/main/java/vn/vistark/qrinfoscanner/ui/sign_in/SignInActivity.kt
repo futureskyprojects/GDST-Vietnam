@@ -15,7 +15,7 @@ import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.result_processing.ResultProcessingActivity
 import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.scaleBounce
+import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.utils.FloatQuickScan
 
 class SignInActivity : AppCompatActivity() {
@@ -25,19 +25,15 @@ class SignInActivity : AppCompatActivity() {
 
         FloatQuickScan.initialize(asiIvQuickScanIcon, cfqsLnQuickScanBtn)
 
-        btnSignIn.setOnClickListener {
-            it.scaleBounce {
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+        btnSignIn.clickAnimate {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
-        tvSignUp.setOnClickListener {
-            it.scaleBounce {
-                val intent = Intent(this, SignUpActivity::class.java)
-                startActivity(intent)
-            }
+        tvSignUp.clickAnimate {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
 
     }

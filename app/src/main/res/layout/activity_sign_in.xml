@@ -12,26 +12,7 @@
         android:background="#FFF"
         android:orientation="vertical">
 
-        <vn.vistark.qrinfoscanner.components.WhiteHeaderLogoComponent
-            android:id="@+id/blob_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_header_image"
-            android:paddingTop="20dp">
-
-            <ImageView
-                android:layout_width="260dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="30dp"
-                android:paddingStart="0dp"
-                android:paddingLeft="0dp"
-                android:paddingEnd="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp"
-                android:src="@drawable/gdst_banner" />
-        </vn.vistark.qrinfoscanner.components.WhiteHeaderLogoComponent>
+        <include layout="@layout/component_header_wide_bar" />
 
         <RelativeLayout
             android:layout_width="match_parent"

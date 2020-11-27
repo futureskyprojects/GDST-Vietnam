@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
@@ -8,8 +9,11 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import kotlinx.android.synthetic.main.home_menu_options.*
+import kotlinx.android.synthetic.main.home_panel.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.scaleBounce
+import vn.vistark.qrinfoscanner.ui.account_info.AccountInfoActivity
+import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
+import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.utils.FloatQuickScan
 
 class HomeActivity : AppCompatActivity() {
@@ -24,17 +28,16 @@ class HomeActivity : AppCompatActivity() {
 
 
     private fun initEvents() {
-        hmoCvShipmentBtn.setOnClickListener {
-            it.scaleBounce {}
+        hmoCvShipmentBtn.clickAnimate {
+            val intent = Intent(this, ShipmentsActivity::class.java)
+            startActivity(intent)
         }
-        hmoCvStaticDataBtn.setOnClickListener {
-            it.scaleBounce {}
-        }
-        hmoCvGenerateQrBtn.setOnClickListener {
-            it.scaleBounce {}
-        }
-        hmoCvScanQRBtn.setOnClickListener {
-            it.scaleBounce {}
+        hmoCvStaticDataBtn.clickAnimate {}
+        hmoCvGenerateQrBtn.clickAnimate {}
+        hmoCvScanQRBtn.clickAnimate {}
+        ahcmpTvEditProfile.clickAnimate {
+            val intent = Intent(this, AccountInfoActivity::class.java)
+            startActivity(intent)
         }
     }
 

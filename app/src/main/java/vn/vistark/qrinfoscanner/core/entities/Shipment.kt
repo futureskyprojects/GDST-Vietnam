@@ -7,8 +7,6 @@ class Shipment(
     override var Id: Int,
     var Name: String,
     var EnterpriseId: Int,
-    var CreateAt: Date,
-    var UpdateAt: Date,
     override var Creationtime: Date,
     override var ModificationTime: Date
 ) : Entity()

@@ -10,19 +10,18 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 
-class FloatQuickScan {
+class FloatAdd {
     companion object {
-        fun initialize(asiIvQuickScanIcon: ImageView, cfqsLnQuickScanBtn: View) {
-            val context = asiIvQuickScanIcon.context
-            Glide.with(context).asGif().load(R.raw.scan_qr_gif)
+        fun initialize(cfabIvIcon: ImageView, cfabLnAddBtn: View, f: (() -> Unit)) {
+            val context = cfabIvIcon.context
+            Glide.with(context).asGif().load(R.raw.add_animate)
                 .transform(CircleCrop()) // or bitmapTransform, whichever compiles
-                .into(asiIvQuickScanIcon)
-            asiIvQuickScanIcon.clickAnimate {
-                val intent = Intent(context, QrScanActivity::class.java)
-                context.startActivity(intent)
+                .into(cfabIvIcon)
+            cfabIvIcon.clickAnimate {
+                f.invoke()
             }
-            cfqsLnQuickScanBtn.setOnClickListener {
-                asiIvQuickScanIcon.performClick()
+            cfabLnAddBtn.setOnClickListener {
+                cfabIvIcon.performClick()
             }
         }
     }

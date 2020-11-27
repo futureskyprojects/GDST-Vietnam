@@ -7,162 +7,175 @@
     android:orientation="vertical"
     tools:context=".ui.account_info.AccountInfoActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_gradient_default">
+    <include layout="@layout/component_header_wide_bar" />
 
-        <RelativeLayout
-            android:id="@+id/rlCustomToolbar"
+    <RelativeLayout
+        android:layout_width="87.5dp"
+        android:layout_height="87.5dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-60dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/aaiCivAvatar"
             android:layout_width="match_parent"
-            android:layout_height="?android:attr/actionBarSize"
-            android:layout_marginTop="32dp"
-            tools:ignore="UselessParent">
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/border_primary"
+            android:src="@drawable/holder" />
 
-            <LinearLayout
-                android:id="@+id/lnBackButton"
-                android:layout_width="?android:attr/actionBarSize"
-                android:layout_height="?android:attr/actionBarSize"
-                android:layout_centerVertical="true"
-                android:clickable="true"
-                android:focusable="true">
-
-                <ImageView
-                    android:layout_width="7dp"
-                    android:layout_height="14dp"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginLeft="25dp"
-                    android:src="@drawable/ic_left_arrow" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:paddingVertical="1.5dp"
-                android:text="Thông tin tài khoản"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-    </LinearLayout>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="1.75dp"
+            android:layout_marginRight="1.75dp"
+            android:layout_marginBottom="0.65dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_edit" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_above="@id/aaiRlBtnLayout">
 
-            <RelativeLayout
-                android:layout_width="87.5dp"
-                android:layout_height="87.5dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="30.25dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingVertical="1dp"
+                    android:text="Tên doanh nghiệp"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    style="@style/EditText.Default"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/image_user_no_avatar_gray" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:autofillHints="Tên doanh nghiệp"
+                    android:hint="Tên doanh nghiệp"
+                    android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
+                    android:lines="1"
+                    android:maxLength="40" />
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="1.75dp"
-                    android:layout_marginRight="1.75dp"
-                    android:layout_marginBottom="0.65dp"
-                    android:src="@drawable/ic_edit" />
-            </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingVertical="1dp"
+                    android:text="Mã số thuế"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="26.25dp"
-                android:paddingVertical="1dp"
-                android:text="Họ và tên"
-                android:textColor="#000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                <EditText
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:autofillHints="Mã số thuế"
+                    android:hint="Mã số thuế"
+                    android:inputType="number|textAutoComplete"
+                    android:lines="1"
+                    android:maxLength="15" />
 
-            <EditText
-                style="@style/EditText.Default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="8dp"
-                android:autofillHints="Họ và tên"
-                android:hint="Họ và tên"
-                android:inputType="textPersonName|textAutoComplete|textAutoCorrect|textCapWords"
-                android:lines="1"
-                android:maxLength="40" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingVertical="1dp"
+                    android:text="Địa chỉ"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:paddingVertical="1dp"
-                android:text="Số điện thoại"
-                android:textColor="#000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                <EditText
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:autofillHints="Địa chỉ"
+                    android:hint="Địa chỉ"
+                    android:inputType="text|textAutoComplete"
+                    android:lines="1"
+                    android:maxLength="255" />
 
-            <EditText
-                style="@style/EditText.Default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="8dp"
-                android:autofillHints="Số điện thoại"
-                android:hint="Số điện thoại"
-                android:inputType="phone|textAutoComplete"
-                android:lines="1"
-                android:maxLength="15" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingVertical="1dp"
+                    android:text="Website"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="20dp"
-                android:paddingVertical="1dp"
-                android:text="Email"
-                android:textColor="#000"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                <EditText
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:autofillHints="Website"
+                    android:hint="Website"
+                    android:inputType="text|textAutoComplete"
+                    android:lines="1"
+                    android:maxLength="255" />
+            </LinearLayout>
+        </ScrollView>
 
-            <EditText
-                style="@style/EditText.Default"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="8dp"
-                android:autofillHints="Email"
-                android:hint="Email"
-                android:inputType="textEmailAddress|textAutoComplete"
-                android:lines="1"
-                android:maxLength="255" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnSignIn"
-            style="@style/Button.Default"
+        <RelativeLayout
+            android:id="@+id/aaiRlBtnLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="40dp"
-            android:text="Lưu lại" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
+
+            <Button
+                android:id="@+id/aaiBtnSave"
+                style="@style/Button.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toStartOf="@id/aaiBtnCancel"
+                android:layout_toLeftOf="@id/aaiBtnCancel"
+                android:text="Lưu lại" />
+
+            <Button
+                android:id="@+id/aaiBtnCancel"
+                style="@style/Button.Danger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Đóng" />
+        </RelativeLayout>
     </RelativeLayout>
 </LinearLayout>
