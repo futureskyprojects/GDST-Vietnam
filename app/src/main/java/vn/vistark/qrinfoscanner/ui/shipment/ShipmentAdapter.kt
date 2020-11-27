@@ -2,6 +2,7 @@ package vn.vistark.qrinfoscanner.ui.shipment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.Shipment

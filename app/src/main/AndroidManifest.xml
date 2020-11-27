@@ -36,7 +36,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".ui.material_batch.MaterialBatchActivity"></activity>
+        <activity android:name=".ui.splash_screen.SpplashScreenActivity"></activity>
+        <activity android:name=".ui.material_batch.MaterialBatchActivity" />
         <activity android:name=".ui.shipment.ShipmentsActivity" />
         <activity android:name=".ui.home.HomeActivity" />
         <activity android:name=".ui.result_processing.ResultProcessingActivity" />

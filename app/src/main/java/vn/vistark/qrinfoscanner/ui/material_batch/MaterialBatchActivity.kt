@@ -7,6 +7,8 @@ import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
+import vn.vistark.qrinfoscanner.utils.AlertConfirmUtils.Companion.showAlertConfirm
+import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.utils.DatetimeUtils.Companion.format
 import vn.vistark.qrinfoscanner.utils.FloatAdd
 import java.util.*
@@ -18,13 +20,24 @@ class MaterialBatchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_material_batch)
-        FloatAdd.initialize(cfabIvIcon, cfabLnAddBtn) {
-
-        }
+        initEvents()
 
         initRecyclerView()
 
         loadMockRawMaterialBatchs()
+    }
+
+    private fun initEvents() {
+        ambBackButton.clickAnimate {
+            onBackPressed()
+        }
+        FloatAdd.initialize(cfabIvIcon, cfabLnAddBtn) {
+            this.showAlertConfirm(
+                "Bạn thực sự muốn tạo lô nguyên liệu mới thứ #9892 vào ngày ${Date().format()}",
+                {
+
+                })
+        }
     }
 
     private fun loadMockRawMaterialBatchs() {

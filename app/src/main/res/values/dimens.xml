@@ -6,4 +6,5 @@
     <dimen name="small_round">5dp</dimen>
     <dimen name="dot_icon_size">12dp</dimen>
     <dimen name="text_small">12sp</dimen>
+    <dimen name="close_btn_size">28dp</dimen>
 </resources>

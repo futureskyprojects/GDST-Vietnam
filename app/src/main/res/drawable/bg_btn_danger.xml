@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <corners android:radius="3dp" />
+            <corners android:radius="@dimen/card_round_radius" />
             <gradient android:angle="180" android:endColor="#93291E" android:startColor="#ED213A" />
         </shape>
     </item>

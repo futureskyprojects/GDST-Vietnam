@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.home_panel.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.account_info.AccountInfoActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
+import vn.vistark.qrinfoscanner.utils.AlertConfirmUtils.Companion.showSelectStaticDataOptionAlert
 import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.utils.FloatQuickScan
 
@@ -32,7 +33,9 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ShipmentsActivity::class.java)
             startActivity(intent)
         }
-        hmoCvStaticDataBtn.clickAnimate {}
+        hmoCvStaticDataBtn.clickAnimate {
+            this.showSelectStaticDataOptionAlert()
+        }
         hmoCvGenerateQrBtn.clickAnimate {}
         hmoCvScanQRBtn.clickAnimate {}
         ahcmpTvEditProfile.clickAnimate {
