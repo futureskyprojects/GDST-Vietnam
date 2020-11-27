@@ -1,6 +1,7 @@
 package vn.vistark.qrinfoscanner.utils
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataActivity
+import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataActivity
 import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
 
 
@@ -60,6 +63,8 @@ class AlertConfirmUtils {
 
             val v = LayoutInflater.from(this).inflate(R.layout.alert_select_static_data, null)
 
+            val context = v.context
+
             val assdIvClose: ImageView = v.findViewById(R.id.assdIvClose)
             val assdCvVesselDataBtn: CardView = v.findViewById(R.id.assdCvVesselDataBtn)
             val assdCvLicenseBtn: CardView = v.findViewById(R.id.assdCvLicenseBtn)
@@ -77,10 +82,14 @@ class AlertConfirmUtils {
 
             assdCvVesselDataBtn.clickAnimate {
                 mAlertDialog.dismiss()
+                val intent = Intent(context, VesselDataActivity::class.java)
+                startActivity(intent)
             }
 
             assdCvLicenseBtn.clickAnimate {
                 mAlertDialog.dismiss()
+                val intent = Intent(context, LicenseDataActivity::class.java)
+                startActivity(intent)
             }
         }
     }

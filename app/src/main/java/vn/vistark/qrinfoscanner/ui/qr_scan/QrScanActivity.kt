@@ -8,6 +8,7 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -26,6 +27,7 @@ import kotlin.system.exitProcess
 
 
 class QrScanActivity : AppCompatActivity() {
+    var isEnterpiseScanner = false
 
 //    private var dl: DrawerLayout? = null
 //    private var t: ActionBarDrawerToggle? = null
@@ -45,6 +47,8 @@ class QrScanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_scan)
 
+        initArguments()
+
         capture = CaptureManager(this, bcScanner)
         capture.apply {
             initializeFromIntent(intent, savedInstanceState)
@@ -57,6 +61,13 @@ class QrScanActivity : AppCompatActivity() {
 //        initNavigationDrawer()
 
         initEvents()
+    }
+
+    private fun initArguments() {
+        isEnterpiseScanner = intent.getBooleanExtra(QrScanActivity::class.java.simpleName, false)
+        if (isEnterpiseScanner) {
+            Toast.makeText(this, "Scan dưới danh nghĩa doanh nghiệp", Toast.LENGTH_SHORT).show()
+        }
     }
 
 //    private fun initNavigationDrawer() {

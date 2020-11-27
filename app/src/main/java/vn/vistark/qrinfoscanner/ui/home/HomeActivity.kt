@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.home_menu_options.*
 import kotlinx.android.synthetic.main.home_panel.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.account_info.AccountInfoActivity
+import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
 import vn.vistark.qrinfoscanner.utils.AlertConfirmUtils.Companion.showSelectStaticDataOptionAlert
 import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
@@ -37,7 +38,11 @@ class HomeActivity : AppCompatActivity() {
             this.showSelectStaticDataOptionAlert()
         }
         hmoCvGenerateQrBtn.clickAnimate {}
-        hmoCvScanQRBtn.clickAnimate {}
+        hmoCvScanQRBtn.clickAnimate {
+            val intent = Intent(this, QrScanActivity::class.java)
+            intent.putExtra(QrScanActivity::class.java.simpleName, true)
+            startActivity(intent)
+        }
         ahcmpTvEditProfile.clickAnimate {
             val intent = Intent(this, AccountInfoActivity::class.java)
             startActivity(intent)

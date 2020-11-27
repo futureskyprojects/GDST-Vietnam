@@ -24,6 +24,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/zxing_transparent"
         android:gravity="center"
+        android:paddingHorizontal="40dp"
         android:text="@string/zxing_msg_default_status"
         android:textAlignment="center"
         android:textColor="@color/zxing_status_text"

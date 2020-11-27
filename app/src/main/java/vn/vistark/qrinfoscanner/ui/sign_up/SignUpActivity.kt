@@ -17,6 +17,8 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun initEvents() {
         asuBtnSignUp.clickAnimate {}
-        tvSignInBtn.clickAnimate {}
+        tvSignInBtn.clickAnimate {
+            finish()
+        }
     }
 }

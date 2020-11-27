@@ -14,10 +14,6 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="8dp"
-        android:paddingStart="4dp"
-        android:paddingLeft="4dp"
-        android:paddingEnd="20dp"
-        android:paddingRight="20dp"
         android:src="@drawable/ic_close" />
 
     <ImageView
