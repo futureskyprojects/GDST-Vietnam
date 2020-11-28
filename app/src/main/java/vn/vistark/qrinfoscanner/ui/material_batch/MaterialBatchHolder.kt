@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.material_batch
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout

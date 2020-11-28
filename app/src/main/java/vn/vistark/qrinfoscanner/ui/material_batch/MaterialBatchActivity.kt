@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
-import vn.vistark.qrinfoscanner.core.helpers.AlertConfirmHelper.Companion.showAlertConfirm
+import vn.vistark.qrinfoscanner.helpers.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.format
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper

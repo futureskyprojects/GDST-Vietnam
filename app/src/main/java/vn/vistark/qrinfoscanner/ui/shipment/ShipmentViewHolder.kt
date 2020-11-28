@@ -27,7 +27,6 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
             val context = ilsLnRoot.context
             val intent = Intent(context, MaterialBatchActivity::class.java)
             context.startActivity(intent)
-
         }
         setShipmentId(shipment.Id)
         setShipmentName(shipment.Name)

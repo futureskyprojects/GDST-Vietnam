@@ -2,7 +2,7 @@ package vn.vistark.qrinfoscanner.core.entities
 
 import vn.vistark.qrinfoscanner.core.abstracts.BaseEntity
 
-class CertificationAndLicense(
+data class CertificationAndLicense(
     override var Id: Int,
     var fishingAuthorization: String,
     var harvestCertification: String,

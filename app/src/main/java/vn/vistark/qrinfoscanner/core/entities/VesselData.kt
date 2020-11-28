@@ -2,7 +2,7 @@ package vn.vistark.qrinfoscanner.core.entities
 
 import vn.vistark.qrinfoscanner.core.abstracts.BaseEntity
 
-class VesselData(
+data class VesselData(
     override var Id: Int,
     var creatorId: Int,
     var vesselName: String,
