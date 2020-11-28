@@ -29,7 +29,7 @@
     <RelativeLayout
         android:id="@+id/confirmLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="270dp"
         android:layout_below="@id/acIvLogo"
         android:background="@drawable/bg_round_white_wo_top_left">
 
@@ -47,41 +47,44 @@
         <TextView
             android:id="@+id/acTvContent"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="150dp"
             android:layout_margin="25dp"
             android:gravity="center"
             android:text="Nội dung confirm"
             android:textColor="#000"
             android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/acTvContent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/acBtnCancel"
+                style="@style/Button.Danger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:text="Hủy" />
+
+            <Button
+                android:id="@+id/acBtnConfirm"
+                style="@style/Button.Default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Xác nhận" />
+        </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/confirmLayout"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-25dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/acBtnCancel"
-            style="@style/Button.Danger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:text="Hủy" />
-
-        <Button
-            android:id="@+id/acBtnConfirm"
-            style="@style/Button.Default"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="Xác nhận" />
-    </LinearLayout>
 </RelativeLayout>

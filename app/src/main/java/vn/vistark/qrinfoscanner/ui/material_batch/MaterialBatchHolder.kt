@@ -3,24 +3,23 @@ package vn.vistark.qrinfoscanner.ui.material_batch
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 
 class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilmLnRoot: LinearLayout = v.findViewById(R.id.ilmLnRoot)
     private val ilmTvMaterialBatchId: TextView = v.findViewById(R.id.ilmTvMaterialBatchId)
     private val ilmTvMaterialBatchName: TextView = v.findViewById(R.id.ilmTvMaterialBatchName)
-    private val ilmIvOptionsIcon: ImageView = v.findViewById(R.id.ilmIvOptionsIcon)
+    private val ilmIvDeleteIcon: ImageView = v.findViewById(R.id.ilmIvDeleteIcon)
     private val ilmTvTotalWeightCount: TextView = v.findViewById(R.id.ilmTvTotalWeightCount)
     private val ilmTotalVesselCount: TextView = v.findViewById(R.id.ilmTotalVesselCount)
     private val ilmTvTotalSpiceCount: TextView = v.findViewById(R.id.ilmTvTotalSpiceCount)
 
     fun bind(materialBatch: RawMaterialBatch) {
-        ilmIvOptionsIcon.clickAnimate { }
+        ilmIvDeleteIcon.clickAnimate { }
         ilmLnRoot.clickAnimate {
 
         }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.Shipment
 
-class ShipmentAdapter(val shipments: ArrayList<Shipment>) :
+class ShipmentAdapter(private val shipments: ArrayList<Shipment>) :
     RecyclerView.Adapter<ShipmentViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShipmentViewHolder {
         val v = LayoutInflater.from(parent.context)

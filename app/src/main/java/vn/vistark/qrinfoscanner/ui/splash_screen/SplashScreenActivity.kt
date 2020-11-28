@@ -1,15 +1,16 @@
 package vn.vistark.qrinfoscanner.ui.splash_screen
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.constants.AppPath
+import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
-import vn.vistark.qrinfoscanner.utils.FileUtils
-import vn.vistark.qrinfoscanner.utils.ResourceUtils
-import java.io.File
 import java.util.*
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -24,13 +25,25 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun initStaticResources() {
-        initFlags {
-            startNextActivity()
+        GlobalScope.launch {
+            try {
+                // Lấy danh sách các quốc gia
+                RuntimeStorage.Countries = ApiService.mAPIServices.getAllCountries().await()
+
+                // Lấy danh sách FAOs
+                RuntimeStorage.FAOs = ApiService.mAPIServices.getAllFAOs().await()
+
+                // Khởi động màn hình tiếp theo
+                startNextActivity()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
+
     }
 
     fun startNextActivity() {
-        val delayTik = 1000L
+        val delayTik = 800L
         val diffTik = System.currentTimeMillis() - startTick
 
         if (diffTik >= delayTik) {
@@ -46,28 +59,4 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-    private fun initFlags(callback: ((Boolean) -> Unit)) {
-        val zipFlags = "flags.zip"
-        val zipFlagsFullPath = "${AppPath.Base}${zipFlags}"
-        if (File(AppPath.Flags).exists()) {
-            callback.invoke(true)
-            return
-        }
-        ResourceUtils.save(this, R.raw.flags, zipFlags) { saveZipSuccess ->
-            if (saveZipSuccess) {
-                FileUtils.unzip(zipFlagsFullPath, AppPath.Flags) { unzipSuccess ->
-                    if (unzipSuccess) {
-                        File(zipFlagsFullPath).delete()
-                        runOnUiThread {
-                            callback.invoke(true)
-                        }
-                    } else {
-                        println("//================== LỖI KHI GIẢI NÉN FILE ZIP ===================//")
-                    }
-                }
-            } else {
-                println("//================== LỖI KHI LƯU FILE ZIP ===================//")
-            }
-        }
-    }
 }

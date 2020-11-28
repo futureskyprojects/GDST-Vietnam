@@ -83,4 +83,12 @@
         <item name="android:padding">16dp</item>
         <item name="android:textSize">16sp</item>
     </style>
+
+    <style name="Button.DangerOutline" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/bg_btn_danger_outline</item>
+        <item name="android:textColor">#9d9d9d</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>

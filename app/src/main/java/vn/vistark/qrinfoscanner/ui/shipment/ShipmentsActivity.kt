@@ -2,16 +2,15 @@ package vn.vistark.qrinfoscanner.ui.shipment
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_shipments.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.Shipment
-import vn.vistark.qrinfoscanner.utils.AlertConfirmUtils.Companion.showAlertConfirm
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.utils.DatetimeUtils.Companion.format
-import vn.vistark.qrinfoscanner.utils.FloatAdd
+import vn.vistark.qrinfoscanner.core.helpers.AlertConfirmHelper.Companion.showAlertConfirm
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.format
+import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -35,7 +34,7 @@ class ShipmentsActivity : AppCompatActivity() {
         asBackButton.clickAnimate {
             onBackPressed()
         }
-        FloatAdd.initialize(cfabIvIcon, cfabLnAddBtn) {
+        FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô hàng mới thứ #9892 vào ngày ${Date().format()}",
                 {

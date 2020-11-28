@@ -1,14 +1,13 @@
-package vn.vistark.qrinfoscanner.utils
+package vn.vistark.qrinfoscanner.core.helpers
 
 import android.content.Context
 import android.graphics.Rect
 import android.util.DisplayMetrics
 import android.view.Window
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
-class DimensionUtils {
+class DimensionHelper {
     companion object {
         fun dpToPx(context: Context, dp: Float): Float {
             val displayMetrics: DisplayMetrics = context.resources.displayMetrics

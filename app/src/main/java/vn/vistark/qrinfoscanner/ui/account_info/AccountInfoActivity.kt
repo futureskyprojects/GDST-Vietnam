@@ -2,13 +2,10 @@ package vn.vistark.qrinfoscanner.ui.account_info
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.activity_account_info.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 
 class AccountInfoActivity : AppCompatActivity() {
     lateinit var listener: ViewTreeObserver.OnGlobalLayoutListener

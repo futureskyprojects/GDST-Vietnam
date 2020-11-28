@@ -45,8 +45,8 @@
                 android:id="@+id/ilmTvMaterialBatchName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ilmIvOptionsIcon"
-                android:layout_toLeftOf="@id/ilmIvOptionsIcon"
+                android:layout_toStartOf="@id/ilmIvDeleteIcon"
+                android:layout_toLeftOf="@id/ilmIvDeleteIcon"
                 android:gravity="center"
                 android:text="Lô nguyên liệu ngày 14-03-2021"
                 android:textColor="#FFF"
@@ -54,7 +54,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ilmIvOptionsIcon"
+                android:id="@+id/ilmIvDeleteIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -63,7 +63,8 @@
                 android:layout_marginRight="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/three_line_icon" />
+                android:paddingVertical="5dp"
+                android:src="@drawable/delete_icon_white" />
         </RelativeLayout>
 
     </RelativeLayout>

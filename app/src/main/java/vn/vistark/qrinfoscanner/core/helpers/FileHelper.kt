@@ -1,10 +1,10 @@
-package vn.vistark.qrinfoscanner.utils
+package vn.vistark.qrinfoscanner.core.helpers
 
 import java.io.*
 import java.util.zip.ZipEntry
 import java.util.zip.ZipInputStream
 
-class FileUtils {
+class FileHelper {
     companion object {
         fun unzip(fz: String, targetDir: String, callback: ((Boolean) -> Unit)) {
             println("//====================== BẮT ĐẦU GIẢI NÉN ========================//")

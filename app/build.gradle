@@ -86,4 +86,7 @@ dependencies {
 
     // Xử lý quyền https://github.com/Karumi/Dexter
     implementation 'com.karumi:dexter:6.2.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.2.1'
 }

@@ -1,11 +1,11 @@
-package vn.vistark.qrinfoscanner.utils
+package vn.vistark.qrinfoscanner.core.helpers
 
 import android.content.Context
 import vn.vistark.qrinfoscanner.core.constants.AppPath
 import java.io.File
 import java.io.FileOutputStream
 
-class ResourceUtils {
+class ResourceHelper {
     companion object {
         fun save(
             context: Context,

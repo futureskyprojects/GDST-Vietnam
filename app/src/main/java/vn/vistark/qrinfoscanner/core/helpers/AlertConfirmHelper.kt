@@ -1,4 +1,4 @@
-package vn.vistark.qrinfoscanner.utils
+package vn.vistark.qrinfoscanner.core.helpers
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,17 +8,16 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataActivity
 import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataActivity
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 
 
-class AlertConfirmUtils {
+class AlertConfirmHelper {
     companion object {
         @SuppressLint("InflateParams")
         fun AppCompatActivity.showAlertConfirm(

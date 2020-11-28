@@ -14,7 +14,7 @@
         android:focusable="true">
 
         <LinearLayout
-            android:id="@+id/ilsLnShipmentIdLayout"
+            android:id="@+id/ilvLnTopLeftLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/prdark_top_round"
@@ -36,8 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/ilsLnShipmentIdLayout"
-            android:layout_toRightOf="@id/ilsLnShipmentIdLayout"
+            android:layout_toEndOf="@id/ilvLnTopLeftLayout"
+            android:layout_toRightOf="@id/ilvLnTopLeftLayout"
             android:background="@drawable/prdark_topright_round"
             android:orientation="vertical">
 
@@ -45,8 +45,8 @@
                 android:id="@+id/ilsTvShipmentName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ilsIvOptionsIcon"
-                android:layout_toLeftOf="@id/ilsIvOptionsIcon"
+                android:layout_toStartOf="@id/ilsIvDeleteIcon"
+                android:layout_toLeftOf="@id/ilsIvDeleteIcon"
                 android:gravity="center"
                 android:text="Lô hàng ngày 14-03-2021"
                 android:textColor="#FFF"
@@ -54,7 +54,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ilsIvOptionsIcon"
+                android:id="@+id/ilsIvDeleteIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -63,7 +63,8 @@
                 android:layout_marginRight="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/three_line_icon" />
+                android:paddingVertical="5dp"
+                android:src="@drawable/delete_icon_white" />
         </RelativeLayout>
 
     </RelativeLayout>

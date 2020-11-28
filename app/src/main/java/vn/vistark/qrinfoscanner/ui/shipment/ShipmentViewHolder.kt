@@ -4,26 +4,25 @@ import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.Shipment
 import vn.vistark.qrinfoscanner.ui.material_batch.MaterialBatchActivity
-import vn.vistark.qrinfoscanner.utils.AnimUtils.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 
 class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilsLnRoot: LinearLayout = v.findViewById(R.id.ilsLnRoot)
     private val ilsTvShipmentId: TextView = v.findViewById(R.id.ilsTvShipmentId)
     private val ilsTvShipmentName: TextView = v.findViewById(R.id.ilsTvShipmentName)
-    private val ilsIvOptionsIcon: ImageView = v.findViewById(R.id.ilsIvOptionsIcon)
+    private val ilsIvDeleteIcon: ImageView = v.findViewById(R.id.ilsIvDeleteIcon)
     private val ilsTvMaterialBathCount: TextView = v.findViewById(R.id.ilsTvMaterialBathCount)
     private val ilsTvTotalWeightCount: TextView = v.findViewById(R.id.ilsTvTotalWeightCount)
     private val ilsTotalVesselCount: TextView = v.findViewById(R.id.ilsTotalVesselCount)
     private val ilsTvTotalSpiceCount: TextView = v.findViewById(R.id.ilsTvTotalSpiceCount)
 
     fun bind(shipment: Shipment) {
-        ilsIvOptionsIcon.clickAnimate { }
+        ilsIvDeleteIcon.clickAnimate { }
         ilsLnRoot.clickAnimate {
             val context = ilsLnRoot.context
             val intent = Intent(context, MaterialBatchActivity::class.java)

@@ -1,11 +1,10 @@
-package vn.vistark.qrinfoscanner.utils
+package vn.vistark.qrinfoscanner.core.helpers
 
 import android.annotation.SuppressLint
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
 import java.util.*
 
-class DatetimeUtils {
+class DatetimeHelper {
     companion object {
         @SuppressLint("SimpleDateFormat")
         fun Date.format(format: String = "dd-MM-yyyy"): String {

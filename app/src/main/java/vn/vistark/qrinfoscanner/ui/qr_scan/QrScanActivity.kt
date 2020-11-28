@@ -1,29 +1,16 @@
 package vn.vistark.qrinfoscanner.ui.qr_scan
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
-import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import cn.pedant.SweetAlert.SweetAlertDialog
-import com.google.android.material.navigation.NavigationView
 import com.journeyapps.barcodescanner.CaptureManager
 import kotlinx.android.synthetic.main.activity_qr_scan.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.components.CustomViewFinderView
-import vn.vistark.qrinfoscanner.ui.account_info.AccountInfoActivity
-import vn.vistark.qrinfoscanner.ui.change_password.ChangePasswordActivity
-import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
-import vn.vistark.qrinfoscanner.utils.DimensionUtils
-import kotlin.system.exitProcess
+import vn.vistark.qrinfoscanner.core.helpers.DimensionHelper
 
 
 class QrScanActivity : AppCompatActivity() {
@@ -132,7 +119,7 @@ class QrScanActivity : AppCompatActivity() {
 
     private fun setUpZxingStatusViewPosition() {
         zxingViewfinderView.onHaveBottomPosition = { bottomPosition ->
-            zxingStatusView.y = bottomPosition + DimensionUtils.dpToPx(this, 52F)
+            zxingStatusView.y = bottomPosition + DimensionHelper.dpToPx(this, 52F)
         }
     }
 
