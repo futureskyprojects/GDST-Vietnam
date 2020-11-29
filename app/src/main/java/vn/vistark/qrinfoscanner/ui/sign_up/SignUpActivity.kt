@@ -9,10 +9,9 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.Enterprise
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
-import vn.vistark.qrinfoscanner.core.mockup.EnterpriseMockup
-import vn.vistark.qrinfoscanner.core.models.enterprise.request.EnterpriseLogin
+import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.databinding.ActivitySignUpBinding
-import vn.vistark.qrinfoscanner.helpers.AlertHelper.Companion.showAlertConfirm
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
 
 class SignUpActivity : AppCompatActivity() {
@@ -34,13 +33,15 @@ class SignUpActivity : AppCompatActivity() {
                 // Dành cho mockup
                 delayAction {
                     enterprise.hashPassword = "12345678"
-                    val res = EnterpriseMockup.create(enterprise)
-                    if (res.isEmpty()) {
+                    val isSuccess = MockupCreate(enterprise) {
+                        it.identity == enterprise.identity
+                    }
+                    if (isSuccess) {
                         SignInActivity.SIA?.updateIdentityField(enterprise.identity)
                         Toast.makeText(this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
-                        showAlertConfirm(res)
+                        showAlertConfirm("Tài khoản đã tồn tại")
                     }
                 }
             }

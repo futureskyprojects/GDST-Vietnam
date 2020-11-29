@@ -3,15 +3,18 @@ package vn.vistark.qrinfoscanner.ui.statics_data.vessel_data
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_vessel_data.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.VesselData
-import vn.vistark.qrinfoscanner.helpers.AlertHelper.Companion.showAlertConfirm
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.format
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
+import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
+import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAddVessDataAlert
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
-import java.util.*
 import kotlin.collections.ArrayList
 
 class VesselDataActivity : AppCompatActivity() {
@@ -40,31 +43,36 @@ class VesselDataActivity : AppCompatActivity() {
         avdBackButton.clickAnimate {
             onBackPressed()
         }
-        FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
-            this.showAlertConfirm(
-                "Bạn thực sự muốn tạo lô hàng mới thứ #9892 vào ngày ${Date().format()}",
-                {
 
-                })
+        FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
+            showAddVessDataAlert({ vesselData ->
+                if (vesselData != null) {
+                    println("Đã nhận thêm mới dữ liệu tàu: ${Gson().toJson(vesselData)}")
+                    save(vesselData)
+                }
+            })
+        }
+    }
+
+    private fun save(vesselData: VesselData) {
+        delayAction {
+            if (!MockupCreate(vesselData) {
+                    it.vesselRegistration == vesselData.vesselRegistration
+                }) {
+                showAlertConfirm("Dữ liệu tàu đã tồn tại")
+            } else {
+                vesselDatas.add(0, vesselData)
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 
     private fun initMockData() {
-        for (i in 0..100) {
-            val vd = VesselData(
-                i + 1,
-                -1,
-                "",
-                "Nguyễn Trọng Nghĩa",
-                "${i}12${i}43${i}4${i}TS",
-                "",
-                "",
-                "VN",
-                "61",
-                "Chi cục Khánh Hòa"
-            )
-            vesselDatas.add(vd)
-            adapter.notifyDataSetChanged()
+        delayAction {
+            MockupData<VesselData>().forEach { vd ->
+                vesselDatas.add(0, vd)
+                adapter.notifyDataSetChanged()
+            }
         }
     }
 }

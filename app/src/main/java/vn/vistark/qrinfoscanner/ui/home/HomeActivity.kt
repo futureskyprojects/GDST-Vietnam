@@ -11,9 +11,8 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.account_info.AccountInfoActivity
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
-import vn.vistark.qrinfoscanner.helpers.AlertHelper.Companion.showSelectStaticDataOptionAlert
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showSelectStaticDataOptionAlert
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.helpers.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.helpers.FloatQuickScanButtonHelper
 
 class HomeActivity : AppCompatActivity() {

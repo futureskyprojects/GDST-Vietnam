@@ -7,4 +7,5 @@
     <dimen name="dot_icon_size">12dp</dimen>
     <dimen name="text_small">12sp</dimen>
     <dimen name="close_btn_size">28dp</dimen>
+    <dimen name="alert_text_size">26sp</dimen>
 </resources>

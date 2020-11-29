@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="40dp">
+
+    <ImageView
+        android:id="@+id/acvdIvClose"
+        android:layout_width="@dimen/close_btn_size"
+        android:layout_height="@dimen/close_btn_size"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_btn_danger"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="8dp"
+        android:src="@drawable/ic_close" />
+
+    <ImageView
+        android:id="@+id/acIvLogo"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:background="@drawable/bg_top_round_white"
+        android:paddingHorizontal="4dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="4dp"
+        android:src="@drawable/gdst_banner" />
+
+    <RelativeLayout
+        android:id="@+id/confirmLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/acIvLogo"
+        android:background="@drawable/bg_round_white_wo_top_left">
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="20dp"
+            android:alpha="0.2"
+            android:background="#FFFFFFFF"
+            android:scaleType="center"
+            android:scaleX="1.2"
+            android:scaleY="1.2"
+            android:src="@drawable/logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="25dp">
+
+            <TextView
+                android:id="@+id/acvdTvDialogName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="Tạo dữ liệu tàu mới"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginBottom="8dp"
+                android:background="#bdbdbd" />
+
+            <TextView
+                android:id="@+id/acvdTvErrorMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:text="Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu"
+                android:textAlignment="center"
+                android:textColor="#ED213A"
+                android:visibility="gone" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:paddingBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:paddingVertical="1dp"
+                        android:text="Số đăng ký"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/acvdEdtVesselRegistration"
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="25dp"
+                        android:autofillHints="Tên doanh nghiệp"
+                        android:hint="Số đăng ký"
+                        android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
+                        android:lines="1"
+                        android:maxLength="40" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:paddingVertical="1dp"
+                        android:text="Tên chủ tàu"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/acvdEdtVesselOwnerName"
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="25dp"
+                        android:autofillHints="Tên chủ tàu"
+                        android:hint="Tên chủ tàu"
+                        android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
+                        android:lines="1"
+                        android:maxLength="40" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="-4dp"
+                        android:paddingVertical="1dp"
+                        android:text="Cờ tàu"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include
+                        layout="@layout/item_layout_country_alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="-4dp"
+                        android:paddingVertical="1dp"
+                        android:text="VMS"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include
+                        layout="@layout/item_layout_country_organization_alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="-4dp"
+                        android:paddingVertical="1dp"
+                        android:text="Tọa độ"
+                        android:textColor="#000"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <include
+                        layout="@layout/item_layout_fao_alert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp" />
+
+                    <Button
+                        android:id="@+id/acvdBtnCreateVesselData"
+                        style="@style/Button.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_marginVertical="20dp"
+                        android:text="Hoàn tất" />
+                </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
