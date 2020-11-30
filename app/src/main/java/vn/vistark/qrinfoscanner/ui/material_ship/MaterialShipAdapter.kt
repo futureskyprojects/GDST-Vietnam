@@ -4,17 +4,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable
 
-class MaterialShipAdapter(private val materialBatchs: ArrayList<RawMaterialBatch>) :
-    RecyclerView.Adapter<MaterialShipHolder>(), IClickable<RawMaterialBatch>,
-    IDeletable<RawMaterialBatch> {
+class MaterialShipAdapter(private val materialships: ArrayList<MaterialShip>) :
+    RecyclerView.Adapter<MaterialShipHolder>(), IClickable<MaterialShip>,
+    IDeletable<MaterialShip> {
 
-    override var onClick: ((RawMaterialBatch) -> Unit)? = null
-    override var onDelete: ((RawMaterialBatch) -> Unit)? = null
+    override var onClick: ((MaterialShip) -> Unit)? = null
+    override var onDelete: ((MaterialShip) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialShipHolder {
         val v = LayoutInflater.from(parent.context)
@@ -23,11 +24,11 @@ class MaterialShipAdapter(private val materialBatchs: ArrayList<RawMaterialBatch
     }
 
     override fun getItemCount(): Int {
-        return materialBatchs.count()
+        return materialships.count()
     }
 
     override fun onBindViewHolder(holder: MaterialShipHolder, position: Int) {
-        val materialBatch = materialBatchs[position]
+        val materialBatch = materialships[position]
         holder.bind(materialBatch)
 
         holder.ilmIvDeleteIcon.clickAnimate {

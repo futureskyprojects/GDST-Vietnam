@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_shipments.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.constants.Config.Companion.padSize
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.Shipment
 import vn.vistark.qrinfoscanner.core.entities.VesselData
@@ -46,7 +47,7 @@ class ShipmentsActivity : AppCompatActivity() {
         adapter.onDelete = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu lô hàng [#${it.Id.toString()
-                    .padStart(6, '0')}] hay không?",
+                    .padStart(padSize, '0')}] hay không?",
                 {
                     delayAction {
                         if (CommonMockup.MockupDelete(it)) {
@@ -87,7 +88,7 @@ class ShipmentsActivity : AppCompatActivity() {
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô hàng mới số #${
                 shipment.Id.toString().padStart(
-                    6,
+                    padSize,
                     '0'
                 )} vào lúc [${shipment.Name}]",
                 {

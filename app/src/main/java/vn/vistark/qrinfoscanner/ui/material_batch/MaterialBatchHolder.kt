@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.constants.Config
 import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 
@@ -28,7 +29,7 @@ class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     private fun setMaterialBatchId(id: Int) {
-        ilmTvMaterialBatchId.text = "#" + "$id".padStart(6, '0')
+        ilmTvMaterialBatchId.text = "#" + "$id".padStart(Config.padSize, '0')
     }
 
     private fun setMaterialBatchName(name: String) {

@@ -5,6 +5,7 @@ import retrofit2.http.GET
 import vn.vistark.qrinfoscanner.core.models.country.response.Countries
 import vn.vistark.qrinfoscanner.core.models.fao.response.FAOs
 import vn.vistark.qrinfoscanner.core.models.organization.response.Organizations
+import vn.vistark.qrinfoscanner.core.models.port.response.SeaPorts
 
 interface IApiService {
     @GET("countries")
@@ -15,4 +16,7 @@ interface IApiService {
 
     @GET("gdst-organizations")
     fun getAllOrganizations(): Call<Organizations>
+
+    @GET("gdst-sea-ports")
+    fun getAllSeaPorts(): Call<SeaPorts>
 }

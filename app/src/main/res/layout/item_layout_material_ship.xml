@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ilmsLnRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16sp"
+    android:layout_marginTop="12dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/ilmsLnTopLeftLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/prdark_top_round"
+            android:paddingHorizontal="12dp">
+
+            <ImageView
+                android:id="@+id/ilmsIvVesselFlag"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:paddingBottom="8dp"
+                android:src="@drawable/vn"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ilmsLnTopLeftLayout"
+            android:layout_toRightOf="@id/ilmsLnTopLeftLayout"
+            android:background="@drawable/prdark_topright_round"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ilmsTvVesselOwnerName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/ilmsdIvDeleteIcon"
+                android:layout_toLeftOf="@id/ilmsdIvDeleteIcon"
+                android:gravity="center"
+                android:text="Hoàng Công Danh"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/ilmsdIvDeleteIcon"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingVertical="5dp"
+                android:src="@drawable/delete_icon_white" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/prdark_border_bottom_round"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvVesselRegistration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Số đăng ký tàu: 34244466474TS"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvVesselCoordinates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Tọa độ: FAO61 (Pacific, Northwest)"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvHarvestCertification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Số giấy phép: 1132131231"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#bdbdbd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvFIP"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="FIP: Vietnam YFT FIP"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvTripCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Ngày đi: 27-11-2020"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvGrearType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Ngư cụ: HL"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvProductMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Phương thức khai thác: HL"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="#bdbdbd" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/ilmsTvVesselVMS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Lên cá: Cảng Cam Ranh (20/11/2020)"
+                android:textColor="@color/card_info_text_color"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

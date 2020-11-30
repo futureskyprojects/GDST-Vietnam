@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.constants.Config
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.entities.Shipment
@@ -21,6 +22,7 @@ import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.ui.material_ship.MaterialShipActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -53,7 +55,8 @@ class MaterialBatchActivity : AppCompatActivity() {
             finish()
             return
         }
-        ambTvTitle.text = "Lô nguyên liệu [#${shipment.Id.toString().padStart(6, '0')}]"
+        ambTvTitle.text =
+            "Lô nguyên liệu [#${shipment.Id.toString().padStart(Config.padSize, '0')}]"
     }
 
     private fun initEvents() {
@@ -69,7 +72,7 @@ class MaterialBatchActivity : AppCompatActivity() {
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô nguyên liệu mới số #${
                 batch.Id.toString().padStart(
-                    6,
+                    Config.padSize,
                     '0'
                 )} vào lúc [${batch.Name}]",
                 {
@@ -118,7 +121,7 @@ class MaterialBatchActivity : AppCompatActivity() {
         adapter.onDelete = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu lô nguyên liệu [#${it.Id.toString()
-                    .padStart(6, '0')}] hay không?",
+                    .padStart(Config.padSize, '0')}] hay không?",
                 {
                     delayAction {
                         if (MockupDelete(it)) {
@@ -131,9 +134,9 @@ class MaterialBatchActivity : AppCompatActivity() {
         }
 
         adapter.onClick = {
-//            val intent = Intent(this, MaterialBatchActivity::class.java)
-//            intent.putExtra(Shipment::class.java.simpleName, it.Id)
-//            startActivity(intent)
+            val intent = Intent(this, MaterialShipActivity::class.java)
+            intent.putExtra(RawMaterialBatch::class.java.simpleName, it.Id)
+            startActivity(intent)
         }
     }
 

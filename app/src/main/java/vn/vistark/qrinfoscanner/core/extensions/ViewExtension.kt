@@ -57,7 +57,7 @@ class ViewExtension {
             this.startAnimation(anim)
         }
 
-        fun AppCompatActivity.delayAction(time: Long = Random.nextLong(800, 4000), f: () -> Unit) {
+        fun AppCompatActivity.delayAction(time: Long = Random.nextLong(300, 1200), f: () -> Unit) {
             val loading = this.showLoadingAlert()
             Timer().schedule(object : TimerTask() {
                 override fun run() {

@@ -20,7 +20,7 @@ import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
 import java.util.*
 
 class SplashScreenActivity : AppCompatActivity() {
-    val startTick = System.currentTimeMillis()
+    private val startTick = System.currentTimeMillis()
 
     var timerLongResponse: Timer? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +61,9 @@ class SplashScreenActivity : AppCompatActivity() {
 
                 // Lấy danh sách các tổ chức
                 RuntimeStorage.Organizations = ApiService.mAPIServices.getAllOrganizations().await()
+
+                // Lấy danh sách các cảng biển
+                RuntimeStorage.SeaPorts = ApiService.mAPIServices.getAllSeaPorts().await()
 
                 // Tắt timer
                 timerLongResponse?.cancel()
