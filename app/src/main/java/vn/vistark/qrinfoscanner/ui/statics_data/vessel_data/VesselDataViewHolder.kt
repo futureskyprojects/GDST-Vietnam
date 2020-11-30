@@ -14,9 +14,9 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import java.util.*
 
 class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    private val ilsLnRoot: LinearLayout = v.findViewById(R.id.ilvLnRoot)
+    val ilsLnRoot: LinearLayout = v.findViewById(R.id.ilvLnRoot)
     private val ilvIvVesselFlag: ImageView = v.findViewById(R.id.ilvIvVesselFlag)
-    private val ilvdIvDeleteIcon: ImageView = v.findViewById(R.id.ilvdIvDeleteIcon)
+    val ilvdIvDeleteIcon: ImageView = v.findViewById(R.id.ilvdIvDeleteIcon)
     private val ilvTvVesselOwnerName: TextView = v.findViewById(R.id.ilvTvVesselOwnerName)
     private val ilvTvVesselRegistration: TextView = v.findViewById(R.id.ilvTvVesselRegistration)
     private val ilvTvVesselCoordinates: TextView = v.findViewById(R.id.ilvTvVesselCoordinates)
@@ -28,13 +28,6 @@ class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         setCoordinates(vesselData)
         setVMS(vesselData)
         setFlags(vesselData)
-
-        ilsLnRoot.clickAnimate {
-
-        }
-        ilvdIvDeleteIcon.clickAnimate {
-
-        }
     }
 
     private fun setFlags(vesselData: VesselData) {

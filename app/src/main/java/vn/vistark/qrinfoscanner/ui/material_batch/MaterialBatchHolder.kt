@@ -11,19 +11,15 @@ import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 
 class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
-    private val ilmLnRoot: LinearLayout = v.findViewById(R.id.ilmLnRoot)
+    val ilmLnRoot: LinearLayout = v.findViewById(R.id.ilmLnRoot)
     private val ilmTvMaterialBatchId: TextView = v.findViewById(R.id.ilmTvMaterialBatchId)
     private val ilmTvMaterialBatchName: TextView = v.findViewById(R.id.ilmTvMaterialBatchName)
-    private val ilmIvDeleteIcon: ImageView = v.findViewById(R.id.ilmIvDeleteIcon)
+    val ilmIvDeleteIcon: ImageView = v.findViewById(R.id.ilmIvDeleteIcon)
     private val ilmTvTotalWeightCount: TextView = v.findViewById(R.id.ilmTvTotalWeightCount)
     private val ilmTotalVesselCount: TextView = v.findViewById(R.id.ilmTotalVesselCount)
     private val ilmTvTotalSpiceCount: TextView = v.findViewById(R.id.ilmTvTotalSpiceCount)
 
     fun bind(materialBatch: RawMaterialBatch) {
-        ilmIvDeleteIcon.clickAnimate { }
-        ilmLnRoot.clickAnimate {
-
-        }
         setMaterialBatchId(materialBatch.Id)
         setMaterialBatchName(materialBatch.Name)
         setTotalWeightCount(0F)
@@ -36,7 +32,7 @@ class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     private fun setMaterialBatchName(name: String) {
-        ilmTvMaterialBatchName.text = "Lô nguyên liệu ngày $name"
+        ilmTvMaterialBatchName.text = "Lô nguyên liệu $name"
     }
 
 

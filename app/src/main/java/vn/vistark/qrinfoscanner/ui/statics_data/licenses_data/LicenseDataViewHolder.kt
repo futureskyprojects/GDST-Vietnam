@@ -15,7 +15,7 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import java.util.*
 
 class LicenseDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-    private val ilcalLnRoot: LinearLayout = v.findViewById(R.id.ilcalLnRoot)
+    val ilcalLnRoot: LinearLayout = v.findViewById(R.id.ilcalLnRoot)
     private val ilcalTvHarvestCertification: TextView =
         v.findViewById(R.id.ilcalTvHarvestCertification)
     private val ilcalTvFishingAuthorization: TextView =
@@ -27,17 +27,9 @@ class LicenseDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilcalTvHumanWelfarePolicyStandards: TextView =
         v.findViewById(R.id.ilcalTvHumanWelfarePolicyStandards)
 
-    private val ilcalIvDeleteIcon: ImageView = v.findViewById(R.id.ilcalIvDeleteIcon)
+    val ilcalIvDeleteIcon: ImageView = v.findViewById(R.id.ilcalIvDeleteIcon)
 
     fun bind(license: CertificationAndLicense) {
-        ilcalLnRoot.clickAnimate {
-
-        }
-
-        ilcalIvDeleteIcon.clickAnimate {
-
-        }
-
         setHarvestCertification(license)
         setFishingAuthorization(license)
         setTransshipmentAuthorization(license)

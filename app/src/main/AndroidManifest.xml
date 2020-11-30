@@ -36,7 +36,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".ui.statics_data.licenses_data.LicenseDataActivity"></activity>
+        <activity android:name=".ui.material_ship.MaterialShipActivity"></activity>
+        <activity android:name=".ui.statics_data.licenses_data.LicenseDataActivity" />
         <activity android:name=".ui.statics_data.vessel_data.VesselDataActivity" />
         <activity
             android:name=".ui.splash_screen.SplashScreenActivity"

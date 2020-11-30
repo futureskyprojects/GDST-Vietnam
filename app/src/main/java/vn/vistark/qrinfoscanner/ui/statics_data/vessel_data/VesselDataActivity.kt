@@ -13,8 +13,9 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
-import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAddVessDataAlert
+import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.helpers.alert_helper.vessel.VesselUpdateBottomSheet.Companion.showAddVessDataAlert
 import kotlin.collections.ArrayList
 
 class VesselDataActivity : AppCompatActivity() {
@@ -26,6 +27,29 @@ class VesselDataActivity : AppCompatActivity() {
         setContentView(R.layout.activity_vessel_data)
         initEvents()
         initRecyclerView()
+        initDataEvents()
+    }
+
+    private fun removeVesselData(x: VesselData) {
+        val index = vesselDatas.indexOfFirst { it.vesselRegistration == x.vesselRegistration }
+        vesselDatas.removeAt(index)
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun initDataEvents() {
+        adapter.onDelete = {
+            showAlertConfirm(
+                "Bạn có chắc muốn xóa dữ liệu tàu mang số đăng ký [${it.vesselRegistration}] hay không?",
+                {
+                    delayAction {
+                        if (MockupDelete(it)) {
+                            removeVesselData(it)
+                            showAlertConfirm("Đã xóa thành công")
+                        }
+                    }
+                }
+            )
+        }
     }
 
     private fun initRecyclerView() {
