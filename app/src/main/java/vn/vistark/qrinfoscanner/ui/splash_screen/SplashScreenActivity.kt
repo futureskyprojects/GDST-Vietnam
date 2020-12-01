@@ -34,9 +34,16 @@ class SplashScreenActivity : AppCompatActivity() {
 
         AppPath.initialize(this)
 
-        initStaticResources()
-
         initLongResponse()
+
+        RuntimeStorage.initStaticResources {
+            // Tắt timer
+            timerLongResponse?.cancel()
+            timerLongResponse = null
+
+            // Khởi động màn hình tiếp theo
+            startNextActivity()
+        }
     }
 
     private fun initLongResponse() {
@@ -48,34 +55,6 @@ class SplashScreenActivity : AppCompatActivity() {
                 }
             }
         }, 10000)
-    }
-
-    private fun initStaticResources() {
-        GlobalScope.launch {
-            try {
-                // Lấy danh sách các quốc gia
-                RuntimeStorage.Countries = ApiService.mAPIServices.getAllCountries().await()
-
-                // Lấy danh sách FAOs
-                RuntimeStorage.FAOs = ApiService.mAPIServices.getAllFAOs().await()
-
-                // Lấy danh sách các tổ chức
-                RuntimeStorage.Organizations = ApiService.mAPIServices.getAllOrganizations().await()
-
-                // Lấy danh sách các cảng biển
-                RuntimeStorage.SeaPorts = ApiService.mAPIServices.getAllSeaPorts().await()
-
-                // Tắt timer
-                timerLongResponse?.cancel()
-                timerLongResponse = null
-
-                // Khởi động màn hình tiếp theo
-                startNextActivity()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-
     }
 
     fun startNextActivity() {

@@ -16,7 +16,7 @@ import vn.vistark.qrinfoscanner.core.entities.Shipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.format
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
@@ -67,7 +67,7 @@ class MaterialBatchActivity : AppCompatActivity() {
             val batch = RawMaterialBatch(
                 CommonMockup.MockupMaxId<RawMaterialBatch>() + 1,
                 shipment.Id,
-                Date().format("HH:mm dd-MM-yyyy")
+                Date().Format("HH:mm dd-MM-yyyy")
             )
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô nguyên liệu mới số #${

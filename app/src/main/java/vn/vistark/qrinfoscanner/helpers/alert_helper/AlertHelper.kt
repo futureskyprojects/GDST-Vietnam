@@ -1,6 +1,7 @@
 package vn.vistark.qrinfoscanner.helpers.alert_helper
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -25,9 +26,13 @@ import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideDown
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideUp
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.From
+import vn.vistark.qrinfoscanner.core.models.BaseMap
 import vn.vistark.qrinfoscanner.core.models.country.response.Country
 import vn.vistark.qrinfoscanner.core.models.fao.response.FAO
 import vn.vistark.qrinfoscanner.core.models.organization.response.Organization
+import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
 import vn.vistark.qrinfoscanner.helpers.common.VistarkAdapter
 import vn.vistark.qrinfoscanner.helpers.countries.CountryBindHolder
 import vn.vistark.qrinfoscanner.helpers.fao.FaoBindHolder
@@ -37,6 +42,61 @@ import java.util.*
 
 class AlertHelper {
     companion object {
+        fun TextView.showDatePicker(onResult: ((Date) -> Unit), date: Date? = null) {
+            this.clickAnimate {
+                val calendar = Calendar.getInstance()
+                calendar.time = date ?: Date()
+                val x = DatePickerDialog(
+                    this.context,
+                    DatePickerDialog.OnDateSetListener { v, year, month, dayOfMonth ->
+                        val dateRes = Date().From(year, month, dayOfMonth)
+                        this.text = dateRes.Format()
+                        onResult.invoke(dateRes)
+                    },
+                    calendar.get(Calendar.YEAR)
+                    , calendar.get(Calendar.MONTH)
+                    , calendar.get(Calendar.DAY_OF_MONTH)
+                )
+                x.datePicker.init(
+                    calendar.get(Calendar.YEAR)
+                    , calendar.get(Calendar.MONTH)
+                    , calendar.get(Calendar.DAY_OF_MONTH)
+                ) { v, year, month, dayOfMonth ->
+                    val dateRes = Date().From(year, month, dayOfMonth)
+                    this.text = dateRes.Format()
+                    onResult.invoke(dateRes)
+                    x.cancel()
+                }
+                x.show()
+            }
+        }
+
+        fun TextView.valueDialog(
+            data: Array<BaseMap>?,
+            dialogName: String,
+            onResult: ((BaseMap?) -> Unit)
+        ) {
+            this.clickAnimate {
+                (this.context as AppCompatActivity).showSelectBottomSheetAlert(
+                    dialogName,
+                    data ?: emptyArray(),
+                    R.layout.item_layout_componet_text_only,
+                    { t, v ->
+                        val vz = v.findViewById<TextView>(R.id.ilctoTvContent)
+                        vz.isSelected = true
+                        vz.text = t.name
+                        return@showSelectBottomSheetAlert vz
+                    }
+                ) { t ->
+                    if (t != null) {
+                        this.text = t.name
+                        this.isSelected = true
+                    }
+                    onResult.invoke(t)
+                }
+            }
+        }
+
         @SuppressLint("InflateParams")
         fun AppCompatActivity.showAlertConfirm(
             msg: String,

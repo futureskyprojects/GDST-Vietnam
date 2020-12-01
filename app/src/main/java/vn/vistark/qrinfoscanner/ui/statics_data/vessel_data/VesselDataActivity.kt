@@ -15,7 +15,7 @@ import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
-import vn.vistark.qrinfoscanner.helpers.alert_helper.vessel.VesselUpdateBottomSheet.Companion.showAddVessDataAlert
+import vn.vistark.qrinfoscanner.helpers.alert_helper.vessel.VesselUpdateDialog.Companion.showAddVessDataAlert
 import kotlin.collections.ArrayList
 
 class VesselDataActivity : AppCompatActivity() {

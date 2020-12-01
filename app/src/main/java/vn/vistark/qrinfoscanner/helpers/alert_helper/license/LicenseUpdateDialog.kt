@@ -2,14 +2,7 @@ package vn.vistark.qrinfoscanner.helpers.alert_helper.license
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import vn.vistark.qrinfoscanner.R
@@ -19,17 +12,16 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import vn.vistark.qrinfoscanner.core.models.organization.response.Organization
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showSelectLogicAlert
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
-import vn.vistark.qrinfoscanner.helpers.alert_helper.vessel.VesselUpdateViewHolder
 import vn.vistark.qrinfoscanner.helpers.organization.OrganizationBindHolder
 
-class LicenseUpdateBottomSheet {
+class LicenseUpdateDialog {
     companion object {
         fun AppCompatActivity.showAddCertAndLicenseDataAlert(
             onCompleted: (CertificationAndLicense?) -> Unit,
             certificationAndLicense: CertificationAndLicense = CertificationAndLicense()
         ) {
             val v = LayoutInflater.from(this)
-                .inflate(R.layout.alert_create_certification_and_license_data, null)
+                .inflate(R.layout.alert_update_cert_license_data, null)
 
             val vh = LicenseUpdateViewHolder(v)
 

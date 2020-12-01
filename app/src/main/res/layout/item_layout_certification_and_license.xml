@@ -50,7 +50,7 @@
                 android:layout_toStartOf="@id/ilcalIvDeleteIcon"
                 android:layout_toLeftOf="@id/ilcalIvDeleteIcon"
                 android:gravity="center"
-                android:text="Giấy phép số: 12345436535699"
+                android:text="Giấy phép số: --------"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Cơ quan cấp phép khai thác: Chi cục Khánh Hoà"
+                android:text="Cơ quan cấp phép khai thác: -------------"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -119,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Cơ quan cấp phép trung chuyển: Chi cục Khánh Hoà"
+                android:text="Cơ quan cấp phép trung chuyển: -------------"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Chính sách Phúc lợi con người: Có"
+                android:text="Chính sách Phúc lợi con người: --"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -168,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Tiêu chuẩn Phúc lợi con người: Có"
+                android:text="Tiêu chuẩn Phúc lợi con người: --"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />

@@ -7,15 +7,17 @@ import java.util.*
 class DatetimeHelper {
     companion object {
         @SuppressLint("SimpleDateFormat")
-        fun Date.format(format: String = "dd-MM-yyyy"): String {
+        fun Date.Format(format: String = "dd-MM-yyyy"): String {
             val formatter = SimpleDateFormat(format)
             return formatter.format(this)
         }
 
-        @SuppressLint("SimpleDateFormat")
-        fun DateFrom(dateStr: String, format: String = "dd-MM-yyyy"): Date? {
-            val parser = SimpleDateFormat(format)
-            return parser.parse("dateStr")
+        fun Date.From(year: Int, month: Int, dayOfMonth: Int): Date {
+            val calendar = Calendar.getInstance()
+            calendar.set(Calendar.YEAR, year)
+            calendar.set(Calendar.MONTH, month)
+            calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+            return calendar.time
         }
     }
 }

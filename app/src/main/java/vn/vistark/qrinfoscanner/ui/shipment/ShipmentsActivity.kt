@@ -11,11 +11,10 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.Config.Companion.padSize
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.Shipment
-import vn.vistark.qrinfoscanner.core.entities.VesselData
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.format
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
@@ -83,7 +82,7 @@ class ShipmentsActivity : AppCompatActivity() {
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             val shipment = Shipment(
                 MockupMaxId<Shipment>() + 1,
-                Date().format("HH:mm dd-MM-yyyy")
+                Date().Format("HH:mm dd-MM-yyyy")
             )
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô hàng mới số #${

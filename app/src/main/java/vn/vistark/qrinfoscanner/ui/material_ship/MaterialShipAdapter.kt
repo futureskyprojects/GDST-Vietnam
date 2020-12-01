@@ -31,10 +31,10 @@ class MaterialShipAdapter(private val materialships: ArrayList<MaterialShip>) :
         val materialBatch = materialships[position]
         holder.bind(materialBatch)
 
-        holder.ilmIvDeleteIcon.clickAnimate {
+        holder.ilmsdIvDeleteIcon.clickAnimate {
             onDelete?.invoke(materialBatch)
         }
-        holder.ilmLnRoot.clickAnimate {
+        holder.ilmsLnRoot.clickAnimate {
             onClick?.invoke(materialBatch)
         }
     }

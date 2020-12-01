@@ -1,16 +1,10 @@
 package vn.vistark.qrinfoscanner.helpers.alert_helper.vessel
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.VesselData
@@ -22,16 +16,15 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion
 import vn.vistark.qrinfoscanner.helpers.countries.CountryBindHolder
 import vn.vistark.qrinfoscanner.helpers.fao.FaoBindHolder
 import vn.vistark.qrinfoscanner.helpers.organization.OrganizationBindHolder
-import java.util.*
 
-class VesselUpdateBottomSheet {
+class VesselUpdateDialog {
     companion object {
         fun AppCompatActivity.showAddVessDataAlert(
             onCompleted: (VesselData?) -> Unit,
             vesselData: VesselData = VesselData()
         ) {
 
-            val v = LayoutInflater.from(this).inflate(R.layout.alert_create_vessel_data, null)
+            val v = LayoutInflater.from(this).inflate(R.layout.alert_update_vessel_data, null)
 
             // Khai báo viewholder
             val vh = VesselUpdateViewHolder(v)

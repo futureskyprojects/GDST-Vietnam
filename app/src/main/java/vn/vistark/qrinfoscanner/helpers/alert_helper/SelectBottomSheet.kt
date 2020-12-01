@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.helpers.alert_helper
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
@@ -19,7 +20,7 @@ import vn.vistark.qrinfoscanner.helpers.common.VistarkAdapter
 
 class SelectBottomSheet {
     companion object {
-        fun <T> AppCompatActivity.showSelectBottomSheetAlert(
+        fun <T> Context.showSelectBottomSheetAlert(
             label: String,
             collection: Array<T>,
             itemLayoutId: Int,

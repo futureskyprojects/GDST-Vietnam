@@ -27,7 +27,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:paddingBottom="8dp"
-                android:src="@drawable/vn"
+                android:src="@drawable/holder"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -49,7 +49,7 @@
                 android:layout_toStartOf="@id/ilmsdIvDeleteIcon"
                 android:layout_toLeftOf="@id/ilmsdIvDeleteIcon"
                 android:gravity="center"
-                android:text="Hoàng Công Danh"
+                android:text="----------------------"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Số đăng ký tàu: 34244466474TS"
+                android:text="Số đăng ký tàu: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Tọa độ: FAO61 (Pacific, Northwest)"
+                android:text="Tọa độ: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -143,7 +143,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Số giấy phép: 1132131231"
+                android:text="Số giấy phép: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -174,7 +174,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="FIP: Vietnam YFT FIP"
+                android:text="FIP: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -194,12 +194,12 @@
                 android:src="@drawable/next_content" />
 
             <TextView
-                android:id="@+id/ilmsTvTripCount"
+                android:id="@+id/ilmsTvTripDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Ngày đi: 27-11-2020"
+                android:text="Ngày đi: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -224,7 +224,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Ngư cụ: HL"
+                android:text="Ngư cụ: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -249,7 +249,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Phương thức khai thác: HL"
+                android:text="Phương thức khai thác: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -277,12 +277,12 @@
                 android:src="@drawable/next_content" />
 
             <TextView
-                android:id="@+id/ilmsTvVesselVMS"
+                android:id="@+id/ilmsTvLanding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Lên cá: Cảng Cam Ranh (20/11/2020)"
+                android:text="Lên cá: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />

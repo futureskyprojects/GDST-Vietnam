@@ -8,14 +8,13 @@ import kotlinx.android.synthetic.main.activity_license_data.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.core.entities.VesselData
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
-import vn.vistark.qrinfoscanner.helpers.alert_helper.license.LicenseUpdateBottomSheet.Companion.showAddCertAndLicenseDataAlert
+import vn.vistark.qrinfoscanner.helpers.alert_helper.license.LicenseUpdateDialog.Companion.showAddCertAndLicenseDataAlert
 import kotlin.collections.ArrayList
 
 class LicenseDataActivity : AppCompatActivity() {

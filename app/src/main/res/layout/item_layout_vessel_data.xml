@@ -27,7 +27,7 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:paddingBottom="8dp"
-                android:src="@drawable/vn"
+                android:src="@drawable/holder"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -49,7 +49,7 @@
                 android:layout_toStartOf="@id/ilvdIvDeleteIcon"
                 android:layout_toLeftOf="@id/ilvdIvDeleteIcon"
                 android:gravity="center"
-                android:text="Hoàng Công Danh"
+                android:text="----------"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Số đăng ký tàu: 34244466474TS"
+                android:text="Số đăng ký tàu: ----------"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Tọa độ: FAO61 (Pacific, Northwest)"
+                android:text="Tọa độ: ----------"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="VMS: Chi cục Khánh Hòa"
+                android:text="VMS: ----------"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />

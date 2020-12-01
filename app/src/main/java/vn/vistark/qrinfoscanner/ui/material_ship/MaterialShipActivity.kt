@@ -15,9 +15,11 @@ import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
+import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
+import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog.Companion.showUpdateMaterialShipAlert
 import kotlin.collections.ArrayList
 
 class MaterialShipActivity : AppCompatActivity() {
@@ -59,7 +61,15 @@ class MaterialShipActivity : AppCompatActivity() {
             onBackPressed()
         }
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
-
+            showUpdateMaterialShipAlert({ mts ->
+                if (mts != null) {
+                    if (MockupCreate(mts, { false })) {
+                        add(mts)
+                        Toast.makeText(this, "Thêm tàu nguyên liệu thành công", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            })
         }
     }
 
