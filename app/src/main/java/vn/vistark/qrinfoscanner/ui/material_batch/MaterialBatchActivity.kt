@@ -81,6 +81,7 @@ class MaterialBatchActivity : AppCompatActivity() {
                         if (CommonMockup.MockupCreate(batch, { false })) {
                             msg = "Đã tạo lô nguyên liệu mới thành công"
                             add(batch)
+                            start(batch)
                         } else {
                             msg = "Tạo lô nguyên liệu mới không thành công"
                         }
@@ -134,10 +135,14 @@ class MaterialBatchActivity : AppCompatActivity() {
         }
 
         adapter.onClick = {
-            val intent = Intent(this, MaterialShipActivity::class.java)
-            intent.putExtra(RawMaterialBatch::class.java.simpleName, it.Id)
-            startActivity(intent)
+            start(it)
         }
+    }
+
+    private fun start(materialBatch: RawMaterialBatch) {
+        val intent = Intent(this, MaterialShipActivity::class.java)
+        intent.putExtra(RawMaterialBatch::class.java.simpleName, materialBatch.Id)
+        startActivity(intent)
     }
 
     private fun removeBatchView(batch: RawMaterialBatch) {

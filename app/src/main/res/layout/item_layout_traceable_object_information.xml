@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iltoiLnRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16sp"
+    android:layout_marginTop="12dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/ilvLnTopLeftLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/prdark_top_round"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/iltoiTvId"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="#123321"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ilvLnTopLeftLayout"
+            android:layout_toRightOf="@id/ilvLnTopLeftLayout"
+            android:background="@drawable/prdark_topright_round"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/iltoiTvSpiceName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/iltoiIvDeleteIcon"
+                android:layout_toLeftOf="@id/iltoiIvDeleteIcon"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="Cá ngừ vây vàng"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iltoiIvDeleteIcon"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingVertical="5dp"
+                android:src="@drawable/delete_icon_white" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/prdark_border_bottom_round"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltoiTvProductForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Dạng sản phẩm: Loin"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltoiTvLinkingKDE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="KDE Liên kết: 12141"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltoiTvWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Khối lượng: 500 (Kg)"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

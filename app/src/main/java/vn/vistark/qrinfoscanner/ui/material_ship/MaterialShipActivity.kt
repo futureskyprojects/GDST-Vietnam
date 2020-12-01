@@ -1,11 +1,11 @@
 package vn.vistark.qrinfoscanner.ui.material_ship
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.activity_material_ship.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
@@ -17,9 +17,11 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAct
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
+import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupMaxId
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog.Companion.showUpdateMaterialShipAlert
+import vn.vistark.qrinfoscanner.ui.technical_data.TechnicalDataActivity
 import kotlin.collections.ArrayList
 
 class MaterialShipActivity : AppCompatActivity() {
@@ -63,10 +65,19 @@ class MaterialShipActivity : AppCompatActivity() {
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             showUpdateMaterialShipAlert({ mts ->
                 if (mts != null) {
-                    if (MockupCreate(mts, { false })) {
-                        add(mts)
-                        Toast.makeText(this, "Thêm tàu nguyên liệu thành công", Toast.LENGTH_SHORT)
-                            .show()
+                    mts.RawMaterialBatchId = rawMaterialBatch.Id
+                    delayAction {
+                        if (MockupCreate(mts, { false })) {
+                            mts.Id = MockupMaxId<MaterialShip>()
+                            add(mts)
+                            Toast.makeText(
+                                this,
+                                "Thêm tàu nguyên liệu thành công",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
+                            start(mts)
+                        }
                     }
                 }
             })
@@ -113,16 +124,18 @@ class MaterialShipActivity : AppCompatActivity() {
             )
         }
 
-        adapter.onClick = {
-//            val intent = Intent(this, MaterialBatchActivity::class.java)
-//            intent.putExtra(Shipment::class.java.simpleName, it.Id)
-//            startActivity(intent)
-        }
+        adapter.onClick = { start(it) }
     }
 
     private fun removeMaterialShipView(ship: MaterialShip) {
         val index = materialShips.indexOfFirst { it.Id == ship.Id }
         materialShips.removeAt(index)
         adapter.notifyDataSetChanged()
+    }
+
+    fun start(materialShip: MaterialShip) {
+        val intent = Intent(this, TechnicalDataActivity::class.java)
+        intent.putExtra(MaterialShip::class.java.simpleName, materialShip.Id)
+        startActivity(intent)
     }
 }

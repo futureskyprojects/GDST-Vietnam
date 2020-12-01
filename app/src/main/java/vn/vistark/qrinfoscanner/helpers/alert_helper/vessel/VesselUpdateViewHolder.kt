@@ -34,7 +34,7 @@ class VesselUpdateViewHolder(v: View) {
     val ilfaTvCode: TextView = v.findViewById(R.id.ilfaTvCode)
     val ilfaTvName: TextView = v.findViewById(R.id.ilfaTvName)
 
-    val acvdBtnCreateVesselData: Button = v.findViewById(R.id.acvdBtnCreateVesselData)
+    val acvdBtnCreateVesselData: Button = v.findViewById(R.id.acvdBtnConfirm)
 
     fun updateError(err: String = ""): Boolean {
         if (err.isNotEmpty()) {

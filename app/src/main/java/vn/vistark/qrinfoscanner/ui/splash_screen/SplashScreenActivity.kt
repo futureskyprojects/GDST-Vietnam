@@ -11,6 +11,7 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.constants.AppPath
 import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
+import vn.vistark.qrinfoscanner.core.constants.Config.Companion.maxSplashScreenWait
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
@@ -54,7 +55,7 @@ class SplashScreenActivity : AppCompatActivity() {
                     assTvLongResponseMessage.visibility = View.VISIBLE
                 }
             }
-        }, 10000)
+        }, maxSplashScreenWait)
     }
 
     fun startNextActivity() {

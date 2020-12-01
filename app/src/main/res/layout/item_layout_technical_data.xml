@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/iltdLnRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16sp"
+    android:layout_marginTop="12dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:id="@+id/ilvLnTopLeftLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/prdark_top_round"
+            android:paddingHorizontal="12dp">
+
+            <TextView
+                android:id="@+id/iltdTvEventId"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="#123321"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@id/ilvLnTopLeftLayout"
+            android:layout_toRightOf="@id/ilvLnTopLeftLayout"
+            android:background="@drawable/prdark_topright_round"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/iltdTvProductOwnership"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/iltdIvDeleteIcon"
+                android:layout_toLeftOf="@id/iltdIvDeleteIcon"
+                android:gravity="center"
+                android:text="Trần Văn Hào"
+                android:textAllCaps="true"
+                android:textColor="#FFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iltdIvDeleteIcon"
+                android:layout_width="32dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingVertical="5dp"
+                android:src="@drawable/delete_icon_white" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/prdark_border_bottom_round"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltdTvEventDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Thời điểm mẻ lưới: 12:00 12-12-2020 (GMT+7)"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltdTvEventReadPoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Vị trí mẻ lưới: FAO61"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltdTvInfomationProvider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Thông tin từ: Trần Văn Hào"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

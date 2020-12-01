@@ -19,7 +19,7 @@ class MaterialShipAdapter(private val materialships: ArrayList<MaterialShip>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialShipHolder {
         val v = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_layout_material_batch, parent, false)
+            .inflate(R.layout.item_layout_material_ship, parent, false)
         return MaterialShipHolder(v)
     }
 

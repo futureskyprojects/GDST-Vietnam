@@ -36,7 +36,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:replace="android:icon">
-        <activity android:name=".ui.material_ship.MaterialShipActivity"></activity>
+        <activity android:name=".ui.traceable_object_information.TraceableObjectInformationActivity"></activity>
+        <activity android:name=".ui.technical_data.TechnicalDataActivity" />
+        <activity android:name=".ui.material_ship.MaterialShipActivity" />
         <activity android:name=".ui.statics_data.licenses_data.LicenseDataActivity" />
         <activity android:name=".ui.statics_data.vessel_data.VesselDataActivity" />
         <activity
