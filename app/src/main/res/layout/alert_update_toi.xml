@@ -248,7 +248,7 @@
                         app:cardUseCompatPadding="true">
 
                         <TextView
-                            android:id="@+id/autTvProductMethod"
+                            android:id="@+id/autTvProductForm"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"

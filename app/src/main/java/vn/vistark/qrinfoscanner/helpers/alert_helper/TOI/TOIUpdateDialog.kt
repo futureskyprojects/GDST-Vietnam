@@ -67,12 +67,12 @@ class TOIUpdateDialog {
                 fishData = it
             }
 
-            vh.autTvProductMethod.valueDialog(
+            vh.autTvProductForm.valueDialog(
                 RuntimeStorage.ProductForms?.toBaseMaps(),
                 "Dạng sản phẩm"
             ) {
                 vh.updateError()
-                traceableObjectInformation.unitOfMeasure = it?.name ?: return@valueDialog
+                traceableObjectInformation.productForm = it?.name ?: return@valueDialog
                 productForm = it
             }
 

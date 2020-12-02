@@ -5,14 +5,12 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.core.entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.entities.VesselData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
-import vn.vistark.qrinfoscanner.core.models.fao.response.FAO
 
 class TOIViewHolder(v: View) {
 
@@ -35,8 +33,8 @@ class TOIViewHolder(v: View) {
     val autTvSpice: TextView =
         v.findViewById(R.id.autTvSpice)
 
-    val autTvProductMethod: TextView =
-        v.findViewById(R.id.autTvProductMethod)
+    val autTvProductForm: TextView =
+        v.findViewById(R.id.autTvProductForm)
 
     fun updateError(err: String = ""): Boolean {
         if (err.isNotEmpty()) {

@@ -58,7 +58,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
             return
         }
         atoiTvLabel.text =
-            "Thông tin kỹ thuật [#${technicalData.Id.toString().padStart(Config.padSize, '0')}]"
+            "Thông tin truy xuất [#${technicalData.Id.toString().padStart(Config.padSize, '0')}]"
     }
 
     private fun initEvents() {

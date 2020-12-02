@@ -12,6 +12,7 @@ import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.core.entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.entities.VesselData
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
 import java.util.*
 
@@ -50,11 +51,11 @@ class MaterialShipHolder(v: View) : RecyclerView.ViewHolder(v) {
         }
 
         ilmsTvFIP.text = "FIP: ${materialShip.FIP}"
-        ilmsTvTripDate.text = "Ngày đi: ${materialShip.TripDate}"
+        ilmsTvTripDate.text = "Ngày đi: ${materialShip.TripDate.Format()}"
         ilmsTvGrearType.text = "Ngư cụ: ${materialShip.GearType}"
         ilmsTvProductMethod.text = "Phương thức khai thác: ${materialShip.ProductMethod}"
         ilmsTvLanding.text =
-            "Lên cá: ${materialShip.LandingLocation} (${materialShip.DatesOfLanding})"
+            "Lên cá: ${materialShip.LandingLocation} (${materialShip.DatesOfLanding.Format()})"
     }
 
     private fun setFlags(vesselData: VesselData) {
