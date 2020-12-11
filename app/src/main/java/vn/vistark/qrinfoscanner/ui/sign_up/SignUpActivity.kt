@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_sign_up.masterLayout
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.entities.Enterprise
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.databinding.ActivitySignUpBinding
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
@@ -24,6 +26,8 @@ class SignUpActivity : AppCompatActivity() {
         )
         binding.enter = Enterprise()
         initEvents()
+
+        masterLayout.setOnClickListener { HideKeyboard() }
     }
 
     private fun initEvents() {
@@ -32,13 +36,17 @@ class SignUpActivity : AppCompatActivity() {
             if (validateData(enterprise)) {
                 // Dành cho mockup
                 delayAction {
-                    enterprise.hashPassword = "12345678"
+//                    enterprise.hashPassword = "12345678"
                     val isSuccess = MockupCreate(enterprise) {
                         it.identity == enterprise.identity
                     }
                     if (isSuccess) {
                         SignInActivity.SIA?.updateIdentityField(enterprise.identity)
-                        Toast.makeText(this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Tạo tài khoản thành công",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         finish()
                     } else {
                         showAlertConfirm("Tài khoản đã tồn tại")

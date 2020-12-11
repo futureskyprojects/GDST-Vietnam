@@ -9,6 +9,7 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.models.fao.response.FAO
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showDatePicker
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
@@ -23,6 +24,8 @@ class TechnicalDataUpdateDialog {
         ) {
             val v = LayoutInflater.from(this)
                 .inflate(R.layout.alert_update_technical_data, null)
+
+            v.setOnClickListener { HideKeyboard(v) }
 
             val vh = TechnicalDataViewHolder(v)
 
@@ -57,6 +60,7 @@ class TechnicalDataUpdateDialog {
 
             // Sự kiện chọn FAO
             vh.ilfaLnRoot.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -73,6 +77,7 @@ class TechnicalDataUpdateDialog {
             }
 
             vh.acvdBtnCreateVesselData.clickAnimate {
+                v.HideKeyboard()
                 technicalData.eventId = vh.autdEdtEventId.text.toString().toIntOrNull() ?: -1
                 technicalData.productOwnerShip = vh.autdEdtProductOwnerShip.text.toString()
                 technicalData.informationProvider = vh.autdEdtInformationProvider.text.toString()

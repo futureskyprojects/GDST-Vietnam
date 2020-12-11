@@ -49,7 +49,7 @@ class SelectBottomSheet {
                 .setView(v)
             val mAlertDialog = mBuilder.show()
             mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mAlertDialog.setCancelable(false)
+            mAlertDialog.setCancelable(true)
 
             adapter.onItemClicked = { type ->
                 onCompleted.invoke(type)
@@ -66,6 +66,8 @@ class SelectBottomSheet {
                     mAlertDialog.dismiss()
                 }
             }
+
+            v.setOnClickListener { mAlertDialog.dismiss() }
 
 
         }

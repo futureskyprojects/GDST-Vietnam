@@ -1,12 +1,10 @@
 package vn.vistark.qrinfoscanner.ui.traceable_object_information
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_technical_data.*
 import kotlinx.android.synthetic.main.activity_traceable_object_information.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
@@ -19,7 +17,6 @@ import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.TOI.TOIUpdateDialog.Companion.showUpdateTraceableObjectInformationAlert
-import vn.vistark.qrinfoscanner.helpers.alert_helper.technical_data.TechnicalDataUpdateDialog.Companion.showUpdateTechnicalDataAlert
 
 class TraceableObjectInformationActivity : AppCompatActivity() {
     private lateinit var technicalData: TechnicalData
@@ -39,6 +36,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
         initMockData()
 
         initDataEvents()
+
     }
 
     @SuppressLint("SetTextI18n")

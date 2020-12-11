@@ -6,12 +6,16 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.api.RetrofitClient
 import vn.vistark.qrinfoscanner.core.constants.Config
 import vn.vistark.qrinfoscanner.core.entities.Shipment
 import vn.vistark.qrinfoscanner.ui.material_batch.MaterialBatchActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.helpers.QRGenerator.Companion.ShowQR
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertShowImage
 
 class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val ilsLnRoot: LinearLayout = v.findViewById(R.id.ilsLnRoot)
@@ -22,6 +26,7 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilsTvTotalWeightCount: TextView = v.findViewById(R.id.ilsTvTotalWeightCount)
     private val ilsTotalVesselCount: TextView = v.findViewById(R.id.ilsTotalVesselCount)
     private val ilsTvTotalSpiceCount: TextView = v.findViewById(R.id.ilsTvTotalSpiceCount)
+    private val ilsIvQrCode: ImageView = v.findViewById(R.id.ilsIvQrCode)
 
     fun bind(shipment: Shipment) {
         setShipmentId(shipment.Id)
@@ -30,6 +35,12 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         setTotalWeightCount(0F)
         setTotalVesselCount(0)
         setTotalSpiceCount(0)
+
+        ilsIvQrCode.ShowQR("${RetrofitClient.BASE_URL}/qr/${shipment.Id}")
+
+        ilsIvQrCode.clickAnimate {
+            ilsIvQrCode.context.showAlertShowImage(ilsIvQrCode.drawable.toBitmap())
+        }
     }
 
     @SuppressLint("SetTextI18n")

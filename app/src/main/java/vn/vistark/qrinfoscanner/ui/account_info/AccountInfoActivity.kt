@@ -6,6 +6,7 @@ import android.view.ViewTreeObserver
 import kotlinx.android.synthetic.main.activity_account_info.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 
 class AccountInfoActivity : AppCompatActivity() {
     lateinit var listener: ViewTreeObserver.OnGlobalLayoutListener
@@ -14,6 +15,7 @@ class AccountInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_info)
 //        initCustomToolbar()
+        masterLayout.setOnClickListener { HideKeyboard() }
         initEvents()
     }
 

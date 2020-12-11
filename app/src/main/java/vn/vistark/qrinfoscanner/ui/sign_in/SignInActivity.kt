@@ -8,7 +8,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import cn.pedant.SweetAlert.SweetAlertDialog
+import kotlinx.android.synthetic.main.activity_account_info.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.activity_sign_in.masterLayout
 import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
@@ -17,6 +19,7 @@ import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.models.enterprise.request.EnterpriseLogin
 import vn.vistark.qrinfoscanner.databinding.ActivitySignInBinding
@@ -102,6 +105,8 @@ class SignInActivity : AppCompatActivity() {
 
 
         SIA = this
+
+        masterLayout.setOnClickListener { HideKeyboard() }
     }
 
     private fun validateData(enterpriseLogin: EnterpriseLogin): Boolean {

@@ -11,132 +11,122 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/masterLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.sign_in.SignInActivity">
+        android:background="#FFF">
+
+
+        <include layout="@layout/component_header_wide_bar" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFF"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:orientation="vertical">
 
-            <include layout="@layout/component_header_wide_bar" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:text="Đăng nhập"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/asiTvErrorMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu"
+                android:textAlignment="center"
+                android:textColor="#ED213A"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/asiEdtIdnetity"
+                style="@style/EditText.Default"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="24dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="24dp"
+                android:autofillHints="Mã số thuế"
+                android:hint="Mã số thuế"
+                android:inputType="textEmailAddress|textAutoComplete"
+                android:lines="1"
+                android:maxLength="255"
+                android:text="@={enter.identity}" />
 
-                <LinearLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/transparent"
+                app:hintEnabled="false"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/asiEdtPassword"
+                    style="@style/EditText.Default"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:hint="Mật khẩu"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLength="255"
+                    android:text="@={enter.hashPassword}" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="Đăng nhập"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnSignIn"
+                style="@style/Button.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="20dp"
+                android:text="Đăng nhập" />
 
-                    <TextView
-                        android:id="@+id/asiTvErrorMsg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="24dp"
-                        android:gravity="center"
-                        android:text="Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu"
-                        android:textAlignment="center"
-                        android:textColor="#ED213A"
-                        android:visibility="gone" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:text="Quên mật khẩu"
+                android:textColor="@color/text_link_blue"
+                android:textSize="14sp" />
+        </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/asiEdtIdnetity"
-                        style="@style/EditText.Default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginTop="24dp"
-                        android:autofillHints="Mã số thuế"
-                        android:hint="Mã số thuế"
-                        android:inputType="textEmailAddress|textAutoComplete"
-                        android:lines="1"
-                        android:maxLength="255"
-                        android:text="@={enter.identity}" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="24dp"
+            android:orientation="horizontal">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginTop="12dp"
-                        android:background="@android:color/transparent"
-                        app:hintEnabled="false"
-                        app:passwordToggleEnabled="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Chưa có tài khoản? "
+                android:textColor="#000"
+                android:textSize="14sp" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/asiEdtPassword"
-                            style="@style/EditText.Default"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Mật khẩu"
-                            android:inputType="textPassword"
-                            android:lines="1"
-                            android:maxLength="255"
-                            android:text="@={enter.hashPassword}" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <Button
-                        android:id="@+id/btnSignIn"
-                        style="@style/Button.Default"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginTop="20dp"
-                        android:text="Đăng nhập" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="12dp"
-                        android:text="Quên mật khẩu"
-                        android:textColor="@color/text_link_blue"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginBottom="24dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Chưa có tài khoản? "
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/tvSignUp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:text="Đăng ký"
-                        android:textColor="@color/text_link_blue"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/tvSignUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Đăng ký"
+                android:textColor="@color/text_link_blue"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <include layout="@layout/component_float_qr_scan_btn" />

@@ -4,7 +4,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowTranslucentStatus" tools:ignore="NewApi">true</item>
         <!--        <item name="android:windowTranslucentNavigation" tools:ignore="NewApi">true</item>-->
-        <item name="fontFamily">sans-serif</item>
+        <!--        <item name="fontFamily">sans-serif</item>-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -16,7 +16,7 @@
 
     <style name="AppTheme.NoActionBar.LightBlueStatusBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="fontFamily">sans-serif</item>
+        <!--        <item name="fontFamily">sans-serif</item>-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">#71aef4</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -26,7 +26,7 @@
 
     <style name="AppTheme.NoActionBar.LightActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="fontFamily">sans-serif</item>
+        <!--        <item name="fontFamily">sans-serif</item>-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -37,7 +37,7 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="fontFamily">sans-serif</item>
+        <!--        <item name="fontFamily">sans-serif</item>-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -45,7 +45,7 @@
 
     <style name="AppTheme.Transparent" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="fontFamily">sans-serif</item>
+        <!--        <item name="fontFamily">sans-serif</item>-->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>

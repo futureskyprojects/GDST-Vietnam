@@ -9,6 +9,7 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.VesselData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.models.country.response.Country
 import vn.vistark.qrinfoscanner.core.models.fao.response.FAO
 import vn.vistark.qrinfoscanner.core.models.organization.response.Organization
@@ -25,6 +26,8 @@ class VesselUpdateDialog {
         ) {
 
             val v = LayoutInflater.from(this).inflate(R.layout.alert_update_vessel_data, null)
+
+            v.setOnClickListener { v.HideKeyboard() }
 
             // Khai báo viewholder
             val vh = VesselUpdateViewHolder(v)
@@ -56,6 +59,7 @@ class VesselUpdateDialog {
 
             // Sự kiện chọn Flag
             vh.ilcaLnRoot.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -75,6 +79,7 @@ class VesselUpdateDialog {
 
             // Sự kiện chọn Organization
             vh.ilcoaLnRoot.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -93,6 +98,7 @@ class VesselUpdateDialog {
 
             // Sự kiện chọn FAO
             vh.ilfaLnRoot.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -111,6 +117,7 @@ class VesselUpdateDialog {
 
             // sự kiện xác nhận
             vh.acvdBtnCreateVesselData.clickAnimate {
+                v.HideKeyboard()
                 var isValidate = true
                 vesselData.vesselRegistration = vh.acvdEdtVesselRegistration.text.toString()
                 vesselData.vesselOwner = vh.acvdEdtVesselOwnerName.text.toString()

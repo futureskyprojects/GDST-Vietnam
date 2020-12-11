@@ -5,16 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.constants.AppPath
 import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
 import vn.vistark.qrinfoscanner.core.constants.Config.Companion.maxSplashScreenWait
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
-import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.core.mockup.core.MockData
 import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity

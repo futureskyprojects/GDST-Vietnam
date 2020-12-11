@@ -9,6 +9,7 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.models.BaseMap
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.valueDialog
 import vn.vistark.qrinfoscanner.helpers.alert_helper.technical_data.TOIViewHolder
@@ -21,6 +22,8 @@ class TOIUpdateDialog {
         ) {
             val v = LayoutInflater.from(this)
                 .inflate(R.layout.alert_update_toi, null)
+
+            v.setOnClickListener { v.HideKeyboard() }
 
             val vh = TOIViewHolder(v)
 

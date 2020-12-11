@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_technical_data.*
+import kotlinx.android.synthetic.main.activity_technical_data.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.Config
@@ -14,6 +15,7 @@ import vn.vistark.qrinfoscanner.core.entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
@@ -38,6 +40,8 @@ class TechnicalDataActivity : AppCompatActivity() {
         initMockData()
 
         initDataEvents()
+
+        masterLayout.setOnClickListener { HideKeyboard() }
     }
 
     @SuppressLint("SetTextI18n")
@@ -107,8 +111,10 @@ class TechnicalDataActivity : AppCompatActivity() {
     private fun initDataEvents() {
         adapter.onDelete = {
             showAlertConfirm(
-                "Bạn có chắc muốn xóa [#${it.Id.toString()
-                    .padStart(Config.padSize, '0')}] hay không?",
+                "Bạn có chắc muốn xóa [#${
+                    it.Id.toString()
+                        .padStart(Config.padSize, '0')
+                }] hay không?",
                 {
                     delayAction {
                         if (CommonMockup.MockupDelete(it)) {

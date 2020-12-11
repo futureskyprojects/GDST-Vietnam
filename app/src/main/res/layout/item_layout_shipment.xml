@@ -69,122 +69,138 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/prdark_border_bottom_round"
-        android:orientation="vertical">
+        android:background="@drawable/prdark_border_bottom_round">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:layout_toStartOf="@id/ilsIvQrCode"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:padding="8dp">
+                android:weightSum="2">
 
-                <ImageView
-                    android:layout_width="@dimen/dot_icon_size"
-                    android:layout_height="@dimen/dot_icon_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/next_content" />
-
-                <TextView
-                    android:id="@+id/ilsTvMaterialBathCount"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="8dp"
-                    android:text="Lô nguyên liệu: 123"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/dot_icon_size"
+                        android:layout_height="@dimen/dot_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/next_content" />
+
+                    <TextView
+                        android:id="@+id/ilsTvMaterialBathCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="8dp"
+                        android:text="Lô nguyên liệu: 123"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_small"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/dot_icon_size"
+                        android:layout_height="@dimen/dot_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/next_content" />
+
+                    <TextView
+                        android:id="@+id/ilsTvTotalWeightCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="8dp"
+                        android:text="Kh.Lượng: 123 (Tấn)"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_small"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:padding="8dp">
+                android:weightSum="2">
 
-                <ImageView
-                    android:layout_width="@dimen/dot_icon_size"
-                    android:layout_height="@dimen/dot_icon_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/next_content" />
-
-                <TextView
-                    android:id="@+id/ilsTvTotalWeightCount"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="8dp"
-                    android:text="Kh.Lượng: 123 (Tấn)"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/dot_icon_size"
+                        android:layout_height="@dimen/dot_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/next_content" />
+
+                    <TextView
+                        android:id="@+id/ilsTotalVesselCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="8dp"
+                        android:text="Tàu liên kết: 8"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_small"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/dot_icon_size"
+                        android:layout_height="@dimen/dot_icon_size"
+                        android:layout_gravity="center"
+                        android:src="@drawable/next_content" />
+
+                    <TextView
+                        android:id="@+id/ilsTvTotalSpiceCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="8dp"
+                        android:text="Tổng loài: 123"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/text_small"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2">
+        <ImageView
+            android:id="@+id/ilsIvQrCode"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/no_image" />
+    </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="@dimen/dot_icon_size"
-                    android:layout_height="@dimen/dot_icon_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/next_content" />
-
-                <TextView
-                    android:id="@+id/ilsTotalVesselCount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="8dp"
-                    android:text="Tàu liên kết: 8"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="@dimen/dot_icon_size"
-                    android:layout_height="@dimen/dot_icon_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/next_content" />
-
-                <TextView
-                    android:id="@+id/ilsTvTotalSpiceCount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:paddingHorizontal="8dp"
-                    android:text="Tổng loài: 123"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="@dimen/text_small"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

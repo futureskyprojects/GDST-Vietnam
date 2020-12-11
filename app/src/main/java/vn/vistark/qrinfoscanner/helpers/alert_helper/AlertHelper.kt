@@ -2,7 +2,9 @@ package vn.vistark.qrinfoscanner.helpers.alert_helper
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.text.Editable
@@ -26,6 +28,7 @@ import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideDown
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideUp
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.From
 import vn.vistark.qrinfoscanner.core.models.BaseMap
@@ -44,6 +47,7 @@ class AlertHelper {
     companion object {
         fun TextView.showDatePicker(onResult: ((Date) -> Unit), date: Date? = null) {
             this.clickAnimate {
+                HideKeyboard()
                 val calendar = Calendar.getInstance()
                 calendar.time = date ?: Date()
                 val x = DatePickerDialog(
@@ -53,14 +57,14 @@ class AlertHelper {
                         this.text = dateRes.Format()
                         onResult.invoke(dateRes)
                     },
-                    calendar.get(Calendar.YEAR)
-                    , calendar.get(Calendar.MONTH)
-                    , calendar.get(Calendar.DAY_OF_MONTH)
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
                 )
                 x.datePicker.init(
-                    calendar.get(Calendar.YEAR)
-                    , calendar.get(Calendar.MONTH)
-                    , calendar.get(Calendar.DAY_OF_MONTH)
+                    calendar.get(Calendar.YEAR),
+                    calendar.get(Calendar.MONTH),
+                    calendar.get(Calendar.DAY_OF_MONTH)
                 ) { v, year, month, dayOfMonth ->
                     val dateRes = Date().From(year, month, dayOfMonth)
                     this.text = dateRes.Format()
@@ -77,6 +81,7 @@ class AlertHelper {
             onResult: ((BaseMap?) -> Unit)
         ) {
             this.clickAnimate {
+                HideKeyboard()
                 (this.context as AppCompatActivity).showSelectBottomSheetAlert(
                     dialogName,
                     data ?: emptyArray(),
@@ -116,7 +121,7 @@ class AlertHelper {
                 .setView(v)
             val mAlertDialog = mBuilder.show()
             mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mAlertDialog.setCancelable(false)
+//            mAlertDialog.setCancelable(false)
 
             acTvContent.text = msg
 
@@ -156,9 +161,11 @@ class AlertHelper {
                 .setView(v)
             val mAlertDialog = mBuilder.show()
             mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mAlertDialog.setCancelable(true)
+//            mAlertDialog.setCancelable(true)
 
             aslbsRlMainLayout.slideUp()
+
+            v.setOnClickListener { mAlertDialog.dismiss() }
 
             asbsIvCloseBtn.clickAnimate {
                 aslbsRlMainLayout.slideDown {
@@ -198,7 +205,7 @@ class AlertHelper {
                 .setView(v)
             val mAlertDialog = mBuilder.show()
             mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            mAlertDialog.setCancelable(true)
+//            mAlertDialog.setCancelable(true)
 
             assdIvClose.clickAnimate {
                 mAlertDialog.dismiss()
@@ -209,6 +216,8 @@ class AlertHelper {
                 val intent = Intent(context, VesselDataActivity::class.java)
                 startActivity(intent)
             }
+
+            v.setOnClickListener { mAlertDialog.dismiss() }
 
             assdCvLicenseBtn.clickAnimate {
                 mAlertDialog.dismiss()
@@ -238,5 +247,29 @@ class AlertHelper {
             return mAlertDialog
         }
 
+        @SuppressLint("InflateParams")
+        fun Context.showAlertShowImage(
+            bmp: Bitmap
+        ) {
+
+            val v = LayoutInflater.from(this).inflate(R.layout.alert_image_show, null)
+
+            val acIvClose: ImageView = v.findViewById(R.id.acIvClose)
+            val aisIvImageShow: ImageView = v.findViewById(R.id.aisIvImageShow)
+
+
+            val mBuilder = AlertDialog.Builder(this)
+                .setView(v)
+            val mAlertDialog = mBuilder.show()
+            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            mAlertDialog.setCancelable(false)
+
+
+            acIvClose.clickAnimate {
+                mAlertDialog.dismiss()
+            }
+
+            aisIvImageShow.setImageBitmap(bmp)
+        }
     }
 }

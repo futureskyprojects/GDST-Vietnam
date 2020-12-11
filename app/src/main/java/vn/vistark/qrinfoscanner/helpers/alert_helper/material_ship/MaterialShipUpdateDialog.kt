@@ -12,6 +12,7 @@ import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.core.entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.entities.VesselData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.models.BaseMap
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showDatePicker
@@ -29,6 +30,8 @@ class MaterialShipUpdateDialog {
         ) {
             val v = LayoutInflater.from(this)
                 .inflate(R.layout.alert_update_material_ship, null)
+
+            v.setOnClickListener { HideKeyboard(v) }
 
             val vh = MaterialShipViewHolder(v)
 
@@ -57,6 +60,7 @@ class MaterialShipUpdateDialog {
             var ladingDate: Date? = null
 
             vesselDataViewHolder.ilsLnRoot.clickAnimate {
+                v.HideKeyboard()
                 vesselDataViewHolder.select(MockupData(), {
                     vesselData = it ?: return@select
                     materialShip.VesselDataId = it.Id
@@ -65,6 +69,7 @@ class MaterialShipUpdateDialog {
             vesselDataViewHolder.ilvdIvDeleteIcon.visibility = View.INVISIBLE
 
             licenseDataViewHolder.ilcalLnRoot.clickAnimate {
+                v.HideKeyboard()
                 licenseDataViewHolder.select(MockupData(), {
                     certificationAndLicense = it ?: return@select
                     materialShip.CertificationAndLicenseId = it.Id
@@ -125,6 +130,7 @@ class MaterialShipUpdateDialog {
             }
 
             vh.aumvldBtnCreateMaterialShip.clickAnimate {
+                v.HideKeyboard()
                 var isValidate = true
 
                 if (vesselData == null)

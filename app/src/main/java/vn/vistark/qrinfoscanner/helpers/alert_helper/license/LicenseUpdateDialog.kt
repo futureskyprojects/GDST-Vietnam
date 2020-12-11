@@ -9,6 +9,7 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.models.organization.response.Organization
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showSelectLogicAlert
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
@@ -22,6 +23,8 @@ class LicenseUpdateDialog {
         ) {
             val v = LayoutInflater.from(this)
                 .inflate(R.layout.alert_update_cert_license_data, null)
+
+            v.setOnClickListener { HideKeyboard(v) }
 
             val vh = LicenseUpdateViewHolder(v)
 
@@ -53,6 +56,7 @@ class LicenseUpdateDialog {
             vh.clearErrorOnTextChanger(vh.accaldEdtHarvestCertification)
 
             vh.accaldTvFishingAuthorization.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -72,6 +76,7 @@ class LicenseUpdateDialog {
             }
 
             vh.accaldTvTransshipmentAuthorization.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -93,6 +98,7 @@ class LicenseUpdateDialog {
             }
 
             vh.accaldTvExistenceOfHumanWelfarePolicy.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -106,6 +112,7 @@ class LicenseUpdateDialog {
             }
 
             vh.accaldTvHumanWelfarePolicyStandards.clickAnimate {
+                v.HideKeyboard()
                 // Clear Error state
                 vh.updateError()
 
@@ -119,6 +126,7 @@ class LicenseUpdateDialog {
             }
 
             vh.accaldBtnCreateVesselData.clickAnimate {
+                v.HideKeyboard()
                 var isValidate = true
 
                 certificationAndLicense.harvestCertification =
