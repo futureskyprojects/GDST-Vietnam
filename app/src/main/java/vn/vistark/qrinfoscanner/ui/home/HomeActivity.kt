@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import kotlinx.android.synthetic.main.home_menu_options.*
 import kotlinx.android.synthetic.main.home_panel.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.ui.account_info.AccountInfoActivity
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
             .into(haIvUserProfileImage)
 
         haTvEnterpriseName.text =
-            RuntimeStorage.CurrentEnterprise?.name ?: "Chúc bạn có một ngày tốt lành"
+             "Chúc bạn có một ngày tốt lành"
 
     }
 

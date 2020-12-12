@@ -9,9 +9,9 @@ import kotlinx.android.synthetic.main.activity_shipments.*
 import kotlinx.android.synthetic.main.activity_shipments.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.Config.Companion.padSize
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.Shipment
+import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.padSize
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
@@ -49,8 +49,10 @@ class ShipmentsActivity : AppCompatActivity() {
     private fun initDataEvents() {
         adapter.onDelete = {
             showAlertConfirm(
-                "Bạn có chắc muốn xóa dữ liệu lô hàng [#${it.Id.toString()
-                    .padStart(padSize, '0')}] hay không?",
+                "Bạn có chắc muốn xóa dữ liệu lô hàng [#${
+                    it.Id.toString()
+                        .padStart(padSize, '0')
+                }] hay không?",
                 {
                     delayAction {
                         if (CommonMockup.MockupDelete(it)) {
@@ -90,10 +92,11 @@ class ShipmentsActivity : AppCompatActivity() {
             )
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô hàng mới số #${
-                shipment.Id.toString().padStart(
-                    padSize,
-                    '0'
-                )} vào lúc [${shipment.Name}]",
+                    shipment.Id.toString().padStart(
+                        padSize,
+                        '0'
+                    )
+                } vào lúc [${shipment.Name}]",
                 {
                     delayAction {
                         var msg = ""
@@ -114,10 +117,8 @@ class ShipmentsActivity : AppCompatActivity() {
     private fun initMockData() {
         delayAction {
             MockupData<Shipment>().forEach { vd ->
-                if (vd.EnterpriseId == RuntimeStorage.CurrentEnterprise?.Id) {
-                    shipments.add(0, vd)
-                    adapter.notifyDataSetChanged()
-                }
+                shipments.add(0, vd)
+                adapter.notifyDataSetChanged()
             }
         }
     }

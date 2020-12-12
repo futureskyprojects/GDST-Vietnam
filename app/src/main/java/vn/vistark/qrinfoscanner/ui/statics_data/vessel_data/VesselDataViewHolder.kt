@@ -8,9 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.VesselData
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
 import java.util.*
 
 class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -48,7 +47,8 @@ class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     @SuppressLint("SetTextI18n")
     private fun setCoordinates(vesselData: VesselData) {
         ilvTvVesselCoordinates.text =
-            "Tọa độ: FAO${vesselData.availabilityOfCatchCoordinates} (${RuntimeStorage.FAOs?.nameFormCode(
+            "Tọa độ: FAO${vesselData.availabilityOfCatchCoordinates} (${
+                RuntimeStorage.FAOs?.nameFormCode(
                 vesselData.availabilityOfCatchCoordinates
             )})"
     }

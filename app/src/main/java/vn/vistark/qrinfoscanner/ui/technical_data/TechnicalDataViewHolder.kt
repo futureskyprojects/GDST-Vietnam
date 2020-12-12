@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.TechnicalData
+import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 
 class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {

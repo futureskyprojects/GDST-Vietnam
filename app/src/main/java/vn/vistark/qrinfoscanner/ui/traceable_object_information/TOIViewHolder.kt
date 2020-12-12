@@ -7,9 +7,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.TraceableObjectInformation
+import vn.vistark.qrinfoscanner.domain.mock_entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.NumberExtension.Companion.round
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 
 class TOIViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val iltoiLnRoot: LinearLayout = v.findViewById(R.id.iltoiLnRoot)

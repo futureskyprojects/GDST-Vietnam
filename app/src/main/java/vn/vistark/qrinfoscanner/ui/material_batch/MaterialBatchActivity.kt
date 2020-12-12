@@ -10,10 +10,10 @@ import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.activity_material_batch.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.Config
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
-import vn.vistark.qrinfoscanner.core.entities.Shipment
+import vn.vistark.qrinfoscanner.domain.constants.Config
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
+import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
@@ -99,8 +99,7 @@ class MaterialBatchActivity : AppCompatActivity() {
     private fun initMockData() {
         delayAction {
             MockupData<RawMaterialBatch>().forEach { vd ->
-                if (vd.EnterpriseId == RuntimeStorage.CurrentEnterprise?.Id &&
-                    vd.ShipmentId == shipment.Id
+                if (vd.ShipmentId == shipment.Id
                 ) {
                     materialBatchs.add(0, vd)
                     adapter.notifyDataSetChanged()

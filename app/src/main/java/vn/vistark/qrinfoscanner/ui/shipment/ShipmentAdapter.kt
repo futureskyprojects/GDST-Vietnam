@@ -1,17 +1,13 @@
 package vn.vistark.qrinfoscanner.ui.shipment
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.Shipment
-import vn.vistark.qrinfoscanner.core.entities.VesselData
+import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable
-import vn.vistark.qrinfoscanner.ui.material_batch.MaterialBatchActivity
 
 class ShipmentAdapter(private val shipments: ArrayList<Shipment>) :
     RecyclerView.Adapter<ShipmentViewHolder>(), IClickable<Shipment>, IDeletable<Shipment> {

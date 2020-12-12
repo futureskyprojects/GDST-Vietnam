@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.TraceableObjectInformation
+import vn.vistark.qrinfoscanner.domain.mock_entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable

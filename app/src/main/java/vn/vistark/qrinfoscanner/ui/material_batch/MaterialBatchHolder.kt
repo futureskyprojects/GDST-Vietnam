@@ -1,15 +1,13 @@
 package vn.vistark.qrinfoscanner.ui.material_batch
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.Config
-import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.domain.constants.Config
+import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 
 class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     val ilmLnRoot: LinearLayout = v.findViewById(R.id.ilmLnRoot)

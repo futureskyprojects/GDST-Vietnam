@@ -1,7 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.shipment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -10,11 +9,11 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.RetrofitClient
-import vn.vistark.qrinfoscanner.core.constants.Config
-import vn.vistark.qrinfoscanner.core.entities.Shipment
-import vn.vistark.qrinfoscanner.ui.material_batch.MaterialBatchActivity
+import vn.vistark.qrinfoscanner.domain.constants.Config
+import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.helpers.QRGenerator.Companion.ShowQR
+import vn.vistark.qrinfoscanner.domain.api.IApiService
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertShowImage
 
 class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -36,7 +35,7 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         setTotalVesselCount(0)
         setTotalSpiceCount(0)
 
-        ilsIvQrCode.ShowQR("${RetrofitClient.BASE_URL}/qr/${shipment.Id}")
+        ilsIvQrCode.ShowQR("${IApiService.BASE_URL}/qr/${shipment.Id}")
 
         ilsIvQrCode.clickAnimate {
             ilsIvQrCode.context.showAlertShowImage(ilsIvQrCode.drawable.toBitmap())

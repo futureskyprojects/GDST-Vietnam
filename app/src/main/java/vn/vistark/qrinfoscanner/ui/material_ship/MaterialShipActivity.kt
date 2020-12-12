@@ -10,9 +10,9 @@ import kotlinx.android.synthetic.main.activity_material_ship.*
 import kotlinx.android.synthetic.main.activity_material_ship.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.Config
-import vn.vistark.qrinfoscanner.core.entities.MaterialShip
-import vn.vistark.qrinfoscanner.core.entities.RawMaterialBatch
+import vn.vistark.qrinfoscanner.domain.constants.Config
+import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
+import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard

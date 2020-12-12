@@ -13,21 +13,19 @@ import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_in.masterLayout
 import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.Enterprise
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.mock_entities.Enterprise
 import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
-import vn.vistark.qrinfoscanner.core.models.enterprise.request.EnterpriseLogin
-import vn.vistark.qrinfoscanner.databinding.ActivitySignInBinding
+import vn.vistark.qrinfoscanner.domain.mock_models.enterprise.request.EnterpriseLogin
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.FloatQuickScanButtonHelper
 
 class SignInActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySignInBinding
 
     companion object {
         var SIA: SignInActivity? = null
@@ -35,17 +33,13 @@ class SignInActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
-
-        binding.enter = EnterpriseLogin(
-            RuntimeStorage.CurrentEnterprise?.identity ?: ""
-        )
+        setContentView(R.layout.activity_sign_in)
 
         FloatQuickScanButtonHelper.initialize(asiIvQuickScanIcon, cfqsLnQuickScanBtn)
 
         btnSignIn.clickAnimate {
             val intent = Intent(this, HomeActivity::class.java)
-            val enterpriseLogin = binding.enter ?: EnterpriseLogin()
+            val enterpriseLogin = EnterpriseLogin()
             if (!validateData(enterpriseLogin))
                 return@clickAnimate
 
@@ -57,15 +51,15 @@ class SignInActivity : AppCompatActivity() {
                     showAlertConfirm("Sai tài khoản hoặc mật khẩu")
                     return@delayAction
                 } else {
-                    RuntimeStorage.CurrentEnterprise = MockupData<Enterprise>().first {
-                        it.identity == enterpriseLogin.identity
-                    }
-                    if (RuntimeStorage.CurrentEnterprise != null) {
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        showAlertConfirm("Đã xảy ra lỗi khi đăng nhập")
-                    }
+//                    RuntimeStorage.CurrentEnterprise = MockupData<Enterprise>().first {
+//                        it.identity == enterpriseLogin.identity
+//                    }
+//                    if (RuntimeStorage.CurrentEnterprise != null) {
+//                        startActivity(intent)
+//                        finish()
+//                    } else {
+//                        showAlertConfirm("Đã xảy ra lỗi khi đăng nhập")
+//                    }
                 }
             }
         }

@@ -7,22 +7,15 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.core.entities.VesselData
 import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataActivity
 import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
@@ -31,15 +24,8 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideUp
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.From
-import vn.vistark.qrinfoscanner.core.models.BaseMap
-import vn.vistark.qrinfoscanner.core.models.country.response.Country
-import vn.vistark.qrinfoscanner.core.models.fao.response.FAO
-import vn.vistark.qrinfoscanner.core.models.organization.response.Organization
+import vn.vistark.qrinfoscanner.domain.mock_models.BaseMap
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
-import vn.vistark.qrinfoscanner.helpers.common.VistarkAdapter
-import vn.vistark.qrinfoscanner.helpers.countries.CountryBindHolder
-import vn.vistark.qrinfoscanner.helpers.fao.FaoBindHolder
-import vn.vistark.qrinfoscanner.helpers.organization.OrganizationBindHolder
 import java.util.*
 
 

@@ -7,24 +7,18 @@ import androidx.databinding.DataBindingUtil
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.activity_sign_up.masterLayout
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.Enterprise
+import vn.vistark.qrinfoscanner.domain.mock_entities.Enterprise
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
-import vn.vistark.qrinfoscanner.databinding.ActivitySignUpBinding
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
 
 class SignUpActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_sign_up
-        )
-        binding.enter = Enterprise()
+        setContentView(R.layout.activity_sign_up)
         initEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
@@ -32,7 +26,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun initEvents() {
         asuBtnSignUp.clickAnimate {
-            val enterprise = binding.enter ?: Enterprise()
+            val enterprise = Enterprise()
             if (validateData(enterprise)) {
                 // Dành cho mockup
                 delayAction {

@@ -7,9 +7,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.core.entities.MaterialShip
-import vn.vistark.qrinfoscanner.core.entities.VesselData
+import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
+import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
+import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
 
 class TOIViewHolder(v: View) {

@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_vessel_data.*
 import kotlinx.android.synthetic.main.activity_vessel_data.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.VesselData
+import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction

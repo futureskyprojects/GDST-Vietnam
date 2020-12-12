@@ -1,24 +1,17 @@
 package vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship
 
-import android.app.DatePickerDialog
 import android.view.View
 import android.widget.Button
-import android.widget.DatePicker
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.core.entities.MaterialShip
-import vn.vistark.qrinfoscanner.core.entities.VesselData
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
+import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
+import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
+import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
 import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataViewHolder
 import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataViewHolder
 import java.util.*
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.From
-import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.valueDialog
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
 
 class MaterialShipViewHolder(v: View) {

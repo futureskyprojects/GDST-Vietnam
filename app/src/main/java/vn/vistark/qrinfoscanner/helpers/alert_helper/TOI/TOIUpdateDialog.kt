@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.TraceableObjectInformation
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.mock_entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.models.BaseMap
+import vn.vistark.qrinfoscanner.domain.mock_models.BaseMap
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.valueDialog
 import vn.vistark.qrinfoscanner.helpers.alert_helper.technical_data.TOIViewHolder
 

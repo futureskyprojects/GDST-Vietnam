@@ -1,6 +1,5 @@
 package vn.vistark.qrinfoscanner.helpers.alert_helper.license
 
-import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -9,12 +8,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.core.entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.core.entities.VesselData
-import vn.vistark.qrinfoscanner.core.models.country.response.Country
-import vn.vistark.qrinfoscanner.core.models.fao.response.FAO
-import vn.vistark.qrinfoscanner.core.models.organization.response.Organization
+import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
+import vn.vistark.qrinfoscanner.domain.mock_models.organization.response.Organization
 
 class LicenseUpdateViewHolder(v: View) {
     val accaldIvClose: ImageView = v.findViewById(R.id.accaldIvClose)
