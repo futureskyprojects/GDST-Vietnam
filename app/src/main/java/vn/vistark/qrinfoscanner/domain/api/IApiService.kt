@@ -1,17 +1,13 @@
 package vn.vistark.qrinfoscanner.domain.api
 
 import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import vn.vistark.qrinfoscanner.domain.api.responses.GDSTCompanies
+import retrofit2.http.POST
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserRegisterDTO
+import vn.vistark.qrinfoscanner.domain.api.responses.register.RegisterSuccessResponse
 import vn.vistark.qrinfoscanner.domain.entities.*
-import vn.vistark.qrinfoscanner.domain.mock_models.BaseMap
-import vn.vistark.qrinfoscanner.domain.mock_models.country.response.Countries
-import vn.vistark.qrinfoscanner.domain.mock_models.fao.response.FAOs
-import vn.vistark.qrinfoscanner.domain.mock_models.fish_data.response.FishDatas
-import vn.vistark.qrinfoscanner.domain.mock_models.organization.response.Organizations
-import vn.vistark.qrinfoscanner.domain.mock_models.port.response.SeaPorts
-import vn.vistark.qrinfoscanner.domain.mock_models.product_form.response.ProductForms
-import vn.vistark.qrinfoscanner.domain.mock_models.unit_of_meansure.response.UnitOfMeansures
 
 interface IApiService {
     companion object {
@@ -36,9 +32,12 @@ interface IApiService {
     @GET("api/fipcodes")
     fun getGDSTFipCodes(): Call<ArrayList<GDSTFipCode>>
 
-    @GET("api/product-from")
+    @GET("api/product-froms")
     fun getGDSTProductForms(): Call<ArrayList<GDSTProductForm>>
 
     @GET("api/companies")
-    fun getGDSTCompanies(): Call<GDSTCompanies>
+    fun getGDSTCompanies(): Call<ArrayList<GDSTCompany>>
+
+    @POST("api/register")
+    fun postGDSTRegister(@Body dto: GDSTUserRegisterDTO): Call<RegisterSuccessResponse>
 }

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.sign_up.SignUpActivity">
 
     <include
         android:id="@+id/topbar"
@@ -30,6 +31,14 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="#e6e6e6" />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,83 +49,111 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/asuEdtName"
-                    style="@style/EditText.Default"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="24dp"
-                    android:autofillHints="Tên doanh nghiệp"
-                    android:hint="Tên doanh nghiệp"
-                    android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
-                    android:lines="1"
-                    android:maxLength="40"
-                    android:text="@={enter.name}" />
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="0dp"
+                    android:paddingVertical="1dp"
+                    android:text="Công ty trực thuộc"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/asuEdtOwnerName"
-                    style="@style/EditText.Default"
+                <include
+                    layout="@layout/item_layout_company"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="12dp"
-                    android:autofillHints="Tên doanh nghiệp"
-                    android:hint="Tên chủ doanh nghiệp"
-                    android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
-                    android:lines="1"
-                    android:maxLength="40"
-                    android:text="@={enter.ownerName}" />
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginVertical="0dp" />
 
-                <EditText
-                    android:id="@+id/asuEdtIdentity"
-                    style="@style/EditText.Default"
+                <TextView
+                    android:id="@+id/asuTvNoCompanySelected"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="12dp"
-                    android:autofillHints="Mã số thuế"
-                    android:hint="Mã số thuế"
-                    android:inputType="number"
-                    android:lines="1"
-                    android:maxLength="15"
-                    android:text="@={enter.identity}" />
-
-                <EditText
-                    android:id="@+id/asuEdtAddress"
-                    style="@style/EditText.Default"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="12dp"
-                    android:autofillHints="Địa chỉ"
-                    android:hint="Địa chỉ"
-                    android:inputType="text|textAutoComplete"
-                    android:lines="1"
-                    android:maxLength="255"
-                    android:text="@={enter.address}" />
-
-                <EditText
-                    android:id="@+id/asuEdtWebsite"
-                    style="@style/EditText.Default"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="12dp"
-                    android:autofillHints="Website"
-                    android:hint="Website"
-                    android:inputType="text|textAutoComplete"
-                    android:lines="1"
-                    android:maxLength="255"
-                    android:text="@={enter.website}" />
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:text="Vui lòng chọn công ty trực thuộc"
+                    android:textColor="#F00"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:padding="20dp"
-                    android:text="Mật khẩu mặc định của tài khoản là 123456"
-                    android:textColor="#93291E" />
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:paddingVertical="1dp"
+                    android:text="Họ và tên"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/asuEdtFullName"
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="5dp"
+                    android:autofillHints="Tên doanh nghiệp"
+                    android:hint="Họ và tên"
+                    android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
+                    android:lines="1"
+                    android:maxLength="40" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="12dp"
+                    android:paddingVertical="1dp"
+                    android:text="Tên tài khoản"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/asuEdtUsername"
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="5dp"
+                    android:autofillHints="Tên doanh nghiệp"
+                    android:digits="qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM0123456789_"
+                    android:hint="Tên tài khoản"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLength="40" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="12dp"
+                    android:paddingVertical="1dp"
+                    android:text="Mật khẩu"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/asuEdtPassword"
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="5dp"
+                    android:autofillHints="Tên doanh nghiệp"
+                    android:hint="123456"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLength="40" />
 
                 <Button
                     android:id="@+id/asuBtnSignUp"

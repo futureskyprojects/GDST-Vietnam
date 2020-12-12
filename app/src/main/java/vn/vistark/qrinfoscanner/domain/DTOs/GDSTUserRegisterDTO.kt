@@ -1,10 +1,8 @@
-package vn.vistark.qrinfoscanner.domain.entities
+package vn.vistark.qrinfoscanner.domain.DTOs
 
 import com.google.gson.annotations.SerializedName
 
-class GDSTUserProfile(
-    @SerializedName("id")
-    var id: Int = 0,
+class GDSTUserRegisterDTO(
     @SerializedName("username")
     var username: String = "",
     @SerializedName("company_id")

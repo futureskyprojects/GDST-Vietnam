@@ -5,7 +5,6 @@ import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
-import vn.vistark.qrinfoscanner.domain.api.responses.GDSTCompanies
 import vn.vistark.qrinfoscanner.domain.entities.*
 import vn.vistark.qrinfoscanner.domain.mock_entities.Enterprise
 
@@ -18,7 +17,7 @@ class GDSTStorage {
         var GDSTPorts: ArrayList<GDSTPort>? = ArrayList()
         var GDSTFipCodes: ArrayList<GDSTFipCode>? = ArrayList()
         var GDSTProductForms: ArrayList<GDSTProductForm>? = ArrayList()
-        var GDSTCompanies: GDSTCompanies? = GDSTCompanies()
+        var GDSTCompanies: ArrayList<GDSTCompany>? = ArrayList()
 
         var CurrentEnterprise: Enterprise? = null
             get() = AppStorageManager.getObject<Enterprise>(Enterprise::class.java.simpleName + "Account")

@@ -15,7 +15,7 @@ class ViewExtension {
             val anim = AnimationUtils.loadAnimation(this.context, R.anim.scale_bounce)
             this.setOnClickListener {
                 this.startAnimation(anim)
-                this.postDelayed(f, anim.duration / 2)
+                this.postDelayed(f, anim.duration + 10)
             }
         }
 

@@ -4,7 +4,7 @@
     android:interpolator="@android:anim/bounce_interpolator">
 
     <scale
-        android:duration="300"
+        android:duration="200"
         android:fromXScale="0.8"
         android:fromYScale="0.8"
         android:pivotX="80%"

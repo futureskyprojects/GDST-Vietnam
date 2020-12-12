@@ -13,11 +13,11 @@ data class GDSTCompany(
     @SerializedName("ownername")
     var ownername: String = "",
     @SerializedName("address")
-    var address: Any = Any(),
+    var address: String = "",
     @SerializedName("website")
-    var website: Any = Any(),
+    var website: String = "",
     @SerializedName("logo")
-    var logo: Any = Any(),
+    var logo: String = "",
     @SerializedName("status")
     var status: Int = 0,
     @SerializedName("created_at")
