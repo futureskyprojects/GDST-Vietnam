@@ -1,9 +1,13 @@
 package vn.vistark.qrinfoscanner.core.extensions
 
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import java.util.*
@@ -11,6 +15,22 @@ import kotlin.random.Random
 
 class ViewExtension {
     companion object {
+
+        fun EditText.afterChanged(changed: () -> Unit) {
+            addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
+
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    changed.invoke()
+                }
+            })
+        }
+
         fun View.clickAnimate(f: () -> Unit) {
             val anim = AnimationUtils.loadAnimation(this.context, R.anim.scale_bounce)
             this.setOnClickListener {

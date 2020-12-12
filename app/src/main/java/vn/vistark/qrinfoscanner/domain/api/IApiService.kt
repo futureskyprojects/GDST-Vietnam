@@ -2,11 +2,12 @@ package vn.vistark.qrinfoscanner.domain.api
 
 import retrofit2.Call
 import retrofit2.http.Body
-import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserLoginDTO
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserRegisterDTO
-import vn.vistark.qrinfoscanner.domain.api.responses.register.RegisterSuccessResponse
+import vn.vistark.qrinfoscanner.domain.api.responses.login.LoginSuccessfulResponse
+import vn.vistark.qrinfoscanner.domain.api.responses.register.RegisterSuccessfulResponse
 import vn.vistark.qrinfoscanner.domain.entities.*
 
 interface IApiService {
@@ -39,5 +40,8 @@ interface IApiService {
     fun getGDSTCompanies(): Call<ArrayList<GDSTCompany>>
 
     @POST("api/register")
-    fun postGDSTRegister(@Body dto: GDSTUserRegisterDTO): Call<RegisterSuccessResponse>
+    fun postGDSTRegister(@Body dto: GDSTUserRegisterDTO): Call<RegisterSuccessfulResponse>
+
+    @POST("api/login")
+    fun postGDSTLogin(@Body dto: GDSTUserLoginDTO): Call<LoginSuccessfulResponse>
 }

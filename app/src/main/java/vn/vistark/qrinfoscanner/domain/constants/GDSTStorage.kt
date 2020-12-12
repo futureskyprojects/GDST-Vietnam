@@ -19,10 +19,13 @@ class GDSTStorage {
         var GDSTProductForms: ArrayList<GDSTProductForm>? = ArrayList()
         var GDSTCompanies: ArrayList<GDSTCompany>? = ArrayList()
 
-        var CurrentEnterprise: Enterprise? = null
-            get() = AppStorageManager.getObject<Enterprise>(Enterprise::class.java.simpleName + "Account")
+        var CurrentUser: GDSTUserProfile? = null
+            get() = AppStorageManager.getObject<GDSTUserProfile>(GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE")
             set(value) {
-                AppStorageManager.updateObject(Enterprise::class.java.simpleName + "Account", value)
+                AppStorageManager.updateObject(
+                    GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE",
+                    value
+                )
                 field = value
             }
 

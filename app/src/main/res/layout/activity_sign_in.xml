@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/masterLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF">
+    android:background="#FFF"
+    tools:context=".ui.sign_in.SignInActivity">
 
 
     <include layout="@layout/component_header_wide_bar" />
@@ -38,18 +40,17 @@
             android:visibility="gone" />
 
         <EditText
-            android:id="@+id/asiEdtIdnetity"
+            android:id="@+id/asiEdtUsername"
             style="@style/EditText.Default"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
             android:autofillHints="Mã số thuế"
-            android:hint="Mã số thuế"
+            android:hint="Tên tài khoản"
             android:inputType="textEmailAddress|textAutoComplete"
             android:lines="1"
-            android:maxLength="255"
-            android:text="@={enter.identity}" />
+            android:maxLength="255" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -65,11 +66,10 @@
                 style="@style/EditText.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mật khẩu"
+                android:hint="Mật khẩu (Mặc định: 123456)"
                 android:inputType="textPassword"
                 android:lines="1"
-                android:maxLength="255"
-                android:text="@={enter.hashPassword}" />
+                android:maxLength="255" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button

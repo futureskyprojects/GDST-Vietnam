@@ -6,14 +6,21 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import cn.pedant.SweetAlert.SweetAlertDialog
 import kotlinx.android.synthetic.main.activity_account_info.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_in.masterLayout
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
+import vn.vistark.qrinfoscanner.core.api.ApiService
+import vn.vistark.qrinfoscanner.core.api.AuthIntercepter
+import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
+import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.afterChanged
 import vn.vistark.qrinfoscanner.domain.mock_entities.Enterprise
 import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
@@ -21,9 +28,14 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserLoginDTO
+import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
+import vn.vistark.qrinfoscanner.domain.entities.GDSTUserProfile
 import vn.vistark.qrinfoscanner.domain.mock_models.enterprise.request.EnterpriseLogin
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.FloatQuickScanButtonHelper
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
+import java.lang.Exception
 
 class SignInActivity : AppCompatActivity() {
 
@@ -38,28 +50,55 @@ class SignInActivity : AppCompatActivity() {
         FloatQuickScanButtonHelper.initialize(asiIvQuickScanIcon, cfqsLnQuickScanBtn)
 
         btnSignIn.clickAnimate {
-            val intent = Intent(this, HomeActivity::class.java)
-            val enterpriseLogin = EnterpriseLogin()
-            if (!validateData(enterpriseLogin))
+            if (!validateData())
                 return@clickAnimate
 
-            delayAction {
-                if (!MockupData<Enterprise>().any { et ->
-                        et.identity == enterpriseLogin.identity &&
-                                et.hashPassword == enterpriseLogin.hashPassword
-                    }) {
-                    showAlertConfirm("Sai tài khoản hoặc mật khẩu")
-                    return@delayAction
-                } else {
-//                    RuntimeStorage.CurrentEnterprise = MockupData<Enterprise>().first {
-//                        it.identity == enterpriseLogin.identity
-//                    }
-//                    if (RuntimeStorage.CurrentEnterprise != null) {
-//                        startActivity(intent)
-//                        finish()
-//                    } else {
-//                        showAlertConfirm("Đã xảy ra lỗi khi đăng nhập")
-//                    }
+            val intent = Intent(this, HomeActivity::class.java)
+
+            val dto = GDSTUserLoginDTO()
+            dto.username = asiEdtUsername.text.toString().trim()
+            dto.password = asiEdtPassword.text.toString()
+
+            val loading = this.showLoadingAlert()
+            loading.show()
+
+            GlobalScope.launch {
+                try {
+                    val response = ApiService.mAPIServices.postGDSTLogin(dto).await()
+                    runOnUiThread { loading.cancel() }
+                    if (response == null)
+                        throw Exception("Không có KQ Trả về")
+
+                    AuthIntercepter.CurrentToken = response.accessToken
+                    AuthIntercepter.CurrentTokenType = response.tokenType
+
+                    if (isAuthenticated()) {
+                        GDSTStorage.CurrentUser = GDSTUserProfile(
+                            -1,
+                            dto.username,
+                            -1,
+                            dto.password,
+                            ""
+                        )
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        throw Exception("Nhận được KQ đăng nhập OK nhưng vẫn k login zô đc")
+                    }
+
+                } catch (http: HttpException) {
+                    runOnUiThread { loading.cancel() }
+                    if (http.response().code() == 401) {
+                        runOnUiThread {
+                            showAlertConfirm("Tên tài khoản hoặc mật khẩu không đúng")
+                        }
+                    } else throw Exception("Mã HTTP RESPONSE không xác nhận được")
+                } catch (e: Exception) {
+                    runOnUiThread { loading.cancel() }
+                    runOnUiThread {
+                        showAlertConfirm("Đăng nhập không thành công, vui lòng thử lại")
+                    }
+                    e.printStackTrace()
                 }
             }
         }
@@ -69,33 +108,15 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        asiEdtPassword.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
+        asiEdtPassword.afterChanged {
+            asiTvErrorMsg.text = ""
+            asiTvErrorMsg.visibility = View.GONE
+        }
 
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                asiTvErrorMsg.text = ""
-                asiTvErrorMsg.visibility = View.GONE
-            }
-        })
-
-        asiEdtIdnetity.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                asiTvErrorMsg.text = ""
-                asiTvErrorMsg.visibility = View.GONE
-            }
-        })
+        asiEdtUsername.afterChanged {
+            asiTvErrorMsg.text = ""
+            asiTvErrorMsg.visibility = View.GONE
+        }
 
 
         SIA = this
@@ -103,14 +124,14 @@ class SignInActivity : AppCompatActivity() {
         masterLayout.setOnClickListener { HideKeyboard() }
     }
 
-    private fun validateData(enterpriseLogin: EnterpriseLogin): Boolean {
-        if (enterpriseLogin.identity.trim().isEmpty()) {
-            asiTvErrorMsg.text = "Chưa nhập mã số thuế"
+    private fun validateData(): Boolean {
+        if (asiEdtUsername.text.trim().isEmpty()) {
+            asiTvErrorMsg.text = "Chưa nhập tên tài khoản"
             asiTvErrorMsg.visibility = View.VISIBLE
-            asiEdtIdnetity.error = "Chưa nhập mã số thuế"
+            asiEdtUsername.error = "Chưa nhập tên tài khoản"
             return false
         }
-        if (enterpriseLogin.hashPassword.trim().isEmpty()) {
+        if (asiEdtPassword.text?.trim()?.isEmpty() == true) {
             asiTvErrorMsg.text = "Chưa nhập mật khẩu"
             asiTvErrorMsg.visibility = View.VISIBLE
             return false
@@ -119,7 +140,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun updateIdentityField(identity: String) {
-        asiEdtIdnetity.setText(identity)
+        asiEdtUsername.setText(identity)
     }
 
     override fun onBackPressed() {

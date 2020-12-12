@@ -15,11 +15,8 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserRegisterDTO
-import vn.vistark.qrinfoscanner.domain.api.responses.register.RegisterFailureResponse
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTCompany
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
@@ -77,12 +74,9 @@ class SignUpActivity : AppCompatActivity() {
                     try {
                         val response = ApiService.mAPIServices.postGDSTRegister(dto).await()
                         runOnUiThread { loading.cancel() }
-                        if (response == null) {
-                            runOnUiThread {
-                                showAlertConfirm("Đăng ký không thành công, vui lòng thử lại")
-                            }
-                            return@launch
-                        } else {
+                        if (response == null)
+                            throw Exception("Không phân dải được KQ trả về")
+                        else {
                             runOnUiThread {
                                 SignInActivity.SIA?.updateIdentityField(dto.username)
                                 Toast.makeText(
@@ -99,7 +93,7 @@ class SignUpActivity : AppCompatActivity() {
                             asuEdtUsername.post {
                                 asuEdtUsername.error = "Tên tài khoản đã tồn tại"
                             }
-                        }
+                        } else throw Exception("Mã HTTP RESPONSE không xác nhận được")
                     } catch (e: Exception) {
                         runOnUiThread { loading.cancel() }
                         runOnUiThread {
