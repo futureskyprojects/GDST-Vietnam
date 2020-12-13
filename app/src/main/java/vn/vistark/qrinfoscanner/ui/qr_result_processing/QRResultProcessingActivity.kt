@@ -26,7 +26,7 @@ class QRResultProcessingActivity : AppCompatActivity() {
         isEnterpiseScanner =
             intent.getBooleanExtra(QRResultProcessingActivity::class.java.simpleName, false)
         if (isEnterpiseScanner) {
-            Toast.makeText(this, "Scan dưới danh nghĩa doanh nghiệp", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Scan dưới danh nghĩa doanh nghiệp", Toast.LENGTH_SHORT).show()
         }
     }
 

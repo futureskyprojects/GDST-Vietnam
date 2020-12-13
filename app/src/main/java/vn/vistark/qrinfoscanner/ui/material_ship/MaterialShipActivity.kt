@@ -28,6 +28,7 @@ import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
+import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog
 import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog.Companion.showUpdateMaterialShipAlert
 import vn.vistark.qrinfoscanner.ui.technical_data.TechnicalDataActivity
 import kotlin.collections.ArrayList
@@ -50,6 +51,8 @@ class MaterialShipActivity : AppCompatActivity() {
         syncMaterialShip()
 
         initDataEvents()
+
+        MaterialShipUpdateDialog.shipArr = emptyArray()
 
         masterLayout.setOnClickListener { HideKeyboard() }
     }

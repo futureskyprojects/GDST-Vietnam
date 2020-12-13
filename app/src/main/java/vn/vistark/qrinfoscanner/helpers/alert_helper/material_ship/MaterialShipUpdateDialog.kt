@@ -31,6 +31,7 @@ import java.util.*
 
 class MaterialShipUpdateDialog {
     companion object {
+        var shipArr: Array<GDSTShip> = emptyArray()
         fun AppCompatActivity.showUpdateMaterialShipAlert(
             onCompleted: (GDSTMaterialShipCreateDTO?) -> Unit,
             materialShip: GDSTMaterialShipCreateDTO = GDSTMaterialShipCreateDTO()
@@ -64,13 +65,12 @@ class MaterialShipUpdateDialog {
             var loactioin: BaseMap? = null
             var ladingDate: Date? = null
 
-            var shipArr: Array<GDSTShip> = emptyArray()
             shipVH.ilssLnRoot.clickAnimate {
                 v.HideKeyboard()
-                val loading = this.showLoadingAlert()
-                loading.show()
 
                 if (shipArr.isEmpty()) {
+                    val loading = this.showLoadingAlert()
+                    loading.show()
                     GlobalScope.launch {
                         try {
                             val response = ApiService.mAPIServices.getGDSTShip().await()

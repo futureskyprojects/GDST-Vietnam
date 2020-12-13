@@ -117,15 +117,20 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
 //            this.showSelectStaticDataOptionAlert()
         }
-        hmoCvGenerateQrBtn.clickAnimate {}
+        hmoCvGenerateQrBtn.clickAnimate {
+            Toast.makeText(this, "Xin lỗi, tính năng hiện đang được phát triển", Toast.LENGTH_SHORT)
+                .show()
+        }
         hmoCvScanQRBtn.clickAnimate {
             val intent = Intent(this, QRResultProcessingActivity::class.java)
             intent.putExtra(QRResultProcessingActivity::class.java.simpleName, true)
             startActivity(intent)
         }
         ahcmpTvEditProfile.clickAnimate {
-            val intent = Intent(this, AccountInfoActivity::class.java)
-            startActivity(intent)
+            Toast.makeText(this, "Xin lỗi, tính năng hiện đang được phát triển", Toast.LENGTH_SHORT)
+                .show()
+//            val intent = Intent(this, AccountInfoActivity::class.java)
+//            startActivity(intent)
         }
     }
 
