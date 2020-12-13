@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.activity_material_batch.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.api.ApiService
+import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.domain.constants.Config
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
@@ -21,17 +24,18 @@ import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.C
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
+import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.ui.material_ship.MaterialShipActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
 class MaterialBatchActivity : AppCompatActivity() {
-    private lateinit var shipment: Shipment
+    private var shipmentId: Int = -1
 
-    private val materialBatchs = ArrayList<RawMaterialBatch>()
+    private val materialBatchs = ArrayList<GDSTMaterialBacth>()
     private lateinit var adapter: MaterialBatchAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +47,7 @@ class MaterialBatchActivity : AppCompatActivity() {
 
         initRecyclerView()
 
-        initMockData()
+        syncMaterialBatchs()
 
         initDataEvents()
 
@@ -52,15 +56,38 @@ class MaterialBatchActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initTranshipmentData() {
-        val shipmentId = intent.getIntExtra(Shipment::class.java.simpleName, -1)
-        shipment = MockupGet(shipmentId) ?: Shipment()
-        if (shipment.Id <= 0) {
+        shipmentId = intent.getIntExtra(Shipment::class.java.simpleName, -1)
+        if (shipmentId <= 0) {
             Toast.makeText(this, "Không thể xác định lô hàng được chọn", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
         ambTvTitle.text =
-            "Lô nguyên liệu [#${shipment.Id.toString().padStart(Config.padSize, '0')}]"
+            "Lô nguyên liệu [#${shipmentId.toString().padStart(Config.padSize, '0')}]"
+    }
+
+    private fun fastCreate() {
+        val loading = this.showLoadingAlert()
+        loading.show()
+        GlobalScope.launch {
+            try {
+                val dto = GDSTMaterialBacthCreateDTO(shipmentId)
+                val res = ApiService.mAPIServices.postGDSTMaterialBatch(dto).await()
+                    ?: throw  Exception("ko phan giai dc")
+                runOnUiThread { loading.cancel() }
+                runOnUiThread {
+                    syncMaterialBatchs()
+                    start(res.idBatch)
+                }
+
+            } catch (e: Exception) {
+                runOnUiThread { loading.cancel() }
+                e.printStackTrace()
+                runOnUiThread {
+                    showAlertConfirm("Tạo lô nguyên liệu không thành công (Error: 1)")
+                }
+            }
+        }
     }
 
     private fun initEvents() {
@@ -68,47 +95,57 @@ class MaterialBatchActivity : AppCompatActivity() {
             onBackPressed()
         }
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
-            val batch = RawMaterialBatch(
+            val batch = GDSTMaterialBacth(
                 CommonMockup.MockupMaxId<RawMaterialBatch>() + 1,
-                shipment.Id,
-                Date().Format("HH:mm dd-MM-yyyy")
+                shipmentId
             )
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô nguyên liệu mới số #${
-                batch.Id.toString().padStart(
-                    Config.padSize,
-                    '0'
-                )} vào lúc [${batch.Name}]",
+                    batch.id.toString().padStart(
+                        Config.padSize,
+                        '0'
+                    )
+                } vào lúc [${Date().Format("HH:mm dd-MM-yyyy")}]",
                 {
-                    delayAction {
-                        var msg = ""
-                        if (CommonMockup.MockupCreate(batch, { false })) {
-                            msg = "Đã tạo lô nguyên liệu mới thành công"
-                            add(batch)
-                            start(batch)
-                        } else {
-                            msg = "Tạo lô nguyên liệu mới không thành công"
-                        }
-                        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-
-                    }
+                    fastCreate()
                 })
         }
     }
 
-    private fun initMockData() {
-        delayAction {
-            MockupData<RawMaterialBatch>().forEach { vd ->
-                if (vd.ShipmentId == shipment.Id
-                ) {
-                    materialBatchs.add(0, vd)
-                    adapter.notifyDataSetChanged()
+    private fun syncMaterialBatchs() {
+        materialBatchs.clear()
+        val loading = this.showLoadingAlert()
+        loading.show()
+        GlobalScope.launch {
+            try {
+                val response = ApiService.mAPIServices.getGDSTMaterialBatch().await()
+                runOnUiThread { loading.cancel() }
+                if (response == null)
+                    throw Exception("Không phân dải được KQ trả về")
+
+                runOnUiThread {
+//                    updateCount(response.size)
+                    response.forEach { mtb ->
+                        if (mtb.shipmentId == shipmentId)
+                            add(mtb)
+                    }
+                    if (materialBatchs.isEmpty()) {
+                        fastCreate()
+                    }
                 }
+            } catch (e: Exception) {
+                runOnUiThread { loading.cancel() }
+                runOnUiThread {
+                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                }
+                e.printStackTrace()
+            } finally {
+
             }
         }
     }
 
-    fun add(s: RawMaterialBatch) {
+    fun add(s: GDSTMaterialBacth) {
         materialBatchs.add(0, s)
         adapter.notifyDataSetChanged()
     }
@@ -124,32 +161,35 @@ class MaterialBatchActivity : AppCompatActivity() {
     private fun initDataEvents() {
         adapter.onDelete = {
             showAlertConfirm(
-                "Bạn có chắc muốn xóa dữ liệu lô nguyên liệu [#${it.Id.toString()
-                    .padStart(Config.padSize, '0')}] hay không?",
+                "Bạn có chắc muốn xóa dữ liệu lô nguyên liệu [#${
+                    it.id.toString()
+                        .padStart(Config.padSize, '0')
+                }] hay không?",
                 {
-                    delayAction {
-                        if (MockupDelete(it)) {
-                            removeBatchView(it)
-                            showAlertConfirm("Đã xóa thành công")
-                        }
-                    }
+                    Toast.makeText(
+                        this,
+                        "Chức năng này hiện chưa được cho phép",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             )
         }
 
         adapter.onClick = {
-            start(it)
+            start(it.id)
         }
     }
 
-    private fun start(materialBatch: RawMaterialBatch) {
-        val intent = Intent(this, MaterialShipActivity::class.java)
-        intent.putExtra(RawMaterialBatch::class.java.simpleName, materialBatch.Id)
-        startActivity(intent)
+    private fun start(materialBatchId: Int) {
+        runOnUiThread {
+            val intent = Intent(this, MaterialShipActivity::class.java)
+            intent.putExtra(GDSTMaterialBacth::class.java.simpleName, materialBatchId)
+            startActivity(intent)
+        }
     }
 
-    private fun removeBatchView(batch: RawMaterialBatch) {
-        val index = materialBatchs.indexOfFirst { it.Id == batch.Id }
+    private fun removeBatchView(batch: GDSTMaterialBacth) {
+        val index = materialBatchs.indexOfFirst { it.id == batch.id }
         materialBatchs.removeAt(index)
         adapter.notifyDataSetChanged()
     }

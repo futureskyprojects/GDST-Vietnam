@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.RetrofitClient
 import vn.vistark.qrinfoscanner.domain.constants.Config
@@ -14,6 +15,7 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.helpers.QRGenerator.Companion.ShowQR
 import vn.vistark.qrinfoscanner.domain.api.IApiService
+import vn.vistark.qrinfoscanner.domain.entities.GDSTShipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertShowImage
 
 class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -27,15 +29,22 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilsTvTotalSpiceCount: TextView = v.findViewById(R.id.ilsTvTotalSpiceCount)
     private val ilsIvQrCode: ImageView = v.findViewById(R.id.ilsIvQrCode)
 
-    fun bind(shipment: Shipment) {
-        setShipmentId(shipment.Id)
-        setShipmentName(shipment.Name)
+    fun bind(shipment: GDSTShipment) {
+        setShipmentId(shipment.id)
+        setShipmentName(shipment.createdAt)
         setMaterialBathCount(0)
         setTotalWeightCount(0F)
         setTotalVesselCount(0)
         setTotalSpiceCount(0)
 
-        ilsIvQrCode.ShowQR("${IApiService.BASE_URL}/qr/${shipment.Id}")
+        val imgPath = "${IApiService.BASE_URL}${shipment.qrUrl}".replace("//", "/")
+
+        Glide.with(ilsIvQrCode.context)
+            .load(imgPath)
+            .placeholder(R.drawable.no_image)
+            .into(ilsIvQrCode)
+
+//        ilsIvQrCode.ShowQR("${IApiService.BASE_URL}/qr/${shipment.id}")
 
         ilsIvQrCode.clickAnimate {
             ilsIvQrCode.context.showAlertShowImage(ilsIvQrCode.drawable.toBitmap())

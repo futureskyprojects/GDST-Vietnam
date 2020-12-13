@@ -8,13 +8,14 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable
+import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 
-class MaterialBatchAdapter(private val materialBatchs: ArrayList<RawMaterialBatch>) :
-    RecyclerView.Adapter<MaterialBatchHolder>(), IClickable<RawMaterialBatch>,
-    IDeletable<RawMaterialBatch> {
+class MaterialBatchAdapter(private val materialBatchs: ArrayList<GDSTMaterialBacth>) :
+    RecyclerView.Adapter<MaterialBatchHolder>(), IClickable<GDSTMaterialBacth>,
+    IDeletable<GDSTMaterialBacth> {
 
-    override var onClick: ((RawMaterialBatch) -> Unit)? = null
-    override var onDelete: ((RawMaterialBatch) -> Unit)? = null
+    override var onClick: ((GDSTMaterialBacth) -> Unit)? = null
+    override var onDelete: ((GDSTMaterialBacth) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialBatchHolder {
         val v = LayoutInflater.from(parent.context)

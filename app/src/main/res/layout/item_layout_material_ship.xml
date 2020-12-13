@@ -20,14 +20,13 @@
             android:background="@drawable/prdark_top_round"
             android:paddingHorizontal="12dp">
 
-            <ImageView
-                android:id="@+id/ilmsIvVesselFlag"
-                android:layout_width="60dp"
+            <TextView
+                android:id="@+id/ilmsTvMaterialShipId"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:paddingBottom="8dp"
-                android:src="@drawable/holder"
+                android:text="#---"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -43,7 +42,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/ilmsTvVesselOwnerName"
+                android:id="@+id/ilmsTvMaterialShipname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@id/ilmsdIvDeleteIcon"
@@ -75,86 +74,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/prdark_border_bottom_round"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
-
-            <TextView
-                android:id="@+id/ilmsTvVesselRegistration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="Số đăng ký tàu: ---------------"
-                android:textColor="@color/card_info_text_color"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="8dp">
-
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
-
-            <TextView
-                android:id="@+id/ilmsTvVesselCoordinates"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="Tọa độ: ---------------"
-                android:textColor="@color/card_info_text_color"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="8dp"
-            android:paddingTop="8dp">
-
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
-
-            <TextView
-                android:id="@+id/ilmsTvHarvestCertification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="Số giấy phép: ---------------"
-                android:textColor="@color/card_info_text_color"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="8dp"
-            android:background="#bdbdbd" />
 
         <LinearLayout
             android:layout_width="match_parent"

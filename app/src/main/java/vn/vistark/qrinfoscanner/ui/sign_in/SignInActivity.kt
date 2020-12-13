@@ -49,6 +49,9 @@ class SignInActivity : AppCompatActivity() {
 
         FloatQuickScanButtonHelper.initialize(asiIvQuickScanIcon, cfqsLnQuickScanBtn)
 
+        // Set tài khoản nếu đã có trước đó
+        asiEdtUsername.setText(GDSTStorage.CurrentUser?.username ?: "")
+
         btnSignIn.clickAnimate {
             if (!validateData())
                 return@clickAnimate
@@ -71,20 +74,10 @@ class SignInActivity : AppCompatActivity() {
 
                     AuthIntercepter.CurrentToken = response.accessToken
                     AuthIntercepter.CurrentTokenType = response.tokenType
+                    GDSTStorage.CurrentUser.password = dto.password
 
-                    if (isAuthenticated()) {
-                        GDSTStorage.CurrentUser = GDSTUserProfile(
-                            -1,
-                            dto.username,
-                            -1,
-                            dto.password,
-                            ""
-                        )
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        throw Exception("Nhận được KQ đăng nhập OK nhưng vẫn k login zô đc")
-                    }
+                    startActivity(intent)
+                    finish()
 
                 } catch (http: HttpException) {
                     runOnUiThread { loading.cancel() }

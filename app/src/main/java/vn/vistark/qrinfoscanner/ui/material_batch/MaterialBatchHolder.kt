@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.constants.Config
+import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 
 class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -18,9 +19,9 @@ class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilmTotalVesselCount: TextView = v.findViewById(R.id.ilmTotalVesselCount)
     private val ilmTvTotalSpiceCount: TextView = v.findViewById(R.id.ilmTvTotalSpiceCount)
 
-    fun bind(materialBatch: RawMaterialBatch) {
-        setMaterialBatchId(materialBatch.Id)
-        setMaterialBatchName(materialBatch.Name)
+    fun bind(materialBatch: GDSTMaterialBacth) {
+        setMaterialBatchId(materialBatch.id)
+        setMaterialBatchName(materialBatch.createdAt)
         setTotalWeightCount(0F)
         setTotalVesselCount(0)
         setTotalSpiceCount(0)

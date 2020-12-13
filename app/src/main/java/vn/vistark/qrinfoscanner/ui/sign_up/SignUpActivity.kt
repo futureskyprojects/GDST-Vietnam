@@ -17,6 +17,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserRegisterDTO
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTCompany
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
@@ -65,6 +66,9 @@ class SignUpActivity : AppCompatActivity() {
             dto.fullname = asuEdtFullName.text.toString()
             dto.username = asuEdtUsername.text.toString()
             dto.password = asuEdtPassword.text.toString()
+
+            if (dto.password.trim().isEmpty())
+                dto.password = Config.defaultPassword
 
             if (validateData()) {
                 val loading = this.showLoadingAlert()

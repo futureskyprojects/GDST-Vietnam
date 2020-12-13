@@ -6,8 +6,7 @@ import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
 class Authentication {
     companion object {
         fun isAuthenticated(): Boolean {
-            return RuntimeStorage.CurrentUser != null &&
-                    AuthIntercepter.CurrentToken.isNotEmpty() &&
+            return AuthIntercepter.CurrentToken.isNotEmpty() &&
                     AuthIntercepter.CurrentTokenType.isNotEmpty() &&
                     AuthIntercepter.AuthorizationKey.isNotEmpty()
         }

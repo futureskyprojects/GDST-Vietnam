@@ -8,6 +8,7 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.ui.qr_result_processing.QRResultProcessingActivity
 
 class FloatQuickScanButtonHelper {
     companion object {
@@ -17,7 +18,7 @@ class FloatQuickScanButtonHelper {
                 .transform(CircleCrop()) // or bitmapTransform, whichever compiles
                 .into(asiIvQuickScanIcon)
             asiIvQuickScanIcon.clickAnimate {
-                val intent = Intent(context, QrScanActivity::class.java)
+                val intent = Intent(context, QRResultProcessingActivity::class.java)
                 context.startActivity(intent)
             }
             cfqsLnQuickScanBtn.setOnClickListener {

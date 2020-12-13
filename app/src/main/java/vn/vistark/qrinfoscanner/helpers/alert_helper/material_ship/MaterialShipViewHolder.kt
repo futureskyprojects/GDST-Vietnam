@@ -6,22 +6,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
-import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
+import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
 import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataViewHolder
 import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataViewHolder
 import java.util.*
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
+import vn.vistark.qrinfoscanner.ui.ship_collection.ShipCollectionViewHolder
 
 class MaterialShipViewHolder(v: View) {
 
     val aumvldIvClose: ImageView = v.findViewById(R.id.aumvldIvClose)
     val aumvldTvErrorMsg: TextView = v.findViewById(R.id.aumvldTvErrorMsg)
     val aumvldTvDialogName: TextView = v.findViewById(R.id.aumvldTvDialogName)
-
-    val vesselDataViewHolder = VesselDataViewHolder(v)
-    val materialShipDataViewHolder = LicenseDataViewHolder(v)
 
     // -------------------------------- //
 
@@ -59,67 +55,40 @@ class MaterialShipViewHolder(v: View) {
     }
 
 
-    fun loadExistData(materialShip: MaterialShip): Triple<VesselData?, CertificationAndLicense?, Int> {
-
-        if (materialShip.Id > 0) {
-            aumvldTvDialogName.text = "Sửa dữ liệu tàu nguyên liệu"
-            val vesselData = MockupGet<VesselData>(materialShip.VesselDataId)
-            val certLicense =
-                MockupGet<CertificationAndLicense>(materialShip.CertificationAndLicenseId)
-
-            return Triple(vesselData, certLicense, -1)
-
-        }
-        aumvldTvDialogName.text = "Tạo dữ liệu tàu nguyên liệu"
-        return Triple(null, null, -1)
-    }
+//    fun loadExistData(materialShip: GDSTMaterialShip): Triple<VesselData?, CertificationAndLicense?, Int> {
+//
+//        if (materialShip.Id > 0) {
+//            aumvldTvDialogName.text = "Sửa dữ liệu tàu nguyên liệu"
+//            val vesselData = MockupGet<VesselData>(materialShip.VesselDataId)
+//            val certLicense =
+//                MockupGet<CertificationAndLicense>(materialShip.CertificationAndLicenseId)
+//
+//            return Triple(vesselData, certLicense, -1)
+//
+//        }
+//        aumvldTvDialogName.text = "Tạo dữ liệu tàu nguyên liệu"
+//        return Triple(null, null, -1)
+//    }
 
     companion object {
-        fun VesselDataViewHolder.select(
-            vesselDatas: Array<VesselData>?,
-            onResult: ((VesselData?) -> Unit),
+        fun ShipCollectionViewHolder.select(
+            vesselDatas: Array<GDSTShip>?,
+            onResult: ((GDSTShip?) -> Unit),
             dialogName: String = "Chọn thông tin tàu"
         ) {
-            val context = this.ilsLnRoot.context
+            val context = this.ilssLnRoot.context
             context.showSelectBottomSheetAlert(
                 dialogName,
                 vesselDatas ?: emptyArray(),
-                R.layout.item_layout_vessel_data,
+                R.layout.item_layout_static_ship,
                 { t, v ->
-                    val vh = VesselDataViewHolder(v)
+                    val vh = ShipCollectionViewHolder(v)
                     vh.bind(t)
-                    vh.ilvdIvDeleteIcon.visibility = View.INVISIBLE
-                    return@showSelectBottomSheetAlert vh.ilsLnRoot
+                    return@showSelectBottomSheetAlert vh.ilssLnRoot
                 }
             ) { t ->
                 if (t != null) {
                     this.bind(t)
-                    this.ilvdIvDeleteIcon.visibility = View.INVISIBLE
-                }
-                onResult.invoke(t)
-            }
-        }
-
-        fun LicenseDataViewHolder.select(
-            licenseData: Array<CertificationAndLicense>?,
-            onResult: ((CertificationAndLicense?) -> Unit),
-            dialogName: String = "Chọn thông tin giấy phép"
-        ) {
-            val context = this.ilcalLnRoot.context
-            context.showSelectBottomSheetAlert(
-                dialogName,
-                licenseData ?: emptyArray(),
-                R.layout.item_layout_certification_and_license,
-                { t, v ->
-                    val vh = LicenseDataViewHolder(v)
-                    vh.bind(t)
-                    vh.ilcalIvDeleteIcon.visibility = View.INVISIBLE
-                    return@showSelectBottomSheetAlert vh.ilcalLnRoot
-                }
-            ) { t ->
-                if (t != null) {
-                    this.bind(t)
-                    this.ilcalIvDeleteIcon.visibility = View.INVISIBLE
                 }
                 onResult.invoke(t)
             }

@@ -14,7 +14,6 @@ import vn.vistark.qrinfoscanner.core.helpers.DimensionHelper
 
 
 class QrScanActivity : AppCompatActivity() {
-    var isEnterpiseScanner = false
 
 //    private var dl: DrawerLayout? = null
 //    private var t: ActionBarDrawerToggle? = null
@@ -34,7 +33,7 @@ class QrScanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_scan)
 
-        initArguments()
+
 
         capture = CaptureManager(this, bcScanner)
         capture.apply {
@@ -50,12 +49,6 @@ class QrScanActivity : AppCompatActivity() {
         initEvents()
     }
 
-    private fun initArguments() {
-        isEnterpiseScanner = intent.getBooleanExtra(QrScanActivity::class.java.simpleName, false)
-        if (isEnterpiseScanner) {
-            Toast.makeText(this, "Scan dưới danh nghĩa doanh nghiệp", Toast.LENGTH_SHORT).show()
-        }
-    }
 
 //    private fun initNavigationDrawer() {
 //        dl = findViewById(R.id.activity_qr_scan)

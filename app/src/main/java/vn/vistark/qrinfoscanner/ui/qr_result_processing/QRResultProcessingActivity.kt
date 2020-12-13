@@ -1,7 +1,7 @@
-package vn.vistark.qrinfoscanner.ui.result_processing
+package vn.vistark.qrinfoscanner.ui.qr_result_processing
 
-import android.R.attr
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,14 +11,23 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 
 
-class ResultProcessingActivity : AppCompatActivity() {
+class QRResultProcessingActivity : AppCompatActivity() {
+    var isEnterpiseScanner = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result_processing)
-
+        initArguments()
         initEvents()
 
         startQrScanner()
+    }
+
+    private fun initArguments() {
+        isEnterpiseScanner =
+            intent.getBooleanExtra(QRResultProcessingActivity::class.java.simpleName, false)
+        if (isEnterpiseScanner) {
+            Toast.makeText(this, "Scan dưới danh nghĩa doanh nghiệp", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun initEvents() {
@@ -45,9 +54,12 @@ class ResultProcessingActivity : AppCompatActivity() {
             IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
         if (result != null) {
             if (result.contents == null) {
-                Toast.makeText(this, "Đã đóng", Toast.LENGTH_LONG).show()
+                finish()
             } else {
-                tvResultShow.text = result.contents
+                val i = Intent(Intent.ACTION_VIEW)
+                i.data = Uri.parse(result.contents)
+                startActivity(i)
+                finish()
             }
         }
     }

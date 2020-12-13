@@ -8,13 +8,14 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable
+import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 
-class MaterialShipAdapter(private val materialships: ArrayList<MaterialShip>) :
-    RecyclerView.Adapter<MaterialShipHolder>(), IClickable<MaterialShip>,
-    IDeletable<MaterialShip> {
+class MaterialShipAdapter(private val materialships: ArrayList<GDSTMaterialShip>) :
+    RecyclerView.Adapter<MaterialShipHolder>(), IClickable<GDSTMaterialShip>,
+    IDeletable<GDSTMaterialShip> {
 
-    override var onClick: ((MaterialShip) -> Unit)? = null
-    override var onDelete: ((MaterialShip) -> Unit)? = null
+    override var onClick: ((GDSTMaterialShip) -> Unit)? = null
+    override var onDelete: ((GDSTMaterialShip) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialShipHolder {
         val v = LayoutInflater.from(parent.context)

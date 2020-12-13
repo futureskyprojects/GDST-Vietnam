@@ -8,12 +8,13 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable
+import vn.vistark.qrinfoscanner.domain.entities.GDSTShipment
 
-class ShipmentAdapter(private val shipments: ArrayList<Shipment>) :
-    RecyclerView.Adapter<ShipmentViewHolder>(), IClickable<Shipment>, IDeletable<Shipment> {
+class ShipmentAdapter(private val shipments: ArrayList<GDSTShipment>) :
+    RecyclerView.Adapter<ShipmentViewHolder>(), IClickable<GDSTShipment>, IDeletable<GDSTShipment> {
 
-    override var onClick: ((Shipment) -> Unit)? = null
-    override var onDelete: ((Shipment) -> Unit)? = null
+    override var onClick: ((GDSTShipment) -> Unit)? = null
+    override var onDelete: ((GDSTShipment) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShipmentViewHolder {
         val v = LayoutInflater.from(parent.context)

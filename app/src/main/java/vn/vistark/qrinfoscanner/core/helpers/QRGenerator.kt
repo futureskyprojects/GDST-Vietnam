@@ -17,7 +17,7 @@ class QRGenerator {
 
         fun QRBitmap(content: String): Bitmap? {
             val writer = QRCodeWriter()
-            try {
+            return try {
                 val bitMatrix = writer.encode(content, BarcodeFormat.QR_CODE, 512, 512)
                 val width = bitMatrix.width
                 val height = bitMatrix.height
@@ -27,10 +27,10 @@ class QRGenerator {
                         bmp.setPixel(x, y, if (bitMatrix[x, y]) Color.BLACK else Color.WHITE)
                     }
                 }
-                return bmp
+                bmp
             } catch (e: WriterException) {
                 e.printStackTrace()
-                return null
+                null
             }
         }
     }

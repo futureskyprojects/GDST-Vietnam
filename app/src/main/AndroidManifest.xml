@@ -37,6 +37,7 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
+        <activity android:name=".ui.ship_collection.ShipCollectionActivity"></activity>
         <activity android:name=".ui.traceable_object_information.TraceableObjectInformationActivity" />
         <activity android:name=".ui.technical_data.TechnicalDataActivity" />
         <activity android:name=".ui.material_ship.MaterialShipActivity" />
@@ -61,7 +62,7 @@
             android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.result_processing.ResultProcessingActivity"
+            android:name=".ui.qr_result_processing.QRResultProcessingActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.change_password.ChangePasswordActivity"

@@ -3,30 +3,37 @@ package vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
-import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
+import vn.vistark.qrinfoscanner.core.api.ApiService
+import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
+import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialShipCreateDTO
+import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
+import vn.vistark.qrinfoscanner.domain.entities.*
+import vn.vistark.qrinfoscanner.domain.entities.GDSTFipCode.Companion.toBaseMap1
+import vn.vistark.qrinfoscanner.domain.entities.GDSTGearType.Companion.toBaseMap2
+import vn.vistark.qrinfoscanner.domain.entities.GDSTLocation.Companion.toBaseMap4
+import vn.vistark.qrinfoscanner.domain.entities.GDSTProductForm.Companion.toBaseMap3
 import vn.vistark.qrinfoscanner.domain.mock_models.BaseMap
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showDatePicker
+import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.valueDialog
 import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipViewHolder.Companion.select
-import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataViewHolder
-import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataViewHolder
+import vn.vistark.qrinfoscanner.ui.ship_collection.ShipCollectionViewHolder
 import java.util.*
 
 class MaterialShipUpdateDialog {
     companion object {
         fun AppCompatActivity.showUpdateMaterialShipAlert(
-            onCompleted: (MaterialShip?) -> Unit,
-            materialShip: MaterialShip = MaterialShip()
+            onCompleted: (GDSTMaterialShipCreateDTO?) -> Unit,
+            materialShip: GDSTMaterialShipCreateDTO = GDSTMaterialShipCreateDTO()
         ) {
             val v = LayoutInflater.from(this)
                 .inflate(R.layout.alert_update_material_ship, null)
@@ -35,10 +42,9 @@ class MaterialShipUpdateDialog {
 
             val vh = MaterialShipViewHolder(v)
 
-            val res = vh.loadExistData(materialShip)
+//            val res = vh.loadExistData(materialShip)
 
-            val vesselDataViewHolder = VesselDataViewHolder(v)
-            val licenseDataViewHolder = LicenseDataViewHolder(v)
+            val shipVH = ShipCollectionViewHolder(v)
 
             // Hiển thị
             val mBuilder = AlertDialog.Builder(this)
@@ -49,33 +55,54 @@ class MaterialShipUpdateDialog {
 
             // Khai báo
 
-            var vesselData: VesselData? = res.first
-            var certificationAndLicense: CertificationAndLicense? = res.second
+            var ship: GDSTShip? = null
 
             var fip: BaseMap? = null
             var tripDate: Date? = null
             var gearType: BaseMap? = null
-            var productMethod: BaseMap? = null
-            var seaPorts: BaseMap? = null
+            var productForm: BaseMap? = null
+            var loactioin: BaseMap? = null
             var ladingDate: Date? = null
 
-            vesselDataViewHolder.ilsLnRoot.clickAnimate {
+            var shipArr: Array<GDSTShip> = emptyArray()
+            shipVH.ilssLnRoot.clickAnimate {
                 v.HideKeyboard()
-                vesselDataViewHolder.select(MockupData(), {
-                    vesselData = it ?: return@select
-                    materialShip.VesselDataId = it.Id
-                })
-            }
-            vesselDataViewHolder.ilvdIvDeleteIcon.visibility = View.INVISIBLE
+                val loading = this.showLoadingAlert()
+                loading.show()
 
-            licenseDataViewHolder.ilcalLnRoot.clickAnimate {
-                v.HideKeyboard()
-                licenseDataViewHolder.select(MockupData(), {
-                    certificationAndLicense = it ?: return@select
-                    materialShip.CertificationAndLicenseId = it.Id
-                })
+                if (shipArr.isEmpty()) {
+                    GlobalScope.launch {
+                        try {
+                            val response = ApiService.mAPIServices.getGDSTShip().await()
+                            runOnUiThread { loading.cancel() }
+                            if (response == null)
+                                throw Exception("Không phân dải được KQ trả về")
+
+                            runOnUiThread {
+                                shipArr = response.toTypedArray()
+                                shipVH.select(shipArr, {
+                                    ship = it ?: return@select
+                                    materialShip.shipId = it.id
+                                })
+                            }
+                        } catch (e: Exception) {
+                            runOnUiThread { loading.cancel() }
+                            runOnUiThread {
+                                showAlertConfirm("Không lấy được tập dữ liệu tàu có sẵn")
+                            }
+                            e.printStackTrace()
+                        }
+                    }
+                } else {
+                    runOnUiThread {
+                        shipVH.select(shipArr, {
+                            ship = it ?: return@select
+                            materialShip.shipId = it.id
+                        })
+                    }
+                }
+
             }
-            licenseDataViewHolder.ilcalIvDeleteIcon.visibility = View.INVISIBLE
 
             // Sự kiện
             vh.aumvldIvClose.clickAnimate {
@@ -84,60 +111,57 @@ class MaterialShipUpdateDialog {
             }
 
             vh.aumvldTvFIP.valueDialog(
-                RuntimeStorage.FIPs,
+                GDSTStorage.GDSTFipCodes.toBaseMap1(),
                 "FIPs"
             ) {
                 vh.updateError()
                 fip = it
-                materialShip.FIP = it?.name ?: return@valueDialog
+                materialShip.fipcodeId = it?.id ?: return@valueDialog
             }
 
             vh.aumvldTvTripDate.showDatePicker({
-                materialShip.TripDate = it
+                materialShip.dateGo = it.Format("yyyy-MM-dd")
                 tripDate = it
             })
 
             vh.aumvldTvDatesOfLanding.showDatePicker({
-                materialShip.DatesOfLanding = it
+                materialShip.dateUpFishing = it.Format("yyyy-MM-dd")
                 ladingDate = it
             })
 
             vh.aumvldTvGearType.valueDialog(
-                RuntimeStorage.GearTypes,
+                GDSTStorage.GDSTGearTypes.toBaseMap2(),
                 "Gear type"
             ) {
                 vh.updateError()
-                materialShip.GearType = it?.name ?: return@valueDialog
+                materialShip.gearId = it?.id ?: return@valueDialog
                 gearType = it
             }
 
             vh.aumvldTvProductionMethod.valueDialog(
-                RuntimeStorage.ProductMethods,
-                "Product Methods"
+                GDSTStorage.GDSTProductForms.toBaseMap3(),
+                "Product Forms"
             ) {
                 vh.updateError()
-                materialShip.ProductMethod = it?.name ?: return@valueDialog
-                productMethod = it
+                materialShip.prodctMethod = it?.id ?: return@valueDialog
+                productForm = it
             }
 
             vh.aumvldTvLandingLocation.valueDialog(
-                RuntimeStorage.SeaPorts?.toBaseMaps(),
+                GDSTStorage.GDSTLocations.toBaseMap4(),
                 "Landing Location"
             ) {
                 vh.updateError()
-                materialShip.LandingLocation = it?.name ?: return@valueDialog
-                seaPorts = it
+                materialShip.upFishing = it?.id ?: return@valueDialog
+                loactioin = it
             }
 
             vh.aumvldBtnCreateMaterialShip.clickAnimate {
                 v.HideKeyboard()
                 var isValidate = true
 
-                if (vesselData == null)
+                if (ship == null)
                     isValidate = vh.updateError("Vui lòng chọn thông tin tàu")
-
-                if (certificationAndLicense == null)
-                    isValidate = vh.updateError("Vui lòng chọn giấy phép")
 
                 if (fip == null)
                     isValidate = vh.updateError("Vui lòng chọn FIP")
@@ -148,10 +172,10 @@ class MaterialShipUpdateDialog {
                 if (gearType == null)
                     isValidate = vh.updateError("Vui lòng chọn ngư cụ")
 
-                if (productMethod == null)
+                if (productForm == null)
                     isValidate = vh.updateError("Vui lòng chọn phương thức khai thác")
 
-                if (seaPorts == null)
+                if (loactioin == null)
                     isValidate = vh.updateError("Vui lòng chọn vị trí lên cá")
 
                 if (ladingDate == null)
@@ -159,8 +183,6 @@ class MaterialShipUpdateDialog {
 
                 if (!isValidate)
                     return@clickAnimate
-
-                materialShip.CatchArea = vesselData!!.availabilityOfCatchCoordinates
 
                 onCompleted.invoke(materialShip)
                 mAlertDialog.dismiss()

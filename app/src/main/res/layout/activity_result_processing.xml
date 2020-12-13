@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF"
-    tools:context=".ui.result_processing.ResultProcessingActivity">
+    tools:context=".ui.qr_result_processing.QRResultProcessingActivity">
 
     <Button
         android:id="@+id/btnScanAgain"

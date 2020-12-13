@@ -19,8 +19,9 @@ class GDSTStorage {
         var GDSTProductForms: ArrayList<GDSTProductForm>? = ArrayList()
         var GDSTCompanies: ArrayList<GDSTCompany>? = ArrayList()
 
-        var CurrentUser: GDSTUserProfile? = null
-            get() = AppStorageManager.getObject<GDSTUserProfile>(GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE")
+        var CurrentUser: GDSTUserProfile = GDSTUserProfile()
+            get() = AppStorageManager.getObject(GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE")
+                ?: field
             set(value) {
                 AppStorageManager.updateObject(
                     GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE",
@@ -28,6 +29,8 @@ class GDSTStorage {
                 )
                 field = value
             }
+
+        var CurrentCompany: GDSTCompany? = null
 
         fun initGDSTStatics(onSuccess: (() -> Unit)) {
             GlobalScope.launch {
