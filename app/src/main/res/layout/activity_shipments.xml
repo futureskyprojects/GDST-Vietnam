@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/masterLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/masterLayout"
     tools:context=".ui.shipment.ShipmentsActivity">
 
     <LinearLayout
@@ -41,7 +41,7 @@
                     android:paddingLeft="4dp"
                     android:paddingEnd="6dp"
                     android:paddingRight="6dp"
-                    android:src="@drawable/ic_left_arrow" />
+                    android:src="@drawable/save_ic" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,11 +58,23 @@
             <include layout="@layout/component_float_add_btn" />
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/asRvShipments"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:overScrollMode="never" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/asRvShipments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:overScrollMode="never" />
+
+            <include
+                android:id="@+id/btmNavLayout"
+                layout="@layout/component_bottom_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" />
+        </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

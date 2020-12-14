@@ -6,6 +6,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_shipments.*
+import kotlinx.android.synthetic.main.activity_shipments.masterLayout
+import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -26,6 +28,8 @@ import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.padSize
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShipment
 import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
@@ -42,6 +46,9 @@ class ShipmentsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shipments)
+
+        initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
+        btmNavLayout.initGDSTSmartBottomBar(asRvShipments)
 
         initEvents()
 

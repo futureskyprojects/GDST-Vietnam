@@ -7,7 +7,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_material_batch.*
+import kotlinx.android.synthetic.main.activity_material_batch.btmNavLayout
 import kotlinx.android.synthetic.main.activity_material_batch.masterLayout
+import kotlinx.android.synthetic.main.activity_shipments.*
+import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -19,13 +22,13 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.ui.material_ship.MaterialShipActivity
@@ -40,6 +43,9 @@ class MaterialBatchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_material_batch)
+
+        initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
+        btmNavLayout.initGDSTSmartBottomBar(ambRvMaterialBatch)
 
         initTranshipmentData()
 
@@ -151,11 +157,11 @@ class MaterialBatchActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
-        asRvMaterialBatch.setHasFixedSize(true)
-        asRvMaterialBatch.layoutManager = LinearLayoutManager(this)
+        ambRvMaterialBatch.setHasFixedSize(true)
+        ambRvMaterialBatch.layoutManager = LinearLayoutManager(this)
 
         adapter = MaterialBatchAdapter(materialBatchs)
-        asRvMaterialBatch.adapter = adapter
+        ambRvMaterialBatch.adapter = adapter
     }
 
     private fun initDataEvents() {

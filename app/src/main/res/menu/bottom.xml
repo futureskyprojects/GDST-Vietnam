@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/home"
+        android:title="Trang chủ" />
+    <item
+        android:id="@+id/action_invisible"
+        android:enabled="false"
+        android:title="" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/image_user_no_avatar_gray"
+        android:title="Cá nhân" />
+</menu>

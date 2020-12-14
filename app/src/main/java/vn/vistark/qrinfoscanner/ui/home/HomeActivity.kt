@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.android.synthetic.main.component_float_qr_scan_btn.*
 import kotlinx.android.synthetic.main.home_menu_options.*
 import kotlinx.android.synthetic.main.home_panel.*
@@ -24,6 +25,7 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showS
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTUserProfile
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.FloatQuickScanButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
@@ -37,12 +39,12 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        FloatQuickScanButtonHelper.initialize(asiIvQuickScanIcon, cfqsLnQuickScanBtn)
+        initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter)
 
         if (!isAuthenticated())
             gotoLogin()
 
-        loadImageGif()
+//        loadImageGif()
         initEvents()
 
         loadUserProfile()
@@ -115,27 +117,20 @@ class HomeActivity : AppCompatActivity() {
         hmoCvStaticDataBtn.clickAnimate {
             val intent = Intent(this, ShipCollectionActivity::class.java)
             startActivity(intent)
-//            this.showSelectStaticDataOptionAlert()
         }
-        hmoCvGenerateQrBtn.clickAnimate {
-            Toast.makeText(this, "Xin lỗi, tính năng hiện đang được phát triển", Toast.LENGTH_SHORT)
-                .show()
-        }
-        hmoCvScanQRBtn.clickAnimate {
-            val intent = Intent(this, QRResultProcessingActivity::class.java)
-            intent.putExtra(QRResultProcessingActivity::class.java.simpleName, true)
-            startActivity(intent)
-        }
-        ahcmpTvEditProfile.clickAnimate {
-            Toast.makeText(this, "Xin lỗi, tính năng hiện đang được phát triển", Toast.LENGTH_SHORT)
-                .show()
-//            val intent = Intent(this, AccountInfoActivity::class.java)
+//        hmoCvGenerateQrBtn.clickAnimate {
+//            Toast.makeText(this, "Xin lỗi, tính năng hiện đang được phát triển", Toast.LENGTH_SHORT)
+//                .show()
+//        }
+//        hmoCvScanQRBtn.clickAnimate {
+//            val intent = Intent(this, QRResultProcessingActivity::class.java)
+//            intent.putExtra(QRResultProcessingActivity::class.java.simpleName, true)
 //            startActivity(intent)
-        }
+//        }
     }
 
-    private fun loadImageGif() {
-        Glide.with(this).asGif().load(R.raw.qr_code_animation).into(ahcmpIvGenerateQR)
-        Glide.with(this).asGif().load(R.raw.scan_qr_gif).into(ahcmpIvScanQR)
-    }
+//    private fun loadImageGif() {
+//        Glide.with(this).asGif().load(R.raw.qr_code_animation).into(ahcmpIvGenerateQR)
+//        Glide.with(this).asGif().load(R.raw.scan_qr_gif).into(ahcmpIvScanQR)
+//    }
 }

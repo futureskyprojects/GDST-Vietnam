@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/masterLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/masterLayout"
     tools:context=".ui.home.HomeActivity">
 
     <LinearLayout
@@ -19,7 +19,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="491dp"
             android:overScrollMode="never">
 
             <LinearLayout
@@ -29,15 +29,18 @@
 
                 <include layout="@layout/home_menu_options" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/watermark" />
+<!--                <ImageView-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_gravity="center"-->
+                <!--                    android:layout_marginTop="20dp"-->
+                <!--                    android:src="@drawable/watermark" />-->
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 
-    <include layout="@layout/component_float_qr_scan_btn" />
+
+    <include
+        android:id="@+id/btmNavLayout"
+        layout="@layout/component_bottom_nav" />
 </RelativeLayout>

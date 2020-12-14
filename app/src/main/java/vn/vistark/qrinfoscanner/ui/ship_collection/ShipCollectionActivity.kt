@@ -4,12 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_ship_collection.*
+import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
+import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 
@@ -23,14 +27,25 @@ class ShipCollectionActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_ship_collection)
 
+        initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
+        btmNavLayout.initGDSTSmartBottomBar(ascRvVessels)
+
         updateCount(0)
+
+        initEvents()
 
         initRecyclerView()
 
         syncShips()
     }
 
-    fun updateCount(count: Int = 0) {
+    private fun initEvents() {
+        ascBackButton.clickAnimate {
+            finish()
+        }
+    }
+
+    private fun updateCount(count: Int = 0) {
         ascTvName.text = "Dữ liệu tàu ($count)"
     }
 
