@@ -23,6 +23,7 @@ import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showSelectStaticDataOptionAlert
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.domain.api.IApiService
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTUserProfile
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
@@ -89,7 +90,10 @@ class HomeActivity : AppCompatActivity() {
             } finally {
                 runOnUiThread {
                     Glide.with(this@HomeActivity)
-                        .load(GDSTStorage.CurrentUser.image)
+                        .load(
+                            (IApiService.BASE_URL + GDSTStorage.CurrentUser.image)
+                                .replace("//", "/")
+                        )
                         .placeholder(R.drawable.holder)
                         .into(haIvUserProfileImage)
 

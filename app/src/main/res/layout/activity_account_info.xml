@@ -61,21 +61,26 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Tên doanh nghiệp"
+                    android:text="Tên Tài khoản"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/aaiEdtUsername"
                     style="@style/EditText.Default"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:autofillHints="Tên doanh nghiệp"
-                    android:hint="Tên doanh nghiệp"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:hint="Tên Tài khoản"
                     android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
                     android:lines="1"
-                    android:maxLength="40" />
+                    android:maxLength="40"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,45 +90,26 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Mã số thuế"
+                    android:text="Công ty trực thuộc"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    style="@style/EditText.Default"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:autofillHints="Mã số thuế"
-                    android:hint="Mã số thuế"
-                    android:inputType="number|textAutoComplete"
-                    android:lines="1"
-                    android:maxLength="15" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="8dp"
-                    android:paddingVertical="1dp"
-                    android:text="Địa chỉ"
-                    android:textColor="#000"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <EditText
+                    android:id="@+id/aaiEdtCompanyName"
                     style="@style/EditText.Default"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:autofillHints="Địa chỉ"
-                    android:hint="Địa chỉ"
+                    android:clickable="false"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:hint="Công ty trực thuộc"
                     android:inputType="text|textAutoComplete"
                     android:lines="1"
-                    android:maxLength="255" />
+                    android:maxLength="255"
+                    android:textColor="@color/colorPrimaryDark" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -133,19 +119,45 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Website"
+                    android:text="Họ và tên"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <EditText
+                    android:id="@+id/aaiEdtFullName"
+                    style="@style/EditText.Default"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:autofillHints="Mã số thuế"
+                    android:hint="Họ và tên"
+                    android:inputType="textPersonName|textCapWords"
+                    android:lines="1"
+                    android:maxLength="100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="8dp"
+                    android:paddingVertical="1dp"
+                    android:text="Mật khẩu"
+                    android:textColor="#000"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/aaiEdtPassword"
                     style="@style/EditText.Default"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:autofillHints="Website"
-                    android:hint="Website"
-                    android:inputType="text|textAutoComplete"
+                    android:hint="Để trống nếu không đổi"
+                    android:inputType="textPassword"
                     android:lines="1"
                     android:maxLength="255" />
 

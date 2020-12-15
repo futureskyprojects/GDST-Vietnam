@@ -5,15 +5,19 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_ship_collection.*
 import kotlinx.android.synthetic.main.component_bottom_nav.*
+import kotlinx.android.synthetic.main.component_top_search_bar.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
+import vn.vistark.qrinfoscanner.core.extensions.StringExtension.Companion.isSameWith
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTSmartTopSearchBar
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 
@@ -29,6 +33,7 @@ class ShipCollectionActivity : AppCompatActivity() {
 
         initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
         btmNavLayout.initGDSTSmartBottomBar(ascRvVessels)
+        topSearchBar.initGDSTSmartTopSearchBar(ascRvVessels)
 
         updateCount(0)
 
@@ -63,6 +68,12 @@ class ShipCollectionActivity : AppCompatActivity() {
                     updateCount(response.size)
                     response.forEach { ship ->
                         ships.add(ship)
+                        adapter.notifyDataSetChanged()
+                    }
+
+                    aaEdtSearchBar.initGDSTTopSearchBar(ships) {
+                        ships.clear()
+                        ships.addAll(it)
                         adapter.notifyDataSetChanged()
                     }
                 }

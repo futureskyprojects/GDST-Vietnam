@@ -37,16 +37,29 @@
         android:theme="@style/AppTheme.NoActionBar.NoTransition"
         android:usesCleartextTraffic="true"
         tools:replace="android:icon">
-        <activity android:name=".ui.ship_collection.ShipCollectionActivity" />
-        <activity android:name=".ui.traceable_object_information.TraceableObjectInformationActivity" />
-        <activity android:name=".ui.technical_data.TechnicalDataActivity" />
-        <activity android:name=".ui.material_ship.MaterialShipActivity" />
-        <activity android:name=".ui.statics_data.licenses_data.LicenseDataActivity" />
-        <activity android:name=".ui.statics_data.vessel_data.VesselDataActivity" />
+        <activity
+            android:name=".ui.ship_collection.ShipCollectionActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.traceable_object_information.TraceableObjectInformationActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.technical_data.TechnicalDataActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.material_ship.MaterialShipActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.statics_data.licenses_data.LicenseDataActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.statics_data.vessel_data.VesselDataActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.splash_screen.SplashScreenActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,29 +68,37 @@
         </activity>
         <activity
             android:name=".ui.material_batch.MaterialBatchActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.shipment.ShipmentsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.home.HomeActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.qr_result_processing.QRResultProcessingActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.change_password.ChangePasswordActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.account_info.AccountInfoActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.qr_scan.QrScanActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar" />
+            android:theme="@style/AppTheme.NoActionBar.TransparentStatusBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.sign_up.SignUpActivity"
-            android:theme="@style/AppTheme.NoActionBar" /> <!-- REGION OF META -->
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" /> <!-- REGION OF META -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -87,7 +108,8 @@
         <activity
             android:name=".ui.sign_in.SignInActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

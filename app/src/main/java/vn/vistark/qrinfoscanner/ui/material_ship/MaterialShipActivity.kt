@@ -7,9 +7,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_material_ship.*
+import kotlinx.android.synthetic.main.activity_material_ship.btmNavLayout
 import kotlinx.android.synthetic.main.activity_material_ship.masterLayout
 import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
+import kotlinx.android.synthetic.main.component_top_search_bar.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
@@ -29,6 +31,8 @@ import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTSmartTopSearchBar
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog
@@ -46,6 +50,7 @@ class MaterialShipActivity : AppCompatActivity() {
         setContentView(R.layout.activity_material_ship)
         initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
         btmNavLayout.initGDSTSmartBottomBar(amsRvShipments)
+        topSearchBar.initGDSTSmartTopSearchBar(amsRvShipments)
 
         initTranshipmentData()
 
@@ -129,6 +134,11 @@ class MaterialShipActivity : AppCompatActivity() {
 
                     if (materialShips.isEmpty()) {
                         cfabIvIcon.performClick()
+                    }
+                    aaEdtSearchBar.initGDSTTopSearchBar(materialShips) {
+                        materialShips.clear()
+                        materialShips.addAll(it)
+                        adapter.notifyDataSetChanged()
                     }
                 }
             } catch (e: Exception) {

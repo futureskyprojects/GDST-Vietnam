@@ -2,8 +2,6 @@ package vn.vistark.qrinfoscanner.ui.sign_in
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import cn.pedant.SweetAlert.SweetAlertDialog
@@ -18,20 +16,14 @@ import retrofit2.HttpException
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.api.AuthIntercepter
-import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.afterChanged
-import vn.vistark.qrinfoscanner.domain.mock_entities.Enterprise
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.onChanged
 import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserLoginDTO
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
-import vn.vistark.qrinfoscanner.domain.entities.GDSTUserProfile
-import vn.vistark.qrinfoscanner.domain.mock_models.enterprise.request.EnterpriseLogin
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.FloatQuickScanButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
@@ -101,12 +93,12 @@ class SignInActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        asiEdtPassword.afterChanged {
+        asiEdtPassword.onChanged {
             asiTvErrorMsg.text = ""
             asiTvErrorMsg.visibility = View.GONE
         }
 
-        asiEdtUsername.afterChanged {
+        asiEdtUsername.onChanged {
             asiTvErrorMsg.text = ""
             asiTvErrorMsg.visibility = View.GONE
         }

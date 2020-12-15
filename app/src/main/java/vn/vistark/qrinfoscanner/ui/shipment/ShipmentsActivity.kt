@@ -6,9 +6,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_shipments.*
+import kotlinx.android.synthetic.main.activity_shipments.btmNavLayout
 import kotlinx.android.synthetic.main.activity_shipments.masterLayout
 import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
+import kotlinx.android.synthetic.main.component_top_search_bar.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import okhttp3.MediaType
@@ -31,6 +33,8 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTSmartTopSearchBar
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.ui.material_batch.MaterialBatchActivity
@@ -49,6 +53,7 @@ class ShipmentsActivity : AppCompatActivity() {
 
         initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
         btmNavLayout.initGDSTSmartBottomBar(asRvShipments)
+        topSearchBar.initGDSTSmartTopSearchBar(asRvShipments)
 
         initEvents()
 
@@ -181,6 +186,12 @@ class ShipmentsActivity : AppCompatActivity() {
 //                    updateCount(response.size)
                     response.forEach { ship ->
                         add(ship)
+                    }
+
+                    aaEdtSearchBar.initGDSTTopSearchBar(shipments) {
+                        shipments.clear()
+                        shipments.addAll(it)
+                        adapter.notifyDataSetChanged()
                     }
                 }
             } catch (e: Exception) {

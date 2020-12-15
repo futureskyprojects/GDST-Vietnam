@@ -58,6 +58,12 @@
             <include layout="@layout/component_float_add_btn" />
         </RelativeLayout>
 
+        <include
+            android:id="@+id/topSearchBar"
+            layout="@layout/component_top_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -67,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
-                android:overScrollMode="never"/>
+                android:overScrollMode="never" />
 
             <include
                 android:id="@+id/btmNavLayout"

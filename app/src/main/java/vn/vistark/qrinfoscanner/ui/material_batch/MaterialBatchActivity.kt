@@ -9,9 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_material_batch.*
 import kotlinx.android.synthetic.main.activity_material_batch.btmNavLayout
 import kotlinx.android.synthetic.main.activity_material_batch.masterLayout
-import kotlinx.android.synthetic.main.activity_shipments.*
 import kotlinx.android.synthetic.main.component_bottom_nav.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
+import kotlinx.android.synthetic.main.component_top_search_bar.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
@@ -30,6 +30,8 @@ import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTSmartTopSearchBar
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.ui.material_ship.MaterialShipActivity
 import java.util.*
@@ -46,6 +48,7 @@ class MaterialBatchActivity : AppCompatActivity() {
 
         initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, -1)
         btmNavLayout.initGDSTSmartBottomBar(ambRvMaterialBatch)
+        topSearchBar.initGDSTSmartTopSearchBar(ambRvMaterialBatch)
 
         initTranshipmentData()
 
@@ -137,6 +140,12 @@ class MaterialBatchActivity : AppCompatActivity() {
                     }
                     if (materialBatchs.isEmpty()) {
                         fastCreate()
+                    }
+
+                    aaEdtSearchBar.initGDSTTopSearchBar(materialBatchs) {
+                        materialBatchs.clear()
+                        materialBatchs.addAll(it)
+                        adapter.notifyDataSetChanged()
                     }
                 }
             } catch (e: Exception) {

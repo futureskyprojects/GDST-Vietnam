@@ -16,7 +16,7 @@ import kotlin.random.Random
 class ViewExtension {
     companion object {
 
-        fun EditText.afterChanged(changed: () -> Unit) {
+        fun EditText.onChanged(changed: () -> Unit) {
             addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
 
@@ -37,6 +37,44 @@ class ViewExtension {
                 this.startAnimation(anim)
                 this.postDelayed(f, anim.duration + 10)
             }
+        }
+
+        fun View.slideDownShow(onFinish: (() -> Unit)? = null) {
+            val anim = AnimationUtils.loadAnimation(this.context, R.anim.slide_down_show)
+            anim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(p0: Animation?) {
+
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    this@slideDownShow.visibility = View.VISIBLE
+                    onFinish?.invoke()
+                }
+
+                override fun onAnimationStart(p0: Animation?) {
+                    this@slideDownShow.visibility = View.INVISIBLE
+                }
+            })
+            this.startAnimation(anim)
+        }
+
+        fun View.slideUpHide(onFinish: (() -> Unit)? = null) {
+            val anim = AnimationUtils.loadAnimation(this.context, R.anim.slide_up_hide)
+            anim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(p0: Animation?) {
+
+                }
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    this@slideUpHide.visibility = View.GONE
+                    onFinish?.invoke()
+                }
+
+                override fun onAnimationStart(p0: Animation?) {
+                    this@slideUpHide.visibility = View.VISIBLE
+                }
+            })
+            this.startAnimation(anim)
         }
 
         fun View.slideUp(onFinish: (() -> Unit)? = null) {
