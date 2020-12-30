@@ -117,7 +117,7 @@ class ShipmentsActivity : AppCompatActivity() {
                 {
                     // Tạo bitmap
                     val path =
-                        "${IApiService.BASE_URL}${Config.qrPath}${shipment.id}".replace("//", "/")
+                        "${IApiService.BASE_URL}${Config.qrPath}${shipment.id}"
                     val bmp = QRBitmap(path)
                     if (bmp == null) {
                         showAlertConfirm("Tạo lô hàng không thành công (Error: 1)")
