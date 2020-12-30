@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,12 +46,12 @@ class HomeActivity : AppCompatActivity() {
         if (!isAuthenticated())
             gotoLogin()
 
-//        loadImageGif()
         initEvents()
 
         loadUserProfile()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun loadUserProfile() {
         val loading = this.showLoadingAlert()
         loading.show()
@@ -90,15 +91,12 @@ class HomeActivity : AppCompatActivity() {
             } finally {
                 runOnUiThread {
                     Glide.with(this@HomeActivity)
-                        .load(
-                            (IApiService.BASE_URL + GDSTStorage.CurrentUser.image)
-                                .replace("//", "/")
-                        )
+                        .load(GDSTStorage.CurrentUser.getImageAddress())
                         .placeholder(R.drawable.holder)
                         .into(haIvUserProfileImage)
 
                     htTvWelcomeText.text =
-                        "Xin chào, ${GDSTStorage.CurrentUser?.getDisplayName()}"
+                        "Xin chào, ${GDSTStorage.CurrentUser.getDisplayName()}"
 
                     haTvEnterpriseName.text =
                         GDSTStorage.CurrentCompany?.companyname ?: "Chúc bạn có một ngày tốt lành"

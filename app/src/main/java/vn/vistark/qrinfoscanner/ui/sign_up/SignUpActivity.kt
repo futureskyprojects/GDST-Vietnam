@@ -132,7 +132,7 @@ class SignUpActivity : AppCompatActivity() {
 
     fun CompanyBind() {
         Glide.with(ilcIvCompanyLogo.context)
-            .load(selectedCompany?.logo)
+            .load(selectedCompany?.getLogoAddress())
             .placeholder(R.drawable.no_image)
             .into(ilcIvCompanyLogo)
 

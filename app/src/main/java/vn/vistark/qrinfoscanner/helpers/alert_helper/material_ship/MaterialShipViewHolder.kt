@@ -5,11 +5,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
-import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataViewHolder
-import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataViewHolder
-import java.util.*
 import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
 import vn.vistark.qrinfoscanner.ui.ship_collection.ShipCollectionViewHolder
 

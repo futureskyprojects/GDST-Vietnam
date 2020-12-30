@@ -21,7 +21,7 @@ class CompanyViewHolder {
             val ilcTvWebsite: TextView = v.findViewById(R.id.ilcTvWebsite)
 
             Glide.with(ilcIvCompanyLogo.context)
-                .load(company.logo)
+                .load(company.getLogoAddress())
                 .placeholder(R.drawable.no_image)
                 .into(ilcIvCompanyLogo)
 

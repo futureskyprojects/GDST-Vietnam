@@ -11,7 +11,6 @@ import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
-import vn.vistark.qrinfoscanner.core.extensions.StringExtension.Companion.isSameWith
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar

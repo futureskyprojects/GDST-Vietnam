@@ -1,6 +1,5 @@
 package vn.vistark.qrinfoscanner.ui.ship_collection
 
-import android.R.attr.path
 import android.annotation.SuppressLint
 import android.graphics.drawable.PictureDrawable
 import android.net.Uri
@@ -27,23 +26,19 @@ class ShipCollectionViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         v.findViewById(R.id.ilssdIvIsTranshipmentIcon)
 
     private val ilssTvVesselRegistration: TextView = v.findViewById(R.id.ilssTvVesselRegistration)
-    private val ilssTvVesselPublicRegistry: TextView =
-        v.findViewById(R.id.ilssTvVesselPublicRegistry)
     private val ilssTvSatelliteTracking: TextView = v.findViewById(R.id.ilssTvSatelliteTracking)
 
     private val ilssTvFishingAuthorization: TextView =
         v.findViewById(R.id.ilssTvFishingAuthorization)
     private val ilssTvHarvestCertification: TextView =
         v.findViewById(R.id.ilssTvHarvestCertification)
-    private val ilssTvTranshipmentAuthorization: TextView =
-        v.findViewById(R.id.ilssTvTranshipmentAuthorization)
     private val ilssTvHumanWelfarePolicy: TextView = v.findViewById(R.id.ilssTvHumanWelfarePolicy)
     private val ilssTvWelfarePolicyStandards: TextView =
         v.findViewById(R.id.ilssTvWelfarePolicyStandards)
 
     @SuppressLint("SetTextI18n")
     fun bind(ship: GDSTShip) {
-        val flagPath = GDSTStorage.GDSTCountries?.first { x -> x.id == ship.vesselFlag }?.flag ?: ""
+        val flagPath = GDSTStorage.GDSTCountries?.first { x -> x.id == ship.vessel_flag_id }?.flag ?: ""
         val imagePath = "${IApiService.BASE_URL}$flagPath".replace("//", "/")
 
         if (imagePath.endsWith("svg")) {
@@ -58,20 +53,17 @@ class ShipCollectionViewHolder(v: View) : RecyclerView.ViewHolder(v) {
             Glide.with(ilssIvVesselFlag.context).load(imagePath).into(ilssIvVesselFlag)
         }
 
-        ilssTvVesselName.text = ship.vesselName
-        ilssdIvIsTranshipmentIcon.setImageResource(if (ship.isTransshipment > 0) R.drawable._2side_active else R.drawable._2side_off)
+        ilssTvVesselName.text = ship.vessel_name
+        ilssdIvIsTranshipmentIcon.setImageResource(if (ship.is_transshipment > 0) R.drawable._2side_active else R.drawable._2side_off)
 
-        ilssTvVesselRegistration.text = "Số đăng ký tàu: " + ship.vesselID
-        ilssTvVesselPublicRegistry.text = "PVRH: " + ship.vesselPublicRegistry
-        ilssTvSatelliteTracking.text = "VMS: " + ship.satelliteTracking
+        ilssTvVesselRegistration.text = "Số đăng ký tàu: " + ship.vessel_id
+        ilssTvSatelliteTracking.text = "VMS: " + ship.satellite_tracking
 
-        ilssTvFishingAuthorization.text = "Cấp phép kh.thác: " + ship.fishingAuthorization
-        ilssTvHarvestCertification.text = "GP Kh.thác:" + ship.harvestCertification
-        ilssTvTranshipmentAuthorization.text =
-            "Cấp phép Tr.chuyển: " + ship.transshipmentAuthorization
+        ilssTvFishingAuthorization.text = "Cấp phép kh.thác: " + ship.fishing_authorization
+        ilssTvHarvestCertification.text = "GP Kh.thác:" + ship.harvest_certification
         ilssTvHumanWelfarePolicy.text =
-            "Chính sách phúc lợi con người: " + if (ship.humanWelfarePolicy > 0) "Có" else "Không"
+            "Chính sách phúc lợi con người: " + if (ship.human_welfare_policy > 0) "Có" else "Không"
         ilssTvWelfarePolicyStandards.text =
-            "Tiêu chuẩn phúc lợi con người: " + if (ship.welfarePolicyStandards > 0) "Có" else "Không"
+            "Tiêu chuẩn phúc lợi con người: " + if (ship.welfare_policy_standards > 0) "Có" else "Không"
     }
 }

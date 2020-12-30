@@ -80,7 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:paddingTop="8dp"
+            android:paddingHorizontal="8dp">
 
             <ImageView
                 android:layout_width="@dimen/dot_icon_size"
@@ -95,30 +96,6 @@
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
                 android:text="Số đăng ký tàu: ---------------"
-                android:textColor="@color/card_info_text_color"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="8dp">
-
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
-
-            <TextView
-                android:id="@+id/ilssTvVesselPublicRegistry"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="PVRH: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -200,31 +177,6 @@
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
                 android:text="GP Kh.thác: ---------------"
-                android:textColor="@color/card_info_text_color"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="8dp"
-            android:paddingBottom="8dp">
-
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
-
-            <TextView
-                android:id="@+id/ilssTvTranshipmentAuthorization"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="Cấp phép Tr.chuyển: ---------------"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />

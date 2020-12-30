@@ -61,18 +61,18 @@ interface IApiService {
     @POST("api/upload/qrcode")
     fun postGDSTUploadQrCode(@Part image: MultipartBody.Part): Call<UploadQRSuccessfulResponse>
 
-    @POST("api/crate-shipment")
+    @POST("api/create-shipment")
     fun postGDSTShipment(@Body dto: GDSTShipmentCreateDTO): Call<ShipmentCreateSuccessfulResponse>
 
     @GET("api/material-bacths")
     fun getGDSTMaterialBatch(): Call<ArrayList<GDSTMaterialBacth>>
 
-    @POST("api/crate-merterial-batch")
+    @POST("api/create-merterial-batch")
     fun postGDSTMaterialBatch(@Body dto: GDSTMaterialBacthCreateDTO): Call<MaterialBatchCreateSuccessfulResponse>
 
     @GET("api/material-ships")
     fun getGDSTMaterialShip(): Call<ArrayList<GDSTMaterialShip>>
 
-    @POST("api/crate-merterial-ship")
+    @POST("api/create-merterial-ship")
     fun postGDSTMaterialShip(@Body dto: GDSTMaterialShipCreateDTO): Call<CreateMaterialShipSuccessfulResponse>
 }

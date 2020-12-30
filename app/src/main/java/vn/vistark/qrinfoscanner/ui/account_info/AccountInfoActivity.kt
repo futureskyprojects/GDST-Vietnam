@@ -40,10 +40,7 @@ class AccountInfoActivity : AppCompatActivity() {
         aaiEdtFullName.setText(crrProf.fullname)
 
         Glide.with(this)
-            .load(
-                (IApiService.BASE_URL + crrProf.image)
-                    .replace("//", "/")
-            )
+            .load(crrProf.getImageAddress())
             .placeholder(R.drawable.holder)
             .into(aaiCivAvatar)
     }
