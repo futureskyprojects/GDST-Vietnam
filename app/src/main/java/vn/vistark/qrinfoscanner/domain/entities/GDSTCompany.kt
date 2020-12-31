@@ -14,11 +14,11 @@ data class GDSTCompany(
     @SerializedName("ownername")
     var ownername: String = "",
     @SerializedName("address")
-    var address: String = "",
+    var address: String? = "",
     @SerializedName("website")
-    var website: String = "",
+    var website: String? = "",
     @SerializedName("logo")
-    var logo: String = "",
+    var logo: String? = "",
     @SerializedName("status")
     var status: Int = 0,
     @SerializedName("created_at")
@@ -26,8 +26,8 @@ data class GDSTCompany(
     @SerializedName("updated_at")
     var updatedAt: String = ""
 ) {
-    fun getLogoAddress():String {
-        val temp = logo.replace("^/".toRegex(),"")
+    fun getLogoAddress(): String {
+        val temp = logo?.replace("^/".toRegex(), "") ?: ""
         return (IApiService.BASE_URL + temp)
     }
 }

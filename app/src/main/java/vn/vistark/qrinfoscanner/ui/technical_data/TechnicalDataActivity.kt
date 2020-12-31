@@ -102,6 +102,9 @@ class TechnicalDataActivity : AppCompatActivity() {
     }
 
     private fun syncTechnicalData() {
+        if (technicalDatas.isEmpty()) {
+            cfabIvIcon.performClick()
+        }
 //        delayAction {
 //            CommonMockup.MockupData<TechnicalData>().forEach { vd ->
 //                if (vd.materialShipId == materialShip.Id) {

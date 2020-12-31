@@ -167,18 +167,18 @@ class MaterialShipActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = {
-            showAlertConfirm(
-                "Bạn có chắc muốn xóa tàu nguyên liệu [#${
-                    it.id.toString()
-                        .padStart(Config.padSize, '0')
-                }] hay không?",
-                {
-                    Toast.makeText(this, "Tác vụ này không được cho phép", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            )
-        }
+//        adapter.onDelete = {
+//            showAlertConfirm(
+//                "Bạn có chắc muốn xóa tàu nguyên liệu [#${
+//                    it.id.toString()
+//                        .padStart(Config.padSize, '0')
+//                }] hay không?",
+//                {
+//                    Toast.makeText(this, "Tác vụ này không được cho phép", Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+//            )
+//        }
 
         adapter.onClick = { start(it.id) }
     }
@@ -191,8 +191,7 @@ class MaterialShipActivity : AppCompatActivity() {
 
     fun start(materialShipId: Int) {
         val intent = Intent(this, TechnicalDataActivity::class.java)
-        intent.putExtra(MaterialShip::class.java.simpleName, materialShipId)
-//        startActivity(intent)
-        Toast.makeText(this, "Tác vụ hiện đang được tiếp tục phát triển", Toast.LENGTH_SHORT).show()
+        intent.putExtra(GDSTMaterialShip::class.java.simpleName, materialShipId)
+        startActivity(intent)
     }
 }
