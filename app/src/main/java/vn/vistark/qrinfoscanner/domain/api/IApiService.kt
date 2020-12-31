@@ -75,4 +75,7 @@ interface IApiService {
 
     @POST("api/create-merterial-ship")
     fun postGDSTMaterialShip(@Body dto: GDSTMaterialShipCreateDTO): Call<CreateMaterialShipSuccessfulResponse>
+
+    @POST("api/technicaldata")
+    fun postGDSTTechnicalData(@Body dto: GDSTTechnicalDataDTO): Call<Any>
 }

@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.core.extensions
 
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.HttpException
@@ -12,6 +13,7 @@ import kotlin.coroutines.suspendCoroutine
 class Retrofit2Extension {
     companion object {
         suspend fun <T> Call<T>.await(): T? {
+            println(">>>> Thực hiện truy vấn đến: [${this.request().url().uri()}]")
             return suspendCoroutine { continuation ->
                 enqueue(object : Callback<T> {
                     override fun onFailure(call: Call<T>?, t: Throwable) {

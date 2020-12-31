@@ -7,11 +7,13 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.widget.SwitchCompat
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
 import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
+import vn.vistark.qrinfoscanner.domain.entities.GDSTLocation
 import vn.vistark.qrinfoscanner.domain.mock_models.fao.response.FAO
 
 class TechnicalDataViewHolder(v: View) {
@@ -20,24 +22,29 @@ class TechnicalDataViewHolder(v: View) {
     val autdTvErrorMsg: TextView = v.findViewById(R.id.autdTvErrorMsg)
     val autdTvDialogName: TextView = v.findViewById(R.id.autdTvDialogName)
 
-    val ilfaLnRoot: LinearLayout = v.findViewById(R.id.ilfaLnRoot)
-    val ilfaTvCode: TextView = v.findViewById(R.id.ilfaTvCode)
-    val ilfaTvName: TextView = v.findViewById(R.id.ilfaTvName)
+    val autdTvGeolocation: TextView = v.findViewById(R.id.autdTvGeolocation)
 
-    val acvdBtnCreateVesselData: TextView = v.findViewById(R.id.acvdBtnConfirm)
+    val autdTvTranshipmentLocation: TextView = v.findViewById(R.id.autdTvTranshipmentLocation)
+
+    val autdBtnConfirm: TextView = v.findViewById(R.id.autdBtnConfirm)
     // -------------------------------- //
 
     val autdEdtEventId: EditText =
         v.findViewById(R.id.autdEdtEventId)
 
+    val autdEdtKDELinking: EditText =
+        v.findViewById(R.id.autdEdtKDELinking)
+
+    val autdTvProductForm: TextView =
+        v.findViewById(R.id.autdTvProductForm)
+
+    val autdScIsTranshipment: SwitchCompat = v.findViewById(R.id.autdScIsTranshipment)
+
+    val autdTvTranshipmentDate: TextView =
+        v.findViewById(R.id.autdTvTranshipmentDate)
+
     val autdTvEventDate: TextView =
         v.findViewById(R.id.autdTvEventDate)
-
-    val autdEdtProductOwnerShip: EditText =
-        v.findViewById(R.id.autdEdtProductOwnerShip)
-
-    val autdEdtInformationProvider: EditText =
-        v.findViewById(R.id.autdEdtInformationProvider)
 
     fun updateError(err: String = ""): Boolean {
         if (err.isNotEmpty()) {
@@ -81,12 +88,6 @@ class TechnicalDataViewHolder(v: View) {
                 updateError()
             }
         })
-    }
-
-    fun updateFao(fao: FAO): FAO {
-        this.ilfaTvCode.text = "FAO${fao.code}"
-        this.ilfaTvName.text = fao.name
-        return fao
     }
 
 }
