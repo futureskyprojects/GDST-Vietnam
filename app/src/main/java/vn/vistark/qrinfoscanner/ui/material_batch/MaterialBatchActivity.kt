@@ -26,6 +26,7 @@ import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.C
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
+import vn.vistark.qrinfoscanner.domain.api.requests.material_batch.GetMaterialBatchBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
@@ -110,10 +111,10 @@ class MaterialBatchActivity : AppCompatActivity() {
             )
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô nguyên liệu mới số #${
-                    batch.id.toString().padStart(
-                        Config.padSize,
-                        '0'
-                    )
+                batch.id.toString().padStart(
+                    Config.padSize,
+                    '0'
+                )
                 } vào lúc [${Date().Format("HH:mm dd-MM-yyyy")}]",
                 {
                     fastCreate()
@@ -127,17 +128,18 @@ class MaterialBatchActivity : AppCompatActivity() {
         loading.show()
         GlobalScope.launch {
             try {
-                val response = ApiService.mAPIServices.getGDSTMaterialBatch().await()
+                val response = ApiService.mAPIServices.getGDSTMaterialBatch(
+                    GetMaterialBatchBody(shipmentId)
+                ).await()
                 runOnUiThread { loading.cancel() }
                 if (response == null)
                     throw Exception("Không phân dải được KQ trả về")
 
                 runOnUiThread {
 //                    updateCount(response.size)
-                    response.forEach { mtb ->
-                        if (mtb.shipmentId == shipmentId)
-                            add(mtb)
-                    }
+                    materialBatchs.addAll(response)
+                    adapter.notifyDataSetChanged()
+
                     if (materialBatchs.isEmpty()) {
                         fastCreate()
                     }
@@ -177,8 +179,8 @@ class MaterialBatchActivity : AppCompatActivity() {
         adapter.onDelete = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu lô nguyên liệu [#${
-                    it.id.toString()
-                        .padStart(Config.padSize, '0')
+                it.id.toString()
+                    .padStart(Config.padSize, '0')
                 }] hay không?",
                 {
                     Toast.makeText(

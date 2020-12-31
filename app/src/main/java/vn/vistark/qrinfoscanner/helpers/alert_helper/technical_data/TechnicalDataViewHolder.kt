@@ -40,11 +40,20 @@ class TechnicalDataViewHolder(v: View) {
 
     val autdScIsTranshipment: SwitchCompat = v.findViewById(R.id.autdScIsTranshipment)
 
+    val autdLnTranshipmentRoot: LinearLayout = v.findViewById(R.id.autdLnTranshipmentRoot)
+
     val autdTvTranshipmentDate: TextView =
         v.findViewById(R.id.autdTvTranshipmentDate)
 
     val autdTvEventDate: TextView =
         v.findViewById(R.id.autdTvEventDate)
+
+    fun onCheckedChange(onChanged: (Boolean) -> Unit) {
+        autdScIsTranshipment.setOnCheckedChangeListener { buttonView, isChecked ->
+            autdLnTranshipmentRoot.visibility = if (!isChecked) View.GONE else View.VISIBLE
+            onChanged.invoke(isChecked)
+        }
+    }
 
     fun updateError(err: String = ""): Boolean {
         if (err.isNotEmpty()) {

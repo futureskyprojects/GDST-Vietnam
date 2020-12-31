@@ -4,6 +4,9 @@ import okhttp3.MultipartBody
 import retrofit2.Call
 import retrofit2.http.*
 import vn.vistark.qrinfoscanner.domain.DTOs.*
+import vn.vistark.qrinfoscanner.domain.api.requests.material_batch.GetMaterialBatchBody
+import vn.vistark.qrinfoscanner.domain.api.requests.material_ship.GetMaterialShipBody
+import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
 import vn.vistark.qrinfoscanner.domain.api.responses.account.AccountSuccessfulRespone
 import vn.vistark.qrinfoscanner.domain.api.responses.login.LoginSuccessfulResponse
 import vn.vistark.qrinfoscanner.domain.api.responses.material_batch.MaterialBatchCreateSuccessfulResponse
@@ -64,18 +67,21 @@ interface IApiService {
     @POST("api/create-shipment")
     fun postGDSTShipment(@Body dto: GDSTShipmentCreateDTO): Call<ShipmentCreateSuccessfulResponse>
 
-    @GET("api/material-bacths")
-    fun getGDSTMaterialBatch(): Call<ArrayList<GDSTMaterialBacth>>
+    @POST("api/material-bacths")
+    fun getGDSTMaterialBatch(@Body body: GetMaterialBatchBody): Call<ArrayList<GDSTMaterialBacth>>
 
     @POST("api/create-merterial-batch")
     fun postGDSTMaterialBatch(@Body dto: GDSTMaterialBacthCreateDTO): Call<MaterialBatchCreateSuccessfulResponse>
 
-    @GET("api/material-ships")
-    fun getGDSTMaterialShip(): Call<ArrayList<GDSTMaterialShip>>
+    @POST("api/material-ships")
+    fun getGDSTMaterialShip(@Body body: GetMaterialShipBody): Call<ArrayList<GDSTMaterialShip>>
 
     @POST("api/create-merterial-ship")
     fun postGDSTMaterialShip(@Body dto: GDSTMaterialShipCreateDTO): Call<CreateMaterialShipSuccessfulResponse>
 
     @POST("api/technicaldata")
     fun postGDSTTechnicalData(@Body dto: GDSTTechnicalDataDTO): Call<Any>
+
+    @POST("api/technicals")
+    fun getGDSTTechnicalData(@Body body: GetTechnicalDataBody): Call<ArrayList<GDSTTechnicalData>>
 }

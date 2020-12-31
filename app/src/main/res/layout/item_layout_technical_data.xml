@@ -42,16 +42,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/iltdTvProductOwnership"
+                android:id="@+id/iltdTvEventDateAndGeo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@id/iltdIvDeleteIcon"
                 android:layout_toLeftOf="@id/iltdIvDeleteIcon"
                 android:gravity="center"
-                android:text="Trần Văn Hào"
+                android:text="12:00 12-12-2020 GMT+7 (FA061)"
                 android:textAllCaps="true"
                 android:textColor="#FFF"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -89,12 +89,12 @@
                 android:src="@drawable/next_content" />
 
             <TextView
-                android:id="@+id/iltdTvEventDate"
+                android:id="@+id/iltdTvLinkingKDE"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Thời điểm mẻ lưới: 12:00 12-12-2020 (GMT+7)"
+                android:text="KDE Liên kết: 124AE135134"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -113,12 +113,12 @@
                 android:src="@drawable/next_content" />
 
             <TextView
-                android:id="@+id/iltdTvEventReadPoint"
+                android:id="@+id/iltdTvProductForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Vị trí mẻ lưới: FAO61"
+                android:text="Dạng sản phẩm: Loin"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -128,7 +128,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:paddingHorizontal="8dp"
+            android:paddingTop="8dp">
 
             <ImageView
                 android:layout_width="@dimen/dot_icon_size"
@@ -137,15 +138,104 @@
                 android:src="@drawable/next_content" />
 
             <TextView
-                android:id="@+id/iltdTvInfomationProvider"
+                android:id="@+id/iltdTvTotalSpices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Thông tin từ: Trần Văn Hào"
+                android:text="Tổng số loài: 10438987"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingTop="8dp">
+
+            <ImageView
+                android:layout_width="@dimen/dot_icon_size"
+                android:layout_height="@dimen/dot_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/next_content" />
+
+            <TextView
+                android:id="@+id/iltdTvTotalSpiceQuantify"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="Tổng khối lượng: 10438987 (KG)"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/iltdLnTranshipmentRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="8dp"
+                android:background="#bdbdbd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="@dimen/dot_icon_size"
+                    android:layout_height="@dimen/dot_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/next_content" />
+
+                <TextView
+                    android:id="@+id/iltdTvTranshipmentDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="8dp"
+                    android:text="Ngày giờ chuyển tải: 12:00 12-12-2020 GMT+7"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="@dimen/dot_icon_size"
+                    android:layout_height="@dimen/dot_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/next_content" />
+
+                <TextView
+                    android:id="@+id/iltdTvTranshipmentLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingHorizontal="8dp"
+                    android:text="Vị trí chuyển tải: FAO61"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_small"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

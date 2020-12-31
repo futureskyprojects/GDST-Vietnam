@@ -55,6 +55,15 @@ class TechnicalDataUpdateDialog {
             val vh = TechnicalDataViewHolder(v)
             val mAlertDialog = displayDialog(this, v)
 
+            vh.onCheckedChange {
+                if (it) {
+                    mTechnicalData.dateTransshipment = ""
+                    mTechnicalData.loactionTransshipmentId = 0
+                    transhipmentDate = null
+                    transhipmentFao = null
+                }
+            }
+
             // Ngày, giờ mẻ lưới
             vh.autdTvEventDate.showDatePicker({
                 mTechnicalData.eventDate = it.Format("yyyy-MM-dd")

@@ -1,11 +1,11 @@
-package vn.vistark.qrinfoscanner.domain.DTOs
-
+package vn.vistark.qrinfoscanner.domain.entities
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 
-data class GDSTTechnicalDataDTO(
+class GDSTTechnicalData(
+    @SerializedName("id")
+    var id: Int = 0,
     @SerializedName("date_transshipment")
     var dateTransshipment: String = "",
     @SerializedName("event_date")

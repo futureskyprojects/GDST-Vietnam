@@ -10,6 +10,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_technical_data.*
 import kotlinx.android.synthetic.main.activity_technical_data.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
+import kotlinx.android.synthetic.main.component_top_search_bar.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
@@ -21,8 +22,12 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
+import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
+import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
+import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import vn.vistark.qrinfoscanner.helpers.alert_helper.technical_data.TechnicalDataUpdateDialog.Companion.showUpdateTechnicalDataAlert
@@ -31,7 +36,7 @@ import vn.vistark.qrinfoscanner.ui.traceable_object_information.TraceableObjectI
 class TechnicalDataActivity : AppCompatActivity() {
     private var materialShipId: Int = -1
 
-    private val technicalDatas = ArrayList<TechnicalData>()
+    private val technicalDatas = ArrayList<GDSTTechnicalData>()
     private lateinit var adapter: TechnicalDataAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,9 +84,6 @@ class TechnicalDataActivity : AppCompatActivity() {
                             val res =
                                 ApiService.mAPIServices.postGDSTTechnicalData(techData).await()
                                     ?: throw  Exception("ko phan giai dc")
-                            println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-                            println(Gson().toJson(res))
-                            println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                             runOnUiThread { loading.cancel() }
                             runOnUiThread {
                                 syncTechnicalData()
@@ -102,20 +104,45 @@ class TechnicalDataActivity : AppCompatActivity() {
     }
 
     private fun syncTechnicalData() {
-        if (technicalDatas.isEmpty()) {
-            cfabIvIcon.performClick()
+        technicalDatas.clear()
+        val loading = this.showLoadingAlert()
+        loading.show()
+        GlobalScope.launch {
+            try {
+                val response = ApiService.mAPIServices.getGDSTTechnicalData(
+                    GetTechnicalDataBody(materialShipId)
+                ).await()
+                runOnUiThread { loading.cancel() }
+                if (response == null)
+                    throw Exception("Không phân dải được KQ trả về")
+
+                runOnUiThread {
+
+                    technicalDatas.addAll(response)
+                    adapter.notifyDataSetChanged()
+
+                    if (technicalDatas.isEmpty()) {
+                        cfabIvIcon.performClick()
+                    }
+                    aaEdtSearchBar.initGDSTTopSearchBar(technicalDatas) {
+                        technicalDatas.clear()
+                        technicalDatas.addAll(it)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+            } catch (e: Exception) {
+                runOnUiThread { loading.cancel() }
+                runOnUiThread {
+                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                }
+                e.printStackTrace()
+            } finally {
+
+            }
         }
-//        delayAction {
-//            CommonMockup.MockupData<TechnicalData>().forEach { vd ->
-//                if (vd.materialShipId == materialShip.Id) {
-//                    technicalDatas.add(0, vd)
-//                    adapter.notifyDataSetChanged()
-//                }
-//            }
-//        }
     }
 
-    fun add(s: TechnicalData) {
+    fun add(s: GDSTTechnicalData) {
         technicalDatas.add(0, s)
         adapter.notifyDataSetChanged()
     }
@@ -129,35 +156,12 @@ class TechnicalDataActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = {
-            showAlertConfirm(
-                "Bạn có chắc muốn xóa [#${
-                it.Id.toString()
-                    .padStart(Config.padSize, '0')
-                }] hay không?",
-                {
-                    delayAction {
-                        if (CommonMockup.MockupDelete(it)) {
-                            removeTechnicalDataView(it)
-                            showAlertConfirm("Đã xóa thành công")
-                        }
-                    }
-                }
-            )
-        }
-
         adapter.onClick = { start(it) }
     }
 
-    private fun removeTechnicalDataView(ship: TechnicalData) {
-        val index = technicalDatas.indexOfFirst { it.Id == ship.Id }
-        technicalDatas.removeAt(index)
-        adapter.notifyDataSetChanged()
-    }
-
-    fun start(technicalData: TechnicalData) {
+    fun start(technicalData: GDSTTechnicalData) {
         val intent = Intent(this, TraceableObjectInformationActivity::class.java)
-        intent.putExtra(TechnicalData::class.java.simpleName, technicalData.Id)
+        intent.putExtra(GDSTTechnicalData::class.java.simpleName, technicalData.id)
         startActivity(intent)
     }
 }

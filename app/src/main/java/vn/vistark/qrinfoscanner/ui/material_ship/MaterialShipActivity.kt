@@ -26,6 +26,7 @@ import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupMaxId
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
+import vn.vistark.qrinfoscanner.domain.api.requests.material_ship.GetMaterialShipBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
@@ -120,17 +121,16 @@ class MaterialShipActivity : AppCompatActivity() {
         loading.show()
         GlobalScope.launch {
             try {
-                val response = ApiService.mAPIServices.getGDSTMaterialShip().await()
+                val response = ApiService.mAPIServices.getGDSTMaterialShip(
+                    GetMaterialShipBody(materialBatchId)
+                ).await()
                 runOnUiThread { loading.cancel() }
                 if (response == null)
                     throw Exception("Không phân dải được KQ trả về")
 
                 runOnUiThread {
-//                    updateCount(response.size)
-                    response.forEach { mtb ->
-                        if (mtb.materialId == materialBatchId)
-                            add(mtb)
-                    }
+                    materialShips.addAll(response)
+                    adapter.notifyDataSetChanged()
 
                     if (materialShips.isEmpty()) {
                         cfabIvIcon.performClick()
