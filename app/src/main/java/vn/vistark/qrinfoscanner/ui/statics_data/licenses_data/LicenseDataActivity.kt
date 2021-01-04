@@ -35,7 +35,7 @@ class LicenseDataActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = { cl ->
+        adapter.onEdit = { cl ->
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu giấy phép số [${cl.harvestCertification}] hay không?",
                 {

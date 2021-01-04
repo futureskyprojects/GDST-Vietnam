@@ -6,19 +6,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
-import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 import java.util.*
 
 class MaterialShipHolder(v: View) : RecyclerView.ViewHolder(v) {
     val ilmsLnRoot: LinearLayout = v.findViewById(R.id.ilmsLnRoot)
-    val ilmsdIvDeleteIcon: ImageView = v.findViewById(R.id.ilmsdIvDeleteIcon)
+    val ilmsdIvEditIcon: ImageView = v.findViewById(R.id.ilmsdIvEditIcon)
 
     private val ilmsTvMaterialShipId: TextView = v.findViewById(R.id.ilmsTvMaterialShipId)
     private val ilmsTvMaterialShipname: TextView = v.findViewById(R.id.ilmsTvMaterialShipname)

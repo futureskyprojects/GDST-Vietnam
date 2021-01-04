@@ -45,8 +45,8 @@
                 android:id="@+id/ilmsTvMaterialShipname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ilmsdIvDeleteIcon"
-                android:layout_toLeftOf="@id/ilmsdIvDeleteIcon"
+                android:layout_toStartOf="@id/ilmsdIvEditIcon"
+                android:layout_toLeftOf="@id/ilmsdIvEditIcon"
                 android:gravity="center"
                 android:text="----------------------"
                 android:textColor="#FFF"
@@ -54,7 +54,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ilmsdIvDeleteIcon"
+                android:id="@+id/ilmsdIvEditIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -64,7 +64,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/delete_icon_white" />
+                android:src="@drawable/icon_edit_white" />
         </RelativeLayout>
 
     </RelativeLayout>

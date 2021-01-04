@@ -176,7 +176,7 @@ class MaterialBatchActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = {
+        adapter.onEdit = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu lô nguyên liệu [#${
                 it.id.toString()

@@ -46,8 +46,8 @@
                 android:id="@+id/ilvTvVesselOwnerName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ilvdIvDeleteIcon"
-                android:layout_toLeftOf="@id/ilvdIvDeleteIcon"
+                android:layout_toStartOf="@id/ilvdIvEditIcon"
+                android:layout_toLeftOf="@id/ilvdIvEditIcon"
                 android:gravity="center"
                 android:text="----------"
                 android:textColor="#FFF"
@@ -55,7 +55,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ilvdIvDeleteIcon"
+                android:id="@+id/ilvdIvEditIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -65,7 +65,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/delete_icon_white" />
+                android:src="@drawable/icon_edit_white" />
         </RelativeLayout>
 
     </RelativeLayout>

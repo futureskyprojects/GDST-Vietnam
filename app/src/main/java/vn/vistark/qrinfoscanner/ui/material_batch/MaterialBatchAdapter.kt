@@ -15,7 +15,7 @@ class MaterialBatchAdapter(private val materialBatchs: ArrayList<GDSTMaterialBac
     IDeletable<GDSTMaterialBacth> {
 
     override var onClick: ((GDSTMaterialBacth) -> Unit)? = null
-    override var onDelete: ((GDSTMaterialBacth) -> Unit)? = null
+    override var onEdit: ((GDSTMaterialBacth) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialBatchHolder {
         val v = LayoutInflater.from(parent.context)
@@ -31,8 +31,8 @@ class MaterialBatchAdapter(private val materialBatchs: ArrayList<GDSTMaterialBac
         val materialBatch = materialBatchs[position]
         holder.bind(materialBatch)
 
-        holder.ilmIvDeleteIcon.clickAnimate {
-            onDelete?.invoke(materialBatch)
+        holder.ilmIvEditIcon.clickAnimate {
+            onEdit?.invoke(materialBatch)
         }
         holder.ilmLnRoot.clickAnimate {
             onClick?.invoke(materialBatch)

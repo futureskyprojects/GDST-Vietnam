@@ -59,6 +59,12 @@
             <include layout="@layout/component_float_add_btn" />
         </RelativeLayout>
 
+        <include
+            android:id="@+id/atdTopSearchBar"
+            layout="@layout/component_top_search_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/atdRvVessels"
             android:layout_width="match_parent"

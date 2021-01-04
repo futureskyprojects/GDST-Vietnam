@@ -14,7 +14,7 @@ class ShipmentAdapter(private val shipments: ArrayList<GDSTShipment>) :
     RecyclerView.Adapter<ShipmentViewHolder>(), IClickable<GDSTShipment>, IDeletable<GDSTShipment> {
 
     override var onClick: ((GDSTShipment) -> Unit)? = null
-    override var onDelete: ((GDSTShipment) -> Unit)? = null
+    override var onEdit: ((GDSTShipment) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShipmentViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -30,8 +30,8 @@ class ShipmentAdapter(private val shipments: ArrayList<GDSTShipment>) :
         val shipment = shipments[position]
         holder.bind(shipment)
 
-        holder.ilsIvDeleteIcon.clickAnimate {
-            onDelete?.invoke(shipment)
+        holder.ilsIvEditIcon.clickAnimate {
+            onEdit?.invoke(shipment)
         }
 
         holder.ilsLnRoot.clickAnimate {

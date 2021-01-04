@@ -45,8 +45,8 @@
                 android:id="@+id/iltdTvEventDateAndGeo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/iltdIvDeleteIcon"
-                android:layout_toLeftOf="@id/iltdIvDeleteIcon"
+                android:layout_toStartOf="@id/iltdIvEditIcon"
+                android:layout_toLeftOf="@id/iltdIvEditIcon"
                 android:gravity="center"
                 android:text="12:00 12-12-2020 GMT+7 (FA061)"
                 android:textAllCaps="true"
@@ -55,7 +55,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/iltdIvDeleteIcon"
+                android:id="@+id/iltdIvEditIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -65,7 +65,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/delete_icon_white" />
+                android:src="@drawable/icon_edit_white" />
         </RelativeLayout>
 
     </RelativeLayout>

@@ -24,6 +24,7 @@ import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.C
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
+import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
@@ -161,7 +162,11 @@ class TechnicalDataActivity : AppCompatActivity() {
 
     fun start(technicalData: GDSTTechnicalData) {
         val intent = Intent(this, TraceableObjectInformationActivity::class.java)
-        intent.putExtra(GDSTTechnicalData::class.java.simpleName, technicalData.id)
+        intent.putExtra(TechnicalData::class.java.simpleName, technicalData.id)
+        intent.putExtra(
+            GDSTInfomationFishUp::class.java.simpleName,
+            technicalData.informationFishingUp
+        )
         startActivity(intent)
     }
 }

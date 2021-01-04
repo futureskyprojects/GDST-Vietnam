@@ -7,17 +7,12 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
-import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
-import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
-import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
 
 class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val iltdLnRoot: LinearLayout = v.findViewById(R.id.iltdLnRoot)
-    val iltdIvDeleteIcon: ImageView = v.findViewById(R.id.iltdIvDeleteIcon)
+    val iltdIvEditIcon: ImageView = v.findViewById(R.id.iltdIvEditIcon)
 
     val iltdLnTranshipmentRoot: LinearLayout = v.findViewById(R.id.iltdLnTranshipmentRoot)
 
@@ -32,12 +27,12 @@ class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     @SuppressLint("SetTextI18n")
     fun bind(technicalData: GDSTTechnicalData) {
-        iltdTvEventId.text = "#${technicalData.eventId}"
+        iltdTvEventId.text = "#${technicalData.id}"
         iltdTvEventDateAndGeo.text =
-            "${technicalData.eventDate} (${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.geolocationId } ?: "<Rỗng>"})"
+            "${technicalData.eventDate} (${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.geolocationId }?.title ?: "<Rỗng>"})"
         iltdTvLinkingKDE.text = "KDE Liên kết: ${technicalData.KDE}"
         iltdTvProductForm.text =
-            "Dạng sản phẩm: ${GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == technicalData.productFormId } ?: "<Rỗng>"}"
+            "Dạng sản phẩm: ${GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == technicalData.productFormId }?.title ?: "<Rỗng>"}"
         iltdTvTotalSpices.text = "Tổng số loài: 0"
         iltdTvTotalSpiceQuantify.text = "Tổng khối lượng: 0 (KG)"
 
@@ -45,7 +40,7 @@ class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
             iltdLnTranshipmentRoot.visibility = View.VISIBLE
             iltdTvTranshipmentDate.text = "Ngày giờ chuyển tải: ${technicalData.dateTransshipment}"
             iltdTvTranshipmentLocation.text =
-                "Vị trí chuyển tải: ${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.loactionTransshipmentId } ?: "<Rỗng>"}"
+                "Vị trí chuyển tải: ${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.loactionTransshipmentId }?.title ?: "<Rỗng>"}"
         }
     }
 

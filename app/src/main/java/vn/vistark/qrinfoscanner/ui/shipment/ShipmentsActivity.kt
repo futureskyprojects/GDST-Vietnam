@@ -68,7 +68,7 @@ class ShipmentsActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = {
+        adapter.onEdit = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu lô hàng [#${
                     it.id.toString()

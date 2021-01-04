@@ -45,8 +45,8 @@
                 android:id="@+id/iltoiTvSpiceName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/iltoiIvDeleteIcon"
-                android:layout_toLeftOf="@id/iltoiIvDeleteIcon"
+                android:layout_toStartOf="@id/iltoiIvEditIcon"
+                android:layout_toLeftOf="@id/iltoiIvEditIcon"
                 android:ellipsize="marquee"
                 android:gravity="center"
                 android:marqueeRepeatLimit="marquee_forever"
@@ -58,7 +58,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/iltoiIvDeleteIcon"
+                android:id="@+id/iltoiIvEditIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -68,7 +68,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/delete_icon_white" />
+                android:src="@drawable/icon_edit_white" />
         </RelativeLayout>
 
     </RelativeLayout>

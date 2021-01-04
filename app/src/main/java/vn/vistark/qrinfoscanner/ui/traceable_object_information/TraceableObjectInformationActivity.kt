@@ -5,23 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_traceable_object_information.*
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
-import vn.vistark.qrinfoscanner.domain.mock_entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
-import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
-import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
-import vn.vistark.qrinfoscanner.helpers.alert_helper.TOI.TOIUpdateDialog.Companion.showUpdateTraceableObjectInformationAlert
+import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 
 class TraceableObjectInformationActivity : AppCompatActivity() {
-    private lateinit var technicalData: TechnicalData
+    private var specials: ArrayList<GDSTInfomationFishUp> = ArrayList()
 
-    private val tois = ArrayList<TraceableObjectInformation>()
     private lateinit var adapter: TOIAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,19 +28,19 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
         initRecyclerView()
 
-        initMockData()
-
         initDataEvents()
 
     }
 
     @SuppressLint("SetTextI18n")
     private fun initTranshipmentData() {
+        val specialData =
+            intent.getStringExtra(GDSTInfomationFishUp::class.java.simpleName) ?: ""
+
         val technicalDataId =
             intent.getIntExtra(TechnicalData::class.java.simpleName, -1)
-        technicalData = CommonMockup.MockupGet(technicalDataId) ?: TechnicalData()
 
-        if (technicalData.Id <= 0) {
+        if (specialData.isEmpty() || technicalDataId <= 0) {
             Toast.makeText(
                 this,
                 "Không thể xác định thông tin kỹ thuật của mẻ lưới được chọn",
@@ -55,78 +50,41 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
             finish()
             return
         }
+
+        try {
+            val tempSpecials = ArrayList(
+                Gson().fromJson(
+                    specialData,
+                    Array<GDSTInfomationFishUp>::class.java
+                ).toList()
+            )
+            specials.addAll(tempSpecials)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
         atoiTvLabel.text =
-            "Thông tin truy xuất [#${technicalData.Id.toString().padStart(Config.padSize, '0')}]"
+            "Thông tin sản lượng [#${technicalDataId.toString().padStart(Config.padSize, '0')}]"
     }
 
     private fun initEvents() {
         atoiBackButton.clickAnimate {
             onBackPressed()
         }
-        FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
-            showUpdateTraceableObjectInformationAlert({ toiData ->
-                if (toiData != null) {
-                    toiData.technicalDataId = technicalData.Id
-                    delayAction {
-                        if (CommonMockup.MockupCreate(toiData, { false })) {
-                            toiData.Id = CommonMockup.MockupMaxId<TechnicalData>()
-                            add(toiData)
-                            Toast.makeText(
-                                this,
-                                "Thêm thông tin truy xuất thành công",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                        }
-                    }
-                }
-            })
-        }
-    }
 
-    private fun initMockData() {
-        delayAction {
-            CommonMockup.MockupData<TraceableObjectInformation>().forEach { vd ->
-                if (vd.technicalDataId == technicalData.Id) add(vd)
-            }
-        }
-    }
-
-    fun add(s: TraceableObjectInformation) {
-        tois.add(0, s)
-        adapter.notifyDataSetChanged()
     }
 
     private fun initRecyclerView() {
         atoiRvVessels.setHasFixedSize(true)
         atoiRvVessels.layoutManager = LinearLayoutManager(this)
 
-        adapter = TOIAdapter(tois)
+        adapter = TOIAdapter(specials)
         atoiRvVessels.adapter = adapter
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = {
-            showAlertConfirm(
-                "Bạn có chắc muốn xóa [#${it.Id.toString()
-                    .padStart(Config.padSize, '0')}] hay không?",
-                {
-                    delayAction {
-                        if (CommonMockup.MockupDelete(it)) {
-                            removeTraceableObjectInformationView(it)
-                            showAlertConfirm("Đã xóa thành công")
-                        }
-                    }
-                }
-            )
-        }
-
         adapter.onClick = { }
     }
 
-    private fun removeTraceableObjectInformationView(ship: TraceableObjectInformation) {
-        val index = tois.indexOfFirst { it.Id == ship.Id }
-        tois.removeAt(index)
-        adapter.notifyDataSetChanged()
-    }
+
 }

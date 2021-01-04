@@ -22,7 +22,7 @@ class LicenseDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val ilcalTvHumanWelfarePolicyStandards: TextView =
         v.findViewById(R.id.ilcalTvHumanWelfarePolicyStandards)
 
-    val ilcalIvDeleteIcon: ImageView = v.findViewById(R.id.ilcalIvDeleteIcon)
+    val ilcalIvEditIcon: ImageView = v.findViewById(R.id.ilcalIvEditIcon)
 
     fun bind(license: CertificationAndLicense) {
         setHarvestCertification(license)

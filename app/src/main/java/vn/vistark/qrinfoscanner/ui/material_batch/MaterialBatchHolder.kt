@@ -8,13 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
-import vn.vistark.qrinfoscanner.domain.mock_entities.RawMaterialBatch
 
 class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     val ilmLnRoot: LinearLayout = v.findViewById(R.id.ilmLnRoot)
     private val ilmTvMaterialBatchId: TextView = v.findViewById(R.id.ilmTvMaterialBatchId)
     private val ilmTvMaterialBatchName: TextView = v.findViewById(R.id.ilmTvMaterialBatchName)
-    val ilmIvDeleteIcon: ImageView = v.findViewById(R.id.ilmIvDeleteIcon)
+    val ilmIvEditIcon: ImageView = v.findViewById(R.id.ilmIvEditIcon)
     private val ilmTvTotalWeightCount: TextView = v.findViewById(R.id.ilmTvTotalWeightCount)
     private val ilmTotalVesselCount: TextView = v.findViewById(R.id.ilmTotalVesselCount)
     private val ilmTvTotalSpiceCount: TextView = v.findViewById(R.id.ilmTvTotalSpiceCount)

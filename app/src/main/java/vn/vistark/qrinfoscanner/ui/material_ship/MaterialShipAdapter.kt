@@ -15,7 +15,7 @@ class MaterialShipAdapter(private val materialships: ArrayList<GDSTMaterialShip>
     IDeletable<GDSTMaterialShip> {
 
     override var onClick: ((GDSTMaterialShip) -> Unit)? = null
-    override var onDelete: ((GDSTMaterialShip) -> Unit)? = null
+    override var onEdit: ((GDSTMaterialShip) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MaterialShipHolder {
         val v = LayoutInflater.from(parent.context)
@@ -31,8 +31,8 @@ class MaterialShipAdapter(private val materialships: ArrayList<GDSTMaterialShip>
         val materialBatch = materialships[position]
         holder.bind(materialBatch)
 
-        holder.ilmsdIvDeleteIcon.clickAnimate {
-            onDelete?.invoke(materialBatch)
+        holder.ilmsdIvEditIcon.clickAnimate {
+            onEdit?.invoke(materialBatch)
         }
         holder.ilmsLnRoot.clickAnimate {
             onClick?.invoke(materialBatch)

@@ -167,7 +167,7 @@ class MaterialShipActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-//        adapter.onDelete = {
+//        adapter.onEdit = {
 //            showAlertConfirm(
 //                "Bạn có chắc muốn xóa tàu nguyên liệu [#${
 //                    it.id.toString()

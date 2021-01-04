@@ -15,7 +15,7 @@ import java.util.*
 class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val ilsLnRoot: LinearLayout = v.findViewById(R.id.ilvLnRoot)
     private val ilvIvVesselFlag: ImageView = v.findViewById(R.id.ilvIvVesselFlag)
-    val ilvdIvDeleteIcon: ImageView = v.findViewById(R.id.ilvdIvDeleteIcon)
+    val ilvdIvEditIcon: ImageView = v.findViewById(R.id.ilvdIvEditIcon)
     private val ilvTvVesselOwnerName: TextView = v.findViewById(R.id.ilvTvVesselOwnerName)
     private val ilvTvVesselRegistration: TextView = v.findViewById(R.id.ilvTvVesselRegistration)
     private val ilvTvVesselCoordinates: TextView = v.findViewById(R.id.ilvTvVesselCoordinates)

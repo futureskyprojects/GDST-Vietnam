@@ -14,7 +14,7 @@ class VesselDataAdapter(private val vesselDatas: ArrayList<VesselData>) :
     IDeletable<VesselData> {
 
     override var onClick: ((VesselData) -> Unit)? = null
-    override var onDelete: ((VesselData) -> Unit)? = null
+    override var onEdit: ((VesselData) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VesselDataViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -33,8 +33,8 @@ class VesselDataAdapter(private val vesselDatas: ArrayList<VesselData>) :
         holder.ilsLnRoot.clickAnimate {
             onClick?.invoke(vesselData)
         }
-        holder.ilvdIvDeleteIcon.clickAnimate {
-            onDelete?.invoke(vesselData)
+        holder.ilvdIvEditIcon.clickAnimate {
+            onEdit?.invoke(vesselData)
         }
     }
 

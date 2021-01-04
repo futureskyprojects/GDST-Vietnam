@@ -45,8 +45,8 @@
                 android:id="@+id/ilsTvShipmentName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ilsIvDeleteIcon"
-                android:layout_toLeftOf="@id/ilsIvDeleteIcon"
+                android:layout_toStartOf="@id/ilsIvEditIcon"
+                android:layout_toLeftOf="@id/ilsIvEditIcon"
                 android:gravity="center"
                 android:text="Lô hàng ngày 14-03-2021"
                 android:textColor="#FFF"
@@ -54,7 +54,7 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/ilsIvDeleteIcon"
+                android:id="@+id/ilsIvEditIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
@@ -64,7 +64,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/delete_icon_white" />
+                android:src="@drawable/icon_edit_white" />
         </RelativeLayout>
 
     </RelativeLayout>

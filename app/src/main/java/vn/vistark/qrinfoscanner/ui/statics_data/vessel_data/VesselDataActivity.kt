@@ -41,7 +41,7 @@ class VesselDataActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-        adapter.onDelete = {
+        adapter.onEdit = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu tàu mang số đăng ký [${it.vesselRegistration}] hay không?",
                 {

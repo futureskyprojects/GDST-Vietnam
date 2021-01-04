@@ -9,10 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.mock_entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.NumberExtension.Companion.round
+import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 
 class TOIViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val iltoiLnRoot: LinearLayout = v.findViewById(R.id.iltoiLnRoot)
-    val iltoiIvDeleteIcon: ImageView = v.findViewById(R.id.iltoiIvDeleteIcon)
+    val iltoiIvEditIcon: ImageView = v.findViewById(R.id.iltoiIvEditIcon)
 
     private val iltoiTvId: TextView = v.findViewById(R.id.iltoiTvId)
     private val iltoiTvSpiceName: TextView = v.findViewById(R.id.iltoiTvSpiceName)
@@ -21,7 +22,7 @@ class TOIViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     private val iltoiTvWeight: TextView = v.findViewById(R.id.iltoiTvWeight)
 
     @SuppressLint("SetTextI18n")
-    fun bind(toi: TraceableObjectInformation) {
+    fun bind(toi: GDSTInfomationFishUp) {
         iltoiTvId.text = "#${toi.Id}"
         iltoiTvSpiceName.text = toi.fishData.viName + "(${toi.fishData.globalName})"
         iltoiTvSpiceName.isSelected = true

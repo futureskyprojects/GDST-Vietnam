@@ -9,11 +9,8 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.api.RetrofitClient
 import vn.vistark.qrinfoscanner.domain.constants.Config
-import vn.vistark.qrinfoscanner.domain.mock_entities.Shipment
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.helpers.QRGenerator.Companion.ShowQR
 import vn.vistark.qrinfoscanner.domain.api.IApiService
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShipment
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertShowImage
@@ -22,7 +19,7 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val ilsLnRoot: LinearLayout = v.findViewById(R.id.ilsLnRoot)
     private val ilsTvShipmentId: TextView = v.findViewById(R.id.ilsTvShipmentId)
     private val ilsTvShipmentName: TextView = v.findViewById(R.id.ilsTvShipmentName)
-    val ilsIvDeleteIcon: ImageView = v.findViewById(R.id.ilsIvDeleteIcon)
+    val ilsIvEditIcon: ImageView = v.findViewById(R.id.ilsIvEditIcon)
     private val ilsTvMaterialBathCount: TextView = v.findViewById(R.id.ilsTvMaterialBathCount)
     private val ilsTvTotalWeightCount: TextView = v.findViewById(R.id.ilsTvTotalWeightCount)
     private val ilsTotalVesselCount: TextView = v.findViewById(R.id.ilsTotalVesselCount)

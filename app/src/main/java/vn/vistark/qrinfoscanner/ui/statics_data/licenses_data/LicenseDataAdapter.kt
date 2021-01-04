@@ -14,7 +14,7 @@ class LicenseDataAdapter(private val licenses: ArrayList<CertificationAndLicense
     IDeletable<CertificationAndLicense> {
 
     override var onClick: ((CertificationAndLicense) -> Unit)? = null
-    override var onDelete: ((CertificationAndLicense) -> Unit)? = null
+    override var onEdit: ((CertificationAndLicense) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LicenseDataViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -33,8 +33,8 @@ class LicenseDataAdapter(private val licenses: ArrayList<CertificationAndLicense
             onClick?.invoke(license)
         }
 
-        holder.ilcalIvDeleteIcon.clickAnimate {
-            onDelete?.invoke(license)
+        holder.ilcalIvEditIcon.clickAnimate {
+            onEdit?.invoke(license)
         }
     }
 

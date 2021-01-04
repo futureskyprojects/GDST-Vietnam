@@ -14,7 +14,7 @@ class TechnicalDataAdapter(private val teachnicalDatas: ArrayList<GDSTTechnicalD
     IDeletable<GDSTTechnicalData> {
 
     override var onClick: ((GDSTTechnicalData) -> Unit)? = null
-    override var onDelete: ((GDSTTechnicalData) -> Unit)? = null
+    override var onEdit: ((GDSTTechnicalData) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TechnicalDataViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -30,8 +30,8 @@ class TechnicalDataAdapter(private val teachnicalDatas: ArrayList<GDSTTechnicalD
         val teachnicalData = teachnicalDatas[position]
         holder.bind(teachnicalData)
 
-        holder.iltdIvDeleteIcon.clickAnimate {
-            onDelete?.invoke(teachnicalData)
+        holder.iltdIvEditIcon.clickAnimate {
+            onEdit?.invoke(teachnicalData)
         }
         holder.iltdLnRoot.clickAnimate {
             onClick?.invoke(teachnicalData)
