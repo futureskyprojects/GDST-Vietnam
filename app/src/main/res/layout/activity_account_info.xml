@@ -14,7 +14,7 @@
         android:layout_width="87.5dp"
         android:layout_height="87.5dp"
         android:layout_gravity="center"
-        android:layout_marginTop="-60dp">
+        android:layout_marginTop="-40dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/aaiCivAvatar"

@@ -33,8 +33,12 @@ class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         iltdTvLinkingKDE.text = "KDE Liên kết: ${technicalData.KDE}"
         iltdTvProductForm.text =
             "Dạng sản phẩm: ${GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == technicalData.productFormId }?.title ?: "<Rỗng>"}"
-        iltdTvTotalSpices.text = "Tổng số loài: 0"
-        iltdTvTotalSpiceQuantify.text = "Tổng khối lượng: 0 (KG)"
+        iltdTvTotalSpices.text =
+            "Tổng số loài: " + technicalData.informationFishingUpObject.count { x -> x.quantification > 0 }
+        iltdTvTotalSpiceQuantify.text =
+            "Tổng khối lượng: ${
+                technicalData.informationFishingUpObject.map { it.quantification }.sum()
+            } (KG)"
 
         if (technicalData.isTrasshipment == 1) {
             iltdLnTranshipmentRoot.visibility = View.VISIBLE

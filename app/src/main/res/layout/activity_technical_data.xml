@@ -41,7 +41,7 @@
                     android:paddingLeft="4dp"
                     android:paddingEnd="6dp"
                     android:paddingRight="6dp"
-                    android:src="@drawable/ic_left_arrow" />
+                    android:src="@drawable/save_ic" />
 
                 <TextView
                     android:id="@+id/atdTvLabel"

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GDSTInfomationFishUp(
     @SerializedName("quantification")
-    var quantification: Int = 0,
+    var quantification: Float = 0F,
     @SerializedName("spice_id")
     var spiceId: Int = 0,
     @SerializedName("unit")

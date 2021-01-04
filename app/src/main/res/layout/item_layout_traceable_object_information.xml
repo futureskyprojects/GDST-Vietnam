@@ -1,154 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/iltoiLnRoot"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16sp"
-    android:layout_marginTop="12dp"
-    android:orientation="vertical">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <LinearLayout
-            android:id="@+id/ilvLnTopLeftLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/prdark_top_round"
-            android:paddingHorizontal="12dp">
-
-            <TextView
-                android:id="@+id/iltoiTvId"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="#123321"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/ilvLnTopLeftLayout"
-            android:layout_toRightOf="@id/ilvLnTopLeftLayout"
-            android:background="@drawable/prdark_topright_round"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/iltoiTvSpiceName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_toStartOf="@id/iltoiIvEditIcon"
-                android:layout_toLeftOf="@id/iltoiIvEditIcon"
-                android:ellipsize="marquee"
-                android:gravity="center"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
-                android:text="Cá ngừ vây vàng"
-                android:textAllCaps="true"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/iltoiIvEditIcon"
-                android:layout_width="32dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingVertical="5dp"
-                android:src="@drawable/icon_edit_white" />
-        </RelativeLayout>
-
-    </RelativeLayout>
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="@dimen/card_round_radius"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
+        android:id="@+id/iltoiLnRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/prdark_border_bottom_round"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
+                android:id="@+id/iltoiIvSpecialPhoto"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_gravity="center"
-                android:src="@drawable/next_content" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/holder" />
 
-            <TextView
-                android:id="@+id/iltoiTvProductForm"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="Dạng sản phẩm: Loin"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/iltoiTvSpecialName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:text="Tên loài cá"
+                    android:textAllCaps="true"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginVertical="5dp"
+                    android:background="#e6e6e6" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toLeftOf="@id/iltoiLayoutUnit"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/iltoiTvSpecialWeightLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:text="Sản lượng (KG)"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/iltoiEdtSpecialWeight"
+                        style="@style/EditText.Default"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Sản lượng"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="8dp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
 
-            <TextView
-                android:id="@+id/iltoiTvLinkingKDE"
-                android:layout_width="match_parent"
+            <include
+                android:id="@+id/iltoiLayoutUnit"
+                layout="@layout/item_layout_componet_text_only"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="KDE Liên kết: 12141"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp">
-
-            <ImageView
-                android:layout_width="@dimen/dot_icon_size"
-                android:layout_height="@dimen/dot_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/next_content" />
-
-            <TextView
-                android:id="@+id/iltoiTvWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingHorizontal="8dp"
-                android:text="Khối lượng: 500 (Kg)"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_small"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:layout_alignParentRight="true"
+                android:visibility="gone" />
+        </RelativeLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>

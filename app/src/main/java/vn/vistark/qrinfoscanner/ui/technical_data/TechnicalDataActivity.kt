@@ -37,6 +37,8 @@ import vn.vistark.qrinfoscanner.ui.traceable_object_information.TraceableObjectI
 class TechnicalDataActivity : AppCompatActivity() {
     private var materialShipId: Int = -1
 
+    private val requestSpecialCode = 11122
+
     private val technicalDatas = ArrayList<GDSTTechnicalData>()
     private lateinit var adapter: TechnicalDataAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -167,6 +169,13 @@ class TechnicalDataActivity : AppCompatActivity() {
             GDSTInfomationFishUp::class.java.simpleName,
             technicalData.informationFishingUp
         )
-        startActivity(intent)
+        startActivityForResult(intent, requestSpecialCode)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == requestSpecialCode && resultCode == RESULT_OK) {
+            syncTechnicalData()
+        }
     }
 }

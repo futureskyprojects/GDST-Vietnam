@@ -352,6 +352,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginTop="16dp"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
                         android:checked="false"
                         android:text="Có chuyển tải" />
 

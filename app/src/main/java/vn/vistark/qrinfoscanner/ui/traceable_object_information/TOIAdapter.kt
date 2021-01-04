@@ -5,16 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.onChanged
 import vn.vistark.qrinfoscanner.core.interfaces.IClickable
 import vn.vistark.qrinfoscanner.core.interfaces.IDeletable
 import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 
 class TOIAdapter(private val tois: ArrayList<GDSTInfomationFishUp>) :
-    RecyclerView.Adapter<TOIViewHolder>(), IClickable<GDSTInfomationFishUp>,
-    IDeletable<GDSTInfomationFishUp> {
+    RecyclerView.Adapter<TOIViewHolder>() {
 
-    override var onClick: ((GDSTInfomationFishUp) -> Unit)? = null
-    override var onEdit: ((GDSTInfomationFishUp) -> Unit)? = null
+    var onWeightChange: ((GDSTInfomationFishUp) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TOIViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -30,11 +29,9 @@ class TOIAdapter(private val tois: ArrayList<GDSTInfomationFishUp>) :
         val toi = tois[position]
         holder.bind(toi)
 
-        holder.iltoiIvEditIcon.clickAnimate {
-            onEdit?.invoke(toi)
-        }
-        holder.iltoiLnRoot.clickAnimate {
-            onClick?.invoke(toi)
+        holder.iltoiEdtSpecialWeight.onChanged {
+            toi.quantification = holder.iltoiEdtSpecialWeight.text.toString().toFloatOrNull() ?: 0F
+            onWeightChange?.invoke(toi)
         }
     }
 

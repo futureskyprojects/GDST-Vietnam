@@ -1,11 +1,15 @@
-package vn.vistark.qrinfoscanner.domain.entities
+package vn.vistark.qrinfoscanner.domain.DTOs
+
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
+import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
+import java.lang.Exception
 
-class GDSTTechnicalData(
-    @SerializedName("id")
-    var id: Int = 0,
+data class GDSTTechnicalDataUpdateDTO(
+    @SerializedName("technical_id")
+    var technicalId: Int = 0,
     @SerializedName("date_transshipment")
     var dateTransshipment: String = "",
     @SerializedName("event_date")
@@ -38,4 +42,30 @@ class GDSTTechnicalData(
                 Array<GDSTInfomationFishUp>::class.java
             ).toList()
         )
+
+    companion object {
+        fun mapFrom(obj: GDSTTechnicalData): GDSTTechnicalDataUpdateDTO {
+            val temp = GDSTTechnicalDataUpdateDTO(
+                obj.id,
+                obj.dateTransshipment,
+                obj.eventDate,
+                obj.eventId,
+                obj.geolocationId,
+                obj.isTrasshipment,
+                obj.KDE,
+                obj.loactionTransshipmentId,
+                obj.materialShipId,
+                obj.productFormId,
+                obj.informationFishingUp,
+                obj.eventQuantification
+            )
+            try {
+                temp.dateTransshipment = temp.dateTransshipment.split(" ").first()
+                temp.eventDate = temp.eventDate.split(" ").first()
+            } catch (e: Exception) {
+
+            }
+            return temp
+        }
+    }
 }

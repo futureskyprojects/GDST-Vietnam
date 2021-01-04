@@ -2,32 +2,41 @@ package vn.vistark.qrinfoscanner.ui.traceable_object_information
 
 import android.annotation.SuppressLint
 import android.view.View
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.activity_account_info.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.mock_entities.TraceableObjectInformation
 import vn.vistark.qrinfoscanner.core.extensions.NumberExtension.Companion.round
+import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 
 class TOIViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     val iltoiLnRoot: LinearLayout = v.findViewById(R.id.iltoiLnRoot)
-    val iltoiIvEditIcon: ImageView = v.findViewById(R.id.iltoiIvEditIcon)
+    val iltoiIvSpecialPhoto: ImageView = v.findViewById(R.id.iltoiIvSpecialPhoto)
 
-    private val iltoiTvId: TextView = v.findViewById(R.id.iltoiTvId)
-    private val iltoiTvSpiceName: TextView = v.findViewById(R.id.iltoiTvSpiceName)
-    private val iltoiTvProductForm: TextView = v.findViewById(R.id.iltoiTvProductForm)
-    private val iltoiTvLinkingKDE: TextView = v.findViewById(R.id.iltoiTvLinkingKDE)
-    private val iltoiTvWeight: TextView = v.findViewById(R.id.iltoiTvWeight)
+    private val iltoiTvSpecialName: TextView = v.findViewById(R.id.iltoiTvSpecialName)
+    val iltoiEdtSpecialWeight: EditText = v.findViewById(R.id.iltoiEdtSpecialWeight)
+    val iltoiTvSpecialWeightLabel: TextView = v.findViewById(R.id.iltoiTvSpecialWeightLabel)
 
     @SuppressLint("SetTextI18n")
     fun bind(toi: GDSTInfomationFishUp) {
-        iltoiTvId.text = "#${toi.Id}"
-        iltoiTvSpiceName.text = toi.fishData.viName + "(${toi.fishData.globalName})"
-        iltoiTvSpiceName.isSelected = true
-        iltoiTvProductForm.text = "Dạng sản phẩm: ${toi.productForm}"
-        iltoiTvLinkingKDE.text = "KDE Liên kết: ${toi.linkingKDE}"
-        iltoiTvWeight.text = "Khối lượng: ${toi.weightOrQuantity.round(2)} (${toi.unitOfMeasure})"
+        iltoiEdtSpecialWeight.setText(toi.quantification.toString())
+        val gottedSpecial = GDSTStorage.GDSTSpecies?.firstOrNull { x -> x.id == toi.spiceId }
+        iltoiTvSpecialWeightLabel.text = "Sản lượng (${toi.unit})"
+        if (gottedSpecial != null) {
+            Glide.with(iltoiIvSpecialPhoto.context)
+                .load(gottedSpecial.TrueImage())
+                .placeholder(R.drawable.holder)
+                .into(iltoiIvSpecialPhoto)
+            iltoiTvSpecialName.text = gottedSpecial.name
+        } else {
+            iltoiTvSpecialName.text = "Không tìm thấy loài mã #${toi.spiceId}"
+        }
+        iltoiTvSpecialName.isSelected = true
     }
 }

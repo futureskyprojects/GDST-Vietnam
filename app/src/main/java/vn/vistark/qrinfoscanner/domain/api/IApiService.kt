@@ -7,6 +7,7 @@ import vn.vistark.qrinfoscanner.domain.DTOs.*
 import vn.vistark.qrinfoscanner.domain.api.requests.material_batch.GetMaterialBatchBody
 import vn.vistark.qrinfoscanner.domain.api.requests.material_ship.GetMaterialShipBody
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
+import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataDetailBody
 import vn.vistark.qrinfoscanner.domain.api.responses.account.AccountSuccessfulRespone
 import vn.vistark.qrinfoscanner.domain.api.responses.login.LoginSuccessfulResponse
 import vn.vistark.qrinfoscanner.domain.api.responses.material_batch.MaterialBatchCreateSuccessfulResponse
@@ -84,4 +85,16 @@ interface IApiService {
 
     @POST("api/technicals")
     fun getGDSTTechnicalData(@Body body: GetTechnicalDataBody): Call<ArrayList<GDSTTechnicalData>>
+
+    @POST("api/detail-technical")
+    fun getGDSTTechnicalDataDetail(@Body body: GetTechnicalDataDetailBody): Call<ArrayList<GDSTTechnicalData>>
+
+    @POST("api/update-technical")
+    fun postGDSTTechnicalDataUpdate(@Body dto: GDSTTechnicalDataUpdateDTO): Call<Any>
+
+    @POST("api/account/update")
+    fun postGDSTUpdateProfile(@Body dto: GDSTProfileUpdateWithOutPassword): Call<Any>
+
+    @POST("api/account/update")
+    fun postGDSTUpdateProfile(@Body dto: GDSTProfileUpdateWithPassword): Call<Any>
 }
