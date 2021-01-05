@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
-                android:text="Tạo dữ liệu tàu nguyên liệu mới"
+                android:text="@string/t_o_d_li_u_t_u_nguy_n_li_u_m_i"
                 android:textColor="#000"
                 android:textSize="18sp" />
 
@@ -102,7 +102,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:paddingVertical="1dp"
-                        android:text="Chọn tàu nguyên liệu"
+                        android:text="@string/ch_n_t_u_nguy_n_li_u"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -121,7 +121,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Dự án FIP"
+                        android:text="@string/d_n_fip"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -161,7 +161,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Ngày đi"
+                        android:text="@string/nd"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -200,7 +200,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Ngư cụ"
+                        android:text="@string/gear_type"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -239,7 +239,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Phương pháp Khai thác"
+                        android:text="@string/ptkt_clear"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -278,7 +278,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Vị trí lên cá"
+                        android:text="@string/vtlc"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -318,7 +318,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Ngày lên cá"
+                        android:text="@string/ng_y_l_n_c"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -357,7 +357,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginVertical="20dp"
-                        android:text="Hoàn tất" />
+                        android:text="@string/hoan_tat" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

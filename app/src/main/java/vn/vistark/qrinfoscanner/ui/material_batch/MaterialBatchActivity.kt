@@ -121,12 +121,12 @@ class MaterialBatchActivity : AppCompatActivity() {
                 shipmentId
             )
             this.showAlertConfirm(
-                "Bạn thực sự muốn tạo lô nguyên liệu mới số #${
+                getString(R.string.bcmtlnlms) + " #${
                     batch.id.toString().padStart(
                         Config.padSize,
                         '0'
                     )
-                } vào lúc [${Date().Format("HH:mm dd-MM-yyyy")}]",
+                } " + getString(R.string.vao_luc) + " [${Date().Format("HH:mm dd-MM-yyyy")}]",
                 {
                     fastCreate()
                 })

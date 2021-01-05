@@ -94,7 +94,7 @@
     <string name="ktxdtnldc">Cannot identify the material vessel selected</string>
     <string name="ttkt">Technical Data</string>
     <string name="empty"><![CDATA[<Empty>]]></string>
-    <string name="kdelk">Linking KDE</string>
+    <string name="kdelk">"Linking KDE: "</string>
     <string name="tsl">"Total species: "</string>
     <string name="tkl">"Total weight: "</string>
     <string name="kg">KG</string>
@@ -139,4 +139,14 @@
     <string name="hoan_tat">Confirm</string>
     <string name="ntkctk">Enter keywords to search...</string>
     <string name="toa_do">"Coordinates: "</string>
+    <string name="lc">"Landing: "</string>
+    <string name="bctsmtlhms">You really want to create a new shipment number</string>
+    <string name="vao_luc">at</string>
+    <string name="bcmtlnlms">You really want to create a new material batch number</string>
+    <string name="t_o_d_li_u_t_u_nguy_n_li_u_m_i">Create new material ship data</string>
+    <string name="ch_n_t_u_nguy_n_li_u">Choose material vessel</string>
+    <string name="d_n_fip">Project FIP</string>
+    <string name="ptkt_clear">Product Method</string>
+    <string name="vtlc">Landing location</string>
+    <string name="ng_y_l_n_c">Date of landing</string>
 </resources>

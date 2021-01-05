@@ -110,12 +110,12 @@ class ShipmentsActivity : AppCompatActivity() {
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             val shipment = GDSTShipment((shipments.lastOrNull()?.id ?: 0) + 1)
             this.showAlertConfirm(
-                "Bạn thực sự muốn tạo lô hàng mới số #${
+                getString(R.string.bctsmtlhms) + " #${
                     shipment.id.toString().padStart(
                         padSize,
                         '0'
                     )
-                } vào lúc [${Date().Format("HH:mm dd-MM-yyyy")}]",
+                } " + getString(R.string.vao_luc) + " [${Date().Format("HH:mm dd-MM-yyyy")}]",
                 {
                     // Tạo bitmap
                     val path =

@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Số đăng ký tàu: ---------------"
+                android:text="@string/sdkt"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="VMS: ---------------"
+                android:text="@string/vms"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Cấp phép kh.thác: ---------------"
+                android:text="@string/cgpkt"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -176,7 +176,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="GP Kh.thác: ---------------"
+                android:text="@string/gpkt"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Chính sách phúc lợi con người: ---------------"
+                android:text="@string/csplcn"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />
@@ -227,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:paddingHorizontal="8dp"
-                android:text="Tiêu chuẩn phúc lợi con người: ---------------"
+                android:text="@string/tcplcn"
                 android:textColor="@color/card_info_text_color"
                 android:textSize="@dimen/text_small"
                 android:textStyle="bold" />

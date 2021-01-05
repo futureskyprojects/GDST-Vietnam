@@ -95,11 +95,11 @@
     <string name="ktxdtnldc">Không thể xác định tàu nguyên liệu được chọn</string>
     <string name="ttkt">Thông tin kỹ thuật</string>
     <string name="empty"><![CDATA[<Rỗng>]]></string>
-    <string name="kdelk">"KDE Liên kết: "</string>
-    <string name="tsl">"Tổng số loài: "</string>
-    <string name="tkl">"Tổng khối lượng: "</string>
+    <string name="kdelk">KDE Liên kết: </string>
+    <string name="tsl">Tổng số loài: </string>
+    <string name="tkl">Tổng khối lượng: </string>
     <string name="kg">KG</string>
-    <string name="vtct">"Vị trí chuyển tải: "</string>
+    <string name="vtct">Vị trí chuyển tải: </string>
     <string name="sl">Sản lượng</string>
     <string name="kttlm">Không tìm thấy loài mã</string>
     <string name="dldltc">Đã lưu dữ liệu thành công</string>
@@ -108,7 +108,7 @@
     <string name="ttsl">Thông tin sản lượng</string>
     <string name="event_red_point">Vị trí mẻ lưới</string>
     <string name="transhipment_location">Vị trí trung chuyển</string>
-    <string name="ngct">"Ngày và giờ chuyển tải: "</string>
+    <string name="ngct">Ngày và giờ chuyển tải: </string>
     <string name="tc">Trang chủ</string>
     <string name="cn">Cá nhân</string>
     <string name="ttk">Tên Tài khoản</string>
@@ -142,4 +142,13 @@
     <string name="hoan_tat">Hoàn tất</string>
     <string name="ntkctk">Nhập từ khóa cần tìm kiếm...</string>
     <string name="toa_do">Tọa độ:</string>
+    <string name="bctsmtlhms">Bạn thực sự muốn tạo lô hàng mới số</string>
+    <string name="vao_luc">vào lúc</string>
+    <string name="bcmtlnlms">Bạn thực sự muốn tạo lô nguyên liệu mới số</string>
+    <string name="t_o_d_li_u_t_u_nguy_n_li_u_m_i">Tạo dữ liệu tàu nguyên liệu mới</string>
+    <string name="ch_n_t_u_nguy_n_li_u">Chọn tàu nguyên liệu</string>
+    <string name="d_n_fip">Dự án FIP</string>
+    <string name="ptkt_clear">Phương pháp Khai thác</string>
+    <string name="vtlc">Vị trí lên cá</string>
+    <string name="ng_y_l_n_c">Ngày lên cá</string>
 </resources>
