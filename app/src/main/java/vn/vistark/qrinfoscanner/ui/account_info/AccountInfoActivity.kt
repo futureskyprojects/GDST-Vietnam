@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.DisplayMetrics
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -96,7 +97,7 @@ class AccountInfoActivity : AppCompatActivity() {
         }
 
         aaiTvLogout.clickAnimate {
-            showAlertConfirm("Bạn thực sự muốn đăng xuất khỏi phiên làm việc?", {
+            showAlertConfirm(getString(R.string.btsmdxkplv), {
                 logOut()
                 GDSTStorage.CurrentUser = GDSTUserProfile()
 
@@ -105,32 +106,28 @@ class AccountInfoActivity : AppCompatActivity() {
                 finish()
             })
         }
-    }
 
-    fun Context.applyNewLocale(locale: Locale): Context {
-        val config = this.resources.configuration
-        val sysLocale = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            config.locales.get(0)
-        } else {
-            //Legacy
-            config.locale
+        aaiIvLangVI_VN.clickAnimate {
+            changeLanguage("vi")
         }
-        if (sysLocale.language != locale.language) {
-            Locale.setDefault(locale)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                config.setLocale(locale)
-            } else {
-                //Legacy
-                config.locale = locale
-            }
-            resources.updateConfiguration(config, resources.displayMetrics)
+
+        aaiIvLangEN_US.clickAnimate {
+            changeLanguage("en")
         }
-        return this
+
+        if (Config.LanguageCode == "vi")
+            aaiIvLangVI_VN.visibility = View.GONE
+        if (Config.LanguageCode == "en")
+            aaiIvLangEN_US.visibility = View.GONE
     }
 
     fun changeLanguage(langCode: String = "vi") {
-        showAlertConfirm("Ngôn ngữ sẽ được thay đổi sau khi khởi động lại ứng dụng")
         Config.LanguageCode = langCode
+        showAlertConfirm(getString(R.string.dtdnntc), {
+            val intent = Intent(this, AccountInfoActivity::class.java)
+            startActivity(intent)
+            finish()
+        })
     }
 
     override fun attachBaseContext(newBase: Context?) {
@@ -152,11 +149,11 @@ class AccountInfoActivity : AppCompatActivity() {
         val password = aaiEdtPassword.text.toString()
 
         if (fullName.isBlank() || fullName.isEmpty()) {
-            aaiEdtFullName.error = "Vui lòng nhập họ và tên"
+            aaiEdtFullName.error = getString(R.string.vlnhvt)
         }
 
         if (password.isNotEmpty() && password.length < 8) {
-            aaiEdtPassword.error = "Mật khẩu phải đạt tối thiểu 8 ký tự"
+            aaiEdtPassword.error = getString(R.string.mkpdttkt)
         }
 
         val loading = this.showLoadingAlert()
@@ -193,12 +190,12 @@ class AccountInfoActivity : AppCompatActivity() {
                 }
 
                 runOnUiThread {
-                    showAlertConfirm("Cập nhật thông tin tài khoản thành công")
+                    showAlertConfirm(getString(R.string.cntttktc))
                 }
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Cập nhật thông tin tài khoản chưa thành công")
+                    showAlertConfirm(getString(R.string.cntttkctc))
                 }
                 e.printStackTrace()
             } finally {
@@ -225,7 +222,7 @@ class AccountInfoActivity : AppCompatActivity() {
                     uploadBitmap(bmp)
                 } catch (e: Exception) {
                     e.printStackTrace()
-                    Toast.makeText(this, "Lỗi trong quá trình phân giải ảnh", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, getString(R.string.ltqtpga), Toast.LENGTH_SHORT)
                         .show()
                 }
             }
@@ -291,7 +288,7 @@ class AccountInfoActivity : AppCompatActivity() {
                         e.printStackTrace()
                         runOnUiThread { loading.cancel() }
                         runOnUiThread {
-                            showAlertConfirm("Cập nhật ảnh đại diện không thành công (Error: 2)")
+                            showAlertConfirm(getString(R.string.cnaddktc))
                         }
                     }
                 }

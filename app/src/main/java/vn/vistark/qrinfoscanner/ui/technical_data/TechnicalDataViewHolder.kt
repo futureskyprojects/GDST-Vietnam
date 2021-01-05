@@ -31,22 +31,33 @@ class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         iltdTvEventDateAndGeo.text =
             "${
                 technicalData.eventDate.split(" ").first()
-            } (${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.geolocationId }?.title ?: "<Rỗng>"})"
-        iltdTvLinkingKDE.text = "KDE Liên kết: ${technicalData.KDE}"
+            } (${
+                GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.geolocationId }?.title ?: iltdTvEventDateAndGeo.context.getString(
+                    R.string.empty
+                )
+            })"
+        iltdTvLinkingKDE.text =
+            iltdTvLinkingKDE.context.getString(R.string.kdelk) + technicalData.KDE
         iltdTvProductForm.text =
-            "Dạng sản phẩm: ${GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == technicalData.productFormId }?.title ?: "<Rỗng>"}"
+            iltdTvProductForm.context.getString(R.string.dsp) + ": " + (GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == technicalData.productFormId }?.title
+                ?: iltdTvEventDateAndGeo.context.getString(
+                    R.string.empty
+                ))
         iltdTvTotalSpices.text =
-            "Tổng số loài: " + technicalData.informationFishingUpObject.count { x -> x.quantification > 0 }
+            iltdTvTotalSpices.context.getString(R.string.tsl) + technicalData.informationFishingUpObject.count { x -> x.quantification > 0 }
         iltdTvTotalSpiceQuantify.text =
-            "Tổng khối lượng: ${
-                technicalData.informationFishingUpObject.map { it.quantification }.sum()
-            } (KG)"
+            iltdTvTotalSpiceQuantify.context.getString(R.string.tkl) + technicalData.informationFishingUpObject.map { it.quantification }
+                .sum() + " (" + iltdTvTotalSpiceQuantify.context.getString(R.string.kg) + ")"
 
         if (technicalData.isTrasshipment == 1) {
             iltdLnTranshipmentRoot.visibility = View.VISIBLE
-            iltdTvTranshipmentDate.text = "Ngày giờ chuyển tải: ${technicalData.dateTransshipment}"
+            iltdTvTranshipmentDate.text =
+                iltdTvTranshipmentDate.context.getString(R.string.ngct) + technicalData.dateTransshipment
             iltdTvTranshipmentLocation.text =
-                "Vị trí chuyển tải: ${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.loactionTransshipmentId }?.title ?: "<Rỗng>"}"
+                iltdTvTranshipmentLocation.context.getString(R.string.vtct) + (GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.loactionTransshipmentId }?.title
+                    ?: iltdTvEventDateAndGeo.context.getString(
+                        R.string.empty
+                    ))
         }
     }
 

@@ -31,19 +31,23 @@ class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     private fun setMaterialBatchName(name: String) {
-        ilmTvMaterialBatchName.text = "Lô nguyên liệu $name"
+        ilmTvMaterialBatchName.text =
+            ilmTvMaterialBatchName.context.getString(R.string.lnl) + " " + name
     }
 
 
     private fun setTotalWeightCount(float: Float) {
-        ilmTvTotalWeightCount.text = "Kh.Lượng: $float (Tấn)"
+        ilmTvTotalWeightCount.text =
+            ilmTvTotalWeightCount.context.getString(R.string.kl) + float + " (" + ilmTvTotalWeightCount.context.getString(
+                R.string.tone
+            ) + ")"
     }
 
     private fun setTotalVesselCount(count: Int) {
-        ilmTotalVesselCount.text = "Tàu liên kết: $count"
+        ilmTotalVesselCount.text = ilmTotalVesselCount.context.getString(R.string.tlk) + count
     }
 
     private fun setTotalSpiceCount(count: Int) {
-        ilmTvTotalSpiceCount.text = "Tổng loài: $count"
+        ilmTvTotalSpiceCount.text = ilmTvTotalSpiceCount.context.getString(R.string.tl) + count
     }
 }

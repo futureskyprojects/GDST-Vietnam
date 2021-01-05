@@ -27,7 +27,8 @@ class TOIViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     fun bind(toi: GDSTInfomationFishUp) {
         iltoiEdtSpecialWeight.setText(toi.quantification.toString())
         val gottedSpecial = GDSTStorage.GDSTSpecies?.firstOrNull { x -> x.id == toi.spiceId }
-        iltoiTvSpecialWeightLabel.text = "Sản lượng (${toi.unit})"
+        iltoiTvSpecialWeightLabel.text =
+            iltoiTvSpecialWeightLabel.context.getString(R.string.sl) + " (" + toi.unit + ")"
         if (gottedSpecial != null) {
             Glide.with(iltoiIvSpecialPhoto.context)
                 .load(gottedSpecial.TrueImage())
@@ -35,7 +36,8 @@ class TOIViewHolder(v: View) : RecyclerView.ViewHolder(v) {
                 .into(iltoiIvSpecialPhoto)
             iltoiTvSpecialName.text = gottedSpecial.name
         } else {
-            iltoiTvSpecialName.text = "Không tìm thấy loài mã #${toi.spiceId}"
+            iltoiTvSpecialName.text =
+                iltoiTvSpecialName.context.getString(R.string.kttlm) + " #${toi.spiceId}"
         }
         iltoiTvSpecialName.isSelected = true
     }

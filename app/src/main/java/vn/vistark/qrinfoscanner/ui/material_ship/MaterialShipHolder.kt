@@ -26,7 +26,8 @@ class MaterialShipHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     @SuppressLint("SetTextI18n")
     fun bind(materialShip: GDSTMaterialShip) {
-        ilmsTvMaterialShipname.text = "Tàu nguyên liệu #${materialShip.id}"
+        ilmsTvMaterialShipname.text =
+            ilmsTvMaterialShipname.context.getString(R.string.tnl) + " #${materialShip.id}"
         ilmsTvMaterialShipId.text = "#${materialShip.id}"
 
         val fip =
@@ -34,24 +35,24 @@ class MaterialShipHolder(v: View) : RecyclerView.ViewHolder(v) {
                 ?: ""
         ilmsTvFIP.text = "FIP: $fip"
 
-        ilmsTvTripDate.text = "Ngày đi: ${materialShip.dateGo}"
+        ilmsTvTripDate.text = ilmsTvTripDate.context.getString(R.string.nd) + materialShip.dateGo
 
         val gearType =
             GDSTStorage.GDSTGearTypes?.firstOrNull { x -> x.id == materialShip.gearId }?.title ?: ""
 
-        ilmsTvGrearType.text = "Ngư cụ: $gearType"
+        ilmsTvGrearType.text = ilmsTvGrearType.context.getString(R.string.nc) + gearType
 
         val method =
             GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == materialShip.prodctMethod }?.title
                 ?: ""
 
-        ilmsTvProductMethod.text = "Phương thức khai thác: $method"
+        ilmsTvProductMethod.text = ilmsTvProductMethod.context.getString(R.string.ptkt) + method
 
         val location =
             GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == materialShip.upFishing }?.title
                 ?: ""
 
         ilmsTvLanding.text =
-            "Lên cá: $location (${materialShip.dateUpFishing})"
+            ilmsTvLanding.context.getString(R.string.lc) + location + " (" + materialShip.dateUpFishing + ")"
     }
 }

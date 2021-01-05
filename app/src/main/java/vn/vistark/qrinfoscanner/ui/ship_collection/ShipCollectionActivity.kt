@@ -53,7 +53,7 @@ class ShipCollectionActivity : AppCompatActivity() {
     }
 
     private fun updateCount(count: Int = 0) {
-        ascTvName.text = "Dữ liệu tàu ($count)"
+        ascTvName.text = getString(R.string.dlt) + " (" + count + ")"
     }
 
     private fun syncShips() {
@@ -82,7 +82,7 @@ class ShipCollectionActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không lấy được tập dữ liệu tàu có sẵn")
+                    showAlertConfirm(getString(R.string.kldtdlcs))
                 }
                 e.printStackTrace()
             }

@@ -61,7 +61,7 @@ class LicenseUpdateDialog {
                 vh.updateError()
 
                 showSelectBottomSheetAlert(
-                    "Cơ quan cấp phép khai thác",
+                    getString(R.string.cqcpkt),
                     RuntimeStorage.Organizations?.toTypedArray() ?: emptyArray(),
                     R.layout.item_layout_country_organization_alert,
                     { o, v ->
@@ -81,7 +81,7 @@ class LicenseUpdateDialog {
                 vh.updateError()
 
                 showSelectBottomSheetAlert(
-                    "Cơ quan cấp phép trung chuyển",
+                    getString(R.string.cqcptc),
                     RuntimeStorage.Organizations?.toTypedArray() ?: emptyArray(),
                     R.layout.item_layout_country_organization_alert,
                     { o, v ->
@@ -132,21 +132,21 @@ class LicenseUpdateDialog {
                 certificationAndLicense.harvestCertification =
                     vh.accaldEdtHarvestCertification.text.toString()
                 if (certificationAndLicense.harvestCertification.isEmpty()) {
-                    isValidate = vh.updateError("Chưa nhập giấy phép")
-                    vh.accaldEdtHarvestCertification.error = "Chưa nhập giấy phép"
+                    isValidate = vh.updateError(getString(R.string.cngp))
+                    vh.accaldEdtHarvestCertification.error = getString(R.string.cngp)
                 }
 
                 if (fishingAuthorization == null)
-                    isValidate = vh.updateError("Vui lòng chọn cơ quan cấp phép khai thác")
+                    isValidate = vh.updateError(getString(R.string.vlncqcpkt))
 
                 if (transshipmentAuthorization == null)
-                    isValidate = vh.updateError("Vui lòng chọn ơ quan cấp phép trung chuyển")
+                    isValidate = vh.updateError(getString(R.string.vlncqcptc))
 
                 if (existenceOfHumanWelfarePolicy == null)
-                    isValidate = vh.updateError("Có chính sách Phúc lợi con người không?")
+                    isValidate = vh.updateError(getString(R.string.ccsplcnk))
 
                 if (humanWelfarePolicyStandards == null)
-                    isValidate = vh.updateError("Có Tiêu chuẩn Phúc lợi con người không?")
+                    isValidate = vh.updateError(getString(R.string.ctcplcnk))
 
                 if (isValidate) {
                     onCompleted.invoke(certificationAndLicense)

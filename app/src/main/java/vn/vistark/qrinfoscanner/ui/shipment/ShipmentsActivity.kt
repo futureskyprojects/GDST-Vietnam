@@ -122,7 +122,7 @@ class ShipmentsActivity : AppCompatActivity() {
                         "${IApiService.BASE_URL}${Config.qrPath}${shipment.id}"
                     val bmp = QRBitmap(path)
                     if (bmp == null) {
-                        showAlertConfirm("Tạo lô hàng không thành công (Error: 1)")
+                        showAlertConfirm(getString(R.string.tlhktc))
                         return@showAlertConfirm
                     }
 
@@ -163,7 +163,7 @@ class ShipmentsActivity : AppCompatActivity() {
                                     e.printStackTrace()
                                     runOnUiThread { loading.cancel() }
                                     runOnUiThread {
-                                        showAlertConfirm("Tạo lô hàng không thành công (Error: 2)")
+                                        showAlertConfirm(getString(R.string.tlhktc_2))
                                     }
                                 }
                             }
@@ -207,7 +207,7 @@ class ShipmentsActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                    showAlertConfirm(getString(R.string.kldtdlcs))
                 }
                 e.printStackTrace()
             }

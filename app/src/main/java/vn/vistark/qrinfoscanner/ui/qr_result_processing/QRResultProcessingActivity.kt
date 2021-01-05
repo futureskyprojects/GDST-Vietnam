@@ -51,7 +51,7 @@ class QRResultProcessingActivity : AppCompatActivity() {
         IntentIntegrator(this).apply {
             captureActivity = QrScanActivity::class.java // activity custom để thực hiện scan.
             setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
-            setPrompt("Di chuyển camera đến vùng chứa\nmã QR để quét")
+            setPrompt(getString(R.string.dcdvcmqrdq))
             setCameraId(0)
             setBeepEnabled(false)
             setOrientationLocked(true)

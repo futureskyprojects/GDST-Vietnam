@@ -70,7 +70,7 @@ class MaterialShipViewHolder(v: View) {
         fun ShipCollectionViewHolder.select(
             vesselDatas: Array<GDSTShip>?,
             onResult: ((GDSTShip?) -> Unit),
-            dialogName: String = "Chọn thông tin tàu"
+            dialogName: String = this.ilssLnRoot.context.getString(R.string.cttt)
         ) {
             val context = this.ilssLnRoot.context
             context.showSelectBottomSheetAlert(

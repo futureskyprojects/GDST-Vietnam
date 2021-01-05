@@ -53,12 +53,13 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     @SuppressLint("SetTextI18n")
     private fun setShipmentName(name: String) {
-        ilsTvShipmentName.text = "Lô hàng $name"
+        ilsTvShipmentName.text = ilsTvShipmentName.context.getString(R.string.lh) + name
     }
 
     @SuppressLint("SetTextI18n")
     private fun setMaterialBathCount(count: Int) {
-        ilsTvMaterialBathCount.text = "Lô nguyên liệu: $count"
+        ilsTvMaterialBathCount.text =
+            ilsTvMaterialBathCount.context.getString(R.string.lnl) + ": " + count
     }
 
     @SuppressLint("SetTextI18n")

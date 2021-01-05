@@ -38,6 +38,7 @@ class SignUpActivity : AppCompatActivity() {
 
         initEvents()
     }
+
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
             super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
@@ -53,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
             asuTvNoCompanySelected.visibility = View.GONE
             HideKeyboard()
             showSelectBottomSheetAlert(
-                "Chọn công ty trực thuộc",
+                getString(R.string.ccttt),
                 GDSTStorage.GDSTCompanies?.toTypedArray() ?: emptyArray(),
                 R.layout.item_layout_company,
                 { o, v ->
@@ -93,7 +94,7 @@ class SignUpActivity : AppCompatActivity() {
                                 SignInActivity.SIA?.updateIdentityField(dto.username)
                                 Toast.makeText(
                                     this@SignUpActivity,
-                                    "Đăng ký thành công",
+                                    getString(R.string.dktc),
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 finish()
@@ -103,13 +104,13 @@ class SignUpActivity : AppCompatActivity() {
                         runOnUiThread { loading.cancel() }
                         if (httpException.response().code() == 419) {
                             asuEdtUsername.post {
-                                asuEdtUsername.error = "Tên tài khoản đã tồn tại"
+                                asuEdtUsername.error = getString(R.string.ttkdtt)
                             }
                         } else throw Exception("Mã HTTP RESPONSE không xác nhận được")
                     } catch (e: Exception) {
                         runOnUiThread { loading.cancel() }
                         runOnUiThread {
-                            showAlertConfirm("Đăng ký không thành công, vui lòng thử lại")
+                            showAlertConfirm(getString(R.string.dkktcvltl))
                         }
                         e.printStackTrace()
                     }
@@ -124,11 +125,11 @@ class SignUpActivity : AppCompatActivity() {
     private fun validateData(): Boolean {
         var res = true
         if (asuEdtFullName.text.trim().isEmpty()) {
-            asuEdtFullName.error = "Chưa nhập họ và tên"
+            asuEdtFullName.error = getString(R.string.cnhvt)
             res = false
         }
         if (asuEdtUsername.text.trim().isEmpty()) {
-            asuEdtUsername.error = "Chưa nhập tên tài khoản"
+            asuEdtUsername.error = getString(R.string.cnttk)
             res = false
         }
         if (selectedCompany == null) {
@@ -144,7 +145,10 @@ class SignUpActivity : AppCompatActivity() {
             .placeholder(R.drawable.no_image)
             .into(ilcIvCompanyLogo)
 
-        ilcTvState.text = if (selectedCompany!!.status == 1) "Hoạt động" else "Tạm ngưng"
+        ilcTvState.text =
+            if (selectedCompany!!.status == 1) ilcTvState.context.getString(R.string.active) else ilcTvState.context.getString(
+                R.string.pause
+            )
 
         ilcTvName.text = selectedCompany!!.companyname
         ilcTvName.isSelected = true

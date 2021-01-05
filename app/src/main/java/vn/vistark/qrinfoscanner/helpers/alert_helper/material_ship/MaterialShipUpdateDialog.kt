@@ -76,7 +76,7 @@ class MaterialShipUpdateDialog {
                             val response = ApiService.mAPIServices.getGDSTShip().await()
                             runOnUiThread { loading.cancel() }
                             if (response == null)
-                                throw Exception("Không phân dải được KQ trả về")
+                                throw Exception(getString(R.string.kpgdkqtv))
 
                             runOnUiThread {
                                 shipArr = response.toTypedArray()
@@ -88,7 +88,7 @@ class MaterialShipUpdateDialog {
                         } catch (e: Exception) {
                             runOnUiThread { loading.cancel() }
                             runOnUiThread {
-                                showAlertConfirm("Không lấy được tập dữ liệu tàu có sẵn")
+                                showAlertConfirm(getString(R.string.kldtdlcs))
                             }
                             e.printStackTrace()
                         }
@@ -112,7 +112,7 @@ class MaterialShipUpdateDialog {
 
             vh.aumvldTvFIP.valueDialog(
                 GDSTStorage.GDSTFipCodes.toBaseMap1(),
-                "FIPs"
+                getString(R.string.fips)
             ) {
                 vh.updateError()
                 fip = it
@@ -131,7 +131,7 @@ class MaterialShipUpdateDialog {
 
             vh.aumvldTvGearType.valueDialog(
                 GDSTStorage.GDSTGearTypes.toBaseMap2(),
-                "Gear type"
+                getString(R.string.gear_type)
             ) {
                 vh.updateError()
                 materialShip.gearId = it?.id ?: return@valueDialog
@@ -140,7 +140,7 @@ class MaterialShipUpdateDialog {
 
             vh.aumvldTvProductionMethod.valueDialog(
                 GDSTStorage.GDSTProductForms.toBaseMap3(),
-                "Product Forms"
+                getString(R.string.product_forms)
             ) {
                 vh.updateError()
                 materialShip.prodctMethod = it?.id ?: return@valueDialog
@@ -149,7 +149,7 @@ class MaterialShipUpdateDialog {
 
             vh.aumvldTvLandingLocation.valueDialog(
                 GDSTStorage.GDSTLocations.toBaseMap4(),
-                "Landing Location"
+                getString(R.string.landing_locations)
             ) {
                 vh.updateError()
                 materialShip.upFishing = it?.id ?: return@valueDialog
@@ -161,25 +161,25 @@ class MaterialShipUpdateDialog {
                 var isValidate = true
 
                 if (ship == null)
-                    isValidate = vh.updateError("Vui lòng chọn thông tin tàu")
+                    isValidate = vh.updateError(getString(R.string.vlcttt))
 
                 if (fip == null)
-                    isValidate = vh.updateError("Vui lòng chọn FIP")
+                    isValidate = vh.updateError(getString(R.string.vlcfip))
 
                 if (tripDate == null)
-                    isValidate = vh.updateError("Vui lòng chọn ngày đi")
+                    isValidate = vh.updateError(getString(R.string.vlcnd))
 
                 if (gearType == null)
-                    isValidate = vh.updateError("Vui lòng chọn ngư cụ")
+                    isValidate = vh.updateError(getString(R.string.vlcnc))
 
                 if (productForm == null)
-                    isValidate = vh.updateError("Vui lòng chọn phương thức khai thác")
+                    isValidate = vh.updateError(getString(R.string.vlcptkt))
 
                 if (loactioin == null)
-                    isValidate = vh.updateError("Vui lòng chọn vị trí lên cá")
+                    isValidate = vh.updateError(getString(R.string.vlcvtlc))
 
                 if (ladingDate == null)
-                    isValidate = vh.updateError("Vui lòng chọn ngày lên cá")
+                    isValidate = vh.updateError(getString(R.string.vlcnlc))
 
                 if (!isValidate)
                     return@clickAnimate

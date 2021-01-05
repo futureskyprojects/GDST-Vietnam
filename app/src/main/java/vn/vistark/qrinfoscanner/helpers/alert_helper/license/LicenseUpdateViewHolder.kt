@@ -71,14 +71,14 @@ class LicenseUpdateViewHolder(v: View) {
     }
 
     fun updateLogic(logic: Boolean, v: TextView): Boolean {
-        v.text = if (logic) "Có" else "Không"
+        v.text = if (logic) v.context.getString(R.string.c) else v.context.getString(R.string.k)
         return logic
     }
 
     fun loadExistData(license: CertificationAndLicense): Triple<Organization?, Organization?, Int> {
 
         if (license.Id > 0) {
-            accaldTvDialogName.text = "Chỉnh sửa giấy phép"
+            accaldTvDialogName.text = accaldTvDialogName.context.getString(R.string.csgp)
 
             val fishingAuthorization =
                 RuntimeStorage.Organizations?.first { x -> x.name == license.fishingAuthorization }
@@ -99,7 +99,7 @@ class LicenseUpdateViewHolder(v: View) {
             return Triple(fishingAuthorization, transshipmentAuthorization, -1)
 
         }
-        accaldTvDialogName.text = "Thêm mới giấy phép"
+        accaldTvDialogName.text = accaldTvDialogName.context.getString(R.string.tmgp)
         return Triple(null, null, -1)
     }
 

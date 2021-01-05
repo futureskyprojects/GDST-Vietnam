@@ -82,13 +82,15 @@ class MaterialShipActivity : AppCompatActivity() {
     private fun initTranshipmentData() {
         materialBatchId = intent.getIntExtra(GDSTMaterialBacth::class.java.simpleName, -1)
         if (materialBatchId <= 0) {
-            Toast.makeText(this, "Không thể xác định lô nguyên liệu được chọn", Toast.LENGTH_SHORT)
+            Toast.makeText(this, getString(R.string.ktxddlnldc), Toast.LENGTH_SHORT)
                 .show()
             finish()
             return
         }
         amsTvLabel.text =
-            "Tàu nguyên liệu [#${materialBatchId.toString().padStart(Config.padSize, '0')}]"
+            getString(R.string.tnl) + " [#${
+                materialBatchId.toString().padStart(Config.padSize, '0')
+            }]"
     }
 
     private fun initEvents() {
@@ -116,7 +118,7 @@ class MaterialShipActivity : AppCompatActivity() {
                             runOnUiThread { loading.cancel() }
                             e.printStackTrace()
                             runOnUiThread {
-                                showAlertConfirm("Tạo lô nguyên liệu không thành công (Error: 1)")
+                                showAlertConfirm(getString(R.string.ttnlktc))
                             }
                         }
                     }
@@ -154,7 +156,7 @@ class MaterialShipActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                    showAlertConfirm(getString(R.string.kldtdlcs))
                 }
                 e.printStackTrace()
             } finally {

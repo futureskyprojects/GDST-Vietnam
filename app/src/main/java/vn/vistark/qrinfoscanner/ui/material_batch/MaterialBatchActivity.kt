@@ -78,12 +78,13 @@ class MaterialBatchActivity : AppCompatActivity() {
     private fun initTranshipmentData() {
         shipmentId = intent.getIntExtra(Shipment::class.java.simpleName, -1)
         if (shipmentId <= 0) {
-            Toast.makeText(this, "Không thể xác định lô hàng được chọn", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.ktxdlhdc), Toast.LENGTH_SHORT).show()
             finish()
             return
         }
         ambTvTitle.text =
-            "Lô nguyên liệu [#${shipmentId.toString().padStart(Config.padSize, '0')}]"
+            getString(R.string.lnl) + " [#" + shipmentId.toString()
+                .padStart(Config.padSize, '0') + "]"
     }
 
     private fun fastCreate() {
@@ -104,7 +105,7 @@ class MaterialBatchActivity : AppCompatActivity() {
                 runOnUiThread { loading.cancel() }
                 e.printStackTrace()
                 runOnUiThread {
-                    showAlertConfirm("Tạo lô nguyên liệu không thành công (Error: 1)")
+                    showAlertConfirm(getString(R.string.tlnlktc))
                 }
             }
         }
@@ -121,10 +122,10 @@ class MaterialBatchActivity : AppCompatActivity() {
             )
             this.showAlertConfirm(
                 "Bạn thực sự muốn tạo lô nguyên liệu mới số #${
-                batch.id.toString().padStart(
-                    Config.padSize,
-                    '0'
-                )
+                    batch.id.toString().padStart(
+                        Config.padSize,
+                        '0'
+                    )
                 } vào lúc [${Date().Format("HH:mm dd-MM-yyyy")}]",
                 {
                     fastCreate()
@@ -163,7 +164,7 @@ class MaterialBatchActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                    showAlertConfirm(getString(R.string.kldtdlcs))
                 }
                 e.printStackTrace()
             } finally {
@@ -189,8 +190,8 @@ class MaterialBatchActivity : AppCompatActivity() {
         adapter.onEdit = {
             showAlertConfirm(
                 "Bạn có chắc muốn xóa dữ liệu lô nguyên liệu [#${
-                it.id.toString()
-                    .padStart(Config.padSize, '0')
+                    it.id.toString()
+                        .padStart(Config.padSize, '0')
                 }] hay không?",
                 {
                     Toast.makeText(

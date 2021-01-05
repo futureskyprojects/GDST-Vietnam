@@ -85,7 +85,7 @@ class TechnicalDataUpdateDialog {
 
             vh.autdTvProductForm.valueDialog(
                 GDSTStorage.GDSTProductForms.toBaseMap3(),
-                "Product Forms"
+                getString(R.string.product_forms)
             ) {
                 vh.updateError()
                 mTechnicalData.productFormId = it?.id ?: return@valueDialog
@@ -104,7 +104,7 @@ class TechnicalDataUpdateDialog {
             // Sự kiện chọn FAO cho vị trí mẻ lưới
             vh.autdTvGeolocation.valueDialog(
                 GDSTStorage.GDSTLocations.toBaseMap4(),
-                "Event Read Point (Geolocation)"
+                getString(R.string.event_red_point)
             ) {
                 vh.updateError()
                 mTechnicalData.geolocationId = it?.id ?: return@valueDialog
@@ -114,7 +114,7 @@ class TechnicalDataUpdateDialog {
             // Sự kiện chọn FAO cho vị trí chuyển tải
             vh.autdTvTranshipmentLocation.valueDialog(
                 GDSTStorage.GDSTLocations.toBaseMap4(),
-                "Transshipment Location"
+                getString(R.string.transhipment_location)
             ) {
                 vh.updateError()
                 mTechnicalData.loactionTransshipmentId = it?.id ?: return@valueDialog
@@ -129,19 +129,19 @@ class TechnicalDataUpdateDialog {
                 var isValidate = true
 
                 if (eventDate == null)
-                    isValidate = vh.updateError("Vui lòng chọn ngày giờ mẻ lưới")
+                    isValidate = vh.updateError(getString(R.string.vlcngml))
 
                 if (materialBatchFao == null)
-                    isValidate = vh.updateError("Vui lòng chọn vị trí mẻ lưới")
+                    isValidate = vh.updateError(getString(R.string.vlcvtml))
 
                 if (mTechnicalData.eventId <= 0) {
-                    vh.autdEdtEventId.error = "Vui lòng nhập ID mẻ lưới"
-                    isValidate = vh.updateError("Vui lòng nhập ID mẻ lưới")
+                    vh.autdEdtEventId.error = getString(R.string.vlnmml)
+                    isValidate = vh.updateError(getString(R.string.vlnmml))
                 }
 
                 if (mTechnicalData.KDE.isEmpty()) {
-                    vh.autdEdtKDELinking.error = "Vui lòng nhập KDE liên kết"
-                    isValidate = vh.updateError("Vui lòng nhập KDE liên kết")
+                    vh.autdEdtKDELinking.error = getString(R.string.vlnkdelk)
+                    isValidate = vh.updateError(getString(R.string.vlnkdelk))
                 }
 
                 if (!isValidate)

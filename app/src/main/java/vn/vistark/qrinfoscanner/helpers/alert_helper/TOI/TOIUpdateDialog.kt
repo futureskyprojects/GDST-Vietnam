@@ -53,7 +53,7 @@ class TOIUpdateDialog {
 
             vh.autTvUnitOfMeasure.valueDialog(
                 RuntimeStorage.UnitOfMeansures?.toBaseMaps(),
-                "Đơn vị tính"
+                getString(R.string.dvt)
             ) {
                 vh.updateError()
                 traceableObjectInformation.unitOfMeasure = it?.name ?: return@valueDialog
@@ -62,7 +62,7 @@ class TOIUpdateDialog {
 
             vh.autTvSpice.valueDialog(
                 RuntimeStorage.FishDatas?.toBaseMaps(),
-                "Loài"
+                getString(R.string.loai)
             ) {
                 vh.updateError()
                 traceableObjectInformation.fishData =
@@ -72,7 +72,7 @@ class TOIUpdateDialog {
 
             vh.autTvProductForm.valueDialog(
                 RuntimeStorage.ProductForms?.toBaseMaps(),
-                "Dạng sản phẩm"
+                getString(R.string.dsp)
             ) {
                 vh.updateError()
                 traceableObjectInformation.productForm = it?.name ?: return@valueDialog
@@ -88,22 +88,22 @@ class TOIUpdateDialog {
                 var isValidate = true
 
                 if (fishData == null)
-                    isValidate = vh.updateError("Vui lòng chọn loài")
+                    isValidate = vh.updateError(getString(R.string.vlcl))
 
                 if (unitOfMeansure == null)
-                    isValidate = vh.updateError("Vui lòng chọn đơn vị tính")
+                    isValidate = vh.updateError(getString(R.string.vlcdvt))
 
                 if (productForm == null)
-                    isValidate = vh.updateError("Vui lòng chọn dạng sản phẩm")
+                    isValidate = vh.updateError(getString(R.string.vlcdsp))
 
                 if (traceableObjectInformation.linkingKDE.isEmpty()) {
-                    vh.autEdtLinkingKDE.error = "Vui lòng nhập KDE liên kết"
-                    isValidate = vh.updateError("Vui lòng nhập KDE liên kết")
+                    vh.autEdtLinkingKDE.error = getString(R.string.vlnkdelk)
+                    isValidate = vh.updateError(getString(R.string.vlnkdelk))
                 }
 
                 if (traceableObjectInformation.weightOrQuantity < 0) {
-                    vh.autEdtWeight.error = "Vui lòng nhập sản lượng"
-                    isValidate = vh.updateError("Vui lòng nhập sản lượng")
+                    vh.autEdtWeight.error = getString(R.string.vlnsl)
+                    isValidate = vh.updateError(getString(R.string.vlnsl))
                 }
 
                 if (!isValidate)

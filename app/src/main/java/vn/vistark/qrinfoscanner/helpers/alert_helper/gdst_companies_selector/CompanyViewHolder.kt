@@ -25,7 +25,10 @@ class CompanyViewHolder {
                 .placeholder(R.drawable.no_image)
                 .into(ilcIvCompanyLogo)
 
-            ilcTvState.text = if (company.status == 1) "Hoạt động" else "Tạm ngưng"
+            ilcTvState.text =
+                if (company.status == 1) ilcTvState.context.getString(R.string.active) else ilcTvState.context.getString(
+                    R.string.pause
+                )
 
             ilcTvName.text = company.companyname
             ilcTvName.isSelected = true

@@ -41,7 +41,7 @@ class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     @SuppressLint("SetTextI18n")
     private fun setRegistration(vesselData: VesselData) {
-        ilvTvVesselRegistration.text = "Số đăng ký tàu:" + vesselData.vesselRegistration
+        ilvTvVesselRegistration.text = ilvTvVesselRegistration.context.getString(R.string.sdkt) + vesselData.vesselRegistration
     }
 
     @SuppressLint("SetTextI18n")
@@ -54,7 +54,7 @@ class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     }
 
     private fun setVMS(vesselData: VesselData) {
-        ilvTvVesselVMS.text = "VMS: " + vesselData.satelliteVesselTrackingAuthority
+        ilvTvVesselVMS.text = ilvTvVesselVMS.context.getString(R.string.vms) + vesselData.satelliteVesselTrackingAuthority
     }
 
 }

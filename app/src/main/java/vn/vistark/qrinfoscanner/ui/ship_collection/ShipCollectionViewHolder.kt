@@ -38,7 +38,8 @@ class ShipCollectionViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     @SuppressLint("SetTextI18n")
     fun bind(ship: GDSTShip) {
-        val flagPath = GDSTStorage.GDSTCountries?.first { x -> x.id == ship.vessel_flag_id }?.flag ?: ""
+        val flagPath =
+            GDSTStorage.GDSTCountries?.first { x -> x.id == ship.vessel_flag_id }?.flag ?: ""
         val imagePath = "${IApiService.BASE_URL}$flagPath".replace("//", "/")
 
         if (imagePath.endsWith("svg")) {
@@ -56,14 +57,22 @@ class ShipCollectionViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         ilssTvVesselName.text = ship.vessel_name
         ilssdIvIsTranshipmentIcon.setImageResource(if (ship.is_transshipment > 0) R.drawable._2side_active else R.drawable._2side_off)
 
-        ilssTvVesselRegistration.text = "Số đăng ký tàu: " + ship.vessel_id
-        ilssTvSatelliteTracking.text = "VMS: " + ship.satellite_tracking
+        ilssTvVesselRegistration.text =
+            ilssTvVesselRegistration.context.getString(R.string.sdkt) + ship.vessel_id
+        ilssTvSatelliteTracking.text =
+            ilssTvSatelliteTracking.context.getString(R.string.vms) + ship.satellite_tracking
 
-        ilssTvFishingAuthorization.text = "Cấp phép kh.thác: " + ship.fishing_authorization
-        ilssTvHarvestCertification.text = "GP Kh.thác:" + ship.harvest_certification
+        ilssTvFishingAuthorization.text =
+            ilssTvFishingAuthorization.context.getString(R.string.cgpkt) + ship.fishing_authorization
+        ilssTvHarvestCertification.text =
+            ilssTvHarvestCertification.context.getString(R.string.gpkt) + ship.harvest_certification
         ilssTvHumanWelfarePolicy.text =
-            "Chính sách phúc lợi con người: " + if (ship.human_welfare_policy > 0) "Có" else "Không"
+            ilssTvHumanWelfarePolicy.context.getString(R.string.csplcn) + if (ship.human_welfare_policy > 0) ilssTvHumanWelfarePolicy.context.getString(
+                R.string.c
+            ) else ilssTvHumanWelfarePolicy.context.getString(R.string.k)
         ilssTvWelfarePolicyStandards.text =
-            "Tiêu chuẩn phúc lợi con người: " + if (ship.welfare_policy_standards > 0) "Có" else "Không"
+            ilssTvWelfarePolicyStandards.context.getString(R.string.tcplcn) + if (ship.welfare_policy_standards > 0) ilssTvHumanWelfarePolicy.context.getString(
+                R.string.c
+            ) else ilssTvHumanWelfarePolicy.context.getString(R.string.k)
     }
 }

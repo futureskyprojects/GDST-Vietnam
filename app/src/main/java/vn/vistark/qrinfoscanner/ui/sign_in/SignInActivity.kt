@@ -87,13 +87,13 @@ class SignInActivity : AppCompatActivity() {
                     runOnUiThread { loading.cancel() }
                     if (http.response().code() == 401) {
                         runOnUiThread {
-                            showAlertConfirm("Tên tài khoản hoặc mật khẩu không đúng")
+                            showAlertConfirm(getString(R.string.ttkhmkkd))
                         }
                     } else throw Exception("Mã HTTP RESPONSE không xác nhận được")
                 } catch (e: Exception) {
                     runOnUiThread { loading.cancel() }
                     runOnUiThread {
-                        showAlertConfirm("Đăng nhập không thành công, vui lòng thử lại")
+                        showAlertConfirm(getString(R.string.dnktcvltl))
                     }
                     e.printStackTrace()
                 }
@@ -123,13 +123,13 @@ class SignInActivity : AppCompatActivity() {
 
     private fun validateData(): Boolean {
         if (asiEdtUsername.text.trim().isEmpty()) {
-            asiTvErrorMsg.text = "Chưa nhập tên tài khoản"
+            asiTvErrorMsg.text = getString(R.string.cnttk)
             asiTvErrorMsg.visibility = View.VISIBLE
-            asiEdtUsername.error = "Chưa nhập tên tài khoản"
+            asiEdtUsername.error = getString(R.string.cnttk)
             return false
         }
         if (asiEdtPassword.text?.trim()?.isEmpty() == true) {
-            asiTvErrorMsg.text = "Chưa nhập mật khẩu"
+            asiTvErrorMsg.text = getString(R.string.cnmk)
             asiTvErrorMsg.visibility = View.VISIBLE
             return false
         }
@@ -141,17 +141,8 @@ class SignInActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE).apply {
-            titleText = "Bạn thực sự muốn đóng ứng dụng?"
-            contentText = "ĐÓNG ỨNG DỤNG"
-            setConfirmButton("Đóng") {
-                it.dismiss()
-                finish()
-            }
-            setCancelButton("Không") {
-                it.dismissWithAnimation()
-            }
-            show()
-        }
+        showAlertConfirm(getString(R.string.btsmdud), {
+            finish()
+        })
     }
 }

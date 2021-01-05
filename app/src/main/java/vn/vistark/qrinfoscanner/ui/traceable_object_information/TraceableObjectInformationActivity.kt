@@ -63,7 +63,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
         if (specialData.isEmpty() || technicalDataId <= 0) {
             Toast.makeText(
                 this,
-                "Không thể xác định thông tin kỹ thuật của mẻ lưới được chọn",
+                getString(R.string.ktxdttktcmldc),
                 Toast.LENGTH_SHORT
             )
                 .show()
@@ -86,7 +86,9 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
         checkAndInitMissData()
 
         atoiTvLabel.text =
-            "Thông tin sản lượng [#${technicalDataId.toString().padStart(Config.padSize, '0')}]"
+            getString(R.string.ttsl) + " [#${
+                technicalDataId.toString().padStart(Config.padSize, '0')
+            }]"
 
         loadTechnicalData(technicalDataId)
     }
@@ -110,7 +112,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                    showAlertConfirm(getString(R.string.kldtdlcs))
                 }
                 e.printStackTrace()
             } finally {
@@ -121,7 +123,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
     private fun checkAndInitMissData() {
         GDSTStorage.GDSTSpecies?.forEach {
-            val f = GDSTInfomationFishUp(0F, it.id, "KG")
+            val f = GDSTInfomationFishUp(0F, it.id, getString(R.string.kg))
             if (!specials.any { x -> f.spiceId == x.spiceId }) {
                 specials.add(f)
             }
@@ -147,7 +149,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
 
                     runOnUiThread {
-                        showAlertConfirm("Đã lưu dữ liệu thành công ", {
+                        showAlertConfirm(getString(R.string.dldltc), {
                             setResult(RESULT_OK)
                             finish()
                         })
@@ -155,7 +157,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
                 } catch (e: Exception) {
                     runOnUiThread { loading.cancel() }
                     runOnUiThread {
-                        showAlertConfirm("Không thể cập nhật được dữ liệu")
+                        showAlertConfirm(getString(R.string.ktcnddl))
                     }
                     e.printStackTrace()
                 } finally {

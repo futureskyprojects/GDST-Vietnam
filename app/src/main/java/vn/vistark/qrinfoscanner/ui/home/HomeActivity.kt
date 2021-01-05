@@ -85,7 +85,7 @@ class HomeActivity : AppCompatActivity() {
 
                 if (GDSTStorage.CurrentCompany == null) {
                     runOnUiThread {
-                        showAlertConfirm("Không thể xác nhận công ty bạn trực thuộc") {
+                        showAlertConfirm(getString(R.string.ktxnctbtt)) {
                             gotoLogin()
                         }
                     }
@@ -94,7 +94,7 @@ class HomeActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không thể lấy hồ sơ của bạn") {
+                    showAlertConfirm(getString(R.string.ktlhscb)) {
                         gotoLogin()
                     }
                 }
@@ -107,10 +107,10 @@ class HomeActivity : AppCompatActivity() {
                         .into(haIvUserProfileImage)
 
                     htTvWelcomeText.text =
-                        "Xin chào, ${GDSTStorage.CurrentUser.getDisplayName()}"
+                        getString(R.string.hello) + " " + GDSTStorage.CurrentUser.getDisplayName()
 
                     haTvEnterpriseName.text =
-                        GDSTStorage.CurrentCompany?.companyname ?: "Chúc bạn có một ngày tốt lành"
+                        GDSTStorage.CurrentCompany?.companyname ?: getString(R.string.cbcmntl)
                 }
             }
         }

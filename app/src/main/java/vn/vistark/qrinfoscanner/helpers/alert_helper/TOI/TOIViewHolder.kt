@@ -52,7 +52,7 @@ class TOIViewHolder(v: View) {
     fun loadExistData(materialShip: MaterialShip): Triple<VesselData?, CertificationAndLicense?, Int> {
 
         if (materialShip.Id > 0) {
-            autTvDialogName.text = "Sửa dữ liệu tàu nguyên liệu"
+            autTvDialogName.text = autTvDialogName.context.getString(R.string.stnl)
             val vesselData = MockupGet<VesselData>(materialShip.VesselDataId)
             val certLicense =
                 MockupGet<CertificationAndLicense>(materialShip.CertificationAndLicenseId)
@@ -60,7 +60,7 @@ class TOIViewHolder(v: View) {
             return Triple(vesselData, certLicense, -1)
 
         }
-        autTvDialogName.text = "Tạo dữ liệu tàu nguyên liệu"
+        autTvDialogName.text = autTvDialogName.context.getString(R.string.tdltnl)
         return Triple(null, null, -1)
     }
 

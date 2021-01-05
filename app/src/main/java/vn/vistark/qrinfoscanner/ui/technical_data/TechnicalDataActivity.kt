@@ -61,13 +61,15 @@ class TechnicalDataActivity : AppCompatActivity() {
     private fun initTranshipmentData() {
         materialShipId = intent.getIntExtra(GDSTMaterialShip::class.java.simpleName, -1)
         if (materialShipId <= 0) {
-            Toast.makeText(this, "Không thể xác định tàu nguyên liệu được chọn", Toast.LENGTH_SHORT)
+            Toast.makeText(this, getString(R.string.ktxdtnldc), Toast.LENGTH_SHORT)
                 .show()
             finish()
             return
         }
         atdTvLabel.text =
-            "Thông tin kỹ thuật [#${materialShipId.toString().padStart(Config.padSize, '0')}]"
+            getString(R.string.ttkt) + " [#${
+                materialShipId.toString().padStart(Config.padSize, '0')
+            }]"
     }
 
     private fun initEvents() {
@@ -93,7 +95,7 @@ class TechnicalDataActivity : AppCompatActivity() {
                             runOnUiThread { loading.cancel() }
                             e.printStackTrace()
                             runOnUiThread {
-                                showAlertConfirm("Tạo thông tin kỹ thuật không thành công (Error: 1)")
+                                showAlertConfirm(getString(R.string.tttktktc))
                             }
                         }
                     }
@@ -132,7 +134,7 @@ class TechnicalDataActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 runOnUiThread { loading.cancel() }
                 runOnUiThread {
-                    showAlertConfirm("Không lấy được tập dữ liệu có sẵn")
+                    showAlertConfirm(getString(R.string.kldtdlcs))
                 }
                 e.printStackTrace()
             } finally {
@@ -178,7 +180,7 @@ class TechnicalDataActivity : AppCompatActivity() {
                             runOnUiThread { loading.cancel() }
                             e.printStackTrace()
                             runOnUiThread {
-                                showAlertConfirm("Cập nhật thông tin kỹ thuật không thành công (Error: 1)")
+                                showAlertConfirm(getString(R.string.cnttktktc))
                             }
                         }
                     }
