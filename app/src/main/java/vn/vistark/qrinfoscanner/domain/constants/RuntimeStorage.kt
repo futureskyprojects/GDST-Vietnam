@@ -26,6 +26,13 @@ class RuntimeStorage {
         var ProductForms: ProductForms? = null
         var UnitOfMeansures: UnitOfMeansures? = null
 
+        var LanguageCode: String = "vi"
+            get() = AppStorageManager.get("LANGUAGE_CODE") ?: field
+            set(value) {
+                AppStorageManager.update("LANGUAGE_CODE", value)
+                field = value
+            }
+
         var CurrentUser: GDSTUserProfile? = null
             get() = AppStorageManager.getObject<GDSTUserProfile>(GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE")
             set(value) {

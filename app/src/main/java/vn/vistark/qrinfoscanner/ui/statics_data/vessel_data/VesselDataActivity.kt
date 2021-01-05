@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.statics_data.vessel_data
 
+import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,9 +14,11 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showA
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupDelete
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.vessel.VesselUpdateDialog.Companion.showAddVessDataAlert
 import kotlin.collections.ArrayList
@@ -32,6 +35,14 @@ class VesselDataActivity : AppCompatActivity() {
         initDataEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
     private fun removeVesselData(x: VesselData) {

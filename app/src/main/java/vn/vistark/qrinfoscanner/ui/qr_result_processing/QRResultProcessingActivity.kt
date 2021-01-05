@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.qr_result_processing
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -8,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_result_processing.*
 import vn.vistark.qrinfoscanner.R
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 
 
@@ -27,6 +30,14 @@ class QRResultProcessingActivity : AppCompatActivity() {
             intent.getBooleanExtra(QRResultProcessingActivity::class.java.simpleName, false)
         if (isEnterpiseScanner) {
 //            Toast.makeText(this, "Scan dưới danh nghĩa doanh nghiệp", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 

@@ -1,6 +1,7 @@
 package vn.vistark.qrinfoscanner.ui.home
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -24,7 +25,9 @@ import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showSelectStaticDataOptionAlert
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.domain.api.IApiService
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTUserProfile
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
@@ -49,6 +52,14 @@ class HomeActivity : AppCompatActivity() {
         initEvents()
 
         loadUserProfile()
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
     @SuppressLint("SetTextI18n")

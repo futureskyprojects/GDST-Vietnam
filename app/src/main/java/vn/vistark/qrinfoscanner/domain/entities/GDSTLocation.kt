@@ -20,4 +20,8 @@ data class GDSTLocation(
             return baseMaps.toTypedArray()
         }
     }
+
+    fun toBaseMap(): BaseMap {
+        return BaseMap(id, title)
+    }
 }

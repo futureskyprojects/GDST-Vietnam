@@ -29,7 +29,9 @@ class TechnicalDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     fun bind(technicalData: GDSTTechnicalData) {
         iltdTvEventId.text = "#${technicalData.id}"
         iltdTvEventDateAndGeo.text =
-            "${technicalData.eventDate} (${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.geolocationId }?.title ?: "<Rỗng>"})"
+            "${
+                technicalData.eventDate.split(" ").first()
+            } (${GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == technicalData.geolocationId }?.title ?: "<Rỗng>"})"
         iltdTvLinkingKDE.text = "KDE Liên kết: ${technicalData.KDE}"
         iltdTvProductForm.text =
             "Dạng sản phẩm: ${GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == technicalData.productFormId }?.title ?: "<Rỗng>"}"

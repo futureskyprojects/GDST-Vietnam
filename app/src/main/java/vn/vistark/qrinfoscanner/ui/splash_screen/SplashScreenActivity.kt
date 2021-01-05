@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.splash_screen
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -11,7 +12,9 @@ import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
 import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.maxSplashScreenWait
 import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.core.mockup.core.MockData
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
@@ -21,6 +24,15 @@ class SplashScreenActivity : AppCompatActivity() {
     private val startTick = System.currentTimeMillis()
 
     var timerLongResponse: Timer? = null
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

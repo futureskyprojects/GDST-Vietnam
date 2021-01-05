@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.ship_collection
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +13,8 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTSmartBottomBar
@@ -83,6 +86,14 @@ class ShipCollectionActivity : AppCompatActivity() {
                 }
                 e.printStackTrace()
             }
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 

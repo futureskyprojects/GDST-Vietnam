@@ -1,5 +1,6 @@
 package vn.vistark.qrinfoscanner.ui.qr_scan
 
+import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
@@ -11,6 +12,8 @@ import kotlinx.android.synthetic.main.activity_qr_scan.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.components.CustomViewFinderView
 import vn.vistark.qrinfoscanner.core.helpers.DimensionHelper
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.domain.constants.Config
 
 
 class QrScanActivity : AppCompatActivity() {
@@ -65,6 +68,14 @@ class QrScanActivity : AppCompatActivity() {
 //        navMenuItemLogout = nv!!.findViewById(R.id.navMenuItemLogout)
 //        navCloseBtn = nv!!.findViewById(R.id.navCloseBtn)
 //    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
+        }
+    }
 
     private fun initEvents() {
         aqsIvCloseBtn.setOnClickListener {

@@ -1,6 +1,7 @@
 package vn.vistark.qrinfoscanner.ui.material_batch
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -24,6 +25,7 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showA
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.material_batch.GetMaterialBatchBody
@@ -62,6 +64,14 @@ class MaterialBatchActivity : AppCompatActivity() {
         initDataEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
     @SuppressLint("SetTextI18n")

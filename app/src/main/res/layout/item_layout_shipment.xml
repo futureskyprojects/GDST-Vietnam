@@ -5,84 +5,107 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16sp"
     android:layout_marginTop="12dp"
+    android:clickable="true"
+    android:focusable="true"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:clickable="true"
-        android:focusable="true">
-
-        <LinearLayout
-            android:id="@+id/ilvLnTopLeftLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/prdark_top_round"
-            android:paddingHorizontal="12dp">
-
-            <TextView
-                android:id="@+id/ilsTvShipmentId"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:text="#123321"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:background="@drawable/haft_bottom_bg">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="8dp"
-            android:layout_toEndOf="@id/ilvLnTopLeftLayout"
-            android:layout_toRightOf="@id/ilvLnTopLeftLayout"
-            android:background="@drawable/prdark_topright_round"
-            android:orientation="vertical">
+            android:layout_height="55dp"
+            android:layout_toLeftOf="@id/ilsIvQrCode">
 
-            <TextView
-                android:id="@+id/ilsTvShipmentName"
+            <LinearLayout
+                android:id="@+id/ilvLnTopLeftLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/prdark_top_round"
+                android:paddingHorizontal="12dp"
+                android:paddingTop="10dp">
+
+                <TextView
+                    android:id="@+id/ilsTvShipmentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="#123321"
+                    android:textColor="#FFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@id/ilsIvEditIcon"
-                android:layout_toLeftOf="@id/ilsIvEditIcon"
-                android:gravity="center"
-                android:text="Lô hàng ngày 14-03-2021"
-                android:textColor="#FFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/ilvLnTopLeftLayout"
+                android:layout_toRightOf="@id/ilvLnTopLeftLayout"
+                android:background="@drawable/prdark_topright_round"
+                android:orientation="vertical"
+                android:paddingTop="10dp">
 
-            <ImageView
-                android:id="@+id/ilsIvEditIcon"
-                android:layout_width="32dp"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingVertical="5dp"
-                android:src="@drawable/icon_edit_white" />
+                <TextView
+                    android:id="@+id/ilsTvShipmentName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@id/ilsIvEditIcon"
+                    android:layout_toLeftOf="@id/ilsIvEditIcon"
+                    android:gravity="center"
+                    android:text="Lô hàng ngày 14-03-2021"
+                    android:textColor="#FFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ilsIvEditIcon"
+                    android:layout_width="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingVertical="5dp"
+                    android:src="@drawable/icon_edit_white"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
         </RelativeLayout>
 
+        <ImageView
+            android:id="@+id/ilsIvQrCode"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:background="@color/colorPrimaryDark"
+            android:padding="1dp"
+            android:src="@drawable/no_image" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/prdark_border_bottom_round">
+        android:background="@drawable/prdark_border_bottom_round"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@id/ilsIvQrCode"
+            android:layout_toStartOf="@id/ilsIvQrCode22222"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
                 android:weightSum="2">
 
                 <LinearLayout
@@ -139,6 +162,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="invisible"
                 android:weightSum="2">
 
                 <LinearLayout
@@ -194,7 +218,7 @@
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/ilsIvQrCode"
+            android:id="@+id/ilsIvQrCode22222"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentRight="true"

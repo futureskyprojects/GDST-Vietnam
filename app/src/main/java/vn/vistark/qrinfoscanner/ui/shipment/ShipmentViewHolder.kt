@@ -41,10 +41,8 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
             .placeholder(R.drawable.no_image)
             .into(ilsIvQrCode)
 
-//        ilsIvQrCode.ShowQR("${IApiService.BASE_URL}/qr/${shipment.id}")
-
         ilsIvQrCode.clickAnimate {
-            ilsIvQrCode.context.showAlertShowImage(ilsIvQrCode.drawable.toBitmap())
+            ilsIvQrCode.context.showAlertShowImage(imgPath)
         }
     }
 

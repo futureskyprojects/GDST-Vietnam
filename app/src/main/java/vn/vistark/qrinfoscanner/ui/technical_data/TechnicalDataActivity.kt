@@ -1,14 +1,13 @@
 package vn.vistark.qrinfoscanner.ui.technical_data
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_technical_data.*
-import kotlinx.android.synthetic.main.activity_technical_data.masterLayout
 import kotlinx.android.synthetic.main.component_float_add_btn.*
 import kotlinx.android.synthetic.main.component_top_search_bar.*
 import kotlinx.coroutines.GlobalScope
@@ -16,17 +15,17 @@ import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
-import vn.vistark.qrinfoscanner.domain.constants.Config
-import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataUpdateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
+import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
 import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
+import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.helpers.FloatAddButtonHelper
 import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
@@ -88,16 +87,13 @@ class TechnicalDataActivity : AppCompatActivity() {
                                 ApiService.mAPIServices.postGDSTTechnicalData(techData).await()
                                     ?: throw  Exception("ko phan giai dc")
                             runOnUiThread { loading.cancel() }
-                            runOnUiThread {
-                                syncTechnicalData()
-//                                start(res.idShip)
-                            }
+                            runOnUiThread(this@TechnicalDataActivity::syncTechnicalData)
 
                         } catch (e: Exception) {
                             runOnUiThread { loading.cancel() }
                             e.printStackTrace()
                             runOnUiThread {
-                                showAlertConfirm("Tạo lô nguyên liệu không thành công (Error: 1)")
+                                showAlertConfirm("Tạo thông tin kỹ thuật không thành công (Error: 1)")
                             }
                         }
                     }
@@ -160,6 +156,43 @@ class TechnicalDataActivity : AppCompatActivity() {
 
     private fun initDataEvents() {
         adapter.onClick = { start(it) }
+        adapter.onEdit = {
+            showUpdateTechnicalDataAlert({ techData ->
+                if (techData != null) {
+                    val resData = GDSTTechnicalData.From(techData)
+                    resData.id = it.id
+
+                    val loading = this.showLoadingAlert()
+                    loading.show()
+
+                    GlobalScope.launch {
+                        try {
+                            val res =
+                                ApiService.mAPIServices.postGDSTTechnicalDataUpdate(
+                                    GDSTTechnicalDataUpdateDTO.mapFrom(resData)
+                                ).await()
+                                    ?: throw  Exception("ko phan giai dc")
+                            runOnUiThread { loading.cancel() }
+                            runOnUiThread(this@TechnicalDataActivity::syncTechnicalData)
+                        } catch (e: Exception) {
+                            runOnUiThread { loading.cancel() }
+                            e.printStackTrace()
+                            runOnUiThread {
+                                showAlertConfirm("Cập nhật thông tin kỹ thuật không thành công (Error: 1)")
+                            }
+                        }
+                    }
+                }
+            }, GDSTTechnicalDataDTO.From(it), it.eventId.toString())
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
+        }
     }
 
     fun start(technicalData: GDSTTechnicalData) {

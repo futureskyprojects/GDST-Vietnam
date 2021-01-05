@@ -10,5 +10,9 @@ class Authentication {
                     AuthIntercepter.CurrentTokenType.isNotEmpty() &&
                     AuthIntercepter.AuthorizationKey.isNotEmpty()
         }
+
+        fun logOut() {
+            AuthIntercepter.CurrentToken = ""
+        }
     }
 }

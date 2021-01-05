@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Path
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
@@ -256,6 +257,34 @@ class AlertHelper {
             }
 
             aisIvImageShow.setImageBitmap(bmp)
+        }
+
+        @SuppressLint("InflateParams")
+        fun Context.showAlertShowImage(
+            path: String
+        ) {
+
+            val v = LayoutInflater.from(this).inflate(R.layout.alert_image_show, null)
+
+            val acIvClose: ImageView = v.findViewById(R.id.acIvClose)
+            val aisIvImageShow: ImageView = v.findViewById(R.id.aisIvImageShow)
+
+
+            val mBuilder = AlertDialog.Builder(this)
+                .setView(v)
+            val mAlertDialog = mBuilder.show()
+            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+//            mAlertDialog.setCancelable(false)
+
+
+            acIvClose.clickAnimate {
+                mAlertDialog.dismiss()
+            }
+
+            Glide.with(this)
+                .load(path)
+                .placeholder(R.drawable.no_image)
+                .into(aisIvImageShow)
         }
     }
 }

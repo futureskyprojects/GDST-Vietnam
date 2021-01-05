@@ -3,27 +3,24 @@ package vn.vistark.qrinfoscanner.helpers.alert_helper.technical_data
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
-import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
+import vn.vistark.qrinfoscanner.core.extensions.StringExtension.Companion.ToYMDDate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
-import vn.vistark.qrinfoscanner.domain.entities.GDSTLocation
 import vn.vistark.qrinfoscanner.domain.entities.GDSTLocation.Companion.toBaseMap4
-import vn.vistark.qrinfoscanner.domain.entities.GDSTProductForm
 import vn.vistark.qrinfoscanner.domain.entities.GDSTProductForm.Companion.toBaseMap3
 import vn.vistark.qrinfoscanner.domain.mock_models.BaseMap
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showDatePicker
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.valueDialog
-import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion.showSelectBottomSheetAlert
-import vn.vistark.qrinfoscanner.helpers.fao.FaoBindHolder
 import java.util.*
 
 class TechnicalDataUpdateDialog {
@@ -38,7 +35,8 @@ class TechnicalDataUpdateDialog {
 
         fun AppCompatActivity.showUpdateTechnicalDataAlert(
             onCompleted: (GDSTTechnicalDataDTO?) -> Unit,
-            technicalData: GDSTTechnicalDataDTO = GDSTTechnicalDataDTO()
+            technicalData: GDSTTechnicalDataDTO = GDSTTechnicalDataDTO(),
+            id: String = ""
         ) {
 
             eventDate = null
@@ -55,12 +53,21 @@ class TechnicalDataUpdateDialog {
             val vh = TechnicalDataViewHolder(v)
             val mAlertDialog = displayDialog(this, v)
 
+            updateExistData(vh)
+            vh.autdEdtEventId.setText(id)
+            vh.autdEdtEventId.isEnabled = false
+            if (id.isEmpty())
+                vh.autdEdtEventId.setText((System.currentTimeMillis() / 1000).toString())
+
             vh.onCheckedChange {
                 if (it) {
+                    mTechnicalData.isTrasshipment = 1
                     mTechnicalData.dateTransshipment = ""
                     mTechnicalData.loactionTransshipmentId = 0
                     transhipmentDate = null
                     transhipmentFao = null
+                } else {
+                    mTechnicalData.isTrasshipment = 0
                 }
             }
 
@@ -84,8 +91,6 @@ class TechnicalDataUpdateDialog {
                 mTechnicalData.productFormId = it?.id ?: return@valueDialog
                 productForm = it
             }
-
-
 
             vh.clearErrorOnTextChanger(vh.autdEdtEventId)
             vh.clearErrorOnTextChanger(vh.autdEdtKDELinking)
@@ -145,6 +150,36 @@ class TechnicalDataUpdateDialog {
                 onCompleted.invoke(mTechnicalData)
                 mAlertDialog.dismiss()
             }
+
+        }
+
+        private fun updateExistData(vh: TechnicalDataViewHolder) {
+
+            if (mTechnicalData.isTrasshipment == 1) {
+                vh.autdScIsTranshipment.isChecked = true
+                vh.autdLnTranshipmentRoot.visibility = View.VISIBLE
+            }
+
+            // Gán dữ liệu đã có
+            eventDate = mTechnicalData.eventDate.ToYMDDate()
+            materialBatchFao =
+                GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == mTechnicalData.geolocationId }
+                    ?.toBaseMap()
+            productForm =
+                GDSTStorage.GDSTProductForms?.firstOrNull { x -> x.id == mTechnicalData.productFormId }
+                    ?.toBaseMap()
+            transhipmentDate = mTechnicalData.dateTransshipment.ToYMDDate()
+            transhipmentFao =
+                GDSTStorage.GDSTLocations?.firstOrNull { x -> x.id == mTechnicalData.loactionTransshipmentId }
+                    ?.toBaseMap()
+
+            // Xử lý view
+            vh.autdTvEventDate.text = eventDate?.Format("yyyy-MM-dd")
+            vh.autdTvTranshipmentDate.text = transhipmentDate?.Format("yyyy-MM-dd")
+            vh.autdTvProductForm.text = productForm?.name
+            vh.autdTvGeolocation.text = materialBatchFao?.name
+            vh.autdTvTranshipmentLocation.text = transhipmentFao?.name
+            vh.autdEdtKDELinking.setText(mTechnicalData.KDE)
 
         }
 

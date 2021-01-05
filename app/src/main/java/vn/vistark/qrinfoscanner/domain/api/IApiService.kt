@@ -97,4 +97,8 @@ interface IApiService {
 
     @POST("api/account/update")
     fun postGDSTUpdateProfile(@Body dto: GDSTProfileUpdateWithPassword): Call<Any>
+
+    @Multipart
+    @POST("api/upload/image")
+    fun postGDSTUploadImage(@Part image: MultipartBody.Part): Call<UploadQRSuccessfulResponse>
 }

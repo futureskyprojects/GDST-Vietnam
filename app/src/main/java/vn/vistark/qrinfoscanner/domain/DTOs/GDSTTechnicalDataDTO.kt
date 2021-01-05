@@ -4,6 +4,7 @@ package vn.vistark.qrinfoscanner.domain.DTOs
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
+import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
 
 data class GDSTTechnicalDataDTO(
     @SerializedName("date_transshipment")
@@ -38,5 +39,23 @@ data class GDSTTechnicalDataDTO(
                 Array<GDSTInfomationFishUp>::class.java
             ).toList()
         )
+
+    companion object {
+        fun From(obj: GDSTTechnicalData): GDSTTechnicalDataDTO {
+            val dto = GDSTTechnicalDataDTO()
+            dto.dateTransshipment = obj.dateTransshipment
+            dto.eventDate = obj.eventDate
+            dto.eventId = obj.eventId
+            dto.geolocationId = obj.geolocationId
+            dto.isTrasshipment = obj.isTrasshipment
+            dto.KDE = obj.KDE
+            dto.loactionTransshipmentId = obj.loactionTransshipmentId
+            dto.materialShipId = obj.materialShipId
+            dto.productFormId = obj.productFormId
+            dto.informationFishingUp = obj.informationFishingUp
+            dto.eventQuantification = obj.eventQuantification
+            return dto
+        }
+    }
 
 }

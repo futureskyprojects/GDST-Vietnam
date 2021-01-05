@@ -5,20 +5,23 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="16sp"
     android:layout_marginTop="12dp"
+    android:clickable="true"
+    android:focusable="true"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:clickable="true"
-        android:focusable="true">
+        android:layout_height="55dp"
+        android:background="@drawable/haft_bottom_bg"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:id="@+id/ilmLnMaterialBatchIdLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@drawable/prdark_top_round"
-            android:paddingHorizontal="12dp">
+            android:paddingHorizontal="12dp"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/ilmTvMaterialBatchId"
@@ -39,7 +42,8 @@
             android:layout_toEndOf="@id/ilmLnMaterialBatchIdLayout"
             android:layout_toRightOf="@id/ilmLnMaterialBatchIdLayout"
             android:background="@drawable/prdark_topright_round"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="10dp">
 
             <TextView
                 android:id="@+id/ilmTvMaterialBatchName"
@@ -64,7 +68,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/icon_edit_white" />
+                android:src="@drawable/icon_edit_white"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </RelativeLayout>
@@ -73,7 +78,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/prdark_border_bottom_round"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

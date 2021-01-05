@@ -1,6 +1,7 @@
 package vn.vistark.qrinfoscanner.ui.traceable_object_information
 
 import android.annotation.SuppressLint
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -17,6 +18,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataUpdateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataDetailBody
@@ -145,7 +147,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
 
                     runOnUiThread {
-                        showAlertConfirm("Đã lưu dữ liệu thành công " + Gson().toJson(response), {
+                        showAlertConfirm("Đã lưu dữ liệu thành công ", {
                             setResult(RESULT_OK)
                             finish()
                         })
@@ -160,6 +162,14 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
                 }
             }
+        }
+    }
+
+    override fun attachBaseContext(newBase: Context?) {
+        if (newBase != null) {
+            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+        } else {
+            super.attachBaseContext(newBase)
         }
     }
 

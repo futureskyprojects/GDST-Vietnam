@@ -10,6 +10,10 @@ data class GDSTProductForm(
     @SerializedName("title")
     var title: String = ""
 ) {
+    fun toBaseMap(): BaseMap {
+        return BaseMap(id, title)
+    }
+
     companion object {
         fun ArrayList<GDSTProductForm>?.toBaseMap3(): Array<BaseMap> {
             val baseMaps = ArrayList<BaseMap>()

@@ -2,6 +2,8 @@ package vn.vistark.qrinfoscanner.domain.entities
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
+import java.lang.Exception
 
 class GDSTTechnicalData(
     @SerializedName("id")
@@ -32,10 +34,35 @@ class GDSTTechnicalData(
     var eventQuantification: Float = 0F
 ) {
     val informationFishingUpObject: ArrayList<GDSTInfomationFishUp>
-        get() = ArrayList(
-            Gson().fromJson(
-                informationFishingUp,
-                Array<GDSTInfomationFishUp>::class.java
-            ).toList()
-        )
+        get() = try {
+            if (informationFishingUp.isNullOrEmpty())
+                ArrayList()
+            else
+                ArrayList(
+                    Gson().fromJson(
+                        informationFishingUp ?: "",
+                        Array<GDSTInfomationFishUp>::class.java
+                    ).toList()
+                )
+        } catch (e: Exception) {
+            ArrayList()
+        }
+
+    companion object {
+        fun From(dto: GDSTTechnicalDataDTO): GDSTTechnicalData {
+            val obj = GDSTTechnicalData()
+            obj.dateTransshipment = dto.dateTransshipment
+            obj.eventDate = dto.eventDate
+            obj.eventId = dto.eventId
+            obj.geolocationId = dto.geolocationId
+            obj.isTrasshipment = dto.isTrasshipment
+            obj.KDE = dto.KDE
+            obj.loactionTransshipmentId = dto.loactionTransshipmentId
+            obj.materialShipId = dto.materialShipId
+            obj.productFormId = dto.productFormId
+            obj.informationFishingUp = dto.informationFishingUp
+            obj.eventQuantification = dto.eventQuantification
+            return obj
+        }
+    }
 }
