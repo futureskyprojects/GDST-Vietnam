@@ -59,7 +59,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="Có"
+                            android:text="@string/c"
                             android:textColor="#000"
                             android:textSize="16sp"
                             android:textStyle="bold" />
@@ -82,7 +82,7 @@
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="Không"
+                            android:text="@string/k"
                             android:textColor="#000"
                             android:textSize="16sp"
                             android:textStyle="bold" />

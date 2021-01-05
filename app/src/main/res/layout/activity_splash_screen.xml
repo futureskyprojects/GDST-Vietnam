@@ -36,7 +36,7 @@
         android:gravity="center"
         android:justificationMode="inter_word"
         android:padding="20dp"
-        android:text="Ứng dụng dường như mất nhiều thời gian hơn dự tính để khởi động. Vui lòng thử lại hoặc báo cáo với nhà phát triển Vistark (services.vistark@gmail.com)"
+        android:text="@string/longtime_response"
         android:visibility="gone"
         tools:ignore="UnusedAttribute" />
 

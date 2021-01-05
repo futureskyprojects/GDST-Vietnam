@@ -61,7 +61,6 @@
                 android:layout_gravity="center"
                 android:layout_marginVertical="8dp"
                 android:gravity="center"
-                android:text="Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu"
                 android:textAlignment="center"
                 android:textColor="#ED213A"
                 android:visibility="gone" />
@@ -91,7 +90,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginHorizontal="5dp"
                             android:gravity="center"
-                            android:text="Thông tin kỹ thuật"
+                            android:text="@string/ttkt"
                             android:textAllCaps="true"
                             android:textColor="#000"
                             android:textSize="18sp" />
@@ -119,7 +118,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:paddingVertical="1dp"
-                        android:text="ID Mẻ lưới"
+                        android:text="@string/idml"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -131,7 +130,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:autofillHints="Tên doanh nghiệp"
-                        android:hint="ID Mẻ lưới"
+                        android:hint="@string/idml"
                         android:imeOptions="actionDone"
                         android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
                         android:lines="1"
@@ -145,7 +144,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Ngày, giờ mẻ lưới"
+                        android:text="@string/ngml"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -184,7 +183,7 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Vị trí mẻ lưới"
+                        android:text="@string/vtml"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -229,7 +228,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginHorizontal="5dp"
                             android:gravity="center"
-                            android:text="Thông tin truy xuất"
+                            android:text="@string/tttx"
                             android:textAllCaps="true"
                             android:textColor="#000"
                             android:textSize="18sp" />
@@ -257,7 +256,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="8dp"
                         android:paddingVertical="1dp"
-                        android:text="KDE Liên kết"
+                        android:text="@string/kdelk_clear"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -270,7 +269,7 @@
                         android:layout_marginHorizontal="25dp"
                         android:autofillHints="Tên doanh nghiệp"
                         android:digits="0123456789"
-                        android:hint="KDE Liên kết"
+                        android:hint="@string/kdelk_clear"
                         android:imeOptions="actionDone"
                         android:inputType="number|textAutoComplete"
                         android:lines="1"
@@ -284,7 +283,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="-4dp"
                         android:paddingVertical="1dp"
-                        android:text="Dạng sản phẩm"
+                        android:text="@string/product_forms"
                         android:textColor="#000"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -329,7 +328,7 @@
                             android:layout_centerVertical="true"
                             android:layout_marginHorizontal="5dp"
                             android:gravity="center"
-                            android:text="Thông tin chuyển tải"
+                            android:text="@string/ttct"
                             android:textAllCaps="true"
                             android:textColor="#000"
                             android:textSize="18sp" />
@@ -356,7 +355,7 @@
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginTop="16dp"
                         android:checked="false"
-                        android:text="Có chuyển tải"
+                        android:text="@string/cct_adf"
                         android:textColor="#000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -376,7 +375,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginBottom="-4dp"
                             android:paddingVertical="1dp"
-                            android:text="Ngày, giờ chuyển tải"
+                            android:text="@string/ngct_adf"
                             android:textColor="#000"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -415,7 +414,7 @@
                             android:layout_marginTop="4dp"
                             android:layout_marginBottom="-4dp"
                             android:paddingVertical="1dp"
-                            android:text="Vị trí chuyển tải"
+                            android:text="@string/vtct_adf"
                             android:textColor="#000"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -455,7 +454,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:layout_marginVertical="20dp"
-                        android:text="Hoàn tất" />
+                        android:text="@string/hoan_tat" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

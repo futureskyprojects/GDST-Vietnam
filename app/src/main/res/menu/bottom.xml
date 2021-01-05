@@ -3,7 +3,7 @@
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/home"
-        android:title="Trang chủ" />
+        android:title="@string/tc" />
     <item
         android:id="@+id/action_invisible"
         android:enabled="false"
@@ -11,5 +11,5 @@
     <item
         android:id="@+id/profile"
         android:icon="@drawable/image_user_no_avatar_gray"
-        android:title="Cá nhân" />
+        android:title="@string/cn" />
 </menu>

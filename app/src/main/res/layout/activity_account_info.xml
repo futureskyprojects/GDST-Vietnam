@@ -61,7 +61,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Tên Tài khoản"
+                    android:text="@string/ttk"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -76,7 +76,7 @@
                     android:clickable="false"
                     android:enabled="false"
                     android:focusable="false"
-                    android:hint="Tên Tài khoản"
+                    android:hint="@string/ttk"
                     android:inputType="textAutoComplete|textAutoCorrect|textCapWords"
                     android:lines="1"
                     android:maxLength="40"
@@ -90,7 +90,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Công ty trực thuộc"
+                    android:text="@string/ctytt"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -105,7 +105,7 @@
                     android:clickable="false"
                     android:enabled="false"
                     android:focusable="false"
-                    android:hint="Công ty trực thuộc"
+                    android:hint="@string/ctytt"
                     android:inputType="text|textAutoComplete"
                     android:lines="1"
                     android:maxLength="255"
@@ -119,7 +119,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Họ và tên"
+                    android:text="@string/hvt"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:autofillHints="Mã số thuế"
-                    android:hint="Họ và tên"
+                    android:hint="@string/hvt"
                     android:inputType="textPersonName|textCapWords"
                     android:lines="1"
                     android:maxLength="100" />
@@ -144,7 +144,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="8dp"
                     android:paddingVertical="1dp"
-                    android:text="Mật khẩu"
+                    android:text="@string/mk"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -156,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
                     android:autofillHints="Website"
-                    android:hint="Để trống nếu không đổi"
+                    android:hint="@string/dtnkd"
                     android:inputType="textPassword"
                     android:lines="1"
                     android:maxLength="255" />
@@ -203,7 +203,7 @@
                         android:layout_marginRight="0dp"
                         android:clickable="true"
                         android:focusable="true"
-                        android:text="Đăng xuất"
+                        android:text="@string/loggout"
                         android:textColor="#F38500"
                         android:textSize="18sp"
                         android:textStyle="italic" />
@@ -235,7 +235,7 @@
                             android:layout_marginStart="5dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginRight="10dp"
-                            android:text="Hủy" />
+                            android:text="@string/cancel" />
 
                         <Button
                             android:id="@+id/aaiBtnSave"
@@ -243,7 +243,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
-                            android:text="Lưu lại" />
+                            android:text="@string/save" />
 
                     </LinearLayout>
                 </RelativeLayout>

@@ -10,6 +10,7 @@
         android:id="@+id/aaEdtSearchBar"
         style="@style/EditText.Default"
         android:layout_width="match_parent"
+        android:hint="@string/ntkctk"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/search_black_ic"
         android:drawablePadding="8dp" />

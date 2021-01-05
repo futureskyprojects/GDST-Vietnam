@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:text="Đăng nhập"
+            android:text="@string/dn"
             android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -47,7 +47,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="24dp"
             android:autofillHints="Mã số thuế"
-            android:hint="Tên tài khoản"
+            android:hint="@string/ttk"
             android:inputType="textEmailAddress|textAutoComplete"
             android:lines="1"
             android:maxLength="255" />
@@ -66,7 +66,7 @@
                 style="@style/EditText.Default"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Mật khẩu (Mặc định: 123456)"
+                android:hint="@string/mkmd123456xxx"
                 android:inputType="textPassword"
                 android:lines="1"
                 android:maxLength="255" />
@@ -79,16 +79,17 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="20dp"
-            android:text="Đăng nhập" />
+            android:text="@string/dn" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:text="Quên mật khẩu"
+            android:text="@string/qmk"
             android:textColor="@color/text_link_blue"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <LinearLayout
@@ -103,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Chưa có tài khoản? "
+            android:text="@string/cctk"
             android:textColor="#000"
             android:textSize="14sp" />
 
@@ -114,7 +115,7 @@
             android:layout_gravity="center"
             android:clickable="true"
             android:focusable="true"
-            android:text="Đăng ký"
+            android:text="@string/dk"
             android:textColor="@color/text_link_blue"
             android:textSize="14sp" />
     </LinearLayout>

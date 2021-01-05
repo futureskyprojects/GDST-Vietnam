@@ -41,20 +41,23 @@ class VesselDataViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
     @SuppressLint("SetTextI18n")
     private fun setRegistration(vesselData: VesselData) {
-        ilvTvVesselRegistration.text = ilvTvVesselRegistration.context.getString(R.string.sdkt) + vesselData.vesselRegistration
+        ilvTvVesselRegistration.text =
+            ilvTvVesselRegistration.context.getString(R.string.sdkt) + vesselData.vesselRegistration
     }
 
     @SuppressLint("SetTextI18n")
     private fun setCoordinates(vesselData: VesselData) {
         ilvTvVesselCoordinates.text =
-            "Tọa độ: FAO${vesselData.availabilityOfCatchCoordinates} (${
+            ilvTvVesselCoordinates.context.getString(R.string.toa_do) + "FAO${vesselData.availabilityOfCatchCoordinates} (${
                 RuntimeStorage.FAOs?.nameFormCode(
-                vesselData.availabilityOfCatchCoordinates
-            )})"
+                    vesselData.availabilityOfCatchCoordinates
+                )
+            })"
     }
 
     private fun setVMS(vesselData: VesselData) {
-        ilvTvVesselVMS.text = ilvTvVesselVMS.context.getString(R.string.vms) + vesselData.satelliteVesselTrackingAuthority
+        ilvTvVesselVMS.text =
+            ilvTvVesselVMS.context.getString(R.string.vms) + vesselData.satelliteVesselTrackingAuthority
     }
 
 }

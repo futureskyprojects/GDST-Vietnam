@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="Quét mã QR"
+                android:text="@string/qmqr"
                 android:textAlignment="center"
                 android:textColor="#FFF"
                 android:textSize="16sp"
