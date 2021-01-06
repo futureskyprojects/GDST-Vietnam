@@ -101,7 +101,7 @@ class TechnicalDataActivity : AppCompatActivity() {
                         }
                     }
                 }
-            })
+            }, lastedEventIdInMaterialShip = technicalDatas.lastOrNull()?.eventId ?: 0)
         }
     }
 

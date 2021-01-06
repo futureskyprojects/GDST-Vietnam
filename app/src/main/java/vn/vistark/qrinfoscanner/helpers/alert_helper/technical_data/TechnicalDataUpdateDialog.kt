@@ -36,7 +36,8 @@ class TechnicalDataUpdateDialog {
         fun AppCompatActivity.showUpdateTechnicalDataAlert(
             onCompleted: (GDSTTechnicalDataDTO?) -> Unit,
             technicalData: GDSTTechnicalDataDTO = GDSTTechnicalDataDTO(),
-            id: String = ""
+            id: String = "",
+            lastedEventIdInMaterialShip: Int = 0
         ) {
 
             eventDate = null
@@ -57,7 +58,7 @@ class TechnicalDataUpdateDialog {
             vh.autdEdtEventId.setText(id)
             vh.autdEdtEventId.isEnabled = false
             if (id.isEmpty())
-                vh.autdEdtEventId.setText((System.currentTimeMillis() / 1000).toString())
+                vh.autdEdtEventId.setText((lastedEventIdInMaterialShip + 1).toString())
 
             vh.onCheckedChange {
                 if (it) {
