@@ -45,7 +45,7 @@
     <string name="vlnsl">Please enter output</string>
     <string name="stnl">Correction of material vessel data</string>
     <string name="tdltnl">Create material ship data</string>
-    <string name="dtdnntc">Language changed successfully</string>
+    <string name="dtdnntc">Language changed successfully, changes will be applied after restarting the application or switching screens</string>
     <string name="btsmdxkplv">Do you really want to log out of the session?</string>
     <string name="ltqtpga">Error in image resolution</string>
     <string name="vlnhvt">Please enter your first and last name</string>
@@ -150,4 +150,5 @@
     <string name="vtlc">Landing location</string>
     <string name="ng_y_l_n_c">Date of landing</string>
     <string name="tmgp">Create license</string>
+    <string name="cntnltc">Updated material vessel successfully</string>
 </resources>

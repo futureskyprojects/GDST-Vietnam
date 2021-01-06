@@ -19,15 +19,13 @@ import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataUpdateDTO
-import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataDetailBody
 import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.showLog
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTInfomationFishUp
 import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
-import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 
@@ -62,6 +60,8 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
         val technicalDataId =
             intent.getIntExtra(TechnicalData::class.java.simpleName, -1)
+
+//        showLog("specialData: [${specialData?.length}] && technicalDataId: [${technicalDataId}]")
 
         if (technicalDataId <= 0) {
             Toast.makeText(
@@ -172,7 +172,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
-            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+            super.attachBaseContext(VistarkContextWrapper.wrap(newBase, Config.LanguageCode))
         } else {
             super.attachBaseContext(newBase)
         }

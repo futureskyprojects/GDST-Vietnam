@@ -44,7 +44,7 @@
     <string name="vlnsl">Vui lòng nhập sản lượng</string>
     <string name="stnl">Sửa dữ liệu tàu nguyên liệu</string>
     <string name="tdltnl">Tạo dữ liệu tàu nguyên liệu</string>
-    <string name="dtdnntc">Đã thay đổi ngôn ngữ thành công</string>
+    <string name="dtdnntc">Đã thay đổi ngôn ngữ thành công, việc thay đổi sẽ được áp dụng sau khi khởi động lại ứng dụng hoặc chuyển màn hình</string>
     <string name="btsmdxkplv">Bạn thực sự muốn đăng xuất khỏi phiên làm việc?</string>
     <string name="ltqtpga">Lỗi trong quá trình phân giải ảnh</string>
     <string name="vlnhvt">Vui lòng nhập họ và tên</string>

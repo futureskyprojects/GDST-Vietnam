@@ -22,7 +22,7 @@ class Retrofit2Extension {
                     }
 
                     override fun onResponse(call: Call<T>?, response: Response<T>) {
-                        showLog(Gson().toJson(response))
+//                        showLog(Gson().toJson(response))
                         if (response.isSuccessful && response.body() != null) {
                             continuation.resume(response.body())
                         } else {

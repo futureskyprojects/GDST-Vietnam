@@ -2,16 +2,12 @@ package vn.vistark.qrinfoscanner.ui.account_info
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
-import android.os.SystemClock
 import android.provider.MediaStore
-import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -31,8 +27,9 @@ import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.logOut
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.core.helpers.ResourceSaver.Companion.SaveBitmap
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper.Companion.forOnCreate
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTProfileUpdateWithOutPassword
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTProfileUpdateWithPassword
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTShipmentCreateDTO
@@ -61,6 +58,8 @@ class AccountInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_info)
+
+        forOnCreate()
 
         initGDSTBottomBar(cbnBnvBottomNav, cbnBtnCenter, 2)
         btmNavLayout.initGDSTSmartBottomBar(aaiSvContent)
@@ -137,7 +136,7 @@ class AccountInfoActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
-            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+            super.attachBaseContext(VistarkContextWrapper.wrap(newBase, Config.LanguageCode))
         } else {
             super.attachBaseContext(newBase)
         }

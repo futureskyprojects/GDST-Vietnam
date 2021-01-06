@@ -21,7 +21,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
-import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.domain.api.requests.material_ship.GetMaterialShipBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
@@ -32,7 +32,6 @@ import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTSma
 import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTopSearchBar
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
-import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog
 import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipUpdateDialog.Companion.showUpdateMaterialShipAlert
 import vn.vistark.qrinfoscanner.ui.technical_data.TechnicalDataActivity
 import kotlin.collections.ArrayList
@@ -65,7 +64,7 @@ class MaterialShipActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
-            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+            super.attachBaseContext(VistarkContextWrapper.wrap(newBase, Config.LanguageCode))
         } else {
             super.attachBaseContext(newBase)
         }

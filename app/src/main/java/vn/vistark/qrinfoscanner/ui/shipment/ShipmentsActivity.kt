@@ -23,7 +23,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
-import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.core.helpers.QRGenerator.Companion.QRBitmap
 import vn.vistark.qrinfoscanner.core.helpers.ResourceSaver.Companion.SaveBitmap
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTShipmentCreateDTO
@@ -176,7 +176,7 @@ class ShipmentsActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
-            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+            super.attachBaseContext(VistarkContextWrapper.wrap(newBase, Config.LanguageCode))
         } else {
             super.attachBaseContext(newBase)
         }

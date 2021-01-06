@@ -5,14 +5,13 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.journeyapps.barcodescanner.CaptureManager
 import kotlinx.android.synthetic.main.activity_qr_scan.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.components.CustomViewFinderView
 import vn.vistark.qrinfoscanner.core.helpers.DimensionHelper
-import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.domain.constants.Config
 
 
@@ -71,7 +70,7 @@ class QrScanActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
-            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+            super.attachBaseContext(VistarkContextWrapper.wrap(newBase, Config.LanguageCode))
         } else {
             super.attachBaseContext(newBase)
         }

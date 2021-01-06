@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "627255024932",
+    "project_id": "gdst-16969",
+    "storage_bucket": "gdst-16969.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627255024932:android:570d8028c155a95108e7b1",
+        "android_client_info": {
+          "package_name": "vn.vistark.qrinfoscanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627255024932-0k24vf0or5cdfrd8br19ujro4v14hr9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCle_xA-4yKMQDTO2Dg1VMH40zN8kWkQwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627255024932-0k24vf0or5cdfrd8br19ujro4v14hr9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

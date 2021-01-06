@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_splash_screen.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
 import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
-import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
+import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.maxSplashScreenWait
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
@@ -24,7 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
     override fun attachBaseContext(newBase: Context?) {
         if (newBase != null) {
-            super.attachBaseContext(MyContextWrapper.wrap(newBase, Config.LanguageCode))
+            super.attachBaseContext(VistarkContextWrapper.wrap(newBase, Config.LanguageCode))
         } else {
             super.attachBaseContext(newBase)
         }

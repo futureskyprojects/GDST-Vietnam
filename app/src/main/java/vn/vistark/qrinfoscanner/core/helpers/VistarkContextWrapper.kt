@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import java.util.*
 
-class MyContextWrapper(base: Context?) : ContextWrapper(base) {
+class VistarkContextWrapper(base: Context?) : ContextWrapper(base) {
     companion object {
         fun AppCompatActivity.forOnCreate() {
             val context: Context = wrap(this, Config.LanguageCode)
@@ -42,7 +42,7 @@ class MyContextWrapper(base: Context?) : ContextWrapper(base) {
             } else {
                 context.resources.updateConfiguration(config, context.resources.displayMetrics)
             }
-            return MyContextWrapper(context)
+            return VistarkContextWrapper(context)
         }
 
         fun getSystemLocaleLegacy(config: Configuration): Locale {
