@@ -47,8 +47,11 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:id="@+id/aaiLnContainerRoot"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
                 android:orientation="vertical"
                 android:paddingBottom="60dp">
 

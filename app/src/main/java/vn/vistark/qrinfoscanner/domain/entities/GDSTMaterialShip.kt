@@ -69,10 +69,10 @@ data class GDSTMaterialShip(
             materialId,
             fipcodeId,
             gearId,
-            dateGo.ToYMDDate()?.Format() ?: dateGo.split(" ").first(),
+            dateGo.ToYMDDate()?.Format("yyyy-MM-dd") ?: dateGo.split(" ").first(),
             prodctMethod,
             upFishing,
-            dateUpFishing.ToYMDDate()?.Format() ?: dateUpFishing.split(" ").first(),
+            dateUpFishing.ToYMDDate()?.Format("yyyy-MM-dd") ?: dateUpFishing.split(" ").first(),
             shipId
         )
     }

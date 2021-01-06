@@ -22,7 +22,7 @@ class StringExtension {
             try {
                 if (params.size < 3)
                     throw Exception("Thiếu tham số")
-                return Date().From(params[0].toInt(), params[1].toInt(), params[2].toInt())
+                return Date().From(params[0].toInt(), params[1].toInt() - 1, params[2].toInt())
             } catch (e: Exception) {
                 e.printStackTrace()
                 return null

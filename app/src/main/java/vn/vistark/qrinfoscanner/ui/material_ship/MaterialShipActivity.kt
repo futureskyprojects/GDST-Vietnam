@@ -60,6 +60,7 @@ class MaterialShipActivity : AppCompatActivity() {
         initDataEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
+        rlOut.setOnClickListener { HideKeyboard() }
     }
 
     override fun attachBaseContext(newBase: Context?) {
@@ -87,7 +88,7 @@ class MaterialShipActivity : AppCompatActivity() {
 
     private fun initEvents() {
         amsBackButton.clickAnimate {
-            onBackPressed()
+            finish()
         }
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             showUpdateMaterialShipAlert({ mts ->

@@ -66,6 +66,7 @@ class ShipmentsActivity : AppCompatActivity() {
         initDataEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
+        rlOut.setOnClickListener { HideKeyboard() }
 
     }
 
@@ -105,7 +106,7 @@ class ShipmentsActivity : AppCompatActivity() {
 
     private fun initEvents() {
         asBackButton.clickAnimate {
-            onBackPressed()
+            finish()
         }
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             val shipment = GDSTShipment((shipments.lastOrNull()?.id ?: 0) + 1)

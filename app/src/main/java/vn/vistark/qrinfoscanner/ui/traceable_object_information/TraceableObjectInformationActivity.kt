@@ -18,6 +18,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
+import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataUpdateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
@@ -50,6 +51,8 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
         setResult(RESULT_CANCELED)
 
+        masterLayout.setOnClickListener { HideKeyboard() }
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -60,7 +63,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
         val technicalDataId =
             intent.getIntExtra(TechnicalData::class.java.simpleName, -1)
 
-        if (specialData.isEmpty() || technicalDataId <= 0) {
+        if (technicalDataId <= 0) {
             Toast.makeText(
                 this,
                 getString(R.string.ktxdttktcmldc),

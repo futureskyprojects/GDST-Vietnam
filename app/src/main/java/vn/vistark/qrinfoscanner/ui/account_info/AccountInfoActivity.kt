@@ -45,6 +45,7 @@ import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.init
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertShowImage
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
+import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -83,6 +84,9 @@ class AccountInfoActivity : AppCompatActivity() {
     }
 
     private fun initEvents() {
+        aaiLnContainerRoot.setOnClickListener {
+            HideKeyboard()
+        }
         aaiBtnSave.clickAnimate {
             saveProfile()
         }
@@ -299,5 +303,12 @@ class AccountInfoActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
     }
 }

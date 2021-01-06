@@ -8,8 +8,8 @@ import vn.vistark.qrinfoscanner.domain.entities.GDSTTechnicalData
 import java.lang.Exception
 
 data class GDSTTechnicalDataUpdateDTO(
-    @SerializedName("technical_id")
-    var technicalId: Int = 0,
+    @SerializedName("id")
+    var id: Int = 0,
     @SerializedName("date_transshipment")
     var dateTransshipment: String = "",
     @SerializedName("event_date")

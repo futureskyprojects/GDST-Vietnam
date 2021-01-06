@@ -55,6 +55,7 @@ class TechnicalDataActivity : AppCompatActivity() {
         initDataEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
+        atdRvVessels.setOnClickListener { HideKeyboard() }
     }
 
     @SuppressLint("SetTextI18n")

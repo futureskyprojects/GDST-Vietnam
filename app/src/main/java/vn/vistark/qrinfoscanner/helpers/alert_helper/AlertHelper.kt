@@ -37,7 +37,7 @@ class AlertHelper {
                 calendar.time = date ?: Date()
                 val x = DatePickerDialog(
                     this.context,
-                    DatePickerDialog.OnDateSetListener { v, year, month, dayOfMonth ->
+                    { v, year, month, dayOfMonth ->
                         val dateRes = Date().From(year, month, dayOfMonth)
                         this.text = dateRes.Format()
                         onResult.invoke(dateRes)

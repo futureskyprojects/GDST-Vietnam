@@ -63,6 +63,7 @@ class MaterialBatchActivity : AppCompatActivity() {
         initDataEvents()
 
         masterLayout.setOnClickListener { HideKeyboard() }
+        rlOut.setOnClickListener { HideKeyboard() }
     }
 
     override fun attachBaseContext(newBase: Context?) {
@@ -112,7 +113,7 @@ class MaterialBatchActivity : AppCompatActivity() {
 
     private fun initEvents() {
         ambBackButton.clickAnimate {
-            onBackPressed()
+            finish()
         }
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
             var maxId = 1
