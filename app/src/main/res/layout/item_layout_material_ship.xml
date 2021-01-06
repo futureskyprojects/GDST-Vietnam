@@ -47,14 +47,16 @@
                 android:layout_height="match_parent"
                 android:layout_toStartOf="@id/ilmsdIvEditIcon"
                 android:layout_toLeftOf="@id/ilmsdIvEditIcon"
+                android:ellipsize="marquee"
                 android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
                 android:text="----------------------"
                 android:textColor="#FFF"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <ImageView
-                android:visibility="invisible"
                 android:id="@+id/ilmsdIvEditIcon"
                 android:layout_width="32dp"
                 android:layout_height="match_parent"
@@ -65,7 +67,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:paddingVertical="5dp"
-                android:src="@drawable/icon_edit_white" />
+                android:src="@drawable/icon_edit_white"
+                android:visibility="visible" />
         </RelativeLayout>
 
     </RelativeLayout>

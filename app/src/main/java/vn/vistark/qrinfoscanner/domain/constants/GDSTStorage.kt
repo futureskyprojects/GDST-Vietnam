@@ -18,6 +18,7 @@ class GDSTStorage {
         var GDSTFipCodes: ArrayList<GDSTFipCode>? = ArrayList()
         var GDSTProductForms: ArrayList<GDSTProductForm>? = ArrayList()
         var GDSTCompanies: ArrayList<GDSTCompany>? = ArrayList()
+        var GDSTShips: ArrayList<GDSTShip>? = ArrayList()
 
         var CurrentUser: GDSTUserProfile = GDSTUserProfile()
             get() = AppStorageManager.getObject(GDSTUserProfile::class.java.simpleName.toUpperCase() + "_USER_PROFILE")
@@ -43,6 +44,8 @@ class GDSTStorage {
                     GDSTFipCodes = ApiService.mAPIServices.getGDSTFipCodes().await()
                     GDSTProductForms = ApiService.mAPIServices.getGDSTProductForms().await()
                     GDSTCompanies = ApiService.mAPIServices.getGDSTCompanies().await()
+                    GDSTShips = ApiService.mAPIServices.getGDSTShip().await()
+
 
                     onSuccess()
                 } catch (e: Exception) {

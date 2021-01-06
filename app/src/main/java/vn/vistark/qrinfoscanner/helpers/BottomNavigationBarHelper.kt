@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.AbsListView
 import android.widget.ScrollView
+import androidx.core.content.IntentCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -100,7 +101,7 @@ class BottomNavigationBarHelper {
                                 this,
                                 HomeActivity::class.java
                             )
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             startActivity(intent)
                         }
                         return@OnNavigationItemSelectedListener true
@@ -112,6 +113,7 @@ class BottomNavigationBarHelper {
                                 AccountInfoActivity::class.java
                             )
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                             startActivity(intent)
                         }
                         return@OnNavigationItemSelectedListener true

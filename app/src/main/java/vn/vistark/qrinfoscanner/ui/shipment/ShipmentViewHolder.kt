@@ -54,6 +54,7 @@ class ShipmentViewHolder(v: View) : RecyclerView.ViewHolder(v) {
     @SuppressLint("SetTextI18n")
     private fun setShipmentName(name: String) {
         ilsTvShipmentName.text = ilsTvShipmentName.context.getString(R.string.lh) + " " + name
+        ilsTvShipmentName.isSelected = true
     }
 
     @SuppressLint("SetTextI18n")

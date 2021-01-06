@@ -26,7 +26,6 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.material_batch.GetMaterialBatchBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
@@ -116,10 +115,10 @@ class MaterialBatchActivity : AppCompatActivity() {
             onBackPressed()
         }
         FloatAddButtonHelper.initialize(cfabIvIcon, cfabLnAddBtn) {
-            val batch = GDSTMaterialBacth(
-                CommonMockup.MockupMaxId<RawMaterialBatch>() + 1,
-                shipmentId
-            )
+            var maxId = 1
+            if (materialBatchs.size > 0)
+                maxId += materialBatchs.maxBy { it.id }?.id ?: 0
+            val batch = GDSTMaterialBacth(maxId, shipmentId)
             this.showAlertConfirm(
                 getString(R.string.bcmtlnlms) + " #${
                     batch.id.toString().padStart(

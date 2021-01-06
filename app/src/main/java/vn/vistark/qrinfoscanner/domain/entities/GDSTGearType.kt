@@ -10,6 +10,10 @@ data class GDSTGearType(
     @SerializedName("title")
     var title: String = ""
 ) {
+    fun toBaseMap(): BaseMap {
+        return BaseMap(id, title)
+    }
+
     companion object {
         fun ArrayList<GDSTGearType>?.toBaseMap2(): Array<BaseMap> {
             val baseMaps = ArrayList<BaseMap>()

@@ -3,6 +3,7 @@ package vn.vistark.qrinfoscanner.core.constants
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
+import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.showLog
 import java.lang.Exception
 
 class AppStorageManager {
@@ -35,13 +36,13 @@ class AppStorageManager {
 
         fun <T> updateObject(key: String, data: T): Boolean {
             val sJson = Gson().toJson(data)
-            println("Đã lưu dữ liệu: $sJson")
+            showLog("Đã lưu dữ liệu: $sJson")
             return storageSP?.edit()?.putString(key, sJson)?.commit() ?: false
         }
 
         inline fun <reified T> getObject(key: String): T {
             val sJson = storageSP?.getString(key, "")
-            println("Đã lấy dữ liệu: $sJson (${T::class.java.simpleName})")
+            showLog("Đã lấy dữ liệu: $sJson (${T::class.java.simpleName})")
             return Gson().fromJson(sJson, T::class.java)
         }
 

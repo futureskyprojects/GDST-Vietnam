@@ -7,14 +7,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.core.constants.AppPath
 import vn.vistark.qrinfoscanner.core.constants.AppStorageManager
-import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.maxSplashScreenWait
-import vn.vistark.qrinfoscanner.domain.constants.RuntimeStorage
 import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthenticated
 import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
-import vn.vistark.qrinfoscanner.core.mockup.core.MockData
 import vn.vistark.qrinfoscanner.domain.constants.Config
+import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.maxSplashScreenWait
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.ui.home.HomeActivity
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
@@ -38,11 +35,6 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         AppStorageManager.initialize(this)
-
-        // Dành cho demo
-        MockData.initialize(this)
-
-//        AppPath.initialize(this)
 
         initLongResponse()
 

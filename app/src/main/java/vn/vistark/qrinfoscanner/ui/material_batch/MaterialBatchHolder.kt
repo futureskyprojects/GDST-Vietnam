@@ -33,6 +33,7 @@ class MaterialBatchHolder(v: View) : RecyclerView.ViewHolder(v) {
     private fun setMaterialBatchName(name: String) {
         ilmTvMaterialBatchName.text =
             ilmTvMaterialBatchName.context.getString(R.string.lnl) + " " + name
+        ilmTvMaterialBatchName.isSelected = true
     }
 
 

@@ -13,7 +13,7 @@
     <string name="ccsplcnk">Có chính sách Phúc lợi con người không?</string>
     <string name="ctcplcnk">Có Tiêu chuẩn Phúc lợi con người không?</string>
     <string name="csgp">Chỉnh sửa giấy phép</string>
-    <string name="tmgp" translatable="false">Thêm mới giấy phép</string>
+    <string name="tmgp">Thêm mới giấy phép</string>
     <string name="c">Có</string>
     <string name="k">Không</string>
     <string name="kpgdkqtv">Không phân dải được kết quả trả về</string>
@@ -68,6 +68,7 @@
     <string name="nd">Ngày đi: </string>
     <string name="nc">Ngư cụ: </string>
     <string name="ptkt">Phương thức khai thác: </string>
+    <string name="ptkt_clear">Phương thức khai thác</string>
     <string name="lc">"Lên cá: "</string>
     <string name="dcdvcmqrdq">Di chuyển camera đến vùng chứa mã QR để quét</string>
     <string name="dlt">Dữ liệu tàu</string>
@@ -148,7 +149,7 @@
     <string name="t_o_d_li_u_t_u_nguy_n_li_u_m_i">Tạo dữ liệu tàu nguyên liệu mới</string>
     <string name="ch_n_t_u_nguy_n_li_u">Chọn tàu nguyên liệu</string>
     <string name="d_n_fip">Dự án FIP</string>
-    <string name="ptkt_clear">Phương pháp Khai thác</string>
     <string name="vtlc">Vị trí lên cá</string>
     <string name="ng_y_l_n_c">Ngày lên cá</string>
+    <string name="cntnltc">Cập nhật tàu nguyên liệu thành công</string>
 </resources>

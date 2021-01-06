@@ -12,9 +12,6 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.domain.mock_entities.CertificationAndLicense
 import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
 import vn.vistark.qrinfoscanner.domain.mock_entities.VesselData
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupGet
-import vn.vistark.qrinfoscanner.domain.entities.GDSTLocation
-import vn.vistark.qrinfoscanner.domain.mock_models.fao.response.FAO
 
 class TechnicalDataViewHolder(v: View) {
 
@@ -67,21 +64,6 @@ class TechnicalDataViewHolder(v: View) {
         }
     }
 
-
-    fun loadExistData(materialShip: MaterialShip): Triple<VesselData?, CertificationAndLicense?, Int> {
-
-        if (materialShip.Id > 0) {
-            autdTvDialogName.text = autdTvDialogName.context.getString(R.string.sdltnl)
-            val vesselData = MockupGet<VesselData>(materialShip.VesselDataId)
-            val certLicense =
-                MockupGet<CertificationAndLicense>(materialShip.CertificationAndLicenseId)
-
-            return Triple(vesselData, certLicense, -1)
-
-        }
-        autdTvDialogName.text = autdTvDialogName.context.getString(R.string.tdltnl)
-        return Triple(null, null, -1)
-    }
 
     fun clearErrorOnTextChanger(edt: EditText) {
         edt.addTextChangedListener(object : TextWatcher {

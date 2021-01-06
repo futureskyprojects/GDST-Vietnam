@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
+import android.os.SystemClock
 import android.provider.MediaStore
 import android.util.DisplayMetrics
 import android.view.View
@@ -102,8 +103,8 @@ class AccountInfoActivity : AppCompatActivity() {
                 GDSTStorage.CurrentUser = GDSTUserProfile()
 
                 val intent = Intent(this, SignInActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
-                finish()
             })
         }
 
@@ -125,8 +126,8 @@ class AccountInfoActivity : AppCompatActivity() {
         Config.LanguageCode = langCode
         showAlertConfirm(getString(R.string.dtdnntc), {
             val intent = Intent(this, AccountInfoActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
-            finish()
         })
     }
 
@@ -183,11 +184,9 @@ class AccountInfoActivity : AppCompatActivity() {
                 if (response == null)
                     throw Exception("Không phân dải được KQ trả về")
 
-                GDSTStorage.CurrentUser.fullname = fullName
-
-                if (password.isNotEmpty() && password.isNotBlank() && password.length >= 8) {
-                    GDSTStorage.CurrentUser.password = password
-                }
+                val temp = GDSTUserProfile(GDSTStorage.CurrentUser)
+                temp.fullname = fullName
+                GDSTStorage.CurrentUser = temp
 
                 runOnUiThread {
                     showAlertConfirm(getString(R.string.cntttktc))
@@ -280,8 +279,14 @@ class AccountInfoActivity : AppCompatActivity() {
 
                         runOnUiThread { loading.cancel() }
                         runOnUiThread {
-                            GDSTStorage.CurrentUser.image = dto.qrUrl
-                            initData()
+                            val temp = GDSTUserProfile(GDSTStorage.CurrentUser)
+                            temp.image = dto.qrUrl
+                            GDSTStorage.CurrentUser = temp
+
+                            val intent =
+                                Intent(this@AccountInfoActivity, AccountInfoActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                            startActivity(intent)
                         }
 
                     } catch (e: Exception) {

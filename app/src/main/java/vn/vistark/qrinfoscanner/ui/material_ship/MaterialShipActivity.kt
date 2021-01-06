@@ -19,15 +19,9 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.domain.constants.Config
-import vn.vistark.qrinfoscanner.domain.mock_entities.MaterialShip
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
-import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.delayAction
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.MyContextWrapper
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupCreate
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupData
-import vn.vistark.qrinfoscanner.core.mockup.CommonMockup.Companion.MockupMaxId
-import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.material_ship.GetMaterialShipBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
@@ -64,8 +58,6 @@ class MaterialShipActivity : AppCompatActivity() {
         syncMaterialShip()
 
         initDataEvents()
-
-        MaterialShipUpdateDialog.shipArr = emptyArray()
 
         masterLayout.setOnClickListener { HideKeyboard() }
     }
@@ -179,18 +171,35 @@ class MaterialShipActivity : AppCompatActivity() {
     }
 
     private fun initDataEvents() {
-//        adapter.onEdit = {
-//            showAlertConfirm(
-//                "Bạn có chắc muốn xóa tàu nguyên liệu [#${
-//                    it.id.toString()
-//                        .padStart(Config.padSize, '0')
-//                }] hay không?",
-//                {
-//                    Toast.makeText(this, "Tác vụ này không được cho phép", Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            )
-//        }
+        adapter.onEdit = {
+            showUpdateMaterialShipAlert({ mts ->
+                if (mts != null) {
+                    val dtoX = GDSTMaterialShip(it.id, mts, it.createdAt, it.updatedAt)
+
+                    val loading = this.showLoadingAlert()
+                    loading.show()
+                    GlobalScope.launch {
+                        try {
+                            ApiService.mAPIServices.postGDSTMaterialShipUpdate(dtoX.DTOofUpdate())
+                                .await()
+                                ?: throw  Exception("ko phan giai dc")
+                            runOnUiThread {
+                                loading.cancel()
+                                syncMaterialShip()
+                                showAlertConfirm(getString(R.string.cntnltc))
+                            }
+
+                        } catch (e: Exception) {
+                            runOnUiThread { loading.cancel() }
+                            e.printStackTrace()
+                            runOnUiThread {
+                                showAlertConfirm("Cập nhật tàu nguyên liệu không thành công")
+                            }
+                        }
+                    }
+                }
+            }, it.DTOofCreate())
+        }
 
         adapter.onClick = { start(it.id) }
     }

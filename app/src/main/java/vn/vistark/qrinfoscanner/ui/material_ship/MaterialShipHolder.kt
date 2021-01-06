@@ -28,6 +28,8 @@ class MaterialShipHolder(v: View) : RecyclerView.ViewHolder(v) {
     fun bind(materialShip: GDSTMaterialShip) {
         ilmsTvMaterialShipname.text =
             ilmsTvMaterialShipname.context.getString(R.string.tnl) + " #${materialShip.id}"
+        ilmsTvMaterialShipname.isSelected = true
+
         ilmsTvMaterialShipId.text = "#${materialShip.id}"
 
         val fip =

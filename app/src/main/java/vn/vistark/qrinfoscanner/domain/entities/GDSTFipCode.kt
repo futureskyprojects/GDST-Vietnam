@@ -12,6 +12,10 @@ data class GDSTFipCode(
     @SerializedName("status")
     var status: Int = 0
 ) {
+    fun toBaseMap(): BaseMap {
+        return BaseMap(id, title)
+    }
+
     companion object {
         fun ArrayList<GDSTFipCode>?.toBaseMap1(): Array<BaseMap> {
             val baseMaps = ArrayList<BaseMap>()

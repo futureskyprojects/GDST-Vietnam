@@ -17,8 +17,6 @@ import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import vn.vistark.qrinfoscanner.R
-import vn.vistark.qrinfoscanner.ui.statics_data.licenses_data.LicenseDataActivity
-import vn.vistark.qrinfoscanner.ui.statics_data.vessel_data.VesselDataActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideDown
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.slideUp
@@ -175,42 +173,6 @@ class AlertHelper {
                 }
             }
 
-        }
-
-        fun AppCompatActivity.showSelectStaticDataOptionAlert() {
-
-            val v = LayoutInflater.from(this).inflate(R.layout.alert_select_static_data, null)
-
-            val context = v.context
-
-            val assdIvClose: ImageView = v.findViewById(R.id.assdIvClose)
-            val assdCvVesselDataBtn: CardView = v.findViewById(R.id.assdCvVesselDataBtn)
-            val assdCvLicenseBtn: CardView = v.findViewById(R.id.assdCvLicenseBtn)
-
-
-            val mBuilder = AlertDialog.Builder(this)
-                .setView(v)
-            val mAlertDialog = mBuilder.show()
-            mAlertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//            mAlertDialog.setCancelable(true)
-
-            assdIvClose.clickAnimate {
-                mAlertDialog.dismiss()
-            }
-
-            assdCvVesselDataBtn.clickAnimate {
-                mAlertDialog.dismiss()
-                val intent = Intent(context, VesselDataActivity::class.java)
-                startActivity(intent)
-            }
-
-            v.setOnClickListener { mAlertDialog.dismiss() }
-
-            assdCvLicenseBtn.clickAnimate {
-                mAlertDialog.dismiss()
-                val intent = Intent(context, LicenseDataActivity::class.java)
-                startActivity(intent)
-            }
         }
 
         fun AppCompatActivity.showLoadingAlert(): AlertDialog {

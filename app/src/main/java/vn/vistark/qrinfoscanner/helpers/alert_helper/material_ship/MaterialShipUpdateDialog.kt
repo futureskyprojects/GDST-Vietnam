@@ -3,6 +3,7 @@ package vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.GlobalScope
@@ -10,6 +11,7 @@ import kotlinx.coroutines.launch
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.api.ApiService
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
+import vn.vistark.qrinfoscanner.core.extensions.StringExtension.Companion.ToYMDDate
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
@@ -19,7 +21,6 @@ import vn.vistark.qrinfoscanner.domain.entities.*
 import vn.vistark.qrinfoscanner.domain.entities.GDSTFipCode.Companion.toBaseMap1
 import vn.vistark.qrinfoscanner.domain.entities.GDSTGearType.Companion.toBaseMap2
 import vn.vistark.qrinfoscanner.domain.entities.GDSTLocation.Companion.toBaseMap4
-import vn.vistark.qrinfoscanner.domain.entities.GDSTProductForm.Companion.toBaseMap3
 import vn.vistark.qrinfoscanner.domain.mock_models.BaseMap
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showDatePicker
@@ -31,19 +32,31 @@ import java.util.*
 
 class MaterialShipUpdateDialog {
     companion object {
-        var shipArr: Array<GDSTShip> = emptyArray()
+        // Khai báo
+
+        var ship: GDSTShip? = null
+
+        var fip: BaseMap? = null
+        var tripDate: Date? = null
+        var gearType: BaseMap? = null
+        var productMethod: BaseMap? = null
+        var loactioin: BaseMap? = null
+        var ladingDate: Date? = null
+
+        var crrShip: GDSTMaterialShipCreateDTO = GDSTMaterialShipCreateDTO()
+
         fun AppCompatActivity.showUpdateMaterialShipAlert(
             onCompleted: (GDSTMaterialShipCreateDTO?) -> Unit,
             materialShip: GDSTMaterialShipCreateDTO = GDSTMaterialShipCreateDTO()
         ) {
+            crrShip = materialShip
+
             val v = LayoutInflater.from(this)
                 .inflate(R.layout.alert_update_material_ship, null)
 
             v.setOnClickListener { HideKeyboard(v) }
 
             val vh = MaterialShipViewHolder(v)
-
-//            val res = vh.loadExistData(materialShip)
 
             val shipVH = ShipCollectionViewHolder(v)
 
@@ -56,50 +69,24 @@ class MaterialShipUpdateDialog {
 
             // Khai báo
 
-            var ship: GDSTShip? = null
+            ship = null
 
-            var fip: BaseMap? = null
-            var tripDate: Date? = null
-            var gearType: BaseMap? = null
-            var productForm: BaseMap? = null
-            var loactioin: BaseMap? = null
-            var ladingDate: Date? = null
+            fip = null
+            tripDate = null
+            gearType = null
+            productMethod = null
+            loactioin = null
+            ladingDate = null
+
+            loadExistData(vh, shipVH)
 
             shipVH.ilssLnRoot.clickAnimate {
                 v.HideKeyboard()
-
-                if (shipArr.isEmpty()) {
-                    val loading = this.showLoadingAlert()
-                    loading.show()
-                    GlobalScope.launch {
-                        try {
-                            val response = ApiService.mAPIServices.getGDSTShip().await()
-                            runOnUiThread { loading.cancel() }
-                            if (response == null)
-                                throw Exception(getString(R.string.kpgdkqtv))
-
-                            runOnUiThread {
-                                shipArr = response.toTypedArray()
-                                shipVH.select(shipArr, {
-                                    ship = it ?: return@select
-                                    materialShip.shipId = it.id
-                                })
-                            }
-                        } catch (e: Exception) {
-                            runOnUiThread { loading.cancel() }
-                            runOnUiThread {
-                                showAlertConfirm(getString(R.string.kldtdlcs))
-                            }
-                            e.printStackTrace()
-                        }
-                    }
-                } else {
-                    runOnUiThread {
-                        shipVH.select(shipArr, {
-                            ship = it ?: return@select
-                            materialShip.shipId = it.id
-                        })
-                    }
+                runOnUiThread {
+                    shipVH.select(GDSTStorage.GDSTShips?.toTypedArray() ?: emptyArray(), {
+                        ship = it ?: return@select
+                        materialShip.shipId = it.id
+                    })
                 }
 
             }
@@ -139,12 +126,12 @@ class MaterialShipUpdateDialog {
             }
 
             vh.aumvldTvProductionMethod.valueDialog(
-                GDSTStorage.GDSTProductForms.toBaseMap3(),
-                getString(R.string.product_forms)
+                GDSTStorage.GDSTGearTypes.toBaseMap2(),
+                getString(R.string.ptkt_clear)
             ) {
                 vh.updateError()
                 materialShip.prodctMethod = it?.id ?: return@valueDialog
-                productForm = it
+                productMethod = it
             }
 
             vh.aumvldTvLandingLocation.valueDialog(
@@ -172,7 +159,7 @@ class MaterialShipUpdateDialog {
                 if (gearType == null)
                     isValidate = vh.updateError(getString(R.string.vlcnc))
 
-                if (productForm == null)
+                if (productMethod == null)
                     isValidate = vh.updateError(getString(R.string.vlcptkt))
 
                 if (loactioin == null)
@@ -188,6 +175,30 @@ class MaterialShipUpdateDialog {
                 mAlertDialog.dismiss()
             }
 
+        }
+
+        private fun loadExistData(vh: MaterialShipViewHolder, shipVH: ShipCollectionViewHolder) {
+            ship = GDSTStorage.GDSTShips?.firstOrNull { crrShip.shipId == it.id }
+            fip = GDSTStorage.GDSTFipCodes?.firstOrNull { it.id == crrShip.fipcodeId }?.toBaseMap()
+            tripDate = crrShip.dateGo.ToYMDDate()
+            gearType =
+                GDSTStorage.GDSTGearTypes?.firstOrNull { it.id == crrShip.gearId }?.toBaseMap()
+            productMethod = GDSTStorage.GDSTGearTypes?.firstOrNull { it.id == crrShip.prodctMethod }
+                ?.toBaseMap()
+            loactioin =
+                GDSTStorage.GDSTLocations?.firstOrNull { it.id == crrShip.upFishing }?.toBaseMap()
+            ladingDate = crrShip.dateUpFishing.ToYMDDate()
+
+            // Cập nhật lên view
+            if (ship != null)
+                shipVH.bind(ship!!)
+
+            vh.aumvldTvFIP.text = fip?.name
+            vh.aumvldTvTripDate.text = tripDate?.Format()
+            vh.aumvldTvDatesOfLanding.text = ladingDate?.Format()
+            vh.aumvldTvGearType.text = gearType?.name
+            vh.aumvldTvProductionMethod.text = productMethod?.name
+            vh.aumvldTvLandingLocation.text = loactioin?.name
         }
     }
 }

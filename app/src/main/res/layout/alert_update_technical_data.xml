@@ -268,10 +268,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="25dp"
                         android:autofillHints="Tên doanh nghiệp"
-                        android:digits="0123456789"
                         android:hint="@string/kdelk_clear"
                         android:imeOptions="actionDone"
-                        android:inputType="number|textAutoComplete"
+                        android:inputType="textVisiblePassword"
                         android:lines="1"
                         android:maxLength="40" />
 
