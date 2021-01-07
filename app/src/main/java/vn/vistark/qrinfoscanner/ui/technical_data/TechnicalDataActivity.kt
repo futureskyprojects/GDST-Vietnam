@@ -18,6 +18,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataDTO
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataUpdateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataBody
@@ -33,7 +34,7 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showL
 import vn.vistark.qrinfoscanner.helpers.alert_helper.technical_data.TechnicalDataUpdateDialog.Companion.showUpdateTechnicalDataAlert
 import vn.vistark.qrinfoscanner.ui.traceable_object_information.TraceableObjectInformationActivity
 
-class TechnicalDataActivity : AppCompatActivity() {
+class TechnicalDataActivity : VistarkActivity() {
     private var materialShipId: Int = -1
 
     private val requestSpecialCode = 11122

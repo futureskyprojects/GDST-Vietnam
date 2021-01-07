@@ -23,6 +23,7 @@ import vn.vistark.qrinfoscanner.ui.sign_up.SignUpActivity
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserLoginDTO
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
@@ -31,7 +32,7 @@ import vn.vistark.qrinfoscanner.helpers.FloatQuickScanButtonHelper
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 import java.lang.Exception
 
-class SignInActivity : AppCompatActivity() {
+class SignInActivity : VistarkActivity() {
 
     companion object {
         var SIA: SignInActivity? = null

@@ -26,6 +26,7 @@ import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.core.helpers.QRGenerator.Companion.QRBitmap
 import vn.vistark.qrinfoscanner.core.helpers.ResourceSaver.Companion.SaveBitmap
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTShipmentCreateDTO
 import vn.vistark.qrinfoscanner.domain.api.IApiService
 import vn.vistark.qrinfoscanner.domain.constants.Config
@@ -45,7 +46,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
-class ShipmentsActivity : AppCompatActivity() {
+class ShipmentsActivity : VistarkActivity() {
     private val shipments = ArrayList<GDSTShipment>()
     private lateinit var adapter: ShipmentAdapter
 

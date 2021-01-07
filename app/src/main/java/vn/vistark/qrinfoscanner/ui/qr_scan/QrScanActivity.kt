@@ -12,10 +12,11 @@ import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.components.CustomViewFinderView
 import vn.vistark.qrinfoscanner.core.helpers.DimensionHelper
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.constants.Config
 
 
-class QrScanActivity : AppCompatActivity() {
+class QrScanActivity : VistarkActivity() {
 
 //    private var dl: DrawerLayout? = null
 //    private var t: ActionBarDrawerToggle? = null

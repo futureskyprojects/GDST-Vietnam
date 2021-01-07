@@ -20,6 +20,7 @@ import vn.vistark.qrinfoscanner.domain.mock_entities.TechnicalData
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTTechnicalDataUpdateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.technical_data.GetTechnicalDataDetailBody
 import vn.vistark.qrinfoscanner.domain.constants.Config.Companion.showLog

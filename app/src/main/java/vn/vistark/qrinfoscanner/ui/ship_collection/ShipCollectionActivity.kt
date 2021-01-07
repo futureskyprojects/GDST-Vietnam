@@ -15,6 +15,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.entities.GDSTShip
 import vn.vistark.qrinfoscanner.helpers.BottomNavigationBarHelper.Companion.initGDSTBottomBar
@@ -24,7 +25,7 @@ import vn.vistark.qrinfoscanner.helpers.TopSearchBarHelper.Companion.initGDSTTop
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showAlertConfirm
 import vn.vistark.qrinfoscanner.helpers.alert_helper.AlertHelper.Companion.showLoadingAlert
 
-class ShipCollectionActivity : AppCompatActivity() {
+class ShipCollectionActivity : VistarkActivity() {
 
     val ships: ArrayList<GDSTShip> = ArrayList()
     lateinit var adapter: ShipCollectionAdapter

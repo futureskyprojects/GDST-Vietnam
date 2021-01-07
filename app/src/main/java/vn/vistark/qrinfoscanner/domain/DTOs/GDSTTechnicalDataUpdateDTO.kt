@@ -47,7 +47,7 @@ data class GDSTTechnicalDataUpdateDTO(
         fun mapFrom(obj: GDSTTechnicalData): GDSTTechnicalDataUpdateDTO {
             val temp = GDSTTechnicalDataUpdateDTO(
                 obj.id,
-                obj.dateTransshipment,
+                obj.dateTransshipment ?: "",
                 obj.eventDate,
                 obj.eventId,
                 obj.geolocationId,

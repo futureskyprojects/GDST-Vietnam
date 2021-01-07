@@ -43,7 +43,7 @@ data class GDSTTechnicalDataDTO(
     companion object {
         fun From(obj: GDSTTechnicalData): GDSTTechnicalDataDTO {
             val dto = GDSTTechnicalDataDTO()
-            dto.dateTransshipment = obj.dateTransshipment
+            dto.dateTransshipment = obj?.dateTransshipment ?: ""
             dto.eventDate = obj.eventDate
             dto.eventId = obj.eventId
             dto.geolocationId = obj.geolocationId

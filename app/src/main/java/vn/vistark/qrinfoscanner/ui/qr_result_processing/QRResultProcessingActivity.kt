@@ -9,11 +9,12 @@ import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_result_processing.*
 import vn.vistark.qrinfoscanner.R
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.ui.qr_scan.QrScanActivity
 
 
-class QRResultProcessingActivity : AppCompatActivity() {
+class QRResultProcessingActivity : VistarkActivity() {
     var isEnterpiseScanner = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

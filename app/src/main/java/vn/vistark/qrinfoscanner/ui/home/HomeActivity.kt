@@ -18,6 +18,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Authentication.Companion.isAuthe
 import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.await
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
 import vn.vistark.qrinfoscanner.domain.entities.GDSTUserProfile
@@ -28,7 +29,7 @@ import vn.vistark.qrinfoscanner.ui.ship_collection.ShipCollectionActivity
 import vn.vistark.qrinfoscanner.ui.shipment.ShipmentsActivity
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : VistarkActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

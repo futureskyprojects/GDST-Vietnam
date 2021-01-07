@@ -25,6 +25,7 @@ import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAni
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.DatetimeHelper.Companion.Format
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTMaterialBacthCreateDTO
 import vn.vistark.qrinfoscanner.domain.api.requests.material_batch.GetMaterialBatchBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
@@ -38,7 +39,7 @@ import vn.vistark.qrinfoscanner.ui.material_ship.MaterialShipActivity
 import java.util.*
 import kotlin.collections.ArrayList
 
-class MaterialBatchActivity : AppCompatActivity() {
+class MaterialBatchActivity : VistarkActivity() {
     private var shipmentId: Int = -1
 
     private val materialBatchs = ArrayList<GDSTMaterialBacth>()

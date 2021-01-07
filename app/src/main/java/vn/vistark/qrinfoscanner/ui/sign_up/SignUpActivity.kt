@@ -18,6 +18,7 @@ import vn.vistark.qrinfoscanner.core.extensions.Retrofit2Extension.Companion.awa
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTUserRegisterDTO
 import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.domain.constants.GDSTStorage
@@ -28,7 +29,7 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.SelectBottomSheet.Companion
 import vn.vistark.qrinfoscanner.helpers.alert_helper.gdst_companies_selector.CompanyViewHolder
 import vn.vistark.qrinfoscanner.ui.sign_in.SignInActivity
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : VistarkActivity() {
 
     var selectedCompany: GDSTCompany? = null
 

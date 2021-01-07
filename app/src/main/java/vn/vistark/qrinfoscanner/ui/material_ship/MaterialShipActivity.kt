@@ -22,6 +22,7 @@ import vn.vistark.qrinfoscanner.domain.constants.Config
 import vn.vistark.qrinfoscanner.core.extensions.ViewExtension.Companion.clickAnimate
 import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.Companion.HideKeyboard
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.api.requests.material_ship.GetMaterialShipBody
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialBacth
 import vn.vistark.qrinfoscanner.domain.entities.GDSTMaterialShip
@@ -36,7 +37,7 @@ import vn.vistark.qrinfoscanner.helpers.alert_helper.material_ship.MaterialShipU
 import vn.vistark.qrinfoscanner.ui.technical_data.TechnicalDataActivity
 import kotlin.collections.ArrayList
 
-class MaterialShipActivity : AppCompatActivity() {
+class MaterialShipActivity : VistarkActivity() {
     private var materialBatchId: Int = -1
 
     private val materialShips = ArrayList<GDSTMaterialShip>()

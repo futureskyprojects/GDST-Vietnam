@@ -9,7 +9,7 @@ class GDSTTechnicalData(
     @SerializedName("id")
     var id: Int = 0,
     @SerializedName("date_transshipment")
-    var dateTransshipment: String = "",
+    var dateTransshipment: String? = "",
     @SerializedName("event_date")
     var eventDate: String = "",
     @SerializedName("event_id")

@@ -30,6 +30,7 @@ import vn.vistark.qrinfoscanner.core.extensions.keyboard.HideKeyboardExtension.C
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper
 import vn.vistark.qrinfoscanner.core.helpers.ResourceSaver.Companion.SaveBitmap
 import vn.vistark.qrinfoscanner.core.helpers.VistarkContextWrapper.Companion.forOnCreate
+import vn.vistark.qrinfoscanner.core.overrides.VistarkActivity
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTProfileUpdateWithOutPassword
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTProfileUpdateWithPassword
 import vn.vistark.qrinfoscanner.domain.DTOs.GDSTShipmentCreateDTO
@@ -50,7 +51,7 @@ import java.io.File
 import java.util.*
 
 
-class AccountInfoActivity : AppCompatActivity() {
+class AccountInfoActivity : VistarkActivity() {
 
     private val REQUEST_CODE: Int = 13323
     val crrProf = GDSTStorage.CurrentUser
