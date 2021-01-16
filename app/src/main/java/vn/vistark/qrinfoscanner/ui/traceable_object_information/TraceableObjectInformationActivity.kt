@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_traceable_object_information.*
@@ -181,7 +182,7 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         atoiRvVessels.setHasFixedSize(true)
-        atoiRvVessels.layoutManager = LinearLayoutManager(this)
+        atoiRvVessels.layoutManager = GridLayoutManager(this, 3)
 
         adapter = TOIAdapter(specials)
         atoiRvVessels.adapter = adapter

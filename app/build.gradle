@@ -20,8 +20,8 @@ android {
         applicationId "vn.vistark.qrinfoscanner"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 21010701
-        versionName "210107.01"
+        versionCode 21011601
+        versionName "210116.01"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -9,7 +9,7 @@ class Config {
         const val qrPath = "QRcode/"
         const val padSize = 3
         const val maxSplashScreenWait: Long = 30000L
-        const val isDebug = true
+        const val isDebug = false
 
         var LanguageCode: String = "vi"
             get() = AppStorageManager.get("LANGUAGE_CODE") ?: field
