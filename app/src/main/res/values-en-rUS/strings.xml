@@ -151,4 +151,5 @@
     <string name="ng_y_l_n_c">Date of landing</string>
     <string name="tmgp">Create license</string>
     <string name="cntnltc">Updated material vessel successfully</string>
+    <string name="bccmllntd">Do you really want to save your changes?</string>
 </resources>

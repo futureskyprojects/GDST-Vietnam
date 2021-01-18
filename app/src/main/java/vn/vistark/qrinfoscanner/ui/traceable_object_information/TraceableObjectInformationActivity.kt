@@ -137,38 +137,42 @@ class TraceableObjectInformationActivity : AppCompatActivity() {
 
     private fun initEvents() {
         atoiBackButton.clickAnimate {
-            if (technicalData == null)
-                finish()
-            val loading = this.showLoadingAlert()
-            loading.show()
-            GlobalScope.launch {
-                try {
-                    val response =
-                        ApiService.mAPIServices.postGDSTTechnicalDataUpdate(
-                            GDSTTechnicalDataUpdateDTO.mapFrom(technicalData!!)
-                        ).await()
-                    runOnUiThread { loading.cancel() }
-                    if (response == null)
-                        throw Exception("Không phân dải được KQ trả về")
+            showAlertConfirm(getString(R.string.bccmllntd), {
+                if (technicalData == null)
+                    finish()
+                val loading = this.showLoadingAlert()
+                loading.show()
+                GlobalScope.launch {
+                    try {
+                        val response =
+                            ApiService.mAPIServices.postGDSTTechnicalDataUpdate(
+                                GDSTTechnicalDataUpdateDTO.mapFrom(technicalData!!)
+                            ).await()
+                        runOnUiThread { loading.cancel() }
+                        if (response == null)
+                            throw Exception("Không phân dải được KQ trả về")
 
 
 
-                    runOnUiThread {
-                        showAlertConfirm(getString(R.string.dldltc), {
-                            setResult(RESULT_OK)
-                            finish()
-                        })
+                        runOnUiThread {
+                            showAlertConfirm(getString(R.string.dldltc), {
+                                setResult(RESULT_OK)
+                                finish()
+                            })
+                        }
+                    } catch (e: Exception) {
+                        runOnUiThread { loading.cancel() }
+                        runOnUiThread {
+                            showAlertConfirm(getString(R.string.ktcnddl))
+                        }
+                        e.printStackTrace()
+                    } finally {
+
                     }
-                } catch (e: Exception) {
-                    runOnUiThread { loading.cancel() }
-                    runOnUiThread {
-                        showAlertConfirm(getString(R.string.ktcnddl))
-                    }
-                    e.printStackTrace()
-                } finally {
-
                 }
-            }
+            }, {
+                finish()
+            })
         }
     }
 

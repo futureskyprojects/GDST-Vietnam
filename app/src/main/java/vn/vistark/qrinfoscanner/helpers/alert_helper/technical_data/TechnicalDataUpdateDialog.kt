@@ -140,10 +140,10 @@ class TechnicalDataUpdateDialog {
                     isValidate = vh.updateError(getString(R.string.vlnmml))
                 }
 
-                if (mTechnicalData.KDE.isEmpty()) {
-                    vh.autdEdtKDELinking.error = getString(R.string.vlnkdelk)
-                    isValidate = vh.updateError(getString(R.string.vlnkdelk))
-                }
+//                if (mTechnicalData.KDE.isEmpty()) {
+//                    vh.autdEdtKDELinking.error = getString(R.string.vlnkdelk)
+//                    isValidate = vh.updateError(getString(R.string.vlnkdelk))
+//                }
 
                 if (!isValidate)
                     return@clickAnimate
