@@ -19,7 +19,7 @@ import vn.vistark.qrinfoscanner.domain.entities.*
 
 interface IApiService {
     companion object {
-        const val BASE_URL = "http://gdst.ga/"
+        const val BASE_URL = "https://gdst.vn/"
     }
 
     @GET("api/locations")

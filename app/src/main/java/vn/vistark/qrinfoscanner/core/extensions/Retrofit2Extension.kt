@@ -14,7 +14,6 @@ import kotlin.coroutines.suspendCoroutine
 class Retrofit2Extension {
     companion object {
         suspend fun <T> Call<T>.await(): T? {
-            showLog(">>>> Thực hiện truy vấn đến: [${this.request().url().uri()}]")
             return suspendCoroutine { continuation ->
                 enqueue(object : Callback<T> {
                     override fun onFailure(call: Call<T>?, t: Throwable) {

@@ -15,13 +15,12 @@ android {
         dataBinding = true
     }
 
-
     defaultConfig {
         applicationId "vn.vistark.qrinfoscanner"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 21011801
-        versionName "210118.01"
+        versionCode 21030101
+        versionName "210301.01"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
