@@ -153,4 +153,7 @@
     <string name="ng_y_l_n_c">Ngày lên cá</string>
     <string name="cntnltc">Cập nhật tàu nguyên liệu thành công</string>
     <string name="bccmllntd">Bạn có thực sự muốn lưu lại những thay đổi</string>
+    <string name="btsmxdllh">Bạn có chắc muốn xóa dữ liệu lô hàng</string>
+    <string name="hk">hay không?</string>
+    <string name="cnxhkdcp">Chức năng xóa hiện không được cho phép</string>
 </resources>

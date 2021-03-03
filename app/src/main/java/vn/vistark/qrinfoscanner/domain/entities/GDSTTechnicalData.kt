@@ -19,7 +19,7 @@ class GDSTTechnicalData(
     @SerializedName("is_trasshipment")
     var isTrasshipment: Int = 0,
     @SerializedName("KDE")
-    var KDE: String = "",
+    var KDE: String? = "",
     @SerializedName("loaction_transshipment_id")
     var loactionTransshipmentId: Int = 0,
     @SerializedName("material_ship_id")

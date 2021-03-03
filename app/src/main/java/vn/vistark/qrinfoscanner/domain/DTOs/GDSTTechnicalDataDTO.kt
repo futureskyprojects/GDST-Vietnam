@@ -48,7 +48,7 @@ data class GDSTTechnicalDataDTO(
             dto.eventId = obj.eventId
             dto.geolocationId = obj.geolocationId
             dto.isTrasshipment = obj.isTrasshipment
-            dto.KDE = obj.KDE
+            dto.KDE = obj.KDE ?: ""
             dto.loactionTransshipmentId = obj.loactionTransshipmentId
             dto.materialShipId = obj.materialShipId
             dto.productFormId = obj.productFormId

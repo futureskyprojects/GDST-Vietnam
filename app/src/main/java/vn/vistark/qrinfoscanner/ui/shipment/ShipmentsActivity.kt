@@ -74,14 +74,14 @@ class ShipmentsActivity : VistarkActivity() {
     private fun initDataEvents() {
         adapter.onEdit = {
             showAlertConfirm(
-                "Bạn có chắc muốn xóa dữ liệu lô hàng [#${
+                getString(R.string.btsmxdllh) + "[#${
                     it.id.toString()
                         .padStart(padSize, '0')
-                }] hay không?",
+                }] " + getString(R.string.hk),
                 {
                     Toast.makeText(
                         this,
-                        "Chức năng xóa hiện không được cho phép",
+                        getString(R.string.cnxhkdcp),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

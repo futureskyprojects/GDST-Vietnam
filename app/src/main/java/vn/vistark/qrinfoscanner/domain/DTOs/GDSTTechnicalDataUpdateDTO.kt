@@ -52,7 +52,7 @@ data class GDSTTechnicalDataUpdateDTO(
                 obj.eventId,
                 obj.geolocationId,
                 obj.isTrasshipment,
-                obj.KDE,
+                obj.KDE ?: "",
                 obj.loactionTransshipmentId,
                 obj.materialShipId,
                 obj.productFormId,

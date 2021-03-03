@@ -152,4 +152,7 @@
     <string name="tmgp">Create license</string>
     <string name="cntnltc">Updated material vessel successfully</string>
     <string name="bccmllntd">Do you really want to save your changes?</string>
+    <string name="btsmxdllh">Are you sure you want to delete your shipment data</string>
+    <string name="hk">or not?</string>
+    <string name="cnxhkdcp">Delete is not currently allowed</string>
 </resources>
